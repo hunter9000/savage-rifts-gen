@@ -1,4 +1,4 @@
-
+# starter kit for rest angular site
 
 Set the name and artifactId in pom.xml
 
