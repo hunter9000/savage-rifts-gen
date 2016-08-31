@@ -5,9 +5,18 @@ import java.util.List;
 
 @Table
 public class Race {
-	List<Edge> builtInEdges;
-	List<Hindrance> builtInHinderance;
-	boolean hasMagic;
-	boolean hasPsionics;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	private Long id;
+	
+	
+	private List<Edge> builtInEdges;
+	
+	private List<Hindrance> builtInHinderance;
+	
+	private boolean hasMagic;
+	
+	private boolean hasPsionics;
 	
 }

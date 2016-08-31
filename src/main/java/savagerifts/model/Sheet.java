@@ -16,34 +16,79 @@ public class Sheet {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	DieType str, agi, smr, spr, vgr;
-	Integer attrBonusesStr, attrBonusesAgi, attrBonusesSmr, attrBonusesSpr, attrBonusesVgr;
-	Integer remainingAttrPoints;
-	Integer remainingSkillPoints;
-	Integer remianingHindrancePoints;		// points left from buying hindrances that can be spent on edges, etc
-	Integer strain;
-	Integer toughness;
-	Integer charisma;
-	Integer pace;
-	Integer parry;
-	Integer isp;
-	Integer ppe;
+	// attribute die types
+	@Column(name="strengthDieType")
+	private DieType strengthDieType;
+	@Column(name="agilityDieType")
+	private DieType agilityDieType;
+	@Column(name="smartsDieType")
+	private DieType smartsDieType;
+	@Column(name="spiritDieType")
+	private DieType spiritDieType;
+	@Column(name="vigorDieType")
+	private DieType vigorDieType;
 	
-	Framework framework;
+	// attribute bonuses
+	@Column(name="strengthBonus")
+	private Integer strengthBonus;
+	@Column(name="agilityBonus")
+	private Integer agilityBonus;
+	@Column(name="smartsBonus")
+	private Integer smartsBonus;
+	@Column(name="spiritBonus")
+	private Integer spiritBonus;
+	@Column(name="vigorBonus")
+	private Integer vigorBonus;
 	
-	List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
+	@Column(name = "remainingAttributePoints")
+	private Integer remainingAttrPoints;
+	
+	@Column(name = "remainingSkillPoints")
+	private Integer remainingSkillPoints;
+	
+	@Column(name = "remainingHindrancePoints")
+	private Integer remianingHindrancePoints;		// points left from buying hindrances that can be spent on edges, etc
+	
+	@Column(name = "strain")
+	private Integer strain;
+	
+	@Column(name = "toughness")
+	private Integer toughness;
+	
+	@Column(name = "charisma")
+	private Integer charisma;
+	
+	@Column(name = "pace")
+	private Integer pace;
+	
+	@Column(name = "parry")
+	private Integer parry;
+	
+	@Column(name = "isp")
+	private Integer isp;
+	
+	@Column(name = "ppe")
+	private Integer ppe;
+	
+	@Column(name = "framework")
+	private Framework framework;
+	
+	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 								// we know which of the given rolls this was chosen by
-	boolean hasSelectedTableRolls;		// true if all rolls have been made and all swaps have been made (if any)
 	
-	Race race;
+	@Column(name = "hasCompletedTableRolls")
+	private boolean hasCompletedTableRolls;		// true if all rolls have been made and all swaps have been made (if any)
 	
-	List<SkillRoll> skills;			// skills and their rolls
+	//@Column(name = "race")
+	private Race race;
 	
-	List<Language> languages;		// known languages
+	private List<SkillRoll> skills;			// skills and their rolls
 	
-	List<Power> powers;		// known powers
+	private List<Language> languages;		// known languages
 	
-	List<Hindrance> hindrances;		// chosen hindrances
+	private List<Power> powers;		// known powers
+	
+	private List<Hindrance> hindrances;		// chosen hindrances
 	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
 	
 //	boolean hasMagic? hasPsionics?
