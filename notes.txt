@@ -1,0 +1,160 @@
+abilities - default values for 5, derived values, isp, ppe
+frameworks - table rolls and choices, predefined edges/hinds (non-selectable framework specific edges?), power lists, starting gear
+MARS?
+races - predefined edges/hinds, restricted edges, 
+skills
+languages
+
+
+tables
+gear tables
+powers
+skills
+edges - level, framework, ability die, skill, prereq restrictions
+hinds - major/minor
+
+
+
+
+
+
+step 1
+	pick framework
+	make table rolls
+	trade in table rolls
+	choose race
+	increase attrs (5 points)
+	choose skills (15 points)
+	buy hindrances
+	buy edges/skill points/attr points/double starting money
+
+	
+api/sheet POST				create sheet
+api/sheet GET 				get all sheets belonging to user
+api/sheet/{sheetId} GET 	get sheet
+	// repo.getSheet()
+	// return sheet
+
+api/sheet/framework PATCH 		choose framework
+	// take frameworkId, set character framework if not set already. 
+
+api/sheet/perks	GET						gets the already chosen perks
+api/sheet/tableroll GET 				gets the list of table choices that this sheet can make rolls on, 
+	// get sheet, if framework == null error
+	// get List<TableRoll> from framework
+	// remove TableRolls that have their id in the sheet.getPerkSelections()
+	// return list
+not needed?? //api/sheet/tableroll/{rollId} GET 				gets the tables that this sheet can make rolls against for the given rollId
+	// get the ids of the tables the sheet can choose from for it's next roll
+api/sheet/tableroll/{tableId} POST 		makes a roll on the given table
+
+api/sheet/race POST 			select the race	
+	// set race
+	// apply all permanent bonuses to things that have already been set, if any. things like attr limits will come into play later
+
+api/sheet/attributes GET		get the current attributes and number of points left
+api/sheet/attributes PATCH 		set attributes
+	// pass the attribute to increment or decrement. sheet/attributes GET is used to get the new attributes
+	// check if the inc is under the max defined by the race/framework, and dec is above the min
+	
+api/sheet/skills GET 			get the current skills and the number of points left
+api/sheet/skills PATCH 			set skills
+
+api/sheet/hindrances GET			get the current hindrances, and the number of remaining major and minors to choose
+api/sheet/hindrances PATCH 		set hindrances
+
+api/framework GET		get all the frameworks
+
+api/race GET		get possible races
+api/table GET		get possible tables
+api/table/{tableId} GET		get full table with perk choices and ranges
+api/hindrance GET 	get possible hindrances
+api/edge GET 		get possible edges
+
+
+frontend:
+/selectchar
+	// go to character/{charId}
+/character/{charId}
+	// if !hasSelectedFramework
+		// go to selectframework
+	// else if !hasSelectedTableRolls
+		// go to selecttablerolls
+	// else if !hasSelectedRace
+		// go to selectrace
+	// attributes
+		// go to selectattributes
+	// skills
+		// go to select skills
+	// hindrances
+		// go to selecthindrances
+	// edges
+		// go to selectedges
+	// else 
+		// display sheet
+/selectframework
+	// get list of all frameworks, present selections, display more info when selected, post to /api/sheet/framework
+		// on success go to /character/{charId}
+/selecttablerolls
+	// get /api/table to get all the tables
+	// get /api/sheet/tablerolls to get all the choices this can make
+		// if no table rolls left, go to /swaptablerolls
+	// get api/sheet/perks to get the already chosen perks
+	// display chosen perks at top
+	// display selectable rolls with the table names that can be chosen from below that
+		// when selecting a roll, display selection list of tables to roll on.
+			// when selected a table, display perks and ranges, and ok button
+				// post to /api/sheet/tableroll/{tableId}
+				// on success go to /character/{charId}
+/selectrace
+	// get /api/race to get all races info
+	// display race selections with info
+	// post to /api/sheet/race 
+		// on success go to /character/{charId}
+/selectattributes
+	// get /api/sheet/attributes to get the current attributes and number of points left
+		// if points left == 0 go to /character/{charId}
+	// display current attrs and inc/dec buttons
+	// post to /api/sheet/attributes to inc dec, requery /api/sheet/attributes
+/selectskills
+	// get /api/sheet/skills to get skills and remaining points
+		// if points left == 0 go to /character/{charId}
+	// display current skills and inc/dec buttons
+	// post to /api/sheet/skills to inc dec, requery /api/sheet/skills
+/selecthindrances
+	// get /api/hindrance to get all hindrances
+	// get /api/sheet/hindrance to get the current hindrances, and the number of remaining major and minors to choose
+		// if none left to choose go to /character/{charId}
+	// display choices
+	// post to /api/sheet/hindrances either with hindrance to take, remove, or to finalize without selecting all
+/selectedges
+	// if hindrance points available, display the four options
+		// 
+		
+		
+		
+		
+<container>
+	<row>
+		name	race
+		framework 
+		rank	xp
+	</row>
+	<row>
+		agility smarts spirit strength vigor
+		charisma parry pace toughness strain
+	</row>
+	<row>
+		<column>
+			skills
+		</column>
+		<column>
+			gear
+		</column>
+		<column>
+			edges/hind
+		</column>
+	</row>
+	
+	
+http://jsonpatch.com/

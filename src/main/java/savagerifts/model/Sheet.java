@@ -5,11 +5,17 @@ import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.power.Power;
 import savagerifts.model.skill.SkillRoll;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Table
 public class Sheet {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	private Long id;
+
 	DieType str, agi, smr, spr, vgr;
 	Integer attrBonusesStr, attrBonusesAgi, attrBonusesSmr, attrBonusesSpr, attrBonusesVgr;
 	Integer remainingAttrPoints;

@@ -16,8 +16,8 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-@EnableJpaRepositories(basePackages = "com.sample.repository")
-@EntityScan(basePackages = "com.sample")
+@EnableJpaRepositories(basePackages = "savagerifts.repository")
+@EntityScan(basePackages = "savagerifts")
 @SpringBootApplication
 public class Application extends WebMvcConfigurerAdapter {
 
