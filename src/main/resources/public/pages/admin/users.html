@@ -1,0 +1,38 @@
+
+
+<div class="container">
+    <div class="row" >
+        <div class="col-md-2">
+            <label>Name</label>
+        </div>
+        <div class="col-md-2">
+            <label>Email</label>
+        </div>
+        <div class="col-md-3">
+            <label>Roles</label>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+
+    <div class="row" ng-repeat="user in users">
+
+        <div class="col-md-2" style="text-align:left;">
+            <span>{{user.username}}</span>
+        </div>
+
+        <div class="col-md-2"  style="text-align:left;">
+            <span>{{user.email}}</span>
+        </div>
+
+        <div class="col-md-3" style="text-align:left;">
+            <span ng-repeat="role in user.roles" style="padding-right:5px;">{{role.roleName}}</span>
+        </div>
+
+        <div class="col-md-2">
+            <button ng-click="edit(user.id)">Edit</button>
+            <button ng-click="delete()">Delete</button>
+        </div>
+
+    </div>
+</div>
