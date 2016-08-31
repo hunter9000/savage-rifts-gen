@@ -1,4 +1,4 @@
-package com.sample.response;
+package savagerifts.response;
 
 public class StringResponse {
     private String response;

@@ -1,4 +1,4 @@
-package com.sample.model.user;
+package savagerifts.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

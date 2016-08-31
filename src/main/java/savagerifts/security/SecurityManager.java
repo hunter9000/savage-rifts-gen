@@ -1,4 +1,4 @@
-package com.sample.security;
+package savagerifts.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

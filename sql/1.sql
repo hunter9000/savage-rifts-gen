@@ -1,2 +1,2 @@
-CREATE DATABASE ``;
+CREATE DATABASE `savage_rifts`;
 

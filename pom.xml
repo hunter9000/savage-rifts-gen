@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>hdavis</groupId>
-  <artifactId></artifactId>
+  <artifactId>savage-rifts-gen</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 
@@ -14,7 +14,7 @@
     <version>1.2.4.RELEASE</version>
   </parent>
 
-  <name></name>
+  <name>Savage Rifts Character Generator</name>
   <url></url>
 
   <dependencies>

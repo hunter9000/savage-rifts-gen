@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-sampleApp.controller('mainController', function($scope, $location, $window, JwtData) {
+savageRiftsApp.controller('mainController', function($scope, $location, $window, JwtData) {
     // create a message to display in our view
     $scope.message = 'main';
 

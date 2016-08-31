@@ -1,6 +1,6 @@
 
 
-sampleApp.controller('profileController', function($scope, $http, $routeParams, $window, $location){
+savageRiftsApp.controller('profileController', function($scope, $http, $routeParams, $window, $location){
 	$scope.user = {};
 
     $scope.roles = [];

@@ -1,5 +1,5 @@
 
-sampleApp.controller('newUserController', function($scope, $window, $http, $location) {
+savageRiftsApp.controller('newUserController', function($scope, $window, $http, $location) {
     $scope.user = {
         roles: []
     };       // user object to build and pass to server

@@ -1,18 +1,17 @@
-package com.sample.controller;
+package savagerifts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sample.interceptor.RolePermissions;
-import com.sample.model.user.Role;
-import com.sample.model.user.RoleType;
-import com.sample.model.user.User;
-import com.sample.repository.RoleRepository;
-import com.sample.repository.UserRepository;
-import com.sample.request.AuthRequest;
-import com.sample.response.StringResponse;
-import com.sample.security.*;
-import com.sample.security.IllegalAccessException;
-import com.sample.security.SecurityManager;
-import com.sample.util.AuthUtils;
+import savagerifts.interceptor.RolePermissions;
+import savagerifts.model.user.Role;
+import savagerifts.model.user.RoleType;
+import savagerifts.model.user.User;
+import savagerifts.repository.RoleRepository;
+import savagerifts.repository.UserRepository;
+import savagerifts.request.AuthRequest;
+import savagerifts.response.StringResponse;
+import savagerifts.security.IllegalAccessException;
+import savagerifts.security.SecurityManager;
+import savagerifts.util.AuthUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import savagerifts.security.JwtSubject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;

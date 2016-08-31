@@ -1,5 +1,5 @@
 
-	sampleApp.factory('JwtData', function($window) {
+	savageRiftsApp.factory('JwtData', function($window) {
 		return {
 		    getUserName: function() {
 		        var subject = this.parseJwt();

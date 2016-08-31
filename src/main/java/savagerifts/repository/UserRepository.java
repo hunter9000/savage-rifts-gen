@@ -1,6 +1,6 @@
-package com.sample.repository;
+package savagerifts.repository;
 
-import com.sample.model.user.User;
+import savagerifts.model.user.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

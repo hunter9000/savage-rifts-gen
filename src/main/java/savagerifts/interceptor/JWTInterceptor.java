@@ -1,8 +1,8 @@
-package com.sample.interceptor;
+package savagerifts.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sample.security.JwtSubject;
-import com.sample.util.AuthUtils;
+import savagerifts.security.JwtSubject;
+import savagerifts.util.AuthUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import com.sample.security.SecurityManager;
+import savagerifts.security.SecurityManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

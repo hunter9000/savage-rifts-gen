@@ -1,4 +1,4 @@
-package com.sample.request;
+package savagerifts.request;
 
 public class AuthRequest {
     public String name;

@@ -1,10 +1,10 @@
-package com.sample.interceptor;
+package savagerifts.interceptor;
 
-import com.sample.model.user.RoleType;
-import com.sample.model.user.User;
-import com.sample.repository.UserRepository;
-import com.sample.security.JwtSubject;
-import com.sample.util.AuthUtils;
+import savagerifts.model.user.RoleType;
+import savagerifts.model.user.User;
+import savagerifts.repository.UserRepository;
+import savagerifts.security.JwtSubject;
+import savagerifts.util.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

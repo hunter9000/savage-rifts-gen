@@ -1,7 +1,7 @@
-package com.sample;
+package savagerifts;
 
-import com.sample.interceptor.JWTInterceptor;
-import com.sample.interceptor.RolePermissionInterceptor;
+import savagerifts.interceptor.JWTInterceptor;
+import savagerifts.interceptor.RolePermissionInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;

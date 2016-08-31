@@ -1,8 +1,8 @@
 // create the module and name it scotchApp
-var sampleApp = angular.module('sampleApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial']);
+var savageRiftsApp = angular.module('savageRiftsApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial']);
 
 // configure our routes
-sampleApp.config(function($routeProvider) {
+savageRiftsApp.config(function($routeProvider) {
     $routeProvider
         // route for the home page
         // main-controller.js

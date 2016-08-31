@@ -1,4 +1,4 @@
-package com.sample.model.user;
+package savagerifts.model.user;
 
 public enum RoleType {
     ADMIN,

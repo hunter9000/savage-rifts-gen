@@ -1,9 +1,9 @@
-package com.sample.util;
+package savagerifts.util;
 
-import com.sample.model.user.Role;
-import com.sample.model.user.RoleType;
-import com.sample.model.user.User;
-import com.sample.security.JwtSubject;
+import savagerifts.model.user.Role;
+import savagerifts.model.user.RoleType;
+import savagerifts.model.user.User;
+import savagerifts.security.JwtSubject;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,6 +1,6 @@
-package com.sample.interceptor;
+package savagerifts.interceptor;
 
-import com.sample.model.user.RoleType;
+import savagerifts.model.user.RoleType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

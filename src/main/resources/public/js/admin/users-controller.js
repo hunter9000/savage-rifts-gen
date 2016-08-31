@@ -1,5 +1,5 @@
 
-sampleApp.controller('usersController', function($scope, $window, $http, $location) {
+savageRiftsApp.controller('usersController', function($scope, $window, $http, $location) {
 
     $scope.users = [];
 
