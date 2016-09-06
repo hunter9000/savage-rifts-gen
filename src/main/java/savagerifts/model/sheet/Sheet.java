@@ -8,7 +8,8 @@ import savagerifts.model.skill.SkillRoll;
 import javax.persistence.*;
 import java.util.List;
 
-@Table
+@Entity
+@Table(name = "sheet")
 public class Sheet {
 
 	@Id
@@ -70,7 +71,7 @@ public class Sheet {
 	@Column(name = "ppe")
 	private Integer ppe;
 	
-	@Column(name = "framework")
+//	@Column(name = "framework")
 	private Framework framework;
 	
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so

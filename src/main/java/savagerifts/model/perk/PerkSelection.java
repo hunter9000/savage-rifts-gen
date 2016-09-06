@@ -4,7 +4,7 @@ import savagerifts.model.benefittable.BenefitTableRoll;
 
 import javax.persistence.Table;
 
-@Table
+//@Table
 // how to handle swapped? 
 public class PerkSelection {
 	Perk perk;			// the perk selected

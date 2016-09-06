@@ -6,9 +6,9 @@ import savagerifts.model.skill.SkillType;
 import javax.persistence.Table;
 import java.util.List;
 
-@Table
+//@Table
 public class Edge {
-	XPLevel requiredLevel;
+	XPLevelType requiredLevel;
 
 	List<Framework> requiredFrameworks;
 

@@ -2,7 +2,7 @@ package savagerifts.model;
 
 import javax.persistence.Table;
 
-@Table
+//@Table
 public class Gear {
 	
 }

@@ -4,7 +4,7 @@ import savagerifts.model.Gear;
 
 import javax.persistence.Table;
 
-@Table
+//@Table
 public class Perk {
 	String desc;
 	Gear providedGear;

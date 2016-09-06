@@ -3,7 +3,7 @@ package savagerifts.model;
 import javax.persistence.Table;
 import java.util.List;
 
-@Table
+//@Table
 public class Race {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

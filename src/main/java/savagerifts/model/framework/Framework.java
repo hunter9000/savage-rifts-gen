@@ -10,7 +10,7 @@ import savagerifts.model.power.PowerList;
 import javax.persistence.Table;
 import java.util.List;
 
-@Table
+//@Table
 public class Framework {
 	FrameworkType type;
 	List<BenefitTableRoll> tableRolls;

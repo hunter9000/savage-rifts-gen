@@ -1,6 +1,6 @@
 package savagerifts.model;
 
-public enum XPLevel {
+public enum XPLevelType {
     Novice,
     Seasoned,
     Veteran,
