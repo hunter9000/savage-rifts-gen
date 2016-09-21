@@ -32,7 +32,7 @@
             // parses the token and returns the subject object (userName:'', roles:['','']}
             parseJwt: function() {
                 var token = $window.localStorage['jwtToken'];
-                if (token == 'undefined') {
+                if (token == undefined) {
 //                    console.log('error, no token');
                     return null;
                 }
