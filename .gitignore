@@ -4,3 +4,4 @@ target
 .idea/
 sample.iml
 savage-rifts-gen.iml
+src/main/resources/public/bower_components/

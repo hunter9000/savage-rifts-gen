@@ -39,6 +39,11 @@ savageRiftsApp.config(function($routeProvider) {
             controller  : 'profileController'
         })
 
+        .when('/charselect', {
+            templateUrl : 'pages/charselect.html',
+            controller : 'charSelectController'
+        })
+
         // generic error page
         .when('/error', {
             templateUrl: 'pages/error.html',
