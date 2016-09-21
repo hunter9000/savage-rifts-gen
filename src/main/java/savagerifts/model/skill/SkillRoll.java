@@ -1,6 +1,8 @@
 package savagerifts.model.skill;
 
-import savagerifts.model.Roll;
+import savagerifts.model.sheet.Roll;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "skill_roll")
@@ -11,7 +13,7 @@ public class SkillRoll {
     private Long id;
 	
 	@Column(name = "skillType", nullable = false)
-	@Enumerated(STRING)
+	@Enumerated(value = EnumType.STRING)
 	SkillType skillType;
 	
 	@Column(name = "roll", nullable = false)

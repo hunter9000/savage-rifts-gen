@@ -1,7 +1,7 @@
 package savagerifts.model;
 
-import javax.persistence.Table;
 import java.util.List;
+import javax.persistence.*;
 
 //@Table
 public class Race {

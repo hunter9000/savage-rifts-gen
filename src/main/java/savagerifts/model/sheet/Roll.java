@@ -1,6 +1,8 @@
-package savagerifts.model;
+package savagerifts.model.sheet;
 
-import javax.persistence.Table;
+import savagerifts.model.DieType;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "roll")

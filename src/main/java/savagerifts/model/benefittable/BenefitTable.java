@@ -2,8 +2,8 @@ package savagerifts.model.benefittable;
 
 import savagerifts.model.perk.PerkRange;
 
-import javax.persistence.Table;
 import java.util.List;
+import javax.persistence.*;
 
 //@Table
 public class BenefitTable {

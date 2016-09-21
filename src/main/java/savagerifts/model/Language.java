@@ -1,6 +1,6 @@
 package savagerifts.model;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table
 public class Language {
