@@ -13,8 +13,30 @@ public class Roll {
     private Long id;
 	
 	@Column(name = "die_type", nullable = false)
-	DieType dieType;
+	@Enumerated(EnumType.STRING)
+	private DieType dieType;
 	
 	@Column(name = "modifier", nullable = false)
-	Integer modifier;
+	private Integer modifier;
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public DieType getDieType() {
+		return dieType;
+	}
+	public void setDieType(DieType dieType) {
+		this.dieType = dieType;
+	}
+
+	public Integer getModifier() {
+		return modifier;
+	}
+	public void setModifier(Integer modifier) {
+		this.modifier = modifier;
+	}
 }

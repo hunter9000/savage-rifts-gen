@@ -1,4 +1,4 @@
-package savagerifts.model;
+package savagerifts.model.sheet;
 
 public enum XPLevelType {
     Novice,

@@ -2,7 +2,7 @@ package savagerifts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import savagerifts.model.Sheet;
+import savagerifts.model.sheet.Sheet;
 import savagerifts.repository.SheetRepository;
 
 import javax.servlet.http.HttpServletRequest;

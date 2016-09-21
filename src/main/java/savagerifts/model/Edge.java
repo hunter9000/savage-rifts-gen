@@ -1,6 +1,7 @@
 package savagerifts.model;
 
 import savagerifts.model.framework.Framework;
+import savagerifts.model.sheet.XPLevelType;
 import savagerifts.model.skill.SkillType;
 
 import javax.persistence.Table;
