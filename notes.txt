@@ -35,7 +35,7 @@ step 1
 	// repo.getSheet()
 	// return sheet
 
-api/sheet/framework PATCH 		choose framework
+api/sheet/framework POST 		choose framework
 	// take frameworkId, set character framework if not set already. 
 
 api/sheet/perks	GET						gets the already chosen perks

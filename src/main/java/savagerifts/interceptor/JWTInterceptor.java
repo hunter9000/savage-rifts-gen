@@ -1,6 +1,7 @@
 package savagerifts.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.servlet.HandlerMapping;
 import savagerifts.model.user.User;
 import savagerifts.repository.UserRepository;
 import savagerifts.security.JwtSubject;
@@ -17,6 +18,7 @@ import savagerifts.security.SecurityManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Component
 public class JWTInterceptor implements HandlerInterceptor {

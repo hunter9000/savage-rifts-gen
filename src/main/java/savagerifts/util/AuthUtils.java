@@ -1,6 +1,7 @@
 package savagerifts.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.Role;
 import savagerifts.model.user.RoleType;
 import savagerifts.model.user.User;
@@ -13,6 +14,7 @@ public class AuthUtils {
 
     public static final String JWT_TOKEN_NAME = "jwtToken";
     public static final String LOGGED_IN_USER = "loggedInUser";
+    public static final String SHEET = "sheet";
     public static final String CHARACTER_NAME = "character";
 
     public static boolean isUserAdmin(User user) {
@@ -38,5 +40,9 @@ public class AuthUtils {
 
     public static User getLoggedInUser(HttpServletRequest request) {
         return ((User)request.getAttribute(LOGGED_IN_USER));
+    }
+
+    public static Sheet getSheet(HttpServletRequest request) {
+        return ((Sheet)request.getAttribute(SHEET));
     }
 }

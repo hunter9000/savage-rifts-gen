@@ -2,6 +2,7 @@ package savagerifts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import savagerifts.interceptor.SheetOwner;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.User;
 import savagerifts.repository.SheetRepository;
@@ -44,15 +45,17 @@ public class SheetController {
     }
 
     // get sheet
+    @SheetOwner
     @RequestMapping(value="/api/sheet/{sheetId}", method=RequestMethod.GET)
     public Sheet getSheet(@PathVariable long sheetId) {
-        User owner = AuthUtils.getLoggedInUser(request);
-        Sheet sheet = sheetRepository.findOne(sheetId);
+        return AuthUtils.getSheet(request);     // the sheet is retrieved by the SheetOwnerInterceptor
+    }
 
-        if (sheet.getOwner().equals(owner)) {
-            return sheet;
-        }
-        return null;
+    // choose framework
+    @SheetOwner
+    @RequestMapping(value = "/api/sheet/{sheetId}/framework/{frameworkId}/", method = RequestMethod.POST)
+    public void setFramework(@PathVariable long sheetId, @PathVariable long frameworkId) {
+        Sheet sheet = AuthUtils.getSheet(request);
     }
 
 //    @RequestBody

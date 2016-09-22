@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import savagerifts.interceptor.SheetOwnerInterceptor;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -26,12 +27,13 @@ public class Application extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public JWTInterceptor JWTInterceptor() {
-        return new JWTInterceptor();
-    }
+    public JWTInterceptor JWTInterceptor() { return new JWTInterceptor(); }
 
     @Bean
     public RolePermissionInterceptor RolePermissionInterceptor() { return new RolePermissionInterceptor(); }
+
+    @Bean
+    public SheetOwnerInterceptor SheetOwnerInterceptor() { return new SheetOwnerInterceptor(); }
 
     /** Creates the password encoder object. This is used to .encode() a raw string. The results of that are a hashed
      *  string that includes a random salt. That is what's stored in the user table. To compare a raw input password
@@ -49,6 +51,7 @@ public class Application extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(JWTInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/authenticate/");
         registry.addInterceptor(RolePermissionInterceptor()).addPathPatterns("/api/**");        // intercepts all paths, only applies to methods with the @RolePermissions annotation
+        registry.addInterceptor(SheetOwnerInterceptor()).addPathPatterns("/api/**");            // intercepts all paths, only applies to methods with the @SheetOwner annotation
     }
 
     /** Swagger info */
