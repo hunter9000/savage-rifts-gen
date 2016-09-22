@@ -9,7 +9,7 @@ import savagerifts.repository.RoleRepository;
 import savagerifts.repository.UserRepository;
 import savagerifts.request.AuthRequest;
 import savagerifts.response.StringResponse;
-import savagerifts.security.IllegalAccessException;
+import savagerifts.security.ForbiddenAccessException;
 import savagerifts.security.SecurityManager;
 import savagerifts.util.AuthUtils;
 import io.jsonwebtoken.Jwts;
@@ -52,14 +52,14 @@ public class AuthController {
         User user = userRepository.findByUsername(request.name);
         if (user == null) {
 //            return new ResponseEntity<>(new StringResponse(BAD_LOGIN_MESSAGE), HttpStatus.UNAUTHORIZED);        // user not found
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
         }
 
         // validate the password
         boolean pwMatch = passwordEncoder.matches(request.password, user.getPassword());
         if (!pwMatch) {
 //            return new ResponseEntity<>(new StringResponse(BAD_LOGIN_MESSAGE), HttpStatus.UNAUTHORIZED);
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
         }
 
         // create the jwt token
@@ -147,13 +147,15 @@ public class AuthController {
     // gets the currently logged in user's User object
     @RequestMapping(value="/api/profile/", method=RequestMethod.GET)
     public User getProfile() {
-        return userRepository.findOne(AuthUtils.getUserId(request));
+        //return userRepository.findOne(AuthUtils.getUserId(request));
+        return AuthUtils.getLoggedInUser(request);
     }
 
     // updates the currently logged in user's User object
     @RequestMapping(value="/api/profile/", method=RequestMethod.PUT)
     public User editProfile(@RequestBody User userRequest) {
-        User user = userRepository.findOne(AuthUtils.getUserId(request));
+//        User user = userRepository.findOne(AuthUtils.getUserId(request));
+        User user = AuthUtils.getLoggedInUser(request);
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()) );
         user.setEmail(userRequest.getEmail());
         user = userRepository.save(user);

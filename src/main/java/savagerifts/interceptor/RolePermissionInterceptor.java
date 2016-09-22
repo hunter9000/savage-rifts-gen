@@ -3,7 +3,7 @@ package savagerifts.interceptor;
 import savagerifts.model.user.RoleType;
 import savagerifts.model.user.User;
 import savagerifts.repository.UserRepository;
-import savagerifts.security.JwtSubject;
+import savagerifts.security.ForbiddenAccessException;
 import savagerifts.util.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
@@ -25,16 +25,14 @@ public class RolePermissionInterceptor implements HandlerInterceptor {
         RolePermissions permissionAnnotation = handlerMethod.getMethod().getAnnotation(RolePermissions.class);
         if (permissionAnnotation != null) {        // if present,
             // return if any roles in annotation match any roles in user.roles
-            JwtSubject subject = (JwtSubject)request.getAttribute(AuthUtils.JWT_TOKEN_NAME);
-
-            User user = userRepository.findOne(subject.getUserId());
+            User user = AuthUtils.getLoggedInUser(request);
 
             for (RoleType roleType : permissionAnnotation.allowedRoles()) {
                 if (AuthUtils.userHasRole(user, roleType)) {
                     return true;
                 }
             }
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
         }
         else {        // else return true since no perms are required
             return true;

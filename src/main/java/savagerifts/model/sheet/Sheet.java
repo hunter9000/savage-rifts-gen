@@ -8,6 +8,7 @@ import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.power.Power;
 import savagerifts.model.skill.SkillRoll;
+import savagerifts.model.user.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,6 +21,13 @@ public class Sheet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+
+	@OneToOne
+	@JoinColumn(name = "owner", nullable = false, updatable = false)
+	private User owner;
+
+	@Column(name = "name", nullable = false)
+	private String name;
 
 	// attribute die types
 	@Column(name="strengthDieType")
@@ -80,9 +88,9 @@ public class Sheet {
 	@Column(name = "ppe")
 	private Integer ppe;
 
-//	@OneToMany
-//	@JoinColumn(name = "framework")
-//	private Framework framework;
+	@OneToOne
+	@JoinColumn(name = "framework")
+	private Framework framework;
 
 //	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 								// we know which of the given rolls this was chosen by
@@ -143,6 +151,20 @@ public class Sheet {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public DieType getStrengthDieType() {
@@ -298,6 +320,14 @@ public class Sheet {
 //	public void setChosenPerks(List<PerkSelection> chosenPerks) {
 //		this.chosenPerks = chosenPerks;
 //	}
+
+
+	public Framework getFramework() {
+		return framework;
+	}
+	public void setFramework(Framework framework) {
+		this.framework = framework;
+	}
 
 	public boolean isHasCompletedTableRolls() {
 		return hasCompletedTableRolls;

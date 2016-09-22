@@ -1,3 +1,23 @@
+
+CREATE TABLE `framework` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`max_agility_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`max_smarts_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`max_spirit_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`max_strength_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`max_vigor_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`starting_agility_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`starting_attribute_points` INT(11) NULL DEFAULT NULL,
+	`starting_smarts_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`starting_spirit_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`starting_strength_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`starting_vigor_die_type` VARCHAR(255) NULL DEFAULT NULL,
+	`type` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `UK_akguxu30bs0jv0n9imtoxeh6o` (`type`)
+) COLLATE='latin1_swedish_ci' ENGINE=InnoDB;
+
+
 CREATE TABLE `sheet` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`agility_bonus` INT(11) NULL DEFAULT NULL,
@@ -7,6 +27,7 @@ CREATE TABLE `sheet` (
 	`has_selected_edges` BIT(1) NULL DEFAULT NULL,
 	`has_selected_hindrances` BIT(1) NULL DEFAULT NULL,
 	`isp` INT(11) NULL DEFAULT NULL,
+	`name` VARCHAR(255) NOT NULL,
 	`pace` INT(11) NULL DEFAULT NULL,
 	`parry` INT(11) NULL DEFAULT NULL,
 	`ppe` INT(11) NULL DEFAULT NULL,
@@ -23,5 +44,11 @@ CREATE TABLE `sheet` (
 	`toughness` INT(11) NULL DEFAULT NULL,
 	`vigor_bonus` INT(11) NULL DEFAULT NULL,
 	`vigor_die_type` VARCHAR(255) NULL DEFAULT NULL,
-	PRIMARY KEY (`id`)
+	`framework` BIGINT(20) NULL DEFAULT NULL,
+	`owner` BIGINT(20) NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `FK_ckei0v74cktpahb1f6cpvvgx9` (`framework`),
+	INDEX `FK_2pvjufx2dja7r1b6hdx091scs` (`owner`),
+	CONSTRAINT `FK_2pvjufx2dja7r1b6hdx091scs` FOREIGN KEY (`owner`) REFERENCES `user` (`id`),
+	CONSTRAINT `FK_ckei0v74cktpahb1f6cpvvgx9` FOREIGN KEY (`framework`) REFERENCES `framework` (`id`)
 ) COLLATE='latin1_swedish_ci' ENGINE=InnoDB;

@@ -29,9 +29,9 @@ step 1
 	buy edges/skill points/attr points/double starting money
 
 	
-api/sheet POST				create sheet
-api/sheet GET 				get all sheets belonging to user
-api/sheet/{sheetId} GET 	get sheet
+//api/sheet POST				create sheet
+//api/sheet GET 				get all sheets belonging to user
+//api/sheet/{sheetId} GET 	get sheet
 	// repo.getSheet()
 	// return sheet
 
@@ -63,7 +63,7 @@ api/sheet/skills PATCH 			set skills
 api/sheet/hindrances GET			get the current hindrances, and the number of remaining major and minors to choose
 api/sheet/hindrances PATCH 		set hindrances
 
-api/framework GET		get all the frameworks
+//api/framework GET		get all the frameworks
 
 api/race GET		get possible races
 api/table GET		get possible tables

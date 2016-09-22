@@ -1,7 +1,10 @@
 package savagerifts.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import savagerifts.model.user.User;
+import savagerifts.repository.UserRepository;
 import savagerifts.security.JwtSubject;
+import savagerifts.security.ForbiddenAccessException;
 import savagerifts.util.AuthUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -19,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 public class JWTInterceptor implements HandlerInterceptor {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private SecurityManager securityManager;
 
     @Autowired
@@ -34,14 +40,14 @@ public class JWTInterceptor implements HandlerInterceptor {
 
         // validate the token here
         if (jwtToken == null || jwtToken.isEmpty()) {
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
         }
         String jwsSubject = null;
         try {
             jwsSubject = Jwts.parser().setSigningKey(securityManager.getSecurityKey()).parseClaimsJws(jwtToken).getBody().getSubject();
         }
         catch (MalformedJwtException mje) {
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
         }
         System.out.println("subject: " + jwsSubject);
 
@@ -49,10 +55,16 @@ public class JWTInterceptor implements HandlerInterceptor {
         JwtSubject subject = objectMapper.readValue(jwsSubject, JwtSubject.class);
 
         if (!subject.isValid()) {
-            throw new IllegalAccessException();
+            throw new ForbiddenAccessException();
+        }
+
+        User user = userRepository.findOne(subject.getUserId());
+        if (user == null) {
+
         }
 
         request.setAttribute(AuthUtils.JWT_TOKEN_NAME, subject);
+        request.setAttribute(AuthUtils.LOGGED_IN_USER, user);
         return true;
     }
 
