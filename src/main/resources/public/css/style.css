@@ -1,1 +1,71 @@
 
+/** hides angular templates until they have finished rendering. */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/** Container sizes */
+@media (min-width: 768px) {
+    .container-small {
+        width: 300px;
+    }
+    .container-large {
+        width: 970px;
+    }
+}
+@media (min-width: 992px) {
+    .container-small {
+        width: 500px;
+    }
+    .container-large {
+        width: 1170px;
+    }
+}
+@media (min-width: 1200px) {
+    .container-small {
+        width: 700px;
+    }
+    .container-large {
+        width: 1500px;
+    }
+}
+.container-small, .container-large {
+    max-width: 100%;
+}
+
+.column-left {
+    text-align:left;
+}
+.column-right {
+    text-align:right;
+}
+[class*='col-'] {
+    padding:5px;
+}
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+.panel-title {
+    font-size: 12px;
+}
+.panel-heading {
+    padding: 5px;
+}
+.panel-body {
+    padding: 5px;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+.form-control-label {
+    text-align: right;
+    padding-top: 12px;
+}

@@ -6,7 +6,7 @@ import java.util.List;
 //@Table
 public class BenefitTableRoll {
 	List<BenefitTable> allowedTables;
-	List<Table> restrictedTables;
+	List<BenefitTable> restrictedTables;
 	//boolean allowMagic		 just define the disallowed tables as the magic ones
 	//boolean allowPsionics
 }

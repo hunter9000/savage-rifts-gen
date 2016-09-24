@@ -1,0 +1,27 @@
+
+/** character select screen */
+.char-select-id-col {
+    display:inline-block;
+    width: 60px;
+    text-align: left;
+}
+.char-select-name-col {
+    display:inline-block;
+    width: 200px;
+    text-align: left;
+}
+.char-select-level-col {
+    display:inline-block;
+    width: 60px;
+    text-align: left;
+}
+.char-select-edit-col {
+    display:inline-block;
+    width: 25px;
+    text-align: left;
+}
+.char-select-delete-col {
+    display:inline-block;
+    width: 25px;
+    text-align: left;
+}

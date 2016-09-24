@@ -1,0 +1,99 @@
+
+.field-wrapper {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    float: left;
+}
+.field-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.name-wrapper {
+
+}
+.level-wrapper {
+
+}
+.curr-xp-wrapper {
+
+}
+.curr-xp-field {
+    width: 75px;
+}
+.alignment-wrapper {
+
+}
+.deity-field {
+    width:100px;
+}
+.age-field {
+    width:50px;
+}
+.gender-field {
+    width:60px;
+}
+.height-field {
+    width:50px;
+}
+.weight-field {
+    width:50px;
+}
+.eyes-field {
+    width:75px;
+}
+.hair-field {
+    width:75px;
+}
+
+
+.attribute-wrapper {
+    width: 200px;
+}
+
+.character-sheet-stat-col {
+    display:inline-block;
+    width: 80px;
+    text-align: left;
+}
+.character-sheet-value-col {
+    display:inline-block;
+    width: 25px;
+    text-align: left;
+}
+.character-sheet-mod-col {
+    display:inline-block;
+    width: 35px;
+    text-align: left;
+}
+
+.class-wrapper {
+    width: 200px;
+}
+
+.skill-wrapper {
+    width: 385px;
+}
+.skill-name {
+    width: 200px;
+    display:inline-block;
+    text-align:left;
+}
+.skill-attr {
+    width: 50px;
+    display:inline-block;
+    text-align:left;
+}
+.skill-ranks {
+    width: 30px;
+    display:inline-block;
+    text-align:left;
+}
+.skill-ranks-button {
+    width: 65px;
+    display:inline-block;
+    text-align:left;
+}
+
+

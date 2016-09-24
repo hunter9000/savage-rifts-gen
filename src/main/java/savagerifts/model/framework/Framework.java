@@ -77,6 +77,8 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private DieType maxVigorDieType;
 
+	private Integer maxStrengthBonus;
+
 	public Long getId() {
 		return id;
 	}
@@ -187,10 +189,30 @@ public class Framework {
 //				   startingAgi = new Roll(DieType.D10, 0)
 //				   startingVgr = new Roll(DieType.D12, 0)
 //
-//	Crazy,
-//	Cyber-Knight,
-//	Glitter Boy,
-//	Juicer,
+//	Crazy, 			rolls: [BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
+//		 					BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
+//		 					BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
+//							BenefitTableRoll(rollId: 1, restrictedTables: {MAGIC_MYSTICISM})
+//							BenefitTableRoll(rollId: 1, restrictedTables: {MAGIC_MYSTICISM})  ]
+//					bonuses:
+//					startingAttributePoints = null
+//					startingStr = new Roll(DieType.D8, 0)
+//					startingAgi = new Roll(DieType.D8, 0)
+//					startingVgr = new Roll(DieType.D8, 0)
+//					maxStr, maxAgi, maxVgr all have no max
+//					double base Pace
+
+
+
+//	Cyber-Knight,   no stat starting bonus or max
+
+//	Glitter Boy,    no stat starting bonus or max
+
+//	Juicer,         startingVgr = d8, no max
+//					startingAgi = d8, no max
+//					startingStr = d8, no max
+//					double base Pace
+
 //	MARS,
 //	Burster,
 //	Mind Melter,
