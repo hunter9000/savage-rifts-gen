@@ -36,3 +36,5 @@ INSERT INTO user (username, password, email) VALUES ('hunter', '$2a$10$A99ctJHdf
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
+
+COMMIT;

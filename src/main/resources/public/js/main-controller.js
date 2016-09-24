@@ -5,7 +5,7 @@ savageRiftsApp.controller('mainController', function($scope, $location, $window,
     $scope.message = 'main';
 
     $scope.logout = function() {
-        $window.localStorage['jwtToken'] = undefined;
+        $window.localStorage['jwtToken'] = null;
         $location.path('/');
     };
 
@@ -32,7 +32,7 @@ savageRiftsApp.controller('mainController', function($scope, $location, $window,
         var token = $window.localStorage['jwtToken']
         console.log('checking '+ token);
 
-        if (token === 'undefined' || token === null || token == null) {
+        if (token === 'undefined' || token === null || token == null || token == 'null') {
             $location.path('/login');
             console.log('redirecting');
         }

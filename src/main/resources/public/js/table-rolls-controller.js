@@ -4,7 +4,7 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
     $scope.message = '';
 
     $scope.char = null;
-
+    $scope.benefitTables = null;
 
     // lookup the character
     $http({method:'GET',
@@ -13,11 +13,19 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
     })
     .then(function successCallback(response) {
         $scope.char = response.data;
-
-//        $scope.redirectToCreationSteps();
-
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";
+        console.log(response);
+        $location.path('/error');
+    });
+
+    // get the tables
+    $http.get('/api/benefittable/',
+        { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+    )
+    .then(function successCallback(response) {
+        $scope.benefitTables = response.data;
+    }, function errorCallback(response) {
         console.log(response);
         $location.path('/error');
     });

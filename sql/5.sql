@@ -14,3 +14,5 @@ INSERT INTO framework (type, max_agility_die_type, max_smarts_die_type, max_spir
             VALUES ('CRAZY', null, null, null, null, null,
                     null,
                     'D8', null, null, 'D8', 'D8');
+
+COMMIT;

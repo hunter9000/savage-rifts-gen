@@ -1,26 +1,29 @@
 package savagerifts.model.benefittable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "benefit_table")
+@Entity
+@Table(name = "benefit_table")
 public class BenefitTable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "type")
+	@Enumerated(EnumType.STRING)
+	private BenefitTableType type;
 	
 	@Column(name = "isMagic")
 	private boolean isMagic;
 	
 	@Column(name = "isPsionic")
 	private boolean isPsionic;
-	
-	
+
+	@OneToMany(mappedBy = "benefitTable", cascade=CascadeType.ALL)
 	private List<PerkRange> perkRangesList;
 
 
@@ -31,11 +34,11 @@ public class BenefitTable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public BenefitTableType getType() {
+		return type;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setType(BenefitTableType type) {
+		this.type = type;
 	}
 
 	public boolean isMagic() {
