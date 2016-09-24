@@ -31,7 +31,7 @@ public class Framework {
 //	private List<Gear> startingGear;
 
 	@Column(name = "startingAttributePoints")
-	private int startingAttributePoints;
+	private Integer startingAttributePoints;
 
 
 
@@ -77,7 +77,7 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private DieType maxVigorDieType;
 
-	private Integer maxStrengthBonus;
+//	private Integer maxStrengthBonus;
 
 	public Long getId() {
 		return id;
@@ -93,10 +93,10 @@ public class Framework {
 		this.type = type;
 	}
 
-	public int getStartingAttributePoints() {
+	public Integer getStartingAttributePoints() {
 		return startingAttributePoints;
 	}
-	public void setStartingAttributePoints(int startingAttributePoints) {
+	public void setStartingAttributePoints(Integer startingAttributePoints) {
 		this.startingAttributePoints = startingAttributePoints;
 	}
 

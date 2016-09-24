@@ -62,7 +62,7 @@ public class JWTInterceptor implements HandlerInterceptor {
 
         User user = userRepository.findOne(subject.getUserId());
         if (user == null) {
-
+            throw new ForbiddenAccessException();
         }
 
         request.setAttribute(AuthUtils.JWT_TOKEN_NAME, subject);

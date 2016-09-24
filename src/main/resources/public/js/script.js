@@ -48,6 +48,16 @@ savageRiftsApp.config(function($routeProvider) {
             templateUrl : 'pages/newchar.html',
             controller  : 'newCharController'
         })
+        .when('/editchar/:charId', {
+            templateUrl : 'pages/editchar.html',
+            controller  : 'editCharController'
+        })
+
+
+        .when('/tablerolls/:charId', {
+            templateUrl : 'pages/tablerolls.html',
+            controller  : 'tableRollsController'
+        })
 
 
         // generic error page

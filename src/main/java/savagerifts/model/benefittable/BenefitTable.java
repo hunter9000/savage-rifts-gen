@@ -1,11 +1,10 @@
 package savagerifts.model.benefittable;
 
-import savagerifts.model.perk.PerkRange;
-
 import java.util.List;
 import javax.persistence.*;
 
-//@Table
+//@Entity
+//@Table(name = "benefit_table")
 public class BenefitTable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

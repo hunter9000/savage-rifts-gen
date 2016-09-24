@@ -23,20 +23,19 @@ public class RolePermissionInterceptor implements HandlerInterceptor {
         // get the annotation
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         RolePermissions permissionAnnotation = handlerMethod.getMethod().getAnnotation(RolePermissions.class);
-        if (permissionAnnotation != null) {        // if present,
-            // return if any roles in annotation match any roles in user.roles
-            User user = AuthUtils.getLoggedInUser(request);
-
-            for (RoleType roleType : permissionAnnotation.allowedRoles()) {
-                if (AuthUtils.userHasRole(user, roleType)) {
-                    return true;
-                }
-            }
-            throw new ForbiddenAccessException();
-        }
-        else {        // else return true since no perms are required
+        if (permissionAnnotation == null) {        // if present,
             return true;
         }
+
+        // return if any roles in annotation match any roles in user.roles
+        User user = AuthUtils.getLoggedInUser(request);
+
+        for (RoleType roleType : permissionAnnotation.allowedRoles()) {
+            if (AuthUtils.userHasRole(user, roleType)) {
+                return true;
+            }
+        }
+        throw new ForbiddenAccessException();
     }
 
     @Override

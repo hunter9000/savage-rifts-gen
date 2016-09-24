@@ -17,7 +17,7 @@ public class FrameworkController {
 
     // get all the frameworks
     @RequestMapping(value="/api/framework/", method= RequestMethod.GET)
-    public Iterable<Framework> createSheet(@PathVariable String characterName) {
+    public Iterable<Framework> getFrameworks() {
         return frameworkRepository.findAll();
     }
 }

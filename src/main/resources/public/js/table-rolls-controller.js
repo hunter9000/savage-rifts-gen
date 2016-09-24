@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('editCharController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('tableRollsController', function($scope, $http, $window, $routeParams, $location) {
 
     $scope.message = '';
 
@@ -14,7 +14,7 @@ savageRiftsApp.controller('editCharController', function($scope, $http, $window,
     .then(function successCallback(response) {
         $scope.char = response.data;
 
-        $scope.redirectToCreationSteps();
+//        $scope.redirectToCreationSteps();
 
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";
@@ -36,13 +36,6 @@ savageRiftsApp.controller('editCharController', function($scope, $http, $window,
             $location.path('/error');
         });
     };
-
-    /** redirects the user to the correct page depending on what phase of character creation you're on */
-    $scope.redirectToCreationSteps = function() {
-        if (!$scope.char.hasCompletedTableRolls) {
-            $location.path("/tablerolls/" + $routeParams.charId);
-        }
-    }
 
 
 });

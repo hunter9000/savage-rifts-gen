@@ -4,7 +4,7 @@ savageRiftsApp.controller('newCharController', function($scope, $location, $http
 
     $scope.formData = {
         characterName: '',
-        selectedFrameworkId: {}
+        frameworkId: {}
     };
 
     $scope.frameworks = [];
@@ -33,6 +33,7 @@ savageRiftsApp.controller('newCharController', function($scope, $location, $http
             $location.path("/charselect");
         }, function errorCallback(response) {
             $scope.message = "error creating character sheet";
+            console.log(response);
             $location.path('/error');
         });
     };

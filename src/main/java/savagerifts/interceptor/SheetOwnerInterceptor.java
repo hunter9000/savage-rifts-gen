@@ -26,8 +26,8 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // get the annotation
         HandlerMethod handlerMethod = (HandlerMethod) handler;
-        RolePermissions permissionAnnotation = handlerMethod.getMethod().getAnnotation(RolePermissions.class);
-        if (permissionAnnotation == null) {        // if not present, don't process
+        SheetOwner sheetOwnerAnnotation = handlerMethod.getMethod().getAnnotation(SheetOwner.class);
+        if (sheetOwnerAnnotation == null) {        // if not present, don't process
             return true;
         }
 
