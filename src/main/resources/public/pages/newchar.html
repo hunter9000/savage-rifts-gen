@@ -1,0 +1,20 @@
+
+	new char
+	
+	<p>{{ message }}</p>
+	
+	<form ng-submit="save()">
+		<div class="form-group row">
+			<label>Name: </label>
+			<input type="text" ng-model="formData.characterName">
+		</div>
+
+		<div class="form-group row">
+			<label>Framework: </label>
+			<select name="repeatSelect" id="repeatSelect" ng-model="formData.selectedFrameworkId">
+				<option ng-repeat="option in frameworks" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		</div>
+
+		<button>Save</button>
+	</form>
