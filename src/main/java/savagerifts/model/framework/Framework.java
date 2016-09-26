@@ -23,8 +23,10 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private FrameworkType type;
 
+	@OneToMany(mappedBy = "framework", cascade = CascadeType.ALL)
+	private List<BenefitTableRoll> tableRolls;
 
-//	private List<BenefitTableRoll> tableRolls;
+
 //	private List<Edge> builtInEdges;
 //	private List<Hindrance> builtInHinderance;
 //	private PowerList powerList;
@@ -91,6 +93,13 @@ public class Framework {
 	}
 	public void setType(FrameworkType type) {
 		this.type = type;
+	}
+
+	public List<BenefitTableRoll> getTableRolls() {
+		return tableRolls;
+	}
+	public void setTableRolls(List<BenefitTableRoll> tableRolls) {
+		this.tableRolls = tableRolls;
 	}
 
 	public Integer getStartingAttributePoints() {
