@@ -7,20 +7,38 @@ import savagerifts.model.skill.SkillType;
 import javax.persistence.Table;
 import java.util.List;
 
-//@Table
+//@Entity
+//@Table(name = "edge")
 public class Edge {
-	XPLevelType requiredLevel;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	private Long id;
+	
+	@Column(name = "XpLevelType")
+	@Enumerated(STRING)
+	private XPLevelType requiredLevel;
 
-	List<Framework> requiredFrameworks;
+	@ManyToMany()
+	@JoinTable(name = "edge_required_framework",
+			joinColumns = {@JoinColumn(name = "edgeId", nullable = false, updatable = false) },		// column that points to this table
+			inverseJoinColumns = { @JoinColumn(name = "frameworkId", nullable = false, updatable = false) })		// column that points to the framework table
+	private List<Framework> requiredFrameworks;
 
 	// i.e. STR d10+
-	AttributeType requiredAttribute;
-	DieType requiredAttributeDie;
+	//AttributeType requiredAttribute;
+	//DieType requiredAttributeDie;
+	private Roll requiredAttribute;
 	
 	SkillType requiredSkill;
 	DieType requiredSkillDie;
 	
-	List<Edge> prereqs;
+	@ManyToMany()
+	@JoinTable(name = "edge_prerequisites",
+			joinColumns = {@JoinColumn(name = "edgeId", nullable = false, updatable = false) },		// column that points to this table
+			inverseJoinColumns = { @JoinColumn(name = "prerequisiteEdgeId", nullable = false, updatable = false) })		// column that points to the other edge
+	private List<Edge> prerequisiteEdges;
 	
 	
 //	// combat cyborg
