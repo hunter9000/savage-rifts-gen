@@ -94,13 +94,13 @@ public class Sheet {
 
 	@OneToMany(mappedBy = "sheet")
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
-								// we know which of the given rolls this was chosen by
+													// we know which of the given rolls this was chosen by
 	
-	@Column(name = "hasCompletedTableRolls")
-	private boolean hasCompletedTableRolls;		// true if all rolls have been made and all swaps have been made (if any)
+	@Column(name = "hasCompletedTableRolls", nullable = false)
+	private boolean hasCompletedTableRolls = false;		// true if all rolls have been made and all swaps have been made (if any)
 	
-	@Column(name = "hasCompletedTableRollSwaps")
-	private boolean hasCompletedTableRollSwaps;
+	@Column(name = "hasCompletedTableRollSwaps", nullable = false)
+	private boolean hasCompletedTableRollSwaps = false;
 	
 	//@Column(name = "race")
 //	private Race race;
@@ -311,20 +311,12 @@ public class Sheet {
 		this.ppe = ppe;
 	}
 
-//	public Framework getFramework() {
-//		return framework;
-//	}
-//	public void setFramework(Framework framework) {
-//		this.framework = framework;
-//	}
-//
-//	public List<PerkSelection> getChosenPerks() {
-//		return chosenPerks;
-//	}
-//	public void setChosenPerks(List<PerkSelection> chosenPerks) {
-//		this.chosenPerks = chosenPerks;
-//	}
-
+	public List<PerkSelection> getChosenPerks() {
+		return chosenPerks;
+	}
+	public void setChosenPerks(List<PerkSelection> chosenPerks) {
+		this.chosenPerks = chosenPerks;
+	}
 
 	public Framework getFramework() {
 		return framework;
@@ -340,7 +332,14 @@ public class Sheet {
 		this.hasCompletedTableRolls = hasCompletedTableRolls;
 	}
 
-//	public Race getRace() {
+	public boolean isHasCompletedTableRollSwaps() {
+		return hasCompletedTableRollSwaps;
+	}
+	public void setHasCompletedTableRollSwaps(boolean hasCompletedTableRollSwaps) {
+		this.hasCompletedTableRollSwaps = hasCompletedTableRollSwaps;
+	}
+
+	//	public Race getRace() {
 //		return race;
 //	}
 //	public void setRace(Race race) {

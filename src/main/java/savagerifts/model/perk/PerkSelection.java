@@ -1,11 +1,14 @@
 package savagerifts.model.perk;
 
-import savagerifts.model.benefittable.BenefitTableRoll;
 
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import savagerifts.model.benefittable.BenefitTableRoll;
+import savagerifts.model.sheet.Sheet;
+
+import javax.persistence.*;
 
 @Entity
-@Table(name = "perk_selection") 
+@Table(name = "perk_selection")
 public class PerkSelection {
 	
 	@Id
@@ -29,4 +32,40 @@ public class PerkSelection {
 	// two other perks were traded in for this one, don't show this one as an option for further swapping
 	@Column(name = "wasSwappedFor")
 	private boolean wasSwappedFor;
+
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Sheet getSheet() {
+		return sheet;
+	}
+	public void setSheet(Sheet sheet) {
+		this.sheet = sheet;
+	}
+
+	public Perk getPerk() {
+		return perk;
+	}
+	public void setPerk(Perk perk) {
+		this.perk = perk;
+	}
+
+	public BenefitTableRoll getRoll() {
+		return roll;
+	}
+	public void setRoll(BenefitTableRoll roll) {
+		this.roll = roll;
+	}
+
+	public boolean isWasSwappedFor() {
+		return wasSwappedFor;
+	}
+	public void setWasSwappedFor(boolean wasSwappedFor) {
+		this.wasSwappedFor = wasSwappedFor;
+	}
 }
