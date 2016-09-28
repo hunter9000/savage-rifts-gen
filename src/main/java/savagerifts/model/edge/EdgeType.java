@@ -1,4 +1,4 @@
-
+package savagerifts.model.edge;
 
 public enum EdgeType {
 	ARCANE_BACKGROUND_MAGIC,

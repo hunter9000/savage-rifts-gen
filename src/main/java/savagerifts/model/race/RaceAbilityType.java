@@ -1,4 +1,4 @@
-
+package savagerifts.model.race;
 
 public enum RaceAbilityType {
 	

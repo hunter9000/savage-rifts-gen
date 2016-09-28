@@ -1,13 +1,8 @@
 package savagerifts.model.sheet;
 
 import savagerifts.model.DieType;
-import savagerifts.model.Hindrance;
-import savagerifts.model.Language;
-import savagerifts.model.Race;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
-import savagerifts.model.power.Power;
-import savagerifts.model.skill.SkillRoll;
 import savagerifts.model.user.User;
 
 import javax.persistence.*;

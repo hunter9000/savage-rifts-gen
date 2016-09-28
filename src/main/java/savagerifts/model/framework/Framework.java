@@ -1,11 +1,7 @@
 package savagerifts.model.framework;
 
 import savagerifts.model.DieType;
-import savagerifts.model.Edge;
-import savagerifts.model.Gear;
-import savagerifts.model.Hindrance;
 import savagerifts.model.benefittable.BenefitTableRoll;
-import savagerifts.model.power.PowerList;
 
 import javax.persistence.*;
 import java.util.List;

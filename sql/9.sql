@@ -19,5 +19,3 @@ CREATE TABLE `perk_selection` (
 	CONSTRAINT `FK_gec2ca9tyeqrq5x6q1c8y8xn7` FOREIGN KEY (`sheet`) REFERENCES `sheet` (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
-
--- finish fixing the column def for the completed table rolls columns
