@@ -45,4 +45,8 @@ public class Perk {
 	public void setType(PerkType type) {
 		this.type = type;
 	}
+	
+	public boolean equals() {
+		
+	}
 }

@@ -9,4 +9,21 @@ tableId {{tableId}}
 
 rollId {{rollId}}
 
-<button ng-click="goBack()">Back</button>
+<div ng-hide="selectedPerk" >
+
+	<div ng-repeat="perkRange in benefitTable.perkRanges">
+		{{perkRange.min}} 
+		--
+		{{perkRange.max}} 
+		: 
+		{{perkRange.perk.description}}
+	</div>
+
+	<button ng-click="roll()">Roll</button>
+	<button ng-click="goBack()">Back</button>
+</div>
+
+<div ng-hide="!selectedPerk" >
+	{{selectedPerk}}
+	<button ng-click="goBack()">Back</button>
+</div>

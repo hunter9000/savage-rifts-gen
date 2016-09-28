@@ -32,6 +32,10 @@ public class SheetController {
 
     @Autowired
     private FrameworkRepository frameworkRepository;
+	
+	@Autowired
+	private BenefitTableRepository benefitTableRepository;
+	
 
     @Autowired
     private HttpServletRequest request;
@@ -99,4 +103,88 @@ public class SheetController {
         return frameworkRolls;
     }
 
+	// make the roll on this table for the given tableroll, returning the selected perk
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{charId}/tableroll/{tableId}/{rollId}/", method=RequestMethod.POST)
+	public SelectedPerk makeRollOnTable(@PathVariable Long charId, @PathVariable Long tableId, @PathVariable Long rollId) {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		BenefitTable table = benefitTableRepository.findOne(tableId);
+		if (table == null) {
+			throw new ForbiddenAccessException();
+		}
+		
+		BenefitTableRoll tableRoll = null;
+		for (BenefitTableRoll roll : sheet.getAvailableTableRolls()) {
+			if (roll.getId().equals(rollId)) {
+				tableRoll = roll;
+			}
+		}
+		if (tableRoll == null) {
+			throw new 
+		}
+		
+		
+		// get the list of perk ranges that the user doesn't already have
+		List<PerkRange> perkRanges = table.getPerkRangesList();
+		List<SelectedPerk> selectedPerks = sheet.getSelectedPerks();
+		for (SelectedPerk perk : selectedPerks) {
+			for (PerkRange range : perkRanges) {
+				if (range.getPerk().equals(perk) ) {
+					perkRanges.remove(range);
+					continue;
+				}
+			}
+		}
+		
+		// make sure there is at least one
+		if (perkRanges.isEmpty()) {
+			thrown new ForbiddenAccessException();
+		}
+		
+		PerkRange chosenPerkRange = null;
+		int roll = RandomUtils.getResultOfDieType(DieType.D20);
+		
+		for (PerkRange range : perkRanges) {
+			if (range.matches(roll) ) {
+				chosenPerkRange = range;
+				break;
+			}
+		}
+		
+		if (chosenPerkRange == null) {
+			// something went wrong :(
+			throw new ServerErrorException();
+		}
+		
+		// add the chosen perk to the sheet
+		PerkSelection perkSelection = new PerkSelection();
+		perkSelection.setSheet(sheet);
+		perkSelection.setPerk(chosenPerkRange.getPerk());
+		perkSelection.setBenefitTableRoll(tableRoll);
+		sheet.getChosenPerks().add(perkSelection);
+		
+		// if all rolls have been made, flag the sheet as completed table rolls
+		sheet.getAvailableTableRolls.remove(tableRoll);		// remove the roll that was just made from the available list
+		if (sheet.getAvailableTableRolls.isEmpty()) {
+			sheet.setHasCompletedTableRolls(true);
+		}
+		
+		sheetRepository.save(sheet);
+		
+		return perkSelection;
+	
+/*		load the table
+		make sure there is at least one 
+		roll d20, choose perk from range
+		if (perk is already selected)
+			reroll
+		add perk to the sheet's selected perks, for table roll rollId
+		if (all rolls are made) 
+			flag sheet as completedTableRolls
+		return selected perk
+		*/
+	}
+	
+	
 }

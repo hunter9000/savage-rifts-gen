@@ -29,6 +29,9 @@ public class PerkRange {
 	@JoinColumn(name = "perk", nullable = false, updatable = false)
 	private Perk perk;
 
+	// flag this perk range as having already been taken by the user, so that the ui will know to show it as unchoosable
+	@Transient
+	private boolean perkHasBeenChosen = false;
 
 	public Long getId() {
 		return id;
@@ -63,5 +66,12 @@ public class PerkRange {
 	}
 	public void setPerk(Perk perk) {
 		this.perk = perk;
+	}
+	
+	public boolean getPerkHasBeenChosen() {
+		return perkHasBeenChosen;
+	}
+	public void setPerkHasBeenChosen(boolean perkHasBeenChosen) {
+		this.perkHasBeenChosen = perkHasBeenChosen;
 	}
 }

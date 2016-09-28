@@ -23,15 +23,15 @@ public class PerkSelection {
 	
 	@OneToOne
 	@JoinColumn(name = "perk")
-	Perk perk;			// the perk selected
+	private Perk perk;			// the perk selected
 	
 	@OneToOne
 	@JoinColumn(name = "roll")
-	BenefitTableRoll roll;		// the tableroll this perk was selected for
+	private BenefitTableRoll roll;		// the tableroll this perk was selected for
 	
 	// two other perks were traded in for this one, don't show this one as an option for further swapping
 	@Column(name = "wasSwappedFor")
-	private boolean wasSwappedFor;
+	private boolean wasSwappedFor = false;
 
 
 	public Long getId() {
