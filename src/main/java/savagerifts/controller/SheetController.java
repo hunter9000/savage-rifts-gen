@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
+import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.framework.Framework;
+import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.User;
 import savagerifts.repository.FrameworkRepository;
@@ -80,5 +82,21 @@ public class SheetController {
         Sheet sheet = AuthUtils.getSheet(request);
     }
 
-//    @RequestBody
+    // get the sheet's available rolls, as array of tablerolls with arrays of tables
+    @SheetOwner
+    @RequestMapping(value = "/api/sheet/{sheetId}/tableroll/", method=RequestMethod.GET)
+    public List<BenefitTableRoll> getAvailableTableRolls() {
+        Sheet sheet = AuthUtils.getSheet(request);
+
+        List<BenefitTableRoll> frameworkRolls = sheet.getFramework().getTableRolls();
+
+        // remove all the rolls that have been made already from the list of framework rolls
+        List<PerkSelection> chosenPerks = sheet.getChosenPerks();
+        for (PerkSelection perk : chosenPerks) {
+            BenefitTableRoll chosenRoll = perk.getRoll();
+            frameworkRolls.remove(chosenRoll);
+        }
+        return frameworkRolls;
+    }
+
 }

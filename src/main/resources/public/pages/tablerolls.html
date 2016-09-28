@@ -1,3 +1,11 @@
 
 
-table rolls
+
+chooseable:
+
+<div ng-repeat="roll in choosableTables" >
+    Table Roll #{{roll.rollNumber}}:
+    <span ng-repeat="table in roll.allowedTables">
+        <a ng-click="goToTable(roll.rollNumber, table.id)" >{{table.displayName}}</a>
+    </span>
+</div>

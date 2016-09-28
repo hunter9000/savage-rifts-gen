@@ -92,4 +92,14 @@ public class BenefitTableRoll {
 //	public void setAllowPsionics(boolean allowPsionics) {
 //		this.allowPsionics = allowPsionics;
 //	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof BenefitTableRoll)) {
+			return false;
+		}
+		BenefitTableRoll other = (BenefitTableRoll)obj;
+		return this.id.equals(other.id);
+	}
 }
