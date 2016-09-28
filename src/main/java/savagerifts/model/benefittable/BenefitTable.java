@@ -40,6 +40,13 @@ public class BenefitTable {
 	public void setType(BenefitTableType type) {
 		this.type = type;
 	}
+	@Transient
+	public String getDisplayName() {
+		return type.getDisplayName();
+	}
+	public void setDisplayName() {
+		// do nothing, this is a read only property
+	}
 
 	public boolean isMagic() {
 		return isMagic;
