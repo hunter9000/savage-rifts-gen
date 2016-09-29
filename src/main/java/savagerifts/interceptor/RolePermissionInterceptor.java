@@ -35,6 +35,7 @@ public class RolePermissionInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
+        // TODO throw a 401 unauthorized here instead?
         throw new ForbiddenAccessException();
     }
 

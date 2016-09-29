@@ -1,6 +1,7 @@
 package savagerifts.model.perk;
 
 import savagerifts.model.Gear;
+import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.BenefitTableType;
 
 import javax.persistence.*;
@@ -21,8 +22,19 @@ public class Perk {
 	@Enumerated(EnumType.STRING)
 	private PerkType type;
 
+//	@OneToOne
+//	@JoinColumn(name = "benefitTable", nullable = false, insertable = false, updatable = false)
+//	private BenefitTable benefitTable;
 
 //	private Gear providedGear;
+
+	@Transient
+	public String getBenefitTableDisplayName() {
+		return type.getTableType().getDisplayName();
+	}
+	public void setBenefitTableDisplayName(String displayName) {
+		// do nothing, this is a read only property
+	}
 
 
 	public Long getId() {
@@ -45,8 +57,19 @@ public class Perk {
 	public void setType(PerkType type) {
 		this.type = type;
 	}
-	
-	public boolean equals() {
-		
+
+//	public BenefitTable getBenefitTable() {
+//		return benefitTable;
+//	}
+//	public void setBenefitTable(BenefitTable benefitTable) {
+//		this.benefitTable = benefitTable;
+//	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Perk) {
+			return id.equals( ((Perk)obj).getId() );
+		}
+		return false;
 	}
 }

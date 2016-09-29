@@ -1,11 +1,23 @@
-
-
-
 chooseable:
 
-<div ng-repeat="roll in choosableTables" >
-    Table Roll #{{roll.rollNumber}}:
-    <span ng-repeat="table in roll.allowedTables">
-        <a ng-click="goToTable(roll.rollNumber, table.id)" >{{table.displayName}}</a>
-    </span>
+<div class="container">
+    <div class="row" ng-repeat="roll in choosableTables" >
+        <!--Table Roll #{{roll.rollNumber}}:-->
+        <div class="col-md-2" ng-repeat="table in roll.allowedTables">
+            <a ng-click="goToTable(roll.rollNumber, table.id)" >{{table.displayName}}</a>
+        </div>
+    </div>
+</div>
+
+chosen:
+
+<div class="container">
+    <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks" >
+        <div class="col-md-3">
+            {{chosenPerk.perk.benefitTableDisplayName}} :
+        </div>
+        <div class="col-md-9">
+            {{chosenPerk.perk.description}}
+        </div>
+    </div>
 </div>

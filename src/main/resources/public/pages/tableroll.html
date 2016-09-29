@@ -1,22 +1,18 @@
 
 
 
-this is a single table roll
+<div class="container" ng-hide="selectedPerk" >
 
-charId {{charId}}
-
-tableId {{tableId}}
-
-rollId {{rollId}}
-
-<div ng-hide="selectedPerk" >
-
-	<div ng-repeat="perkRange in benefitTable.perkRanges">
-		{{perkRange.min}} 
-		--
-		{{perkRange.max}} 
-		: 
-		{{perkRange.perk.description}}
+	<div class="row" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in benefitTable.perkRanges">
+		<div class="col-md-1">
+			{{perkRange.min}}
+			<span ng-hide="perkRange.min == perkRange.max">
+				- {{perkRange.max}}
+			</span>
+		</div>
+		<div class="col-md-11">
+			{{perkRange.perk.description}}
+		</div>
 	</div>
 
 	<button ng-click="roll()">Roll</button>
@@ -24,6 +20,8 @@ rollId {{rollId}}
 </div>
 
 <div ng-hide="!selectedPerk" >
-	{{selectedPerk}}
+	<div>
+		{{selectedPerk.perk}}
+	</div>
 	<button ng-click="goBack()">Back</button>
 </div>

@@ -87,7 +87,7 @@ public class Sheet {
 	@JoinColumn(name = "framework")
 	private Framework framework;
 
-	@OneToMany(mappedBy = "sheet")
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 													// we know which of the given rolls this was chosen by
 	

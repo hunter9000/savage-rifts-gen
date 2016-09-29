@@ -1,9 +1,9 @@
 
 savageRiftsApp.controller('tableRollController', function($scope, $http, $window, $routeParams, $location) {
 
-    $scope.charId = $routeParams.charId;
-    $scope.rollId = $routeParams.rollId;
-    $scope.tableId = $routeParams.tableId;
+//    $scope.charId = $routeParams.charId;
+//    $scope.rollId = $routeParams.rollId;
+//    $scope.tableId = $routeParams.tableId;
 
 	$scope.benefitTable = null;
 	

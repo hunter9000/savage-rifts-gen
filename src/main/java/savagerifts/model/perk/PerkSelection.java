@@ -24,7 +24,8 @@ public class PerkSelection {
 	@OneToOne
 	@JoinColumn(name = "perk")
 	private Perk perk;			// the perk selected
-	
+
+//	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "roll")
 	private BenefitTableRoll roll;		// the tableroll this perk was selected for

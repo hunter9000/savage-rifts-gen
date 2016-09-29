@@ -6,17 +6,27 @@ DELETE FROM benefit_table;
 
 
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'BODY_ARMOR');
+SET @BODY_ARMOR_TABLE_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'CLOSE_COMBAT_WEAPONS');
+SET @CCW_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'CYBERNETICS');
+SET @CYBERNETICS_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'EDUCATION');
+SET @EDUCATION_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'ENCHANTED_ITEMS_MYSTIC_GADGETS');
+SET @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'EXPERIENCE_WISDOM');
+SET @EXPERIENCE_WISDOM_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (true,  false, 'MAGIC_MYSTICISM');
+SET @MAGIC_MYSTICISM_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, true,  'PSIONICS');
+SET @PSIONICS_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'RANGED_WEAPONS');
+SET @RANGED_WEAPONS_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'TRAINING');
+SET @TRAINING_ID = LAST_INSERT_ID();
 INSERT INTO benefit_table (is_magic, is_psionic, type) VALUES (false, false, 'UNDERWORLD_BLACK_OPS');
-
+SET @UNDERWORLD_BLACK_OPS_ID = LAST_INSERT_ID();
 
 -- body armor table
 INSERT INTO perk (description, type) VALUES ('You may trade the starting Armor from your Iconic Framework for any other body armor (not power armor or robot armor) listed in this book. If this is not your first roll, apply all other results from rolling on this table to your newly chosen body armor.', 'BODY_ARMOR_1');
@@ -44,7 +54,7 @@ SET @ARMOR11 = LAST_INSERT_ID();
 INSERT INTO perk (description, type) VALUES ('You may choose any one of the results on this table.', 'BODY_ARMOR_12');
 SET @ARMOR12 = LAST_INSERT_ID();
 
-SELECT @BODY_ARMOR_TABLE_ID:=id FROM benefit_table WHERE type = 'BODY_ARMOR';
+
 
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 4, @BODY_ARMOR_TABLE_ID, @ARMOR1);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (5, 6, @BODY_ARMOR_TABLE_ID, @ARMOR2);
@@ -53,8 +63,8 @@ INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (8, 8, @BODY_ARMOR
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (9, 10, @BODY_ARMOR_TABLE_ID, @ARMOR5);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (11, 11, @BODY_ARMOR_TABLE_ID, @ARMOR6);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (12, 12, @BODY_ARMOR_TABLE_ID, @ARMOR7);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (15, 15, @BODY_ARMOR_TABLE_ID, @ARMOR9);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (13, 14, @BODY_ARMOR_TABLE_ID, @ARMOR8);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (15, 15, @BODY_ARMOR_TABLE_ID, @ARMOR9);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (16, 17, @BODY_ARMOR_TABLE_ID, @ARMOR10);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (18, 18, @BODY_ARMOR_TABLE_ID, @ARMOR11);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @BODY_ARMOR_TABLE_ID, @ARMOR12);
@@ -91,7 +101,7 @@ INSERT INTO perk (description, type) VALUES ('You may choose any one of the prev
 SET @CCW13 = LAST_INSERT_ID();
 
 
-SELECT @CCW_ID:=id FROM benefit_table WHERE type = 'CLOSE_COMBAT_WEAPONS';
+
 
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 4, @CCW_ID, @CCW1);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (5, 6, @CCW_ID, @CCW2);
@@ -140,7 +150,7 @@ SET @CYBERNETICS13 = LAST_INSERT_ID();
 INSERT INTO perk (description, type) VALUES ('Choose any single cybernetic upgrade you wish and qualify for.', 'CYBERNETICS_14');
 SET @CYBERNETICS14 = LAST_INSERT_ID();
 
-SELECT @CYBERNETICS_ID:=id FROM benefit_table WHERE type = 'CYBERNETICS';
+
 
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 1, @CYBERNETICS_ID, @CYBERNETICS1);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (2, 3, @CYBERNETICS_ID, @CYBERNETICS2);
@@ -190,7 +200,7 @@ SET @EDUCATION12 = LAST_INSERT_ID();
 
 
 
-SELECT @EDUCATION_ID:=id FROM benefit_table WHERE type = 'EDUCATION';
+
 
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 2, @EDUCATION_ID, @EDUCATION1);
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (3, 4, @EDUCATION_ID, @EDUCATION2);
@@ -207,13 +217,6 @@ INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @EDUCATIO
 
 
 
-SELECT @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID:=id FROM benefit_table WHERE type = 'ENCHANTED_ITEMS_MYSTIC_GADGETS';
-SELECT @EXPERIENCE_WISDOM_ID:=id FROM benefit_table WHERE type = 'EXPERIENCE_WISDOM';
-SELECT @MAGIC_MYSTICISM_ID:=id FROM benefit_table WHERE type = 'MAGIC_MYSTICISM';
-SELECT @PSIONICS_ID:=id FROM benefit_table WHERE type = 'PSIONICS';
-SELECT @RANGED_WEAPONS_ID:=id FROM benefit_table WHERE type = 'RANGED_WEAPONS';
-SELECT @TRAINING_ID:=id FROM benefit_table WHERE type = 'TRAINING';
-SELECT @UNDERWORLD_BLACK_OPS_ID:=id FROM benefit_table WHERE type = 'UNDERWORLD_BLACK_OPS';
 
 
 COMMIT;

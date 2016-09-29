@@ -1,7 +1,5 @@
 package savagerifts.model.benefittable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 import javax.persistence.*;
 
@@ -24,7 +22,7 @@ public class BenefitTable {
 	private boolean isPsionic;
 
 	@OneToMany(mappedBy = "benefitTable", cascade=CascadeType.ALL)
-	private List<PerkRange> perkRangesList;
+	private List<PerkRange> perkRanges;
 
 
 	public Long getId() {
@@ -62,10 +60,10 @@ public class BenefitTable {
 		isPsionic = psionic;
 	}
 
-	public List<PerkRange> getPerkRangesList() {
-		return perkRangesList;
+	public List<PerkRange> getPerkRanges() {
+		return perkRanges;
 	}
-	public void setPerkRangesList(List<PerkRange> perkRangesList) {
-		this.perkRangesList = perkRangesList;
+	public void setPerkRanges(List<PerkRange> perkRanges) {
+		this.perkRanges = perkRanges;
 	}
 }

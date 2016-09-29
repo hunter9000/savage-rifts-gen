@@ -5,18 +5,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
+import savagerifts.model.DieType;
+import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.BenefitTableRoll;
+import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.User;
+import savagerifts.repository.BenefitTableRepository;
 import savagerifts.repository.FrameworkRepository;
 import savagerifts.repository.SheetRepository;
 import savagerifts.repository.UserRepository;
-import savagerifts.request.AuthRequest;
 import savagerifts.request.NewSheetRequest;
-import savagerifts.security.ForbiddenAccessException;
+import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
+import savagerifts.util.RandomUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -47,12 +51,12 @@ public class SheetController {
         User owner = AuthUtils.getLoggedInUser(request);
 
         if (sheetRequest.characterName == null || sheetRequest.characterName.equals("")) {
-            throw new ForbiddenAccessException();
+            throw new BadRequestException();
         }
 
         Framework framework = frameworkRepository.findOne(sheetRequest.frameworkId);
         if (framework == null) {
-            throw new ForbiddenAccessException();
+            throw new BadRequestException();
         }
 
         Sheet sheet = new Sheet();
@@ -105,30 +109,36 @@ public class SheetController {
 
 	// make the roll on this table for the given tableroll, returning the selected perk
 	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{charId}/tableroll/{tableId}/{rollId}/", method=RequestMethod.POST)
-	public SelectedPerk makeRollOnTable(@PathVariable Long charId, @PathVariable Long tableId, @PathVariable Long rollId) {
+	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/{tableId}/{rollNumber}/", method=RequestMethod.POST)
+	public PerkSelection makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		BenefitTable table = benefitTableRepository.findOne(tableId);
 		if (table == null) {
-			throw new ForbiddenAccessException();
+			throw new BadRequestException();
 		}
 		
 		BenefitTableRoll tableRoll = null;
-		for (BenefitTableRoll roll : sheet.getAvailableTableRolls()) {
-			if (roll.getId().equals(rollId)) {
-				tableRoll = roll;
+		for (BenefitTableRoll roll : sheet.getFramework().getTableRolls()) {
+			if (roll.getRollNumber().equals(rollNumber)) {
+				tableRoll = roll; break;
 			}
 		}
 		if (tableRoll == null) {
-			throw new 
+			throw new BadRequestException();
 		}
-		
+
+        // make sure this isn't a tableroll that the player has already made
+        for (PerkSelection selection : sheet.getChosenPerks()) {
+            if (selection.getRoll().equals(tableRoll)) {
+                throw new BadRequestException();
+            }
+        }
 		
 		// get the list of perk ranges that the user doesn't already have
-		List<PerkRange> perkRanges = table.getPerkRangesList();
-		List<SelectedPerk> selectedPerks = sheet.getSelectedPerks();
-		for (SelectedPerk perk : selectedPerks) {
+		List<PerkRange> perkRanges = table.getPerkRanges();
+		List<PerkSelection> selectedPerks = sheet.getChosenPerks();
+		for (PerkSelection perk : selectedPerks) {
 			for (PerkRange range : perkRanges) {
 				if (range.getPerk().equals(perk) ) {
 					perkRanges.remove(range);
@@ -139,34 +149,40 @@ public class SheetController {
 		
 		// make sure there is at least one
 		if (perkRanges.isEmpty()) {
-			thrown new ForbiddenAccessException();
+			throw new BadRequestException();
 		}
-		
+
+        // perkRanges has only the ranges the player can roll, keep rolling until you hit one
 		PerkRange chosenPerkRange = null;
-		int roll = RandomUtils.getResultOfDieType(DieType.D20);
-		
-		for (PerkRange range : perkRanges) {
-			if (range.matches(roll) ) {
-				chosenPerkRange = range;
-				break;
-			}
-		}
+        do {
+            int roll = RandomUtils.getResultOfDieType(DieType.D20);
+
+            System.out.println("rolled " + roll + " on table ");
+
+            for (PerkRange range : perkRanges) {
+                if (range.matches(roll)) {
+                    chosenPerkRange = range;
+                    System.out.println("found perk range " + chosenPerkRange.getId());
+                    break;
+                }
+            }
+        } while(chosenPerkRange == null);
 		
 		if (chosenPerkRange == null) {
 			// something went wrong :(
-			throw new ServerErrorException();
+			throw new BadRequestException();
 		}
 		
 		// add the chosen perk to the sheet
 		PerkSelection perkSelection = new PerkSelection();
 		perkSelection.setSheet(sheet);
 		perkSelection.setPerk(chosenPerkRange.getPerk());
-		perkSelection.setBenefitTableRoll(tableRoll);
+		perkSelection.setRoll(tableRoll);
 		sheet.getChosenPerks().add(perkSelection);
 		
 		// if all rolls have been made, flag the sheet as completed table rolls
-		sheet.getAvailableTableRolls.remove(tableRoll);		// remove the roll that was just made from the available list
-		if (sheet.getAvailableTableRolls.isEmpty()) {
+        perkRanges.remove(tableRoll);		// remove the roll that was just made from the available list
+		if (perkRanges.isEmpty()) {
 			sheet.setHasCompletedTableRolls(true);
 		}
 		

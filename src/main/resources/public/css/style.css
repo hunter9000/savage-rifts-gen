@@ -69,3 +69,8 @@
     text-align: right;
     padding-top: 12px;
 }
+
+
+.selected {
+    background-color:green;
+}

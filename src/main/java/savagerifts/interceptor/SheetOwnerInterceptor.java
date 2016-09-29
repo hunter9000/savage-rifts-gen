@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.User;
 import savagerifts.repository.SheetRepository;
-import savagerifts.security.ForbiddenAccessException;
+import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,16 +35,16 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
 
         Long sheetId = Long.valueOf(pathVariables.get("sheetId"));
         if (sheetId == null) {
-            throw new ForbiddenAccessException();
+            throw new BadRequestException();
         }
         Sheet sheet = sheetRepository.findOne(sheetId);
         if (sheet == null) {
-            throw new ForbiddenAccessException();
+            throw new BadRequestException();
         }
 
         User user = AuthUtils.getLoggedInUser(request);
         if (!sheet.getOwner().equals(user)) {
-            throw new ForbiddenAccessException();
+            throw new BadRequestException();
         }
 
         request.setAttribute(AuthUtils.SHEET, sheet);

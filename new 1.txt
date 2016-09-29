@@ -59,5 +59,4 @@ when finishing the table roll phase, or after swapping two perks, check if there
 once roll picks are done, go to /tablerollswap/:charId, show selected perks with checkboxes, the tables, a swap button and a finish button. swap button goes to the table's perk choices, where you can choose any you don't already have. the finish button completes the swap step. 
 
 
-change char to sheet everywhere
-
+## change char to sheet everywhere
