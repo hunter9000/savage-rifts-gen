@@ -1,0 +1,14 @@
+
+
+public enum RaceType {
+	ALTARA,
+	D_NORR,
+	DOG_BOY,
+	FENNODI,
+	GRACKLE_TOOTH,
+	LYN_SRIAL,
+	PSI_STALKER,
+	QUICK_FLEX,
+	SIMVAN,
+	TRIMADORE;
+}

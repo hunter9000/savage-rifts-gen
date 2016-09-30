@@ -62,6 +62,11 @@ savageRiftsApp.config(function($routeProvider) {
             templateUrl : 'pages/tableroll.html',
             controller  : 'tableRollController'
         })
+		
+		.when('/tablerollswap/:charId', {
+			templateUrl : 'pages/tablerollswap.html',
+			controller  : 'tableRollSwapController'
+		})
 
         // generic error page
         .when('/error', {

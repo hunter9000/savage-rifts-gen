@@ -12,6 +12,13 @@ public class Race {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
+	@Column(name = "type", nullable = false, updatable = false)
+	@Enumerated(Enumeration.STRING)
+	private RaceType type;
+	
+	@Column(name = "description", length = 1000, nullable = false, updatable = false)
+	private String description;
+	
 	@OneToMany(mappedBy = "race")
 	private List<RaceAbility> abilities;
 
@@ -30,6 +37,20 @@ public class Race {
 		this.id = id;
 	}
 
+	public RaceType getType() {
+		return type;
+	}
+	public void setType(RaceType type) {
+		this.type = type;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDecription(String description) {
+		this.description = description;
+	}
+	
 	public List<RaceAbility> getAbilities() {
 		return abilities;
 	}
