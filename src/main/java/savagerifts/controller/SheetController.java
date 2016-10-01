@@ -202,5 +202,11 @@ public class SheetController {
 		*/
 	}
 	
+	@SheetOwner
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public AttributeThing getAttributeThing() {
+		
+		
+	}
 	
 }

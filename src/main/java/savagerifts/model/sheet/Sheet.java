@@ -91,11 +91,14 @@ public class Sheet {
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 													// we know which of the given rolls this was chosen by
 	
-	@Column(name = "hasCompletedTableRolls", nullable = false)
+/*	@Column(name = "hasCompletedTableRolls", nullable = false)
 	private boolean hasCompletedTableRolls = false;		// true if all rolls have been made and all swaps have been made (if any)
 	
 	@Column(name = "hasCompletedTableRollSwaps", nullable = false)
-	private boolean hasCompletedTableRollSwaps = false;
+	private boolean hasCompletedTableRollSwaps = false;*/
+	
+
+	
 	
 	//@Column(name = "race")
 //	private Race race;
@@ -108,9 +111,9 @@ public class Sheet {
 //
 //	private List<Hindrance> hindrances;		// chosen hindrances
 
-	@Column(name = "hasSelectedHindrances")
+/*	@Column(name = "hasSelectedHindrances")
 	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
-	
+*/	
 //	boolean hasMagic? hasPsionics?
 	
 	// transient stages
@@ -119,10 +122,15 @@ public class Sheet {
 	//boolean hasSelectedAttributes
 	//boolean hasSelectedSkills
 	//boolean hasSelectedHindrances
-
+/*
 	@Column(name = "hasSelectedEdges")
 	boolean hasSelectedEdges;
+*/	
 	
+	ALTER TABLE DROP COLUMN `has_completed_table_rolls`
+	ALTER TABLE DROP COLUMN `has_completed_table_roll_swaps`
+	ALTER TABLE DROP COLUMN `has_selected_hindrances`
+	ALTER TABLE DROP COLUMN `has_selected_edges`
 	
 //	void create() {
 //		str = new Roll(DieType.D4, 0);
