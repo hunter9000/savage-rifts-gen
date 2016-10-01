@@ -13,12 +13,9 @@ public class Race {
 	private Long id;
 	
 	@Column(name = "type", nullable = false, updatable = false)
-	@Enumerated(Enumeration.STRING)
+	@Enumerated(EnumType.STRING)
 	private RaceType type;
-	
-	@Column(name = "description", length = 1000, nullable = false, updatable = false)
-	private String description;
-	
+
 	@OneToMany(mappedBy = "race")
 	private List<RaceAbility> abilities;
 
@@ -45,10 +42,10 @@ public class Race {
 	}
 	
 	public String getDescription() {
-		return description;
+		return type.getDescription();
 	}
 	public void setDecription(String description) {
-		this.description = description;
+		// nothing, this is a readonly property
 	}
 	
 	public List<RaceAbility> getAbilities() {
