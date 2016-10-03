@@ -105,8 +105,9 @@ public class Sheet {
 //	private List<Language> languages;		// known languages
 //
 //	private List<Power> powers;		// known powers
-//
-//	private List<Hindrance> hindrances;		// chosen hindrances
+
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
+	private List<Hindrance> hindrances;		// chosen hindrances
 
 	@Column(name = "hasSelectedHindrances")
 	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
