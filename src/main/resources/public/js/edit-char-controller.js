@@ -1,10 +1,9 @@
 
-savageRiftsApp.controller('editCharController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('editCharController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
 
     $scope.message = '';
 
     $scope.char = null;
-
 
     // lookup the character
     $http({method:'GET',
@@ -39,16 +38,7 @@ savageRiftsApp.controller('editCharController', function($scope, $http, $window,
 
     /** redirects the user to the correct page depending on what phase of character creation you're on */
     $scope.redirectToCreationSteps = function() {
-		if (!$scope.char) {
-			$location.path('/error');
-		}
-		
-        if (!$scope.char.hasCompletedTableRolls) {
-            $location.path('/tablerolls/' + $routeParams.charId);
-        }
-		else if (!$scope.char.hasCompletedTableRollSwaps) {
-			$location.path('/tablerollswap/' + $routeParams.charId);
-		}
+		JwtData.redirectToCreationSteps($scope.char);
     }
 
 

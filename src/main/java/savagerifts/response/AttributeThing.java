@@ -1,6 +1,9 @@
+package savagerifts.response;
 
+import savagerifts.model.sheet.Roll;
+import savagerifts.model.sheet.Sheet;
 
-public class AttributeThing() {
+public class AttributeThing {
 	
 	private Roll strength = new Roll();
 	private Roll agility = new Roll();
@@ -18,13 +21,13 @@ public class AttributeThing() {
 	
 	public AttributeThing(Sheet sheet) {
 		strength.setDieType(sheet.getStrengthDieType());
-		strength.setModifier(sheet.getStrengthModifier());
+		strength.setModifier(sheet.getStrengthBonus());
 		
 		// etc
 		remainingAttrPoints = sheet.getRemainingAttrPoints();
 		
 		
 		
-		canIncreaseStrength = strength < maxStrength;
+//		canIncreaseStrength = strength < maxStrength;
 	}
 }

@@ -1,5 +1,5 @@
 
-	savageRiftsApp.factory('JwtData', function($window) {
+	savageRiftsApp.factory('JwtData', function($window, $location) {
 		return {
 		    getUserName: function() {
 		        var subject = this.parseJwt();
@@ -41,6 +41,19 @@
                 var obj = JSON.parse(decoded);
                 var sub = JSON.parse(obj.sub);
                 return sub;
+            },
+
+            redirectToCreationSteps: function(char) {
+                if (!char) {
+                    $location.path('/error');
+                }
+
+                if (char.creationStep == 'TABLE_ROLLS') {
+                    $location.path('/tablerolls/' + char.id);
+                }
+                else if (char.creationStep == 'TABLE_ROLL_SWAP') {
+                    $location.path('/tablerollswap/' + char.id);
+                }
             }
         };
 	});

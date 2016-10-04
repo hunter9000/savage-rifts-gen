@@ -1,7 +1,7 @@
 
 
 
-<div class="container" ng-hide="selectedPerk" >
+<div class="container well well-sm" ng-hide="selectedPerk" >
 
 	<div class="row" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in benefitTable.perkRanges">
 		<div class="col-md-1">
@@ -10,7 +10,7 @@
 				- {{perkRange.max}}
 			</span>
 		</div>
-		<div class="col-md-11">
+		<div class="col-md-11 text-left">
 			{{perkRange.perk.description}}
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 
 <div ng-hide="!selectedPerk" >
 	<div>
-		{{selectedPerk.perk}}
+		{{selectedPerk.perk.description}}
 	</div>
 	<button ng-click="goBack()">Back</button>
 </div>

@@ -1,6 +1,5 @@
-chooseable:
 
-<div class="container">
+<div class="container well well-sm">
     <div class="row" ng-repeat="roll in choosableTables" >
         <!--Table Roll #{{roll.rollNumber}}:-->
         <div class="col-md-2" ng-repeat="table in roll.allowedTables">
@@ -9,14 +8,12 @@ chooseable:
     </div>
 </div>
 
-chosen:
-
-<div class="container">
+<div class="container well well-sm">
     <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks" >
-        <div class="col-md-3">
+        <div class="col-md-2">
             {{chosenPerk.perk.benefitTableDisplayName}} :
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10 text-left">
             {{chosenPerk.perk.description}}
         </div>
     </div>
