@@ -12,12 +12,14 @@ import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
+import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
 import savagerifts.repository.BenefitTableRepository;
 import savagerifts.repository.FrameworkRepository;
 import savagerifts.repository.SheetRepository;
 import savagerifts.repository.UserRepository;
 import savagerifts.request.NewSheetRequest;
+import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.RandomUtils;
@@ -110,7 +112,7 @@ public class SheetController {
 	// make the roll on this table for the given tableroll, returning the selected perk
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/{tableId}/{rollNumber}/", method=RequestMethod.POST)
-	public PerkSelection makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
+	public PerkSelectionResponse makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		BenefitTable table = benefitTableRepository.findOne(tableId);
@@ -181,14 +183,15 @@ public class SheetController {
 		sheet.getChosenPerks().add(perkSelection);
 		
 		// if all rolls have been made, flag the sheet as completed table rolls
-        perkRanges.remove(tableRoll);		// remove the roll that was just made from the available list
-		if (perkRanges.isEmpty()) {
-			sheet.setHasCompletedTableRolls(true);
+//        perkRanges.remove(tableRoll);		// remove the roll that was just made from the available list
+//		if (perkRanges.isEmpty()) {
+        if (sheet.getChosenPerks().size() == sheet.getFramework().getTableRolls().size()) {
+            sheet.setCreationStep(SheetCreationStep.TABLE_ROLL_SWAP);
 		}
 		
 		sheetRepository.save(sheet);
 		
-		return perkSelection;
+		return new PerkSelectionResponse(perkSelection, sheet);
 	
 /*		load the table
 		make sure there is at least one 
@@ -202,5 +205,11 @@ public class SheetController {
 		*/
 	}
 	
+//	@SheetOwner
+//	@RequestMapping(value = "", method = RequestMethod.GET)
+//	public AttributeThing getAttributeThing() {
+//
+//
+//	}
 	
 }

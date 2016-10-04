@@ -91,12 +91,17 @@ public class Sheet {
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 													// we know which of the given rolls this was chosen by
 	
-	@Column(name = "hasCompletedTableRolls", nullable = false)
+/*	@Column(name = "hasCompletedTableRolls", nullable = false)
 	private boolean hasCompletedTableRolls = false;		// true if all rolls have been made and all swaps have been made (if any)
 	
 	@Column(name = "hasCompletedTableRollSwaps", nullable = false)
-	private boolean hasCompletedTableRollSwaps = false;
+	private boolean hasCompletedTableRollSwaps = false;*/
 	
+	@Column(name = "creationStep", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private SheetCreationStep creationStep = SheetCreationStep.TABLE_ROLLS;
+
+
 	//@Column(name = "race")
 //	private Race race;
 //
@@ -109,9 +114,9 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
 	private List<Hindrance> hindrances;		// chosen hindrances
 
-	@Column(name = "hasSelectedHindrances")
+/*	@Column(name = "hasSelectedHindrances")
 	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
-	
+*/	
 //	boolean hasMagic? hasPsionics?
 	
 	// transient stages
@@ -120,11 +125,12 @@ public class Sheet {
 	//boolean hasSelectedAttributes
 	//boolean hasSelectedSkills
 	//boolean hasSelectedHindrances
-
+/*
 	@Column(name = "hasSelectedEdges")
 	boolean hasSelectedEdges;
+*/	
 	
-	
+
 //	void create() {
 //		str = new Roll(DieType.D4, 0);
 //		agi = new Roll(DieType.D4, 0);
@@ -314,26 +320,33 @@ public class Sheet {
 		this.chosenPerks = chosenPerks;
 	}
 
+	public SheetCreationStep getCreationStep() {
+		return creationStep;
+	}
+	public void setCreationStep(SheetCreationStep creationStep) {
+		this.creationStep = creationStep;
+	}
+
 	public Framework getFramework() {
 		return framework;
 	}
 	public void setFramework(Framework framework) {
 		this.framework = framework;
 	}
-
-	public boolean isHasCompletedTableRolls() {
-		return hasCompletedTableRolls;
-	}
-	public void setHasCompletedTableRolls(boolean hasCompletedTableRolls) {
-		this.hasCompletedTableRolls = hasCompletedTableRolls;
-	}
-
-	public boolean isHasCompletedTableRollSwaps() {
-		return hasCompletedTableRollSwaps;
-	}
-	public void setHasCompletedTableRollSwaps(boolean hasCompletedTableRollSwaps) {
-		this.hasCompletedTableRollSwaps = hasCompletedTableRollSwaps;
-	}
+//
+//	public boolean isHasCompletedTableRolls() {
+//		return hasCompletedTableRolls;
+//	}
+//	public void setHasCompletedTableRolls(boolean hasCompletedTableRolls) {
+//		this.hasCompletedTableRolls = hasCompletedTableRolls;
+//	}
+//
+//	public boolean isHasCompletedTableRollSwaps() {
+//		return hasCompletedTableRollSwaps;
+//	}
+//	public void setHasCompletedTableRollSwaps(boolean hasCompletedTableRollSwaps) {
+//		this.hasCompletedTableRollSwaps = hasCompletedTableRollSwaps;
+//	}
 
 	//	public Race getRace() {
 //		return race;
@@ -370,17 +383,17 @@ public class Sheet {
 //		this.hindrances = hindrances;
 //	}
 
-	public boolean isHasSelectedHindrances() {
-		return hasSelectedHindrances;
-	}
-	public void setHasSelectedHindrances(boolean hasSelectedHindrances) {
-		this.hasSelectedHindrances = hasSelectedHindrances;
-	}
-
-	public boolean isHasSelectedEdges() {
-		return hasSelectedEdges;
-	}
-	public void setHasSelectedEdges(boolean hasSelectedEdges) {
-		this.hasSelectedEdges = hasSelectedEdges;
-	}
+//	public boolean isHasSelectedHindrances() {
+//		return hasSelectedHindrances;
+//	}
+//	public void setHasSelectedHindrances(boolean hasSelectedHindrances) {
+//		this.hasSelectedHindrances = hasSelectedHindrances;
+//	}
+//
+//	public boolean isHasSelectedEdges() {
+//		return hasSelectedEdges;
+//	}
+//	public void setHasSelectedEdges(boolean hasSelectedEdges) {
+//		this.hasSelectedEdges = hasSelectedEdges;
+//	}
 }
