@@ -15,7 +15,6 @@ public class AuthUtils {
     public static final String JWT_TOKEN_NAME = "jwtToken";
     public static final String LOGGED_IN_USER = "loggedInUser";
     public static final String SHEET = "sheet";
-    public static final String CHARACTER_NAME = "character";
 
     public static boolean isUserAdmin(User user) {
         return userHasRole(user, RoleType.ADMIN);

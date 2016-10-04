@@ -7,7 +7,7 @@ savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http
 	
     // lookup the benefit table to make the roll on
     $http({method:'GET',
-           url: '/api/benefittable/' + $routeParams.tableId + '/' + $routeParams.charId + '/',
+           url: '/api/benefittable/' + $routeParams.tableId + '/' + $routeParams.sheetId + '/',
            headers: {'x-access-token': $window.localStorage['jwtToken']}
     })
     .then(function successCallback(response) {
@@ -20,7 +20,7 @@ savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http
 
 	$scope.roll = function() {
 		$http({method:'POST',
-			   url: '/api/sheet/' + $routeParams.charId + '/tableroll/' + $routeParams.tableId + '/' + $routeParams.rollId + '/',
+			   url: '/api/sheet/' + $routeParams.sheetId + '/tableroll/' + $routeParams.tableId + '/' + $routeParams.rollId + '/',
 			   headers: {'x-access-token': $window.localStorage['jwtToken']}
 		})
 		.then(function successCallback(response) {

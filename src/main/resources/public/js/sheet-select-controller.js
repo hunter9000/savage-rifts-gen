@@ -1,19 +1,19 @@
 
 
-	savageRiftsApp.controller('charSelectController', function($scope, $window, $http, $location, $uibModal) {
+	savageRiftsApp.controller('sheetSelectController', function($scope, $window, $http, $location, $uibModal) {
 		$scope.message = '';
 
-		$scope.chars = [];
+		$scope.sheets = [];
 
-        $scope.loadCharacterSheets = function() {
+        $scope.loadSheets = function() {
             $http({
                 method: 'GET',
                 url: '/api/sheet/',
                 headers: {'x-access-token': $window.localStorage['jwtToken']}
             })
             .success(function(response) {
-                $scope.chars = response;
-                console.log('got these chars back: ');
+                $scope.sheets = response;
+                console.log('got these sheets back: ');
                 console.log(response);
             })
             .error(function(response) {
@@ -22,45 +22,45 @@
                 $location.path('/error');
             });
         }
-        $scope.loadCharacterSheets();
+        $scope.loadSheets();
 
-        $scope.newChar = function() {
-            $location.path("/newchar");
+        $scope.newSheet = function() {
+            $location.path("/newsheet");
         }
 
-        $scope.selectChar = function(charId) {
-            $location.path("/editchar/" + charId);
+        $scope.selectSheet = function(sheetId) {
+            $location.path("/editsheet/" + sheetId);
         }
 
         // opens a modal dialog to confirm deleting the character
-        $scope.confirmDelete = function (char) {
+        $scope.confirmDelete = function (sheet) {
             var modalInstance = $uibModal.open({
                 animation: false,
                 templateUrl: 'myModalContent.html',
-                controller: 'ConfirmCharacterDeleteController',
+                controller: 'ConfirmSheetDeleteController',
                 size: 'md',
                 resolve: {
-                    char: function () {
-                        return char;    // pass the character to delete
+                    sheet: function () {
+                        return sheet;    // pass the character to delete
                     }
                 }
             });
 
-            modalInstance.result.then(function (char) {
-                console.log('char Id to delete ' + char);
-                $scope.deleteChar(char.id);
+            modalInstance.result.then(function (sheet) {
+                console.log('sheet Id to delete ' + sheet);
+                $scope.deleteSheet(sheet.id);
             }, function () {
                  console.log('Modal dismissed at: ' + new Date());
             });
         };
 
-        $scope.deleteChar = function(charId) {
-            $http.delete('/api/charactersheet/' + charId + '/',
+        $scope.deleteSheet = function(sheetId) {
+            $http.delete('/api/sheet/' + sheetId + '/',
                 { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
             )
             .then(function successCallback(response) {
-                console.log('deleted char, reloading chars');
-                $scope.loadCharacterSheets();
+                console.log('deleted sheet, reloading sheets');
+                $scope.loadSheets();
             }, function errorCallback(response) {
                 console.log(response);
                 $location.path('/error');
@@ -70,11 +70,11 @@
 	});
 
     // controller for the modal window
-    savageRiftsApp.controller('ConfirmCharacterDeleteController', function ($scope, $uibModalInstance, char) {
-        $scope.char = char;
+    savageRiftsApp.controller('ConfirmSheetDeleteController', function ($scope, $uibModalInstance, sheet) {
+        $scope.sheet = sheet;
 
         $scope.ok = function () {
-            $uibModalInstance.close($scope.char);
+            $uibModalInstance.close($scope.sheet);
         };
 
         $scope.cancel = function () {

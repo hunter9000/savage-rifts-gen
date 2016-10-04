@@ -1,19 +1,19 @@
 
-savageRiftsApp.controller('editCharController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('editSheetController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
 
     $scope.message = '';
 
-    $scope.char = null;
+    $scope.sheet = null;
 
     // lookup the character
     $http({method:'GET',
-           url: '/api/sheet/' + $routeParams.charId + '/',
+           url: '/api/sheet/' + $routeParams.sheetId + '/',
            headers: {'x-access-token': $window.localStorage['jwtToken']}
     })
     .then(function successCallback(response) {
-        $scope.char = response.data;
+        $scope.sheet = response.data;
 
-        $scope.redirectToCreationSteps();
+        JwtData.redirectToCreationSteps($scope.char);
 
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";
@@ -23,23 +23,17 @@ savageRiftsApp.controller('editCharController', function(JwtData, $scope, $http,
 
 
     $scope.save = function() {
-        $http.patch('/api/sheet/' + $routeParams.charId + '/',
-            $scope.char,
+        $http.patch('/api/sheet/' + $routeParams.sheetId + '/',
+            $scope.sheet,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }
         )
         .then(function successCallback(response) {
             $scope.message = 'saved';
-            $scope.char = response.data;
+            $scope.sheet = response.data;
         }, function errorCallback(response) {
             console.log(response);
             $location.path('/error');
         });
     };
-
-    /** redirects the user to the correct page depending on what phase of character creation you're on */
-    $scope.redirectToCreationSteps = function() {
-		JwtData.redirectToCreationSteps($scope.char);
-    }
-
 
 });

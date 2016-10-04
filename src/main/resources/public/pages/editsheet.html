@@ -8,7 +8,7 @@
             <!-- BASIC STUFF -->
             <pf-collapse-section identifier="basic-section" initial-collapsed="true">
                 <pf-collapse-section-header>
-                    Id ({{char.id}})
+                    Id ({{sheet.id}})
                 </pf-collapse-section-header>
 
                 <pf-collapse-section-body>
@@ -16,20 +16,20 @@
                     <div class="row">
                         <div class="field-wrapper name-wrapper">
                             <label>Name</label>
-                            <input type="text" class="" ng-model="char.characterName">
+                            <input type="text" class="" ng-model="sheet.characterName">
                         </div>
                         <div class="field-wrapper level-wrapper">
                             <label>Level</label>
-                            <span class="level-display">{{char.characterLevel}}</span>
+                            <span class="level-display">{{sheet.characterLevel}}</span>
                         </div>
                         <div class="field-wrapper curr-xp-wrapper">
                             <label>Current XP</label>
-                            <input type="text" class="curr-xp-field" ng-model="char.currXP">
+                            <input type="text" class="curr-xp-field" ng-model="sheet.currXP">
                         </div>
 
                         <div class="field-wrapper alignment-wrapper">
                             <label>Alignment</label>
-                            <select name="alignmentSelect" id="alignmentSelect" ng-model="char.alignment">
+                            <select name="alignmentSelect" id="alignmentSelect" ng-model="sheet.alignment">
                                 <option value="LAWFUL_GOOD">Lawful Good</option>
                                 <option value="LAWFUL_NEUTRAL">Lawful Neutral</option>
                                 <option value="LAWFUL_EVIL">Lawful Evil</option>
@@ -46,12 +46,12 @@
 
                         <div class="field-wrapper">
                             <label>Deity</label>
-                            <input type="text" class="deity-field" ng-model="char.deity">
+                            <input type="text" class="deity-field" ng-model="sheet.deity">
                         </div>
 
                         <div class="field-wrapper">
                             <label>Size</label>
-                            <select name="sizeSelect" id="sizeSelect" ng-model="char.sizeType">
+                            <select name="sizeSelect" id="sizeSelect" ng-model="sheet.sizeType">
                                 <option value="FINE">Fine</option>
                                 <option value="DIMINUTIVE">Diminutive</option>
                                 <option value="TINY">Tiny</option>
@@ -70,34 +70,34 @@
 
                         <div class="field-wrapper">
                             <label>Age</label>
-                            <input type="text" class="age-field" ng-model="char.age">
+                            <input type="text" class="age-field" ng-model="sheet.age">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="field-wrapper">
                             <label>Gender</label>
-                            <input type="text" class="gender-field" ng-model="char.gender">
+                            <input type="text" class="gender-field" ng-model="sheet.gender">
                         </div>
 
                         <div class="field-wrapper">
                             <label>Height</label>
-                            <input type="text" class="height-field" ng-model="char.height">
+                            <input type="text" class="height-field" ng-model="sheet.height">
                         </div>
 
                         <div class="field-wrapper">
                             <label>Weight</label>
-                            <input type="text" class="weight-field" ng-model="char.weight">
+                            <input type="text" class="weight-field" ng-model="sheet.weight">
                         </div>
 
                         <div class="field-wrapper">
                             <label>Eyes</label>
-                            <input type="text" class="eyes-field" ng-model="char.eyes">
+                            <input type="text" class="eyes-field" ng-model="sheet.eyes">
                         </div>
 
                         <div class="field-wrapper">
                             <label>Hair</label>
-                            <input type="text" class="hair-field" ng-model="char.hair">
+                            <input type="text" class="hair-field" ng-model="sheet.hair">
                         </div>
                     </div>
 
@@ -120,10 +120,10 @@
 							<span>Strength</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.STR}}</span>
+							<span>{{sheet.currAttributes.STR}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.STR}}</span>
+							<span>{{sheet.currAttributeMods.STR}}</span>
 						</div>
 					</div>
 					<div class="">
@@ -131,10 +131,10 @@
 							<span>Dexterity</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.DEX}}</span>
+							<span>{{sheet.currAttributes.DEX}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.DEX}}</span>
+							<span>{{sheet.currAttributeMods.DEX}}</span>
 						</div>
 					</div>
 					<div class="">
@@ -142,10 +142,10 @@
 							<span>Constitution</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.CON}}</span>
+							<span>{{sheet.currAttributes.CON}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.CON}}</span>
+							<span>{{sheet.currAttributeMods.CON}}</span>
 						</div>
 					</div>
 					<div class="">
@@ -153,10 +153,10 @@
 							<span>Intelligence</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.INT}}</span>
+							<span>{{sheet.currAttributes.INT}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.INT}}</span>
+							<span>{{sheet.currAttributeMods.INT}}</span>
 						</div>
 					</div>
 					<div class="">
@@ -164,10 +164,10 @@
 							<span>Wisdom</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.WIS}}</span>
+							<span>{{sheet.currAttributes.WIS}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.WIS}}</span>
+							<span>{{sheet.currAttributeMods.WIS}}</span>
 						</div>
 					</div>
 					<div class="">
@@ -175,10 +175,10 @@
 							<span>Charisma</span>
 						</div>
 						<div class="character-sheet-value-col">
-							<span>{{char.currAttributes.CHA}}</span>
+							<span>{{sheet.currAttributes.CHA}}</span>
 						</div>
 						<div class="character-sheet-mod-col">
-							<span>{{char.currAttributeMods.CHA}}</span>
+							<span>{{sheet.currAttributeMods.CHA}}</span>
 						</div>
 					</div>
 				</div>
@@ -188,11 +188,11 @@
 					<div class="row">
 						<span class="field-header">Classes</span>
 					</div>
-					<div class="row" ng-repeat="classLevel in char.characterClassLevels">
+					<div class="row" ng-repeat="classLevel in sheet.characterClassLevels">
 						Level {{classLevel.level}} {{classLevel.playerClass.name}}
 					</div>
 
-					<button class="btn btn-primary" ng-click="levelUp()" ng-disabled="!char.canLevel" >Level</button>
+					<button class="btn btn-primary" ng-click="levelUp()" ng-disabled="!sheet.canLevel" >Level</button>
 				</div>
 			</div>
 
@@ -206,7 +206,7 @@
                         </pf-collapse-section-header>
 
                         <pf-collapse-section-body>
-                            <div ng-repeat="skillRank in char.skillRanks">
+                            <div ng-repeat="skillRank in sheet.skillRanks">
                                 <div class="skill-name">
                                     {{skillRank.skill.name}}
                                 </div>
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="skill-ranks-button">
                                     <button class="glyphicon glyphicon-chevron-down" ng-click="decreaseSkillRank(skillRank)" ng-disabled="skillRank.rank == 0"></button>
-                                    <button class="glyphicon glyphicon-chevron-up" ng-click="increaseSkillRank(skillRank)" ng-disabled="char.skillPoints == 0"></button>
+                                    <button class="glyphicon glyphicon-chevron-up" ng-click="increaseSkillRank(skillRank)" ng-disabled="sheet.skillPoints == 0"></button>
                                 </div>
                             </div>
                         </pf-collapse-section-body>
