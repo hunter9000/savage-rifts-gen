@@ -78,7 +78,7 @@ public class SheetController {
         return sheetRepository.findByOwner(owner);
     }
 
-    // get sheet
+    // get a specific sheet
     @SheetOwner
     @RequestMapping(value="/api/sheet/{sheetId}/", method=RequestMethod.GET)
     public Sheet getSheet(@PathVariable long sheetId) {
@@ -203,6 +203,34 @@ public class SheetController {
 			flag sheet as completedTableRolls
 		return selected perk
 		*/
+	}
+	
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.POST)
+	public ResponseEntity<?> swapPerks(@RequestBody PerkSwapRequest perkSwapRequest) {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		if (!perkSwapRequest.validate()) {
+			throw new BadRequestException();
+		}
+		
+		PerkSelection chosenPerk1 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkSelection1().getId());
+		PerkSelection chosenPerk2 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkSelection2().getId());
+		
+		Perk swapPerk = perkRepository.findOne(perkSwapRequest.getSwapPerk().getId());
+		
+		PerkSelection newPerkSelection = new PerkSelection();
+		newPerkSelection.setSheet(sheet);
+		newPerkSelection.setPerk(swapPerk);
+		newPerkSelection.setWasSwappedFor(true);
+		
+		sheet.getChosenPerks().remove(chosenPerk1);
+		sheet.getChosenPerks().remove(chosenPerk2);
+		sheet.getChosenPerks().add(newPerkSelection);
+		
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 //	@SheetOwner

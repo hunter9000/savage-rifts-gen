@@ -55,7 +55,7 @@
 
     <div class="row" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in swapTable.perkRanges">
         <div class="col-md-1">
-            <input type="radio" name="newPerkSelection" ng-model="$parent.newPerkSelection" ng-value="perkRange" ng-disabled="perkRange.perkHasBeenChosen" >
+            <input type="radio" name="newPerkSelection" ng-model="$parent.newPerkSelection" ng-value="perkRange.perk" ng-disabled="perkRange.perkHasBeenChosen" >
         </div>
         <div class="col-md-11 text-left">
             {{perkRange.perk.description}}
