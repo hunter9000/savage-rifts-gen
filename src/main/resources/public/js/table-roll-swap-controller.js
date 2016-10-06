@@ -55,14 +55,34 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     $scope.confirmSwap = function() {
         console.log('confirm swap');
         console.log($scope.newPerkSelection);
-		
-		
+
+		if (!$scope.newPerkSelection) {
+		    return;
+		}
+
+        var postData = {
+            'perkSelection1' : $scope.perkItems[0].perk,
+            'perkSelection2' : $scope.perkItems[1].perk,
+            'swapPerk' : $scope.newPerkSelection
+        }
+
+        $http.post('/api/sheet/' + $routeParams.charId + '/tablerollswap/',
+            postData,
+            { headers: {'x-access-token': $window.localStorage['jwtToken']} })
+        .then(function successCallback(response) {
+            $location.path('/editchar/' + $routeParams.charId);
+        }, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+        });
     }
 
 	$scope.finishSwapping = function() {
 		// post to set flag true, go to editchar
 		console.log($scope.perkItems);
 		console.log($scope.selectedTable);
+
+
 	}
 
     $scope.back = function() {

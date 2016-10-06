@@ -2,6 +2,7 @@ package savagerifts.model.sheet;
 
 import savagerifts.model.DieType;
 import savagerifts.model.framework.Framework;
+import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.user.User;
 
@@ -111,8 +112,8 @@ public class Sheet {
 //
 //	private List<Power> powers;		// known powers
 
-	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
-	private List<Hindrance> hindrances;		// chosen hindrances
+//	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
+//	private List<Hindrance> hindrances;		// chosen hindrances
 
 /*	@Column(name = "hasSelectedHindrances")
 	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one

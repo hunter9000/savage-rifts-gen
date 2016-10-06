@@ -2,6 +2,10 @@ package savagerifts.model.hindrance;
 
 // the hindrace that a sheet has chosen
 
+import savagerifts.model.sheet.Sheet;
+
+import javax.persistence.*;
+
 //@Entity
 //@Table(name = "hindrance")
 public class Hindrance {

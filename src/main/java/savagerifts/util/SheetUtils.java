@@ -1,13 +1,17 @@
 package savagerifts.util;
 
-public class SheetUtils() {
+import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.sheet.Sheet;
+
+public class SheetUtils {
 	
 	public static PerkSelection getChosenPerkFromSheet(Sheet sheet, Long perkId) {
 		for (PerkSelection selection : sheet.getChosenPerks()) {
-			if (selection.getPerk().getId().equals(perkSwapRequest.getPerkSelection1().getId()) {
+			if (selection.getPerk().getId().equals(perkId)) {
 				return selection;
 			}
 		}
+		return null;
 	}
 	
 }

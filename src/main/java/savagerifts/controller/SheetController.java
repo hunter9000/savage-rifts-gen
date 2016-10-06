@@ -10,19 +10,19 @@ import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
+import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
-import savagerifts.repository.BenefitTableRepository;
-import savagerifts.repository.FrameworkRepository;
-import savagerifts.repository.SheetRepository;
-import savagerifts.repository.UserRepository;
+import savagerifts.repository.*;
 import savagerifts.request.NewSheetRequest;
+import savagerifts.request.PerkSwapRequest;
 import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.RandomUtils;
+import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -41,7 +41,12 @@ public class SheetController {
 	
 	@Autowired
 	private BenefitTableRepository benefitTableRepository;
-	
+
+    @Autowired
+    private PerkRepository perkRepository;
+
+    @Autowired
+    private PerkSelectionRepository perkSelectionRepository;
 
     @Autowired
     private HttpServletRequest request;
@@ -206,7 +211,7 @@ public class SheetController {
 	}
 	
 	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.POST)
 	public ResponseEntity<?> swapPerks(@RequestBody PerkSwapRequest perkSwapRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
@@ -224,12 +229,16 @@ public class SheetController {
 		newPerkSelection.setPerk(swapPerk);
 		newPerkSelection.setWasSwappedFor(true);
 		
-		sheet.getChosenPerks().remove(chosenPerk1);
-		sheet.getChosenPerks().remove(chosenPerk2);
+//		sheet.getChosenPerks().remove(chosenPerk1);
+//		sheet.getChosenPerks().remove(chosenPerk2);
 		sheet.getChosenPerks().add(newPerkSelection);
-		
-		sheetRepository.save(sheet);
-		
+
+//        sheetRepository.save(sheet);
+        perkSelectionRepository.save(newPerkSelection);
+        perkSelectionRepository.deleteById(chosenPerk1.getId());        // TODO: why doesn't this delete work???
+        perkSelectionRepository.deleteById(chosenPerk2.getId());
+
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
@@ -241,3 +250,4 @@ public class SheetController {
 //	}
 	
 }
+
