@@ -1,26 +1,26 @@
 
 /** character select screen */
-.char-select-id-col {
+.sheet-select-id-col {
     display:inline-block;
     width: 60px;
     text-align: left;
 }
-.char-select-name-col {
+.sheet-select-name-col {
     display:inline-block;
     width: 200px;
     text-align: left;
 }
-.char-select-level-col {
+.sheet-select-level-col {
     display:inline-block;
     width: 60px;
     text-align: left;
 }
-.char-select-edit-col {
+.sheet-select-edit-col {
     display:inline-block;
     width: 25px;
     text-align: left;
 }
-.char-select-delete-col {
+.sheet-select-delete-col {
     display:inline-block;
     width: 25px;
     text-align: left;

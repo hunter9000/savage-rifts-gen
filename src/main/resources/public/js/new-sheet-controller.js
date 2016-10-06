@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('newCharController', function($scope, $location, $http, $window) {
+savageRiftsApp.controller('newSheetController', function($scope, $location, $http, $window) {
     $scope.message = '';
 
     $scope.formData = {
@@ -30,7 +30,7 @@ savageRiftsApp.controller('newCharController', function($scope, $location, $http
             data: $scope.formData
         })
         .then(function successCallback(response) {
-            $location.path("/charselect");
+            $location.path("/sheetselect");
         }, function errorCallback(response) {
             $scope.message = "error creating character sheet";
             console.log(response);

@@ -43,16 +43,16 @@
                 return sub;
             },
 
-            redirectToCreationSteps: function(char) {
-                if (!char) {
+            redirectToCreationSteps: function(sheet) {
+                if (!sheet) {
                     $location.path('/error');
                 }
 
-                if (char.creationStep == 'TABLE_ROLLS') {
-                    $location.path('/tablerolls/' + char.id);
+                if (sheet.creationStep == 'TABLE_ROLLS') {
+                    $location.path('/tablerolls/' + sheet.id);
                 }
-                else if (char.creationStep == 'TABLE_ROLL_SWAP') {
-                    $location.path('/tablerollswap/' + char.id);
+                else if (sheet.creationStep == 'TABLE_ROLL_SWAP') {
+                    $location.path('/tablerollswap/' + sheet.id);
                 }
             }
         };

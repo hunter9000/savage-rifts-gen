@@ -37,7 +37,7 @@ savageRiftsApp.controller('mainController', function($scope, $location, $window,
             console.log('redirecting');
         }
         else {
-            $location.path('/charselect');
+            $location.path('/sheetselect');
         }
     };
     init();

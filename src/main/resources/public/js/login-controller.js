@@ -12,7 +12,7 @@ savageRiftsApp.controller('loginController', function($scope, $location, $http, 
         .then(function successCallback(response) {
             console.log(response);
             $window.localStorage['jwtToken'] = response.data.response;
-            $location.path("/charselect");
+            $location.path("/sheetselect");
         }, function errorCallback(response) {
             console.log('Error: ' + response);
             $scope.message = 'invalid login - error returned';

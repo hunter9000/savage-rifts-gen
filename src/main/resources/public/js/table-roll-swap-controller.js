@@ -9,7 +9,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     $scope.newPerkSelection = null;         // the selected new perk: Perk
 
     // get the sheet
-    $http.get('/api/sheet/' + $routeParams.charId + '/',
+    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
         { headers: {'x-access-token': $window.localStorage['jwtToken']} }
     )
     .then(function successCallback(response) {
@@ -35,9 +35,9 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
             var perkId1 = $scope.perkItems[0].perk.id;
             var perkId2 = $scope.perkItems[1].perk.id;
             var tableId = $scope.selectedTable.id;
-//            $location.path('/tablerollswap/' + $routeParams.charId + '/' + perkId1 + '/' + perkId2 + '/' + tableId);
+//            $location.path('/tablerollswap/' + $routeParams.sheetId + '/' + perkId1 + '/' + perkId2 + '/' + tableId);
 
-            $http.get('/api/benefittable/'+ tableId +'/'+ $routeParams.charId +'/',
+            $http.get('/api/benefittable/'+ tableId +'/'+ $routeParams.sheetId +'/',
                 { headers: {'x-access-token': $window.localStorage['jwtToken']} }
             )
             .then(function successCallback(response) {
@@ -78,7 +78,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     }
 
 	$scope.finishSwapping = function() {
-		// post to set flag true, go to editchar
+		// post to set flag true, go to editsheet
 		console.log($scope.perkItems);
 		console.log($scope.selectedTable);
 

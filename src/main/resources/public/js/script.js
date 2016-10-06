@@ -39,31 +39,31 @@ savageRiftsApp.config(function($routeProvider) {
             controller  : 'profileController'
         })
 
-        .when('/charselect', {
-            templateUrl : 'pages/charselect.html',
-            controller : 'charSelectController'
+        .when('/sheetselect', {
+            templateUrl : 'pages/sheetselect.html',
+            controller : 'sheetSelectController'
         })
 
-        .when('/newchar', {
-            templateUrl : 'pages/newchar.html',
-            controller  : 'newCharController'
+        .when('/newsheet', {
+            templateUrl : 'pages/newsheet.html',
+            controller  : 'newSheetController'
         })
-        .when('/editchar/:charId', {
-            templateUrl : 'pages/editchar.html',
-            controller  : 'editCharController'
+        .when('/editsheet/:sheetId', {
+            templateUrl : 'pages/editsheet.html',
+            controller  : 'editSheetController'
         })
 
 
-        .when('/tablerolls/:charId', {
+        .when('/tablerolls/:sheetId', {
             templateUrl : 'pages/tablerolls.html',
             controller  : 'tableRollsController'
         })
-        .when('/tablerolls/:charId/:rollId/:tableId', {
+        .when('/tablerolls/:sheetId/:rollId/:tableId', {
             templateUrl : 'pages/tableroll.html',
             controller  : 'tableRollController'
         })
 		
-		.when('/tablerollswap/:charId', {
+		.when('/tablerollswap/:sheetId', {
 			templateUrl : 'pages/tablerollswap.html',
 			controller  : 'tableRollSwapController'
 		})

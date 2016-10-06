@@ -9,7 +9,7 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
 
     // lookup the sheet
     $http({method:'GET',
-           url: '/api/sheet/' + $routeParams.charId + '/',
+           url: '/api/sheet/' + $routeParams.sheetId + '/',
            headers: {'x-access-token': $window.localStorage['jwtToken']}
     })
     .then(function successCallback(response) {
@@ -32,7 +32,7 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
     });
 
     // get the tables
-    $http.get('/api/sheet/'+ $routeParams.charId +'/tableroll/',
+    $http.get('/api/sheet/'+ $routeParams.sheetId +'/tableroll/',
         { headers: {'x-access-token': $window.localStorage['jwtToken']} }
     )
     .then(function successCallback(response) {
@@ -44,7 +44,7 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
 
 
     $scope.save = function() {
-        $http.patch('/api/sheet/' + $routeParams.charId + '/',
+        $http.patch('/api/sheet/' + $routeParams.sheetId + '/',
             $scope.sheet,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }
         )
@@ -58,7 +58,7 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
     };
 
     $scope.goToTable = function (rollId, tableId) {
-        $location.path('/tablerolls/' + $routeParams.charId + '/' + rollId + '/' + tableId);
+        $location.path('/tablerolls/' + $routeParams.sheetId + '/' + rollId + '/' + tableId);
     }
 
 });
