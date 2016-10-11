@@ -34,26 +34,26 @@ step 1
 	buy edges/skill points/attr points/double starting money
 
 	
-//api/sheet POST				create sheet
-//api/sheet GET 				get all sheets belonging to user
-//api/sheet/{sheetId} GET 	get sheet
+--api/sheet POST				create sheet
+--api/sheet GET 				get all sheets belonging to user
+--api/sheet/{sheetId} GET 	get sheet
 	// repo.getSheet()
 	// return sheet
 
-api/sheet/framework POST 		choose framework
+--api/sheet/framework POST 		choose framework
 	// take frameworkId, set character framework if not set already. 
 
 api/sheet/perks	GET						gets the already chosen perks
-api/sheet/tableroll GET 				gets the list of table choices that this sheet can make rolls on, 
+--api/sheet/tableroll GET 				gets the list of table choices that this sheet can make rolls on, 
 	// get sheet, if framework == null error
 	// get List<TableRoll> from framework
 	// remove TableRolls that have their id in the sheet.getPerkSelections()
 	// return list
-not needed?? //api/sheet/tableroll/{rollId} GET 				gets the tables that this sheet can make rolls against for the given rollId
+--not needed?? //api/sheet/tableroll/{rollId} GET 				gets the tables that this sheet can make rolls against for the given rollId
 	// get the ids of the tables the sheet can choose from for it's next roll
-api/sheet/tableroll/{tableId} POST 		makes a roll on the given table
+--api/sheet/tableroll/{tableId} POST 		makes a roll on the given table
 
-api/sheet/race POST 			select the race	
+--api/sheet/race POST 			select the race	
 	// set race
 	// apply all permanent bonuses to things that have already been set, if any. things like attr limits will come into play later
 
@@ -68,11 +68,11 @@ api/sheet/skills PATCH 			set skills
 api/sheet/hindrances GET			get the current hindrances, and the number of remaining major and minors to choose
 api/sheet/hindrances PATCH 		set hindrances
 
-//api/framework GET		get all the frameworks
+--api/framework GET		get all the frameworks
 
-api/race GET		get possible races
-api/table GET		get possible tables
-api/table/{tableId} GET		get full table with perk choices and ranges
+--api/race GET		get possible races
+--api/table GET		get possible tables
+--api/table/{tableId} GET		get full table with perk choices and ranges
 api/hindrance GET 	get possible hindrances
 api/edge GET 		get possible edges
 

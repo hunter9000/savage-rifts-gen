@@ -75,6 +75,14 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private DieType maxVigorDieType;
 
+	@Transient
+	public String getDisplayName() {
+		return type.getDisplayName();
+	}
+	public void setDisplayName() {
+		// nothing, read only property
+	}
+	
 //	private Integer maxStrengthBonus;
 
 	public Long getId() {

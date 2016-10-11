@@ -41,10 +41,18 @@ public class Race {
 		this.type = type;
 	}
 	
+	@Transient
 	public String getDescription() {
 		return type.getDescription();
 	}
 	public void setDecription(String description) {
+		// nothing, this is a readonly property
+	}
+	@Transient
+		public String getDisplayName() {
+		return type.getDisplayName();
+	}
+	public void setDisplayName(String displayName) {
 		// nothing, this is a readonly property
 	}
 	

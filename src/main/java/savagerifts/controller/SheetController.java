@@ -104,11 +104,11 @@ public class SheetController {
     }
 
     // choose framework
-    @SheetOwner
+/*    @SheetOwner
     @RequestMapping(value = "/api/sheet/{sheetId}/framework/{frameworkId}/", method = RequestMethod.POST)
     public void setFramework(@PathVariable long sheetId, @PathVariable long frameworkId) {
         Sheet sheet = AuthUtils.getSheet(request);
-    }
+    }*/
 
     // get the sheet's available rolls, as array of tablerolls with arrays of tables
     @SheetOwner
@@ -275,6 +275,25 @@ public class SheetController {
         return null;
 
 	}
+	
+	@SheetOwner
+	@RequestMapping(value = "api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
+	public ResponseEntity<?> selectRace(@PathVariable long raceId) {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		Race race = raceRepository.findOne(raceId);
+		if (race == null) {
+			throw new BadRequestException();
+		}
+		
+		sheet.setRace(race);
+		SheetUtils.recalculateAttributes(sheet);
+		
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	
 }
 
