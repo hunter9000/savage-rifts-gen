@@ -228,16 +228,15 @@ public class SheetController {
 		newPerkSelection.setSheet(sheet);
 		newPerkSelection.setPerk(swapPerk);
 		newPerkSelection.setWasSwappedFor(true);
-		
-//		sheet.getChosenPerks().remove(chosenPerk1);
-//		sheet.getChosenPerks().remove(chosenPerk2);
+
+
+        // remove the old perks from the sheet object, and add the new one, then save the new one
+		sheet.getChosenPerks().remove(chosenPerk1);
+		sheet.getChosenPerks().remove(chosenPerk2);
 		sheet.getChosenPerks().add(newPerkSelection);
+        sheetRepository.save(sheet);
 
-//        sheetRepository.save(sheet);
         perkSelectionRepository.save(newPerkSelection);
-        perkSelectionRepository.deleteById(chosenPerk1.getId());        // TODO: why doesn't this delete work???
-        perkSelectionRepository.deleteById(chosenPerk2.getId());
-
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
