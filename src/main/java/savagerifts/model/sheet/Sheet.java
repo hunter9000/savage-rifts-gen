@@ -28,7 +28,7 @@ public class Sheet {
 	// attribute die types
 	@Column(name="strengthDieType")
 	@Enumerated(EnumType.STRING)
-	private DieType strengthDieType;
+	private DieType strengthDieType = DieType.D4;
 	@Column(name="agilityDieType")
 	@Enumerated(EnumType.STRING)
 	private DieType agilityDieType;

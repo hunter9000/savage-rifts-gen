@@ -15,6 +15,11 @@ hinds - major/minor
 
 
 
+Attrs are defaulted to framework minimums. 
+When finishing swapping rolls, increase minimums based on chosen perks
+when choosing race, update minimums based on race
+when choosing attrs, they can increase if there are points left, and decrease if not below minimum, which can be calculated the same way by looking at the framework/rolls/race
+once attrs are finalized, they can just be read, since i don't think  hindrances/edges can affect that.
 
 
 

@@ -71,11 +71,25 @@ public class SheetController {
         sheet.setName(sheetRequest.characterName);
         sheet.setFramework(framework);
 
+		SheetUtils.recalculateAttributes(sheet);
+		
         sheetRepository.save(sheet);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.DELETE)
+	public ResponseEntity<?> deleteSheet(@PathVariable long sheetId) {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		sheetRepository.delete(sheet);
+		
+		sheet = 
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
     // get all sheets belonging to user
     @RequestMapping(value="/api/sheet/", method= RequestMethod.GET)
     public List<Sheet> getSheets() {
@@ -100,7 +114,7 @@ public class SheetController {
     // get the sheet's available rolls, as array of tablerolls with arrays of tables
     @SheetOwner
     @RequestMapping(value = "/api/sheet/{sheetId}/tableroll/", method=RequestMethod.GET)
-    public List<BenefitTableRoll> getAvailableTableRolls() {
+    public List<BenefitTableRoll> getAvailableTableRolls(@PathVariable long sheetId) {
         Sheet sheet = AuthUtils.getSheet(request);
 
         List<BenefitTableRoll> frameworkRolls = sheet.getFramework().getTableRolls();
@@ -242,12 +256,14 @@ public class SheetController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-//	@SheetOwner
-//	@RequestMapping(value = "", method = RequestMethod.GET)
-//	public AttributeThing getAttributeThing() {
-//
-//
-//	}
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.GET)
+	public AttributeThing getAttributeThing() {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		if (sheet.get)
+
+	}
 	
 }
 
