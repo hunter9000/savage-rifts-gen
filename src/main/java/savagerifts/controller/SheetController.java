@@ -255,7 +255,7 @@ public class SheetController {
 	}
 	
 	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
 	public AttributeThing getAttributeThing() {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
