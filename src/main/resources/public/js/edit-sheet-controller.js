@@ -13,7 +13,7 @@ savageRiftsApp.controller('editSheetController', function(JwtData, $scope, $http
     .then(function successCallback(response) {
         $scope.sheet = response.data;
 
-        JwtData.redirectToCreationSteps($scope.char);
+        JwtData.redirectToCreationSteps($scope.sheet);
 
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";

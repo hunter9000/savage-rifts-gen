@@ -66,11 +66,11 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
             'swapPerk' : $scope.newPerkSelection
         }
 
-        $http.post('/api/sheet/' + $routeParams.charId + '/tablerollswap/',
+        $http.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
             postData,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} })
         .then(function successCallback(response) {
-            $location.path('/editchar/' + $routeParams.charId);
+            $location.path('/editsheet/' + $routeParams.sheetId);
         }, function errorCallback(response) {
             console.log(response);
             $location.path('/error');

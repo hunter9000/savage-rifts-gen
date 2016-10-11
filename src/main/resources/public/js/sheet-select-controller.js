@@ -47,7 +47,8 @@
             });
 
             modalInstance.result.then(function (sheet) {
-                console.log('sheet Id to delete ' + sheet);
+                console.log('sheet Id to delete ');
+                console.log(sheet);
                 $scope.deleteSheet(sheet.id);
             }, function () {
                  console.log('Modal dismissed at: ' + new Date());
