@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div class="container well well-sm">
+<div class="container well well-sm" ng-hide="sheet.chosenPerks.length == 0">
     <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks" >
         <div class="col-md-2">
             {{chosenPerk.perk.benefitTableDisplayName}} :

@@ -54,6 +54,9 @@
                 else if (sheet.creationStep == 'TABLE_ROLL_SWAP') {
                     $location.path('/tablerollswap/' + sheet.id);
                 }
+                else if (sheet.creationStep == 'RACE') {
+                    $location.path('/raceselection/' + sheet.id);
+                }
             }
         };
 	});

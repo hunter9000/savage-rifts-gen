@@ -19,7 +19,7 @@
 
 <div class="container well well-sm" ng-hide="swapTable" >
     Choose two perks to swap for another perk
-    <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks" >
+    <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}" >
         <div class="col-md-1">
             <!--<md-checkbox ng-checked="perkExists(chosenPerk)" ng-click="perkToggle(chosenPerk)"> </md-checkbox>-->
             <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">

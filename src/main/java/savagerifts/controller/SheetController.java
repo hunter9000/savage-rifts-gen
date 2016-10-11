@@ -247,9 +247,20 @@ public class SheetController {
 		sheet.getChosenPerks().remove(chosenPerk1);
 		sheet.getChosenPerks().remove(chosenPerk2);
 		sheet.getChosenPerks().add(newPerkSelection);
-        sheetRepository.save(sheet);
 
-        perkSelectionRepository.save(newPerkSelection);
+        // check if the number of perks that have not been swapped is 1 or less, meaning no more swaps can be made
+        // move to the next step (race selection) if no more swaps can be made
+        int numUnswapped = 0;
+        for (PerkSelection selection : sheet.getChosenPerks()) {
+            if (!selection.isWasSwappedFor()) {
+                numUnswapped++;
+            }
+        }
+        if (numUnswapped <= 1) {
+            sheet.setCreationStep(SheetCreationStep.RACE);
+        }
+
+        sheetRepository.save(sheet);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

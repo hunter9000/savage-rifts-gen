@@ -68,6 +68,11 @@ savageRiftsApp.config(function($routeProvider) {
 			controller  : 'tableRollSwapController'
 		})
 
+        .when('/raceselection/:sheetId', {
+            templateUrl: 'pages/raceselection.html',
+            controller:  'raceSelectionController'
+        })
+
         // generic error page
         .when('/error', {
             templateUrl: 'pages/error.html',
