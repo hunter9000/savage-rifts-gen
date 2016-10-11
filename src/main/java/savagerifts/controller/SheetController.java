@@ -18,6 +18,7 @@ import savagerifts.model.user.User;
 import savagerifts.repository.*;
 import savagerifts.request.NewSheetRequest;
 import savagerifts.request.PerkSwapRequest;
+import savagerifts.response.AttributeThing;
 import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
@@ -82,11 +83,9 @@ public class SheetController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteSheet(@PathVariable long sheetId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
 		sheetRepository.delete(sheet);
-		
-		sheet = 
-		
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
@@ -261,7 +260,9 @@ public class SheetController {
 	public AttributeThing getAttributeThing() {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
-		if (sheet.get)
+//		if (sheet.get)
+
+        return null;
 
 	}
 	

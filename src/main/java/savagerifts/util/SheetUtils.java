@@ -1,7 +1,9 @@
 package savagerifts.util;
 
+import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
+import savagerifts.response.AttributeThing;
 
 public class SheetUtils {
 	
@@ -22,12 +24,12 @@ public class SheetUtils {
 		Framework framework = sheet.getFramework();
 		if (sheet.getFramework() != null) {
 			
-			sheet.setStrength( , startingStrengthDieType);
+//			sheet.setStrength( , startingStrengthDieType);
 		}
 	}
 	
 	public AttributeThing calculateAttributePurchases() {
-		
+		return null;
 	}
 	
 }
