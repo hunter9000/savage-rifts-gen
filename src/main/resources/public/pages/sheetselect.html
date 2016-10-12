@@ -16,9 +16,13 @@
             <span>Name</span>
         </div>
 
-        <!--<div class="char-select-level-col">-->
-            <!--<span>Level</span>-->
-        <!--</div>-->
+        <div class="sheet-select-framework-col">
+            <span>Framework</span>
+        </div>
+
+        <div class="sheet-select-race-col">
+            <span>Race</span>
+        </div>
 
         <div class="sheet-select-edit-col">
 
@@ -38,9 +42,13 @@
             <span>{{sheet.name}} </span>
         </div>
 
-        <!--<div class="char-select-level-col">-->
-            <!--<span>{{char.characterLevel}} </span>-->
-        <!--</div>-->
+        <div class="sheet-select-framework-col">
+            <span ng-show="sheet.framework">{{sheet.framework.displayName}}</span>
+        </div>
+
+        <div class="sheet-select-race-col">
+            <span ng-show="sheet.race">{{sheet.race.displayName}}</span>
+        </div>
 
         <div class="sheet-select-edit-col">
             <a ng-click="selectSheet(sheet.id)">

@@ -14,6 +14,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     )
     .then(function successCallback(response) {
         $scope.sheet = response.data;
+        $scope.remainingSwaps = $scope.numberOfSwapsRemaining($scope.sheet);
     }, function errorCallback(response) {
         console.log(response);
         $location.path('/error');
@@ -30,12 +31,21 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
         $location.path('/error');
     });
 
+    $scope.numberOfSwapsRemaining = function(sheet) {
+        var count = 0;
+        for (i=0; i<sheet.chosenPerks.length; i++) {
+            if (!sheet.chosenPerks[i].wasSwappedFor) {
+                count++;
+            }
+        }
+        return Math.floor(count/2);
+    }
+
     $scope.swap = function() {
         if ($scope.perkItems.length == 2 && $scope.selectedTable) {
             var perkId1 = $scope.perkItems[0].perk.id;
             var perkId2 = $scope.perkItems[1].perk.id;
             var tableId = $scope.selectedTable.id;
-//            $location.path('/tablerollswap/' + $routeParams.sheetId + '/' + perkId1 + '/' + perkId2 + '/' + tableId);
 
             $http.get('/api/benefittable/'+ tableId +'/'+ $routeParams.sheetId +'/',
                 { headers: {'x-access-token': $window.localStorage['jwtToken']} }

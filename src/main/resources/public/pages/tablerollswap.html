@@ -1,14 +1,4 @@
 
-<!--roll swapping!-->
-
-<!--loop through all the perks the player has, let them select 2-->
-
-<!--display all the tables, let the user select onemptied-->
-
-<!--click go button, go to /tablerollswap/:charId/:tableId/:perkNumber1/:perkNumber2-->
-
-<!--choose new perk there, post, go back to editchar-->
-
 <style>
     .perk-checkbox {width:100px;}
     .perk-name {width:100px;}
@@ -18,10 +8,11 @@
 
 
 <div class="container well well-sm" ng-hide="swapTable" >
-    Choose two perks to swap for another perk
+
+    <h4>Choose two perks to swap for another perk, or skip to keep selected perks. You may make {{remainingSwaps}} more swaps.</h4>
+
     <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}" >
         <div class="col-md-1">
-            <!--<md-checkbox ng-checked="perkExists(chosenPerk)" ng-click="perkToggle(chosenPerk)"> </md-checkbox>-->
             <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">
         </div>
 
@@ -66,4 +57,4 @@
     <button ng-click="confirmSwap()">Swap</button>
 </div>
 
-<button ng-click="finishSwapping()">Finished Swapping</button>
+<button ng-click="finishSwapping()">Skip perk swapping</button>

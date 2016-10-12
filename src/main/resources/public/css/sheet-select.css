@@ -7,12 +7,17 @@
 }
 .sheet-select-name-col {
     display:inline-block;
-    width: 200px;
+    width: 130px;
     text-align: left;
 }
-.sheet-select-level-col {
+.sheet-select-framework-col {
     display:inline-block;
-    width: 60px;
+    width: 120px;
+    text-align: left;
+}
+.sheet-select-race-col {
+    display:inline-block;
+    width: 100px;
     text-align: left;
 }
 .sheet-select-edit-col {
