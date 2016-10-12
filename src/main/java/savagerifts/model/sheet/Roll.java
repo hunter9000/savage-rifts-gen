@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "roll")
-public class Roll {
+public class Roll implements Comparable {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
@@ -14,10 +14,10 @@ public class Roll {
 	
 	@Column(name = "die_type", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private DieType dieType;
+	private DieType dieType = DieType.D4;
 	
 	@Column(name = "modifier", nullable = false)
-	private Integer modifier;
+	private Integer modifier = 0;
 
 	public Long getId() {
 		return id;
@@ -38,5 +38,16 @@ public class Roll {
 	}
 	public void setModifier(Integer modifier) {
 		this.modifier = modifier;
+	}
+	
+	@Override
+	public int compareTo(Object other) {
+		Roll rollB = (Roll)other;
+		int dieTypeComparison = this.dieType.compareTo(rollB.dieType);
+		if (dieTypeComparison == 0) {
+			return modifier.compareTo(rollB.modifier);
+		}
+		return dieTypeComparison;
+		
 	}
 }

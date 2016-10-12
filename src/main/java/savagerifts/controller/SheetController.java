@@ -57,7 +57,7 @@ public class SheetController {
     private HttpServletRequest request;
 
 
-    // create sheet
+    /** Create new sheet with given name and framework */
     @RequestMapping(value="/api/sheet/", method= RequestMethod.POST)
     public ResponseEntity<?> createSheet(@RequestBody NewSheetRequest sheetRequest) {
         User owner = AuthUtils.getLoggedInUser(request);
@@ -83,6 +83,7 @@ public class SheetController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+	/** Delete a sheet */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteSheet(@PathVariable long sheetId) {
@@ -93,28 +94,21 @@ public class SheetController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-    // get all sheets belonging to user
+    /** Get all sheets belonging to user */
     @RequestMapping(value="/api/sheet/", method= RequestMethod.GET)
     public List<Sheet> getSheets() {
         User owner = AuthUtils.getLoggedInUser(request);
         return sheetRepository.findByOwner(owner);
     }
 
-    // get a specific sheet
+    /** Get a specific sheet */
     @SheetOwner
     @RequestMapping(value="/api/sheet/{sheetId}/", method=RequestMethod.GET)
     public Sheet getSheet(@PathVariable long sheetId) {
         return AuthUtils.getSheet(request);     // the sheet is retrieved by the SheetOwnerInterceptor
     }
 
-    // choose framework
-/*    @SheetOwner
-    @RequestMapping(value = "/api/sheet/{sheetId}/framework/{frameworkId}/", method = RequestMethod.POST)
-    public void setFramework(@PathVariable long sheetId, @PathVariable long frameworkId) {
-        Sheet sheet = AuthUtils.getSheet(request);
-    }*/
-
-    // get the sheet's available rolls, as array of tablerolls with arrays of tables
+    /** Get the sheet's available table rolls, as array of tablerolls with arrays of tables */
     @SheetOwner
     @RequestMapping(value = "/api/sheet/{sheetId}/tableroll/", method=RequestMethod.GET)
     public List<BenefitTableRoll> getAvailableTableRolls(@PathVariable long sheetId) {
@@ -131,7 +125,7 @@ public class SheetController {
         return frameworkRolls;
     }
 
-	// make the roll on this table for the given tableroll, returning the selected perk
+	/** Make the roll on this table for the given tableroll, returning the selected perk */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/{tableId}/{rollNumber}/", method=RequestMethod.POST)
 	public PerkSelectionResponse makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
@@ -205,8 +199,6 @@ public class SheetController {
 		sheet.getChosenPerks().add(perkSelection);
 		
 		// if all rolls have been made, flag the sheet as completed table rolls
-//        perkRanges.remove(tableRoll);		// remove the roll that was just made from the available list
-//		if (perkRanges.isEmpty()) {
         if (sheet.getChosenPerks().size() == sheet.getFramework().getTableRolls().size()) {
 			SheetUtils.moveToNextCreationStep(sheet);
 		}
@@ -214,19 +206,9 @@ public class SheetController {
 		sheetRepository.save(sheet);
 		
 		return new PerkSelectionResponse(perkSelection, sheet);
-	
-/*		load the table
-		make sure there is at least one 
-		roll d20, choose perk from range
-		if (perk is already selected)
-			reroll
-		add perk to the sheet's selected perks, for table roll rollId
-		if (all rolls are made) 
-			flag sheet as completedTableRolls
-		return selected perk
-		*/
 	}
 	
+	/** Swap two randomly chosen perks for a new chosen one */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.POST)
 	public ResponseEntity<?> swapPerks(@RequestBody PerkSwapRequest perkSwapRequest) {
@@ -269,6 +251,7 @@ public class SheetController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	/** Get the current attributes with info about inc/dec and cost. */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
 	public AttributeThing getAttributeThing() {
@@ -280,10 +263,15 @@ public class SheetController {
 
 	}
 	
+	/** Select the race for this sheet */
 	@SheetOwner
-	@RequestMapping(value = "api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
 	public ResponseEntity<?> selectRace(@PathVariable long raceId) {
 		Sheet sheet = AuthUtils.getSheet(request);
+		
+		if (sheet.getRace() != null) {
+			throw new BadRequestException();
+		}
 		
 		Race race = raceRepository.findOne(raceId);
 		if (race == null) {

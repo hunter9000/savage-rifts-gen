@@ -2,6 +2,7 @@ package savagerifts.model.framework;
 
 import savagerifts.model.DieType;
 import savagerifts.model.benefittable.BenefitTableRoll;
+import savagerifts.model.sheet.Roll;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,7 @@ public class Framework {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "id", unique = true, nullable = false, updatable = false)
 	private Long id;
 
 	@Column(name = "type", nullable = false, unique = true, updatable = false)
@@ -28,12 +29,13 @@ public class Framework {
 //	private PowerList powerList;
 //	private List<Gear> startingGear;
 
-	@Column(name = "startingAttributePoints")
+	@Column(name = "startingAttributePoints", updatable = false)
 	private Integer startingAttributePoints;
 
+	@Column(name = "canSelectRace", nullable = false, updatable = false)
+	private boolean canSelectRace = true;
 
-
-	@Column(name="startingStrengthDieType")
+/*	@Column(name="startingStrengthDieType")
 	@Enumerated(EnumType.STRING)
 	private DieType startingStrengthDieType;
 
@@ -53,9 +55,37 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private DieType startingVigorDieType;
 
+	
+	// starting attribute bonuses
+	@Column(name="startingStrengthBonus")
+	private Integer startingStrengthBonus;
+	@Column(name="startingAgilityBonus")
+	private Integer startingAgilityBonus;
+	@Column(name="startingSmartsBonus")
+	private Integer startingSmartsBonus;
+	@Column(name="startingSpiritBonus")
+	private Integer startingSpiritBonus;
+	@Column(name="startingVigorBonus")
+	private Integer startingVigorBonus;
+*/
 
+	@OneToOne
+	@JoinColumn(name = "startingStrength", updatable = false)
+	private Roll startingStrength;
+	@OneToOne
+	@JoinColumn(name = "startingAgility", updatable = false)
+	private Roll startingAgility;
+	@OneToOne
+	@JoinColumn(name = "startingSmarts", updatable = false)
+	private Roll startingSmarts;
+	@OneToOne
+	@JoinColumn(name = "startingSpirit", updatable = false)
+	private Roll startingSpirit;
+	@OneToOne
+	@JoinColumn(name = "startingVigor", updatable = false)
+	private Roll startingVigor;
 
-	@Column(name="maxStrengthDieType")
+/*	@Column(name="maxStrengthDieType")
 	@Enumerated(EnumType.STRING)
 	private DieType maxStrengthDieType;
 
@@ -75,6 +105,44 @@ public class Framework {
 	@Enumerated(EnumType.STRING)
 	private DieType maxVigorDieType;
 
+	// maximum attribute bonuses
+	@Column(name="maxStrengthBonus")
+	private Integer maxStrengthBonus;
+	@Column(name="maxAgilityBonus")
+	private Integer maxAgilityBonus;
+	@Column(name="maxSmartsBonus")
+	private Integer maxSmartsBonus;
+	@Column(name="maxSpiritBonus")
+	private Integer maxSpiritBonus;
+	@Column(name="maxVigorBonus")
+	private Integer maxVigorBonus;
+*/	
+
+	/** These are the maximums when buying attributes during that phase, not necessarily the limit when purchasing edges, etc. */
+	@OneToOne
+	@JoinColumn(name = "maxStrength", updatable = false)
+	private Roll maxStrength;
+	@OneToOne
+	@JoinColumn(name = "maxAgility", updatable = false)
+	private Roll maxAgility;
+	@OneToOne
+	@JoinColumn(name = "maxSmarts", updatable = false)
+	private Roll maxSmarts;
+	@OneToOne
+	@JoinColumn(name = "maxSpirit", updatable = false)
+	private Roll maxSpirit;
+	@OneToOne
+	@JoinColumn(name = "maxVigor", updatable = false)
+	private Roll maxVigor;
+	
+	/** If the attributes have a natural limit when purchasing edges, etc. Doesn't apply during attribute buy step, that's limited by the max attrs. */
+	private boolean hasStrengthLimit;
+	private boolean hasAgilityLimit;
+	private boolean hasSmartsLimit;
+	private boolean hasSpiritLimit;
+	private boolean hasVigorLimit;
+	
+	
 	@Transient
 	public String getDisplayName() {
 		return type.getDisplayName();
@@ -82,8 +150,6 @@ public class Framework {
 	public void setDisplayName() {
 		// nothing, read only property
 	}
-	
-//	private Integer maxStrengthBonus;
 
 	public Long getId() {
 		return id;
@@ -113,75 +179,187 @@ public class Framework {
 		this.startingAttributePoints = startingAttributePoints;
 	}
 
-	public DieType getStartingStrengthDieType() {
-		return startingStrengthDieType;
+	public boolean isCanSelectRace() {
+		return canSelectRace;
 	}
-	public void setStartingStrengthDieType(DieType startingStrengthDieType) {
-		this.startingStrengthDieType = startingStrengthDieType;
-	}
-
-	public DieType getStartingAgilityDieType() {
-		return startingAgilityDieType;
-	}
-	public void setStartingAgilityDieType(DieType startingAgilityDieType) {
-		this.startingAgilityDieType = startingAgilityDieType;
+	public void setCanSelectRace(boolean canSelectRace) {
+		this.canSelectRace = canSelectRace;
 	}
 
-	public DieType getStartingSmartsDieType() {
-		return startingSmartsDieType;
+	public Roll getStartingStrength() {
+		return startingStrength;
 	}
-	public void setStartingSmartsDieType(DieType startingSmartsDieType) {
-		this.startingSmartsDieType = startingSmartsDieType;
-	}
-
-	public DieType getStartingSpiritDieType() {
-		return startingSpiritDieType;
-	}
-	public void setStartingSpiritDieType(DieType startingSpiritDieType) {
-		this.startingSpiritDieType = startingSpiritDieType;
+	public void setStartingStrength(Roll startingStrength) {
+		this.startingStrength = startingStrength;
 	}
 
-	public DieType getStartingVigorDieType() {
-		return startingVigorDieType;
+	public Roll getStartingAgility() {
+		return startingAgility;
 	}
-	public void setStartingVigorDieType(DieType startingVigorDieType) {
-		this.startingVigorDieType = startingVigorDieType;
-	}
-
-	public DieType getMaxStrengthDieType() {
-		return maxStrengthDieType;
-	}
-	public void setMaxStrengthDieType(DieType maxStrengthDieType) {
-		this.maxStrengthDieType = maxStrengthDieType;
+	public void setStartingAgility(Roll startingAgility) {
+		this.startingAgility = startingAgility;
 	}
 
-	public DieType getMaxAgilityDieType() {
-		return maxAgilityDieType;
+	public Roll getStartingSmarts() {
+		return startingSmarts;
 	}
-	public void setMaxAgilityDieType(DieType maxAgilityDieType) {
-		this.maxAgilityDieType = maxAgilityDieType;
-	}
-
-	public DieType getMaxSmartsDieType() {
-		return maxSmartsDieType;
-	}
-	public void setMaxSmartsDieType(DieType maxSmartsDieType) {
-		this.maxSmartsDieType = maxSmartsDieType;
+	public void setStartingSmarts(Roll startingSmarts) {
+		this.startingSmarts = startingSmarts;
 	}
 
-	public DieType getMaxSpiritDieType() {
-		return maxSpiritDieType;
+	public Roll getStartingSpirit() {
+		return startingSpirit;
 	}
-	public void setMaxSpiritDieType(DieType maxSpiritDieType) {
-		this.maxSpiritDieType = maxSpiritDieType;
+	public void setStartingSpirit(Roll startingSpirit) {
+		this.startingSpirit = startingSpirit;
 	}
 
-	public DieType getMaxVigorDieType() {
-		return maxVigorDieType;
+	public Roll getStartingVigor() {
+		return startingVigor;
 	}
-	public void setMaxVigorDieType(DieType maxVigorDieType) {
-		this.maxVigorDieType = maxVigorDieType;
+	public void setStartingVigor(Roll startingVigor) {
+		this.startingVigor = startingVigor;
 	}
+
+	public Roll getMaxStrength() {
+		return maxStrength;
+	}
+	public void setMaxStrength(Roll maxStrength) {
+		this.maxStrength = maxStrength;
+	}
+
+	public Roll getMaxAgility() {
+		return maxAgility;
+	}
+	public void setMaxAgility(Roll maxAgility) {
+		this.maxAgility = maxAgility;
+	}
+
+	public Roll getMaxSmarts() {
+		return maxSmarts;
+	}
+	public void setMaxSmarts(Roll maxSmarts) {
+		this.maxSmarts = maxSmarts;
+	}
+
+	public Roll getMaxSpirit() {
+		return maxSpirit;
+	}
+	public void setMaxSpirit(Roll maxSpirit) {
+		this.maxSpirit = maxSpirit;
+	}
+
+	public Roll getMaxVigor() {
+		return maxVigor;
+	}
+	public void setMaxVigor(Roll maxVigor) {
+		this.maxVigor = maxVigor;
+	}
+
+	public boolean isHasStrengthLimit() {
+		return hasStrengthLimit;
+	}
+	public void setHasStrengthLimit(boolean hasStrengthLimit) {
+		this.hasStrengthLimit = hasStrengthLimit;
+	}
+
+	public boolean isHasAgilityLimit() {
+		return hasAgilityLimit;
+	}
+	public void setHasAgilityLimit(boolean hasAgilityLimit) {
+		this.hasAgilityLimit = hasAgilityLimit;
+	}
+
+	public boolean isHasSmartsLimit() {
+		return hasSmartsLimit;
+	}
+	public void setHasSmartsLimit(boolean hasSmartsLimit) {
+		this.hasSmartsLimit = hasSmartsLimit;
+	}
+
+	public boolean isHasSpiritLimit() {
+		return hasSpiritLimit;
+	}
+	public void setHasSpiritLimit(boolean hasSpiritLimit) {
+		this.hasSpiritLimit = hasSpiritLimit;
+	}
+
+	public boolean isHasVigorLimit() {
+		return hasVigorLimit;
+	}
+	public void setHasVigorLimit(boolean hasVigorLimit) {
+		this.hasVigorLimit = hasVigorLimit;
+	}
+
+	//	public DieType getStartingStrengthDieType() {
+//		return startingStrengthDieType;
+//	}
+//	public void setStartingStrengthDieType(DieType startingStrengthDieType) {
+//		this.startingStrengthDieType = startingStrengthDieType;
+//	}
+//
+//	public DieType getStartingAgilityDieType() {
+//		return startingAgilityDieType;
+//	}
+//	public void setStartingAgilityDieType(DieType startingAgilityDieType) {
+//		this.startingAgilityDieType = startingAgilityDieType;
+//	}
+//
+//	public DieType getStartingSmartsDieType() {
+//		return startingSmartsDieType;
+//	}
+//	public void setStartingSmartsDieType(DieType startingSmartsDieType) {
+//		this.startingSmartsDieType = startingSmartsDieType;
+//	}
+//
+//	public DieType getStartingSpiritDieType() {
+//		return startingSpiritDieType;
+//	}
+//	public void setStartingSpiritDieType(DieType startingSpiritDieType) {
+//		this.startingSpiritDieType = startingSpiritDieType;
+//	}
+//
+//	public DieType getStartingVigorDieType() {
+//		return startingVigorDieType;
+//	}
+//	public void setStartingVigorDieType(DieType startingVigorDieType) {
+//		this.startingVigorDieType = startingVigorDieType;
+//	}
+//
+//	public DieType getMaxStrengthDieType() {
+//		return maxStrengthDieType;
+//	}
+//	public void setMaxStrengthDieType(DieType maxStrengthDieType) {
+//		this.maxStrengthDieType = maxStrengthDieType;
+//	}
+//
+//	public DieType getMaxAgilityDieType() {
+//		return maxAgilityDieType;
+//	}
+//	public void setMaxAgilityDieType(DieType maxAgilityDieType) {
+//		this.maxAgilityDieType = maxAgilityDieType;
+//	}
+//
+//	public DieType getMaxSmartsDieType() {
+//		return maxSmartsDieType;
+//	}
+//	public void setMaxSmartsDieType(DieType maxSmartsDieType) {
+//		this.maxSmartsDieType = maxSmartsDieType;
+//	}
+//
+//	public DieType getMaxSpiritDieType() {
+//		return maxSpiritDieType;
+//	}
+//	public void setMaxSpiritDieType(DieType maxSpiritDieType) {
+//		this.maxSpiritDieType = maxSpiritDieType;
+//	}
+//
+//	public DieType getMaxVigorDieType() {
+//		return maxVigorDieType;
+//	}
+//	public void setMaxVigorDieType(DieType maxVigorDieType) {
+//		this.maxVigorDieType = maxVigorDieType;
+//	}
 
 	//	Combat Cyborg, rolls: [BenefitTableRoll(rollId: 1, allowed: {Cybernetics, Close Combat Weapons, Ranged Weapons, Training})
 //						   BenefitTableRoll(rollId: 2, allowed: {Cybernetics, Close Combat Weapons, Ranged Weapons, Training})

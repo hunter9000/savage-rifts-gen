@@ -1,3 +1,5 @@
+USE savage_rifts;
+
 CREATE TABLE `roll` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`die_type` VARCHAR(255) NOT NULL,

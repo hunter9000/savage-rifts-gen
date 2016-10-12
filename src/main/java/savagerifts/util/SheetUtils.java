@@ -31,6 +31,7 @@ public class SheetUtils {
 		// if a framework has just been chosen, set the attrs to the max of current and the framework's starting
 		Framework framework = sheet.getFramework();
 		if (framework != null) {
+			// set starting attribute points
 			
 			// find max of default and framework's starting stat (if specified), set the stat to that
 //			sheet.setStrength(DEFAULT_STARTING_ATTRIBUTE, startingStrengthDieType);
@@ -49,10 +50,35 @@ public class SheetUtils {
 		sheet.setCreationStep(step.getNextStep());
 	}
 
-	public AttributeThing calculateAttributePurchases() {
-		return null;
+	/** Create the attribute point buy info based on this sheet. Sheet must have all steps prior to attr point buy
+	  * step finished (framework, race, etc). The current values are set, and the min and max are calculated based
+	  * on looking at the framework and race, etc. */
+	public AttributeThing calculateAttributePurchases(Sheet sheet) {
+		
+		AttributeThing attrs = new AttributeThing();
+		
+		attrs.remainingAttrPoints = sheet.getRemainingAttrPoints();
+		
+		attrs.strength = sheet.getStrength();
+		attrs.agility = sheet.getAgility();
+		attrs.smarts = sheet.getSmarts();
+		attrs.spirit = sheet.getSpirit();
+		attrs.vigor = sheet.getVigor();
+		
+		// get the max and min from the framework/race
+		Framework framework = sheet.getFramework();
+		
+		// can increase if the current is less than the max
+		attrs.canIncreaseStrength = attrs.strength.compareTo(framework.getMaxStrength()) < 0;
+		attrs.canIncreaseAgility = attrs.agility.compareTo(framework.getMaxAgility()) < 0;
+		attrs.canIncreaseSmarts = attrs.smarts.compareTo(framework.getMaxSmarts()) < 0;
+		attrs.canIncreaseSpirit = attrs.spirit.compareTo(framework.getMaxSpirit()) < 0;
+		attrs.canIncreaseVigor = attrs.vigor.compareTo(framework.getMaxVigor()) < 0;
+		
+		// get race, set can increase to compareto(race.max)			???
+		
+		return attrs;
 	}
 	
-	
-	
+
 }

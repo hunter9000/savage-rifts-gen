@@ -5,29 +5,26 @@ import savagerifts.model.sheet.Sheet;
 
 public class AttributeThing {
 	
-	private Roll strength = new Roll();
-	private Roll agility = new Roll();
-	private Roll smarts = new Roll();
-	private Roll spirit = new Roll();
-	private Roll vigor = new Roll();
+	public Roll strength = new Roll();
+	public Roll agility = new Roll();
+	public Roll smarts = new Roll();
+	public Roll spirit = new Roll();
+	public Roll vigor = new Roll();
 	
-	private int remainingAttrPoints;
+	public int remainingAttrPoints;
 	
-	private boolean canIncreaseStrength;
-	// ...
+	public boolean canIncreaseStrength;
+	public boolean canIncreaseAgility;
+	public boolean canIncreaseSmarts;
+	public boolean canIncreaseSpirit;
+	public boolean canIncreaseVigor;
 	
-	private boolean canDecreaseStrength;
-	// ...
+	public boolean canDecreaseStrength;
+	public boolean canDecreaseAgility;
+	public boolean canDecreaseSmarts;
+	public boolean canDecreaseSpirit;
+	public boolean canDecreaseVigor;
 	
-	public AttributeThing(Sheet sheet) {
-		strength.setDieType(sheet.getStrengthDieType());
-		strength.setModifier(sheet.getStrengthBonus());
-		
-		// etc
-		remainingAttrPoints = sheet.getRemainingAttrPoints();
-		
-		
-		
-//		canIncreaseStrength = strength < maxStrength;
-	}
+	
+	
 }

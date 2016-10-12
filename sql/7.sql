@@ -1,4 +1,4 @@
-
+USE savage_rifts;
 
 DELETE FROM perk_range;
 DELETE FROM perk;
@@ -216,7 +216,3 @@ INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (17, 18, @EDUCATIO
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @EDUCATION_ID, @EDUCATION12);
 
 
-
-
-
-COMMIT;

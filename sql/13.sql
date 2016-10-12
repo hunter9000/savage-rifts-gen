@@ -1,2 +1,2 @@
+USE savage_rifts;
 
-ALTER TABLE `sheet` ADD COLUMN `race` BIGINT(20) NULL DEFAULT NULL;

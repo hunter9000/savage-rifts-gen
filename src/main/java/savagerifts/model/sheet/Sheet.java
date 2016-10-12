@@ -27,21 +27,21 @@ public class Sheet {
 	private String name;
 
 	// attribute die types
-	@Column(name="strengthDieType")
+/*	@Column(name="strengthDieType")
 	@Enumerated(EnumType.STRING)
 	private DieType strengthDieType = DieType.D4;
 	@Column(name="agilityDieType")
 	@Enumerated(EnumType.STRING)
-	private DieType agilityDieType;
+	private DieType agilityDieType = DieType.D4;
 	@Column(name="smartsDieType")
 	@Enumerated(EnumType.STRING)
-	private DieType smartsDieType;
+	private DieType smartsDieType = DieType.D4;
 	@Column(name="spiritDieType")
 	@Enumerated(EnumType.STRING)
-	private DieType spiritDieType;
+	private DieType spiritDieType = DieType.D4;
 	@Column(name="vigorDieType")
 	@Enumerated(EnumType.STRING)
-	private DieType vigorDieType;
+	private DieType vigorDieType = DieType.D4;
 	
 	// attribute bonuses
 	@Column(name="strengthBonus")
@@ -53,13 +53,30 @@ public class Sheet {
 	@Column(name="spiritBonus")
 	private Integer spiritBonus;
 	@Column(name="vigorBonus")
-	private Integer vigorBonus;
+	private Integer vigorBonus;*/
+	
+	@OneToOne
+	@JoinColumn(name = "strength", nullable = false)
+	private Roll strength = new Roll();
+	@OneToOne
+	@JoinColumn(name = "agility", nullable = false)
+	private Roll agility = new Roll();
+	@OneToOne
+	@JoinColumn(name = "smarts", nullable = false)
+	private Roll smarts = new Roll();
+	@OneToOne
+	@JoinColumn(name = "spirit", nullable = false)
+	private Roll spirit = new Roll();
+	@OneToOne
+	@JoinColumn(name = "vigor", nullable = false)
+	private Roll vigor = new Roll();
+	
 	
 	@Column(name = "remainingAttributePoints")
-	private Integer remainingAttrPoints;
+	private Integer remainingAttrPoints = 5;
 	
 	@Column(name = "remainingSkillPoints")
-	private Integer remainingSkillPoints;
+	private Integer remainingSkillPoints = 15;
 	
 	@Column(name = "remainingHindrancePoints")
 	private Integer remainingHindrancePoints;		// points left from buying hindrances that can be spent on edges, etc
@@ -93,12 +110,6 @@ public class Sheet {
 	private List<PerkSelection> chosenPerks;		// this object needs to track the perk selected (if any) and the rollId of the class's tableroll so
 													// we know which of the given rolls this was chosen by
 	
-/*	@Column(name = "hasCompletedTableRolls", nullable = false)
-	private boolean hasCompletedTableRolls = false;		// true if all rolls have been made and all swaps have been made (if any)
-	
-	@Column(name = "hasCompletedTableRollSwaps", nullable = false)
-	private boolean hasCompletedTableRollSwaps = false;*/
-	
 	@Column(name = "creationStep", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private SheetCreationStep creationStep = SheetCreationStep.TABLE_ROLLS;
@@ -121,37 +132,10 @@ public class Sheet {
 */	
 //	boolean hasMagic? hasPsionics?
 	
-	// transient stages
-	//boolean hasSelectedFramework
-	//boolean hasSelectedRace
-	//boolean hasSelectedAttributes
-	//boolean hasSelectedSkills
-	//boolean hasSelectedHindrances
 /*
 	@Column(name = "hasSelectedEdges")
 	boolean hasSelectedEdges;
 */	
-	
-
-//	void create() {
-//		str = new Roll(DieType.D4, 0);
-//		agi = new Roll(DieType.D4, 0);
-//		smr = new Roll(DieType.D4, 0);
-//		spr = new Roll(DieType.D4, 0);
-//		vgr = new Roll(DieType.D4, 0);
-//
-//		remainingAttrPoints = 5;
-//		remainingSkillPoints = 15;
-//	}
-//
-//	void populateTransients() {
-//		if (framework == null) {
-//			hasSelectedFramework = true;
-//		}
-//		if () {
-//
-//		}
-//	}
 
 
 	public Long getId() {
@@ -175,74 +159,109 @@ public class Sheet {
 		this.name = name;
 	}
 
-	public DieType getStrengthDieType() {
-		return strengthDieType;
+//	public DieType getStrengthDieType() {
+//		return strengthDieType;
+//	}
+//	public void setStrengthDieType(DieType strengthDieType) {
+//		this.strengthDieType = strengthDieType;
+//	}
+//
+//	public DieType getAgilityDieType() {
+//		return agilityDieType;
+//	}
+//	public void setAgilityDieType(DieType agilityDieType) {
+//		this.agilityDieType = agilityDieType;
+//	}
+//
+//	public DieType getSmartsDieType() {
+//		return smartsDieType;
+//	}
+//	public void setSmartsDieType(DieType smartsDieType) {
+//		this.smartsDieType = smartsDieType;
+//	}
+//
+//	public DieType getSpiritDieType() {
+//		return spiritDieType;
+//	}
+//	public void setSpiritDieType(DieType spiritDieType) {
+//		this.spiritDieType = spiritDieType;
+//	}
+//
+//	public DieType getVigorDieType() {
+//		return vigorDieType;
+//	}
+//	public void setVigorDieType(DieType vigorDieType) {
+//		this.vigorDieType = vigorDieType;
+//	}
+//
+//	public Integer getStrengthBonus() {
+//		return strengthBonus;
+//	}
+//	public void setStrengthBonus(Integer strengthBonus) {
+//		this.strengthBonus = strengthBonus;
+//	}
+//
+//	public Integer getAgilityBonus() {
+//		return agilityBonus;
+//	}
+//	public void setAgilityBonus(Integer agilityBonus) {
+//		this.agilityBonus = agilityBonus;
+//	}
+//
+//	public Integer getSmartsBonus() {
+//		return smartsBonus;
+//	}
+//	public void setSmartsBonus(Integer smartsBonus) {
+//		this.smartsBonus = smartsBonus;
+//	}
+//
+//	public Integer getSpiritBonus() {
+//		return spiritBonus;
+//	}
+//	public void setSpiritBonus(Integer spiritBonus) {
+//		this.spiritBonus = spiritBonus;
+//	}
+//
+//	public Integer getVigorBonus() {
+//		return vigorBonus;
+//	}
+//	public void setVigorBonus(Integer vigorBonus) {
+//		this.vigorBonus = vigorBonus;
+//	}
+
+	public Roll getStrength() {
+		return strength;
 	}
-	public void setStrengthDieType(DieType strengthDieType) {
-		this.strengthDieType = strengthDieType;
+	public void setStrength(Roll strength) {
+		this.strength = strength;
 	}
 
-	public DieType getAgilityDieType() {
-		return agilityDieType;
+	public Roll getAgility() {
+		return agility;
 	}
-	public void setAgilityDieType(DieType agilityDieType) {
-		this.agilityDieType = agilityDieType;
-	}
-
-	public DieType getSmartsDieType() {
-		return smartsDieType;
-	}
-	public void setSmartsDieType(DieType smartsDieType) {
-		this.smartsDieType = smartsDieType;
+	public void setAgility(Roll agility) {
+		this.agility = agility;
 	}
 
-	public DieType getSpiritDieType() {
-		return spiritDieType;
+	public Roll getSmarts() {
+		return smarts;
 	}
-	public void setSpiritDieType(DieType spiritDieType) {
-		this.spiritDieType = spiritDieType;
-	}
-
-	public DieType getVigorDieType() {
-		return vigorDieType;
-	}
-	public void setVigorDieType(DieType vigorDieType) {
-		this.vigorDieType = vigorDieType;
+	public void setSmarts(Roll smarts) {
+		this.smarts = smarts;
 	}
 
-	public Integer getStrengthBonus() {
-		return strengthBonus;
+	public Roll getSpirit() {
+		return spirit;
 	}
-	public void setStrengthBonus(Integer strengthBonus) {
-		this.strengthBonus = strengthBonus;
-	}
-
-	public Integer getAgilityBonus() {
-		return agilityBonus;
-	}
-	public void setAgilityBonus(Integer agilityBonus) {
-		this.agilityBonus = agilityBonus;
+	public void setSpirit(Roll spirit) {
+		this.spirit = spirit;
 	}
 
-	public Integer getSmartsBonus() {
-		return smartsBonus;
+	public Roll getVigor() {
+		return vigor;
 	}
-	public void setSmartsBonus(Integer smartsBonus) {
-		this.smartsBonus = smartsBonus;
-	}
-
-	public Integer getSpiritBonus() {
-		return spiritBonus;
-	}
-	public void setSpiritBonus(Integer spiritBonus) {
-		this.spiritBonus = spiritBonus;
-	}
-
-	public Integer getVigorBonus() {
-		return vigorBonus;
-	}
-	public void setVigorBonus(Integer vigorBonus) {
-		this.vigorBonus = vigorBonus;
+	public void setVigor(Roll vigor) {
+		this.vigor = vigor;
 	}
 
 	public Integer getRemainingAttrPoints() {

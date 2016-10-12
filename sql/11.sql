@@ -1,4 +1,4 @@
-
+USE savage_rifts;
 
 ALTER TABLE `race` ADD COLUMN `type` VARCHAR(255) NOT NULL;
 

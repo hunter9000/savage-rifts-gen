@@ -92,7 +92,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
 		console.log($scope.perkItems);
 		console.log($scope.selectedTable);
 
-
+		
 	}
 
     $scope.back = function() {

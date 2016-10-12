@@ -73,6 +73,11 @@ savageRiftsApp.config(function($routeProvider) {
             controller:  'raceSelectionController'
         })
 
+		.when('/attributebuy/:sheetId', {
+			templateUrl: 'pages/attributebuy.html',
+			controller : 'attributeBuyController'
+		})
+		
         // generic error page
         .when('/error', {
             templateUrl: 'pages/error.html',

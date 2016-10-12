@@ -1,3 +1,4 @@
+USE savage_rifts;
 
 CREATE TABLE `benefit_table_roll` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,

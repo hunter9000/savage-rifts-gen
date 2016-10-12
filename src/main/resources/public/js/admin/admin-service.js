@@ -57,6 +57,9 @@
                 else if (sheet.creationStep == 'RACE') {
                     $location.path('/raceselection/' + sheet.id);
                 }
+				else if (sheet.creationStep == 'ATTRIBUTES') {
+                    $location.path('/attributebuy/' + sheet.id);
+                }
             }
         };
 	});

@@ -1,7 +1,4 @@
-
-
-ALTER TABLE `sheet` ADD COLUMN `has_completed_table_roll_swaps` BIT(1) NOT NULL DEFAULT b'0';
-ALTER TABLE `sheet` MODIFY `has_completed_table_rolls` BIT(1) NOT NULL DEFAULT b'0';
+USE savage_rifts;
 
 
 CREATE TABLE `perk_selection` (

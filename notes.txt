@@ -43,7 +43,7 @@ step 1
 --api/sheet/framework POST 		choose framework
 	// take frameworkId, set character framework if not set already. 
 
-api/sheet/perks	GET						gets the already chosen perks
+--api/sheet/perks	GET						gets the already chosen perks
 --api/sheet/tableroll GET 				gets the list of table choices that this sheet can make rolls on, 
 	// get sheet, if framework == null error
 	// get List<TableRoll> from framework
