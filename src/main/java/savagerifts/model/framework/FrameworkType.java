@@ -16,6 +16,9 @@ public enum FrameworkType {
 
 	String frameworkName;
 
+	public String getDisplayName() {
+		return frameworkName;
+	}
 	FrameworkType(String frameworkName) {
 		this.frameworkName = frameworkName;
 	}

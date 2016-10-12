@@ -13,6 +13,8 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
            headers: {'x-access-token': $window.localStorage['jwtToken']}
     })
     .then(function successCallback(response) {
+        console.log('received from /api/sheet/' + $routeParams.sheetId);
+        console.log(response.data);
         $scope.sheet = response.data;
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";
@@ -25,6 +27,8 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
         { headers: {'x-access-token': $window.localStorage['jwtToken']} }
     )
     .then(function successCallback(response) {
+        console.log('received from /api/benefittable/');
+        console.log(response.data);
         $scope.benefitTables = response.data;
     }, function errorCallback(response) {
         console.log(response);
@@ -36,6 +40,8 @@ savageRiftsApp.controller('tableRollsController', function($scope, $http, $windo
         { headers: {'x-access-token': $window.localStorage['jwtToken']} }
     )
     .then(function successCallback(response) {
+        console.log('received from /api/sheet/' + $routeParams.sheetId + '/tableroll/');
+        console.log(response.data);
         $scope.choosableTables = response.data;
     }, function errorCallback(response) {
         console.log(response);

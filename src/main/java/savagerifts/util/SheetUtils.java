@@ -1,8 +1,11 @@
 package savagerifts.util;
 
+import savagerifts.model.DieType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
+import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.response.AttributeThing;
 
 public class SheetUtils {
@@ -38,7 +41,14 @@ public class SheetUtils {
 			
 		}
 	}
-	
+
+	/** Moves the character to the next step, which will be null if done with all steps. */
+	public static void moveToNextCreationStep(Sheet sheet) {
+		SheetCreationStep step = sheet.getCreationStep();
+
+		sheet.setCreationStep(step.getNextStep());
+	}
+
 	public AttributeThing calculateAttributePurchases() {
 		return null;
 	}

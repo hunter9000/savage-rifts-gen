@@ -4,6 +4,7 @@ import savagerifts.model.DieType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.race.Race;
 import savagerifts.model.user.User;
 
 import javax.persistence.*;
@@ -102,10 +103,10 @@ public class Sheet {
 	@Enumerated(EnumType.STRING)
 	private SheetCreationStep creationStep = SheetCreationStep.TABLE_ROLLS;
 
+	@OneToOne
+	@JoinColumn(name = "race")
+	private Race race;
 
-	//@Column(name = "race")
-//	private Race race;
-//
 //	private List<SkillRoll> skills;			// skills and their rolls
 //
 //	private List<Language> languages;		// known languages
@@ -334,28 +335,14 @@ public class Sheet {
 	public void setFramework(Framework framework) {
 		this.framework = framework;
 	}
-//
-//	public boolean isHasCompletedTableRolls() {
-//		return hasCompletedTableRolls;
-//	}
-//	public void setHasCompletedTableRolls(boolean hasCompletedTableRolls) {
-//		this.hasCompletedTableRolls = hasCompletedTableRolls;
-//	}
-//
-//	public boolean isHasCompletedTableRollSwaps() {
-//		return hasCompletedTableRollSwaps;
-//	}
-//	public void setHasCompletedTableRollSwaps(boolean hasCompletedTableRollSwaps) {
-//		this.hasCompletedTableRollSwaps = hasCompletedTableRollSwaps;
-//	}
 
-	//	public Race getRace() {
-//		return race;
-//	}
-//	public void setRace(Race race) {
-//		this.race = race;
-//	}
-//
+	public Race getRace() {
+		return race;
+	}
+	public void setRace(Race race) {
+		this.race = race;
+	}
+
 //	public List<SkillRoll> getSkills() {
 //		return skills;
 //	}

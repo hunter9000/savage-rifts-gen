@@ -1,6 +1,6 @@
 
 	<select name="repeatSelect" id="repeatSelect" ng-model="selectedRaceId">
-		<option ng-repeat="option in races" value="{{race.id}}">{{race.displayName}}</option>
+		<option ng-repeat="race in races" value="{{race.id}}">{{race.displayName}}</option>
 	</select>
 	
 	<button ng-click="selectRace()">Select Race</button>

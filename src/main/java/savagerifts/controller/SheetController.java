@@ -12,6 +12,7 @@ import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
@@ -48,6 +49,9 @@ public class SheetController {
 
     @Autowired
     private PerkSelectionRepository perkSelectionRepository;
+
+	@Autowired
+	private RaceRepository raceRepository;
 
     @Autowired
     private HttpServletRequest request;
@@ -204,7 +208,7 @@ public class SheetController {
 //        perkRanges.remove(tableRoll);		// remove the roll that was just made from the available list
 //		if (perkRanges.isEmpty()) {
         if (sheet.getChosenPerks().size() == sheet.getFramework().getTableRolls().size()) {
-            sheet.setCreationStep(SheetCreationStep.TABLE_ROLL_SWAP);
+			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		
 		sheetRepository.save(sheet);
@@ -257,7 +261,7 @@ public class SheetController {
             }
         }
         if (numUnswapped <= 1) {
-            sheet.setCreationStep(SheetCreationStep.RACE);
+			SheetUtils.moveToNextCreationStep(sheet);
         }
 
         sheetRepository.save(sheet);
@@ -288,7 +292,8 @@ public class SheetController {
 		
 		sheet.setRace(race);
 		SheetUtils.recalculateAttributes(sheet);
-		
+		SheetUtils.moveToNextCreationStep(sheet);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
