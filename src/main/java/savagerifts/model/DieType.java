@@ -10,10 +10,27 @@ public enum DieType {
 	D20(20);
 
 	private int pips;
-	DieType(int pips) {
-		this.pips = pips;
-	}
+
 	public int getPips() {
 		return pips;
 	}
+
+	public DieType getIncreasedType() {
+		if (this != D20) {
+			return DieType.values()[this.ordinal()+1];
+		}
+		return this;
+	}
+
+	public DieType getDecreasedType() {
+		if (this != D0) {
+			return DieType.values()[this.ordinal()-1];
+		}
+		return this;
+	}
+
+	DieType(int pips) {
+		this.pips = pips;
+	}
+
 }

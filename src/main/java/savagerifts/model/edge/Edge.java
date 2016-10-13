@@ -26,7 +26,7 @@ public class Edge {
 			inverseJoinColumns = { @JoinColumn(name = "frameworkId", nullable = false, updatable = false) })		// column that points to the framework table
 	private List<Framework> requiredFrameworks;
 
-	// i.e. STR d10+
+	// i.e. STRENGTH d10+
 	//AttributeType requiredAttribute;
 	//DieType requiredAttributeDie;
 

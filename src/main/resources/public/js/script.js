@@ -77,6 +77,11 @@ savageRiftsApp.config(function($routeProvider) {
 			templateUrl: 'pages/attributebuy.html',
 			controller : 'attributeBuyController'
 		})
+
+        .when('/skillbuy/:sheetId', {
+            templateUrl: 'pages/skillbuy.html',
+            controller : 'skillBuyController'
+        })
 		
         // generic error page
         .when('/error', {

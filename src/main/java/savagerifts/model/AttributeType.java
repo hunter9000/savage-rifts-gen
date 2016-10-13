@@ -1,5 +1,9 @@
 package savagerifts.model;
 
 public enum AttributeType {
-	STR, AGI, SMR, SPR, VGR;
+	STRENGTH,
+	AGILITY,
+	SMARTS,
+	SPIRIT,
+	VIGOR;
 }

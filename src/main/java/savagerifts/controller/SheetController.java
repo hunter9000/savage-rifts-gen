@@ -18,6 +18,7 @@ import savagerifts.model.user.User;
 import savagerifts.repository.*;
 import savagerifts.request.NewSheetRequest;
 import savagerifts.request.PerkSwapRequest;
+import savagerifts.request.PointBuyRequest;
 import savagerifts.response.AttributeBuy;
 import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
@@ -277,12 +278,43 @@ public class SheetController {
 	/** Get the current attributes with info about inc/dec and cost. */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
-	public AttributeBuy getAttributeThing() {
+	public AttributeBuy getAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
 
 		return attributes;
 	}
-}
 
+	/** Increase or decrease the given attributes */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.PUT)
+	public AttributeBuy increaseDecreaseAttributeBuy(@RequestBody PointBuyRequest pointBuyRequest) {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		// make the change, returns false if the change isn't valid
+		if (!SheetUtils.validateAndMakeAttributeChange(sheet, pointBuyRequest)) {
+			throw new BadRequestException();
+		}
+
+		sheetRepository.save(sheet);
+
+		// recreate the attributes after the change
+		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
+
+		return attributes;
+	}
+
+	/** Finish attribute point buy. remaining points must be 0 */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.POST)
+	public ResponseEntity<?> finishAttributeBuy() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		SheetUtils.moveToNextCreationStep(sheet);
+
+		sheetRepository.save(sheet);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+}

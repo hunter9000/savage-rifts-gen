@@ -1,7 +1,11 @@
 package savagerifts.response;
 
+import savagerifts.model.AttributeType;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AttributeBuy {
 	
@@ -12,18 +16,10 @@ public class AttributeBuy {
 	public Roll vigor = new Roll();
 	
 	public int remainingAttrPoints;
-	
-	public boolean canIncreaseStrength;
-	public boolean canIncreaseAgility;
-	public boolean canIncreaseSmarts;
-	public boolean canIncreaseSpirit;
-	public boolean canIncreaseVigor;
-	
-	public boolean canDecreaseStrength;
-	public boolean canDecreaseAgility;
-	public boolean canDecreaseSmarts;
-	public boolean canDecreaseSpirit;
-	public boolean canDecreaseVigor;
+
+	public Map<AttributeType, Boolean> canIncrease = new HashMap<>();
+
+	public Map<AttributeType, Boolean> canDecrease = new HashMap<>();
 
 	public Roll getStrength() {
 		return strength;
@@ -67,73 +63,18 @@ public class AttributeBuy {
 		this.remainingAttrPoints = remainingAttrPoints;
 	}
 
-	public boolean isCanIncreaseStrength() {
-		return canIncreaseStrength;
+	public Map<AttributeType, Boolean> getCanIncrease() {
+		return canIncrease;
 	}
-	public void setCanIncreaseStrength(boolean canIncreaseStrength) {
-		this.canIncreaseStrength = canIncreaseStrength;
-	}
-
-	public boolean isCanIncreaseAgility() {
-		return canIncreaseAgility;
-	}
-	public void setCanIncreaseAgility(boolean canIncreaseAgility) {
-		this.canIncreaseAgility = canIncreaseAgility;
+	public void setCanIncrease(Map<AttributeType, Boolean> canIncrease) {
+		this.canIncrease = canIncrease;
 	}
 
-	public boolean isCanIncreaseSmarts() {
-		return canIncreaseSmarts;
+	public Map<AttributeType, Boolean> getCanDecrease() {
+		return canDecrease;
 	}
-	public void setCanIncreaseSmarts(boolean canIncreaseSmarts) {
-		this.canIncreaseSmarts = canIncreaseSmarts;
-	}
-
-	public boolean isCanIncreaseSpirit() {
-		return canIncreaseSpirit;
-	}
-	public void setCanIncreaseSpirit(boolean canIncreaseSpirit) {
-		this.canIncreaseSpirit = canIncreaseSpirit;
+	public void setCanDecrease(Map<AttributeType, Boolean> canDecrease) {
+		this.canDecrease = canDecrease;
 	}
 
-	public boolean isCanIncreaseVigor() {
-		return canIncreaseVigor;
-	}
-	public void setCanIncreaseVigor(boolean canIncreaseVigor) {
-		this.canIncreaseVigor = canIncreaseVigor;
-	}
-
-	public boolean isCanDecreaseStrength() {
-		return canDecreaseStrength;
-	}
-	public void setCanDecreaseStrength(boolean canDecreaseStrength) {
-		this.canDecreaseStrength = canDecreaseStrength;
-	}
-
-	public boolean isCanDecreaseAgility() {
-		return canDecreaseAgility;
-	}
-	public void setCanDecreaseAgility(boolean canDecreaseAgility) {
-		this.canDecreaseAgility = canDecreaseAgility;
-	}
-
-	public boolean isCanDecreaseSmarts() {
-		return canDecreaseSmarts;
-	}
-	public void setCanDecreaseSmarts(boolean canDecreaseSmarts) {
-		this.canDecreaseSmarts = canDecreaseSmarts;
-	}
-
-	public boolean isCanDecreaseSpirit() {
-		return canDecreaseSpirit;
-	}
-	public void setCanDecreaseSpirit(boolean canDecreaseSpirit) {
-		this.canDecreaseSpirit = canDecreaseSpirit;
-	}
-
-	public boolean isCanDecreaseVigor() {
-		return canDecreaseVigor;
-	}
-	public void setCanDecreaseVigor(boolean canDecreaseVigor) {
-		this.canDecreaseVigor = canDecreaseVigor;
-	}
 }

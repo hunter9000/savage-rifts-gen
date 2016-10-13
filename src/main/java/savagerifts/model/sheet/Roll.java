@@ -19,6 +19,12 @@ public class Roll implements Comparable {
 	@Column(name = "modifier", nullable = false)
 	private Integer modifier = 0;
 
+	public Roll() { }
+	public Roll(DieType dieType, Integer modifier) {
+		this.dieType = dieType;
+		this.modifier = modifier;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +50,29 @@ public class Roll implements Comparable {
 		if (other != null) {
 			this.dieType = other.dieType;
 			this.modifier = other.modifier;
+		}
+	}
+
+	public void increase() {
+		if (dieType == DieType.D12) {
+			modifier = modifier + 1;
+		}
+		else {
+			dieType = dieType.getIncreasedType();
+		}
+	}
+
+	public void decrease() {
+		if (dieType == DieType.D12) {
+			if (modifier > 0) {
+				modifier = modifier - 1;
+			}
+			else {
+				dieType = dieType.getDecreasedType();
+			}
+		}
+		else {
+			dieType = dieType.getDecreasedType();
 		}
 	}
 

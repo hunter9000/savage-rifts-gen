@@ -60,6 +60,10 @@
 				else if (sheet.creationStep == 'ATTRIBUTES') {
                     $location.path('/attributebuy/' + sheet.id);
                 }
+                else if (sheet.creationStep == 'SKILLS') {
+                    $location.path('/skillbuy/' + sheet.id);
+                }
+
             }
         };
 	});

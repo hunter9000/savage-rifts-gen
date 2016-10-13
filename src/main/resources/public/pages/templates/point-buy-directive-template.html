@@ -3,10 +3,13 @@
 </div>
 
 <div class="point-buy-stat-col">
-    <span>{{stat}}</span>
+    <span ng-transclude></span>
 </div>
 <div class="point-buy-value-col">
-    <span>{{value.dieType}} +{{value.modifier}}</span>
+    <span>
+        {{value.dieType}}
+        <span ng-show="value.dieType == 'D12'">+{{value.modifier}}</span>
+    </span>
 </div>
 
 <div class="point-buy-button-col point-buy-inc-col">
