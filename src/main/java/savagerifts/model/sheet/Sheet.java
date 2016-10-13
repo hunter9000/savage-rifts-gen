@@ -55,19 +55,19 @@ public class Sheet {
 	@Column(name="vigorBonus")
 	private Integer vigorBonus;*/
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "strength", nullable = false)
 	private Roll strength = new Roll();
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "agility", nullable = false)
 	private Roll agility = new Roll();
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "smarts", nullable = false)
 	private Roll smarts = new Roll();
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "spirit", nullable = false)
 	private Roll spirit = new Roll();
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "vigor", nullable = false)
 	private Roll vigor = new Roll();
 	

@@ -22,4 +22,8 @@ public enum SheetCreationStep {
 		return null;
 	}
 
+	public boolean isBefore(SheetCreationStep step) {
+		return this.ordinal() < step.ordinal();
+	}
+
 }

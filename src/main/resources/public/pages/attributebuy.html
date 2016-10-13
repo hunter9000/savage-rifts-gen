@@ -1,3 +1,32 @@
 
+<link rel="stylesheet" href="css/point-buy.css" />
 
-attr buy
+<div class="container point-buy-wrapper">
+    <div class="row">
+        <statbuy stat="Strength" value="attributes.strength" canincrease="attributes.canIncreaseStrength" candecrease="attributes.canDecreaseStrength" dec="decStat" inc="incStat" />
+    </div>
+
+    <div class="row">
+        <statbuy stat="Agility" value="attributes.agility" canincrease="attributes.canIncreaseAgility" candecrease="attributes.canDecreaseAgility" dec="decStat" inc="incStat" />
+    </div>
+
+    <div class="row">
+        <statbuy stat="Smarts" value="attributes.smarts" canincrease="attributes.canIncreaseSmarts" candecrease="attributes.canDecreaseSmarts" dec="decStat" inc="incStat" />
+    </div>
+
+    <div class="row">
+        <statbuy stat="Spirit" value="attributes.spirit" canincrease="attributes.canIncreaseSpirit" candecrease="attributes.canDecreaseSpirit" dec="decStat" inc="incStat" />
+    </div>
+
+    <div class="row">
+        <statbuy stat="Vigor" value="attributes.vigor" canincrease="attributes.canIncreaseVigor" candecrease="attributes.canDecreaseVigor" dec="decStat" inc="incStat" />
+    </div>
+
+    <div>
+        Remaining Points: {{attributes.remainingAttrPoints}}
+    </div>
+</div>
+
+<div class="container">
+    <button ng-click='finalize()' ng-disabled="attributes.remainingAttrPoints < 0">Finish Point Buy</button>
+</div>

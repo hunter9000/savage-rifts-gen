@@ -6,7 +6,7 @@ import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
-import savagerifts.response.AttributeThing;
+import savagerifts.response.AttributeBuy;
 
 public class SheetUtils {
 	
@@ -27,14 +27,24 @@ public class SheetUtils {
 	public static void recalculateAttributes(Sheet sheet) {
 		// check that the creation stage is before attribute buy. if we have gotten to attribute buy then all the defaults should have already been set. 
 		// resetting them at this point will wipe out the player's point buy choices
+		if (!sheet.getCreationStep().isBefore(SheetCreationStep.ATTRIBUTES)) {
+			return;
+		}
 		
 		// if a framework has just been chosen, set the attrs to the max of current and the framework's starting
 		Framework framework = sheet.getFramework();
 		if (framework != null) {
 			// set starting attribute points
-			
+			if (framework.getStartingAttributePoints() != null) {
+				sheet.setRemainingAttrPoints(framework.getStartingAttributePoints());
+			}
+
 			// find max of default and framework's starting stat (if specified), set the stat to that
-//			sheet.setStrength(DEFAULT_STARTING_ATTRIBUTE, startingStrengthDieType);
+			sheet.getStrength().copy(framework.getStartingStrength());
+			sheet.getAgility().copy(framework.getStartingAgility());
+			sheet.getSmarts().copy(framework.getStartingSmarts());
+			sheet.getSpirit().copy(framework.getStartingSpirit());
+			sheet.getVigor().copy(framework.getStartingVigor());
 		}
 		
 		Race race = sheet.getRace();
@@ -53,9 +63,9 @@ public class SheetUtils {
 	/** Create the attribute point buy info based on this sheet. Sheet must have all steps prior to attr point buy
 	  * step finished (framework, race, etc). The current values are set, and the min and max are calculated based
 	  * on looking at the framework and race, etc. */
-	public AttributeThing calculateAttributePurchases(Sheet sheet) {
+	public static AttributeBuy calculateAttributePurchases(Sheet sheet) {
 		
-		AttributeThing attrs = new AttributeThing();
+		AttributeBuy attrs = new AttributeBuy();
 		
 		attrs.remainingAttrPoints = sheet.getRemainingAttrPoints();
 		

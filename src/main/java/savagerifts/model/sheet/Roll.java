@@ -39,9 +39,19 @@ public class Roll implements Comparable {
 	public void setModifier(Integer modifier) {
 		this.modifier = modifier;
 	}
-	
+
+	public void copy(Roll other) {
+		if (other != null) {
+			this.dieType = other.dieType;
+			this.modifier = other.modifier;
+		}
+	}
+
 	@Override
 	public int compareTo(Object other) {
+		if (other == null) {
+			return -1;
+		}
 		Roll rollB = (Roll)other;
 		int dieTypeComparison = this.dieType.compareTo(rollB.dieType);
 		if (dieTypeComparison == 0) {

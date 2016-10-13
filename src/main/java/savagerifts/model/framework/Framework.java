@@ -35,39 +35,6 @@ public class Framework {
 	@Column(name = "canSelectRace", nullable = false, updatable = false)
 	private boolean canSelectRace = true;
 
-/*	@Column(name="startingStrengthDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType startingStrengthDieType;
-
-	@Column(name="startingAgilityDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType startingAgilityDieType;
-
-	@Column(name="startingSmartsDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType startingSmartsDieType;
-
-	@Column(name="startingSpiritDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType startingSpiritDieType;
-
-	@Column(name="startingVigorDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType startingVigorDieType;
-
-	
-	// starting attribute bonuses
-	@Column(name="startingStrengthBonus")
-	private Integer startingStrengthBonus;
-	@Column(name="startingAgilityBonus")
-	private Integer startingAgilityBonus;
-	@Column(name="startingSmartsBonus")
-	private Integer startingSmartsBonus;
-	@Column(name="startingSpiritBonus")
-	private Integer startingSpiritBonus;
-	@Column(name="startingVigorBonus")
-	private Integer startingVigorBonus;
-*/
 
 	@OneToOne
 	@JoinColumn(name = "startingStrength", updatable = false)
@@ -85,38 +52,6 @@ public class Framework {
 	@JoinColumn(name = "startingVigor", updatable = false)
 	private Roll startingVigor;
 
-/*	@Column(name="maxStrengthDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType maxStrengthDieType;
-
-	@Column(name="maxAgilityDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType maxAgilityDieType;
-
-	@Column(name="maxSmartsDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType maxSmartsDieType;
-
-	@Column(name="maxSpiritDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType maxSpiritDieType;
-
-	@Column(name="maxVigorDieType")
-	@Enumerated(EnumType.STRING)
-	private DieType maxVigorDieType;
-
-	// maximum attribute bonuses
-	@Column(name="maxStrengthBonus")
-	private Integer maxStrengthBonus;
-	@Column(name="maxAgilityBonus")
-	private Integer maxAgilityBonus;
-	@Column(name="maxSmartsBonus")
-	private Integer maxSmartsBonus;
-	@Column(name="maxSpiritBonus")
-	private Integer maxSpiritBonus;
-	@Column(name="maxVigorBonus")
-	private Integer maxVigorBonus;
-*/	
 
 	/** These are the maximums when buying attributes during that phase, not necessarily the limit when purchasing edges, etc. */
 	@OneToOne
@@ -136,10 +71,15 @@ public class Framework {
 	private Roll maxVigor;
 	
 	/** If the attributes have a natural limit when purchasing edges, etc. Doesn't apply during attribute buy step, that's limited by the max attrs. */
+	@Column(name = "hasStrengthLimit", nullable = false, updatable = false)
 	private boolean hasStrengthLimit;
+	@Column(name = "hasAgilityLimit", nullable = false, updatable = false)
 	private boolean hasAgilityLimit;
+	@Column(name = "hasSmartsLimit", nullable = false, updatable = false)
 	private boolean hasSmartsLimit;
+	@Column(name = "hasSpiritLimit", nullable = false, updatable = false)
 	private boolean hasSpiritLimit;
+	@Column(name = "hasVigorLimit", nullable = false, updatable = false)
 	private boolean hasVigorLimit;
 	
 	
@@ -291,125 +231,5 @@ public class Framework {
 		this.hasVigorLimit = hasVigorLimit;
 	}
 
-	//	public DieType getStartingStrengthDieType() {
-//		return startingStrengthDieType;
-//	}
-//	public void setStartingStrengthDieType(DieType startingStrengthDieType) {
-//		this.startingStrengthDieType = startingStrengthDieType;
-//	}
-//
-//	public DieType getStartingAgilityDieType() {
-//		return startingAgilityDieType;
-//	}
-//	public void setStartingAgilityDieType(DieType startingAgilityDieType) {
-//		this.startingAgilityDieType = startingAgilityDieType;
-//	}
-//
-//	public DieType getStartingSmartsDieType() {
-//		return startingSmartsDieType;
-//	}
-//	public void setStartingSmartsDieType(DieType startingSmartsDieType) {
-//		this.startingSmartsDieType = startingSmartsDieType;
-//	}
-//
-//	public DieType getStartingSpiritDieType() {
-//		return startingSpiritDieType;
-//	}
-//	public void setStartingSpiritDieType(DieType startingSpiritDieType) {
-//		this.startingSpiritDieType = startingSpiritDieType;
-//	}
-//
-//	public DieType getStartingVigorDieType() {
-//		return startingVigorDieType;
-//	}
-//	public void setStartingVigorDieType(DieType startingVigorDieType) {
-//		this.startingVigorDieType = startingVigorDieType;
-//	}
-//
-//	public DieType getMaxStrengthDieType() {
-//		return maxStrengthDieType;
-//	}
-//	public void setMaxStrengthDieType(DieType maxStrengthDieType) {
-//		this.maxStrengthDieType = maxStrengthDieType;
-//	}
-//
-//	public DieType getMaxAgilityDieType() {
-//		return maxAgilityDieType;
-//	}
-//	public void setMaxAgilityDieType(DieType maxAgilityDieType) {
-//		this.maxAgilityDieType = maxAgilityDieType;
-//	}
-//
-//	public DieType getMaxSmartsDieType() {
-//		return maxSmartsDieType;
-//	}
-//	public void setMaxSmartsDieType(DieType maxSmartsDieType) {
-//		this.maxSmartsDieType = maxSmartsDieType;
-//	}
-//
-//	public DieType getMaxSpiritDieType() {
-//		return maxSpiritDieType;
-//	}
-//	public void setMaxSpiritDieType(DieType maxSpiritDieType) {
-//		this.maxSpiritDieType = maxSpiritDieType;
-//	}
-//
-//	public DieType getMaxVigorDieType() {
-//		return maxVigorDieType;
-//	}
-//	public void setMaxVigorDieType(DieType maxVigorDieType) {
-//		this.maxVigorDieType = maxVigorDieType;
-//	}
 
-	//	Combat Cyborg, rolls: [BenefitTableRoll(rollId: 1, allowed: {Cybernetics, Close Combat Weapons, Ranged Weapons, Training})
-//						   BenefitTableRoll(rollId: 2, allowed: {Cybernetics, Close Combat Weapons, Ranged Weapons, Training})
-//						   BenefitTableRoll(rollId: 3, disallowed: {Body Armor}, notMagic: true, notPsionics: true) ]
-//				   bonuses: //Bionic Augmentation,
-//							Cybernetic Enhancements,
-//							//High-Performance Legs,
-//							Fleet-Footed,
-//							M.D.C. Armor,
-//							More Machine,
-//							Size +1,
-//							Upgradable
-//							Unarmed Combat,
-//				   startingAttributePoints = 2
-//				   maxStr = DieType.D4
-//				   maxAgi = DieType.D4
-//				   startingStr = new Roll(DieType.D12, 2)
-//				   startingAgi = new Roll(DieType.D10, 0)
-//				   startingVgr = new Roll(DieType.D12, 0)
-//
-//	Crazy, 			rolls: [BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
-//		 					BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
-//		 					BenefitTableRoll(rollId: 1, allowed: {Body Armor, Close Combat Weapons, Psionics, Ranged Weapons, Training, Underworld & Black Ops})
-//							BenefitTableRoll(rollId: 1, restrictedTables: {MAGIC_MYSTICISM})
-//							BenefitTableRoll(rollId: 1, restrictedTables: {MAGIC_MYSTICISM})  ]
-//					bonuses:
-//					startingAttributePoints = null
-//					startingStr = new Roll(DieType.D8, 0)
-//					startingAgi = new Roll(DieType.D8, 0)
-//					startingVgr = new Roll(DieType.D8, 0)
-//					maxStr, maxAgi, maxVgr all have no max
-//					double base Pace
-
-
-
-//	Cyber-Knight,   no stat starting bonus or max
-
-//	Glitter Boy,    no stat starting bonus or max
-
-//	Juicer,         startingVgr = d8, no max
-//					startingAgi = d8, no max
-//					startingStr = d8, no max
-//					double base Pace
-
-//	MARS,
-//	Burster,
-//	Mind Melter,
-//	Ley Line Walker,
-//	Mystic,
-//	Techno-Wizard,
-//	Flame Wind Dragon Hatchling,
-	
 }

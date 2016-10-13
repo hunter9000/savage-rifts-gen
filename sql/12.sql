@@ -1,3 +1,0 @@
-USE savage_rifts;
-
-

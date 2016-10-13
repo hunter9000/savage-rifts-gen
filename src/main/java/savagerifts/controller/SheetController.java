@@ -14,12 +14,11 @@ import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
-import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
 import savagerifts.repository.*;
 import savagerifts.request.NewSheetRequest;
 import savagerifts.request.PerkSwapRequest;
-import savagerifts.response.AttributeThing;
+import savagerifts.response.AttributeBuy;
 import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
@@ -250,19 +249,7 @@ public class SheetController {
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	/** Get the current attributes with info about inc/dec and cost. */
-	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
-	public AttributeThing getAttributeThing() {
-		Sheet sheet = AuthUtils.getSheet(request);
-		
-//		if (sheet.get)
 
-        return null;
-
-	}
-	
 	/** Select the race for this sheet */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
@@ -286,7 +273,16 @@ public class SheetController {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	
+
+	/** Get the current attributes with info about inc/dec and cost. */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
+	public AttributeBuy getAttributeThing() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
+
+		return attributes;
+	}
 }
 
