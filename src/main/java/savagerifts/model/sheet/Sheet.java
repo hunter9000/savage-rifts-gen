@@ -1,8 +1,6 @@
 package savagerifts.model.sheet;
 
-import savagerifts.model.DieType;
 import savagerifts.model.framework.Framework;
-import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.user.User;
@@ -15,6 +13,7 @@ import java.util.List;
 public class Sheet {
 
 	public static final int DEFAULT_ATTRIBUTE_POINTS = 5;
+	public static final int DEFAULT_SKILL_POINTS = 15;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +27,9 @@ public class Sheet {
 	@Column(name = "name", nullable = false)
 	private String name;
 
+	@Column(name = "rank", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private XPRank rank = XPRank.Novice;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "strength", nullable = false)
@@ -45,12 +47,11 @@ public class Sheet {
 	@JoinColumn(name = "vigor", nullable = false)
 	private Roll vigor = new Roll();
 	
-	
 	@Column(name = "remainingAttributePoints")
-	private Integer remainingAttrPoints = Sheet.DEFAULT_ATTRIBUTE_POINTS;
+	private Integer remainingAttrPoints = DEFAULT_ATTRIBUTE_POINTS;
 
 	@Column(name = "remainingSkillPoints")
-	private Integer remainingSkillPoints = 15;
+	private Integer remainingSkillPoints = DEFAULT_SKILL_POINTS;
 	
 	@Column(name = "remainingHindrancePoints")
 	private Integer remainingHindrancePoints;		// points left from buying hindrances that can be spent on edges, etc
@@ -62,7 +63,7 @@ public class Sheet {
 	private Integer toughness;
 	
 	@Column(name = "charisma")
-	private Integer charisma;
+	private Integer charisma = 0;
 	
 	@Column(name = "pace")
 	private Integer pace;
@@ -71,10 +72,10 @@ public class Sheet {
 	private Integer parry;
 	
 	@Column(name = "isp")
-	private Integer isp;
-	
+	private Integer isp = 0;
+
 	@Column(name = "ppe")
-	private Integer ppe;
+	private Integer ppe = 0;
 
 	@OneToOne
 	@JoinColumn(name = "framework")
@@ -133,6 +134,12 @@ public class Sheet {
 		this.name = name;
 	}
 
+	public XPRank getRank() {
+		return rank;
+	}
+	public void setRank(XPRank rank) {
+		this.rank = rank;
+	}
 
 	public Roll getStrength() {
 		return strength;

@@ -46,6 +46,13 @@ public class Roll implements Comparable {
 		this.modifier = modifier;
 	}
 
+	public String getDisplayName() {
+		return this.toString();
+	}
+	public void setDisplayName(String displayName) {
+		// nothing, readonly property
+	}
+
 	public void copy(Roll other) {
 		if (other != null) {
 			this.dieType = other.dieType;
@@ -77,6 +84,15 @@ public class Roll implements Comparable {
 	}
 
 	@Override
+	public String toString() {
+		String s = dieType.getDisplayName();
+		if (modifier > 0) {
+			s += "+" + modifier;
+		}
+		return s;
+	}
+
+	@Override
 	public int compareTo(Object other) {
 		if (other == null) {
 			return -1;
@@ -87,6 +103,5 @@ public class Roll implements Comparable {
 			return modifier.compareTo(rollB.modifier);
 		}
 		return dieTypeComparison;
-		
 	}
 }

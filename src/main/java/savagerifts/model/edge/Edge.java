@@ -2,7 +2,7 @@ package savagerifts.model.edge;
 
 import savagerifts.model.framework.Framework;
 import savagerifts.model.sheet.Roll;
-import savagerifts.model.sheet.XPLevelType;
+import savagerifts.model.sheet.XPRank;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Edge {
 	
 	@Column(name = "XpLevelType")
 	@Enumerated(EnumType.STRING)
-	private XPLevelType requiredLevel;
+	private XPRank requiredLevel;
 
 	@ManyToMany()
 	@JoinTable(name = "edge_required_framework",
@@ -52,10 +52,10 @@ public class Edge {
 		this.id = id;
 	}
 
-	public XPLevelType getRequiredLevel() {
+	public XPRank getRequiredLevel() {
 		return requiredLevel;
 	}
-	public void setRequiredLevel(XPLevelType requiredLevel) {
+	public void setRequiredLevel(XPRank requiredLevel) {
 		this.requiredLevel = requiredLevel;
 	}
 

@@ -1,6 +1,6 @@
 package savagerifts.model.sheet;
 
-public enum XPLevelType {
+public enum XPRank {
     Novice,
     Seasoned,
     Veteran,
