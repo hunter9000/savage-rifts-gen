@@ -15,6 +15,27 @@ public class SheetUtils {
 	
 	private static DieType DEFAULT_STARTING_ATTRIBUTE = DieType.D4;
 	
+	public static Sheet createSheet() {
+		Sheet sheet = new Sheet();
+        sheet.setOwner(owner);
+        sheet.setName(sheetRequest.characterName);
+        sheet.setFramework(framework);
+
+		List<SkillRoll> skillList = new ArrayList<>();
+		for (SkillType skillType : SkillType.values()) {}
+			SkillRoll skill = new SkillRoll();
+			skill.setSheet(sheet);
+			skill.setSkillType(skillType);
+			skill.setRoll(new Roll());
+			skillList.add(skill);
+		}
+		sheet.setSkills(skillList);
+		
+		SheetUtils.recalculateAttributes(sheet);
+		
+		return sheet;
+	}
+	
 	public static PerkSelection getChosenPerkFromSheet(Sheet sheet, Long perkId) {
 		for (PerkSelection selection : sheet.getChosenPerks()) {
 			if (selection.getPerk().getId().equals(perkId)) {
@@ -221,6 +242,34 @@ public class SheetUtils {
 		}
 
 		return true;
+	}
+	
+	public static SkillBuy calculateSkillPurchases(Sheet sheet) {
+		SkillBuy skillBuy = new SkillBuy();
+		
+		Map<SkillType, SkillRoll> skillMap = populateSkillMap(Sheet sheet);
+		
+		skillBuy.skills = skillMap;
+		skillBuy.remainingSkillPoints = sheet.getRemainingSkillPoints();
+		
+		for (SkillType skillType : skillMap) {
+			skillMap.get(skillType);
+			
+			skillBuy.canIncreaseSkill.put(skillType, true);
+			
+			skillBuy.canDecreaseSkill.put(skillType, true);
+		}
+		
+		return skillBuy;
+	}
+	
+	/** Adds all the sheet's skillrolls to a map for convenience */
+	public Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
+		Map<SkillType, SkillRoll> map = new HashMap<>();
+		for (SkillRoll roll : sheet.getSkills()) {
+			map.put(roll.getType(), roll);
+		}
+		return map;
 	}
 
 }

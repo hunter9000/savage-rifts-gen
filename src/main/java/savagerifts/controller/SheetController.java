@@ -71,12 +71,7 @@ public class SheetController {
             throw new BadRequestException();
         }
 
-        Sheet sheet = new Sheet();
-        sheet.setOwner(owner);
-        sheet.setName(sheetRequest.characterName);
-        sheet.setFramework(framework);
-
-		SheetUtils.recalculateAttributes(sheet);
+		Sheet sheet = SheetUtils.createSheet();
 		
         sheetRepository.save(sheet);
 
