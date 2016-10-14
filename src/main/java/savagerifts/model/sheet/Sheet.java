@@ -3,6 +3,7 @@ package savagerifts.model.sheet;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
+import savagerifts.model.skill.SkillRoll;
 import savagerifts.model.user.User;
 
 import javax.persistence.*;
@@ -93,8 +94,9 @@ public class Sheet {
 	@JoinColumn(name = "race")
 	private Race race;
 
-//	private List<SkillRoll> skills;			// skills and their rolls
-//
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
+	private List<SkillRoll> skills;			// skills and their rolls
+
 //	private List<Language> languages;		// known languages
 //
 //	private List<Power> powers;		// known powers
@@ -274,14 +276,14 @@ public class Sheet {
 		this.race = race;
 	}
 
-//	public List<SkillRoll> getSkills() {
-//		return skills;
-//	}
-//	public void setSkills(List<SkillRoll> skills) {
-//		this.skills = skills;
-//	}
-//
-//	public List<Language> getLanguages() {
+	public List<SkillRoll> getSkills() {
+		return skills;
+	}
+	public void setSkills(List<SkillRoll> skills) {
+		this.skills = skills;
+	}
+
+	//	public List<Language> getLanguages() {
 //		return languages;
 //	}
 //	public void setLanguages(List<Language> languages) {
@@ -302,17 +304,4 @@ public class Sheet {
 //		this.hindrances = hindrances;
 //	}
 
-//	public boolean isHasSelectedHindrances() {
-//		return hasSelectedHindrances;
-//	}
-//	public void setHasSelectedHindrances(boolean hasSelectedHindrances) {
-//		this.hasSelectedHindrances = hasSelectedHindrances;
-//	}
-//
-//	public boolean isHasSelectedEdges() {
-//		return hasSelectedEdges;
-//	}
-//	public void setHasSelectedEdges(boolean hasSelectedEdges) {
-//		this.hasSelectedEdges = hasSelectedEdges;
-//	}
 }

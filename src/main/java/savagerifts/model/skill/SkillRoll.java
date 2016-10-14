@@ -1,6 +1,8 @@
 package savagerifts.model.skill;
 
 import savagerifts.model.sheet.Roll;
+import savagerifts.model.sheet.Sheet;
+import savagerifts.model.user.User;
 
 import javax.persistence.*;
 
@@ -11,7 +13,11 @@ public class SkillRoll {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
     private Long id;
-	
+
+	@OneToOne
+	@JoinColumn(name = "sheet", nullable = false, updatable = false)
+	private Sheet sheet;
+
 	@Column(name = "skillType", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private SkillType skillType;
