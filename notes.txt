@@ -217,3 +217,33 @@ http://jsonpatch.com/
 //	Mystic,
 //	Techno-Wizard,
 //	Flame Wind Dragon Hatchling,
+
+all gear:
+	-- cost
+
+all body armor has full environmental protection. unless otherwise stated, basic comms, light sensitive visor. 
+baseline:
+	-- minimum strength req. 
+	-- armor value/Mdc or not (all)
+	-- toughness value (optional)
+extras:
+	-- +str die type/granted str
+	-- pace and leaping dist bonus
+	-- add powers to your list
+	-- behave differently depending on framework or magic/psionics
+	
+power armor:
+	-- size
+	-- armor (mdc or not)
+	-- toughness
+	-- strength
+	-- pace
+	-- flight pace (optional)
+	-- climb
+
+sheet needs 'equipped armor' slots
+
+	
+sheet has money, and framework has starting money along with gear
+
+

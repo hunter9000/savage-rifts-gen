@@ -8,7 +8,8 @@ public enum SheetCreationStep {
 	ATTRIBUTES,
 	SKILLS,
 	HINDRANCES,
-	EDGES;
+	EDGES,
+	FINISHED;
 
 //	private SheetCreationStep[] steps = SheetCreationStep.values();		// cache this value
 

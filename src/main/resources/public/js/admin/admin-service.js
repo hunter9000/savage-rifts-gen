@@ -63,6 +63,15 @@
                 else if (sheet.creationStep == 'SKILLS') {
                     $location.path('/skillbuy/' + sheet.id);
                 }
+				else if (sheet.creationStep == 'HINDRANCES') {
+//                    $location.path('//' + sheet.id);
+                }
+				else if (sheet.creationStep == 'EDGES') {
+//                    $location.path('//' + sheet.id);
+                }
+				else if (sheet.creationStep == 'FINISHED') {
+					// do nothing, we're here
+				}
 
             }
         };
