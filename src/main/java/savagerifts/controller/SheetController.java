@@ -2,6 +2,7 @@ package savagerifts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
@@ -14,13 +15,16 @@ import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
+import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
 import savagerifts.repository.*;
 import savagerifts.request.NewSheetRequest;
 import savagerifts.request.PerkSwapRequest;
-import savagerifts.request.PointBuyRequest;
-import savagerifts.response.AttributeBuy;
+import savagerifts.request.AttributeBuyRequest;
+import savagerifts.request.SkillBuyRequest;
+import savagerifts.response.AttributeBuyResponse;
 import savagerifts.response.PerkSelectionResponse;
+import savagerifts.response.SkillBuyResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.RandomUtils;
@@ -62,7 +66,7 @@ public class SheetController {
     public ResponseEntity<?> createSheet(@RequestBody NewSheetRequest sheetRequest) {
         User owner = AuthUtils.getLoggedInUser(request);
 
-        if (sheetRequest.characterName == null || sheetRequest.characterName.equals("")) {
+        if (!sheetRequest.validate()) {
             throw new BadRequestException();
         }
 
@@ -71,7 +75,7 @@ public class SheetController {
             throw new BadRequestException();
         }
 
-		Sheet sheet = SheetUtils.createSheet();
+		Sheet sheet = SheetUtils.createSheet(owner, sheetRequest, framework);
 		
         sheetRepository.save(sheet);
 
@@ -205,7 +209,7 @@ public class SheetController {
 	
 	/** Swap two randomly chosen perks for a new chosen one */
 	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.PUT)			// change this to PUT, make the post finish swaps
 	public ResponseEntity<?> swapPerks(@RequestBody PerkSwapRequest perkSwapRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
@@ -246,6 +250,19 @@ public class SheetController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.POST)
+	public ResponseEntity<?> finishTableRollSwaps() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		if (sheet.getCreationStep() == SheetCreationStep.TABLE_ROLL_SWAP) {
+			SheetUtils.moveToNextCreationStep(sheet);
+		}
+		sheetRepository.save(sheet);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 	/** Select the race for this sheet */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
@@ -273,10 +290,10 @@ public class SheetController {
 	/** Get the current attributes with info about inc/dec and cost. */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
-	public AttributeBuy getAttributeBuy() {
+	public AttributeBuyResponse getAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
+		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
 
 		return attributes;
 	}
@@ -284,7 +301,7 @@ public class SheetController {
 	/** Increase or decrease the given attributes */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.PUT)
-	public AttributeBuy increaseDecreaseAttributeBuy(@RequestBody PointBuyRequest pointBuyRequest) {
+	public AttributeBuyResponse increaseDecreaseAttributeBuy(@RequestBody AttributeBuyRequest pointBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// make the change, returns false if the change isn't valid
@@ -295,7 +312,7 @@ public class SheetController {
 		sheetRepository.save(sheet);
 
 		// recreate the attributes after the change
-		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
+		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
 
 		return attributes;
 	}
@@ -308,6 +325,49 @@ public class SheetController {
 
 		SheetUtils.moveToNextCreationStep(sheet);
 
+		sheetRepository.save(sheet);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	/** Get the current skills with info about inc/dec and cost. */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.GET)
+	public SkillBuyResponse getSkillBuy() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+
+		return skills;
+	}
+
+	/** Get the current skills with info about inc/dec and cost. */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.PUT)
+	public SkillBuyResponse increaseDecreseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		// make the change, returns false if the change isn't valid
+		if (!SheetUtils.validateAndMakeSkillChange(sheet, skillBuyRequest)) {
+			throw new BadRequestException();
+		}
+
+		sheetRepository.save(sheet);
+
+		// recreate the attributes after the change
+		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+
+		return skills;
+	}
+
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.POST)
+	public ResponseEntity<?> finishSkillPurchases() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		if (sheet.getCreationStep() == SheetCreationStep.SKILLS) {
+			SheetUtils.moveToNextCreationStep(sheet);
+		}
 		sheetRepository.save(sheet);
 
 		return new ResponseEntity<>(HttpStatus.OK);

@@ -1,0 +1,14 @@
+<div class="point-buy-button-col point-buy-dec-col">
+    <button ng-click='dec()(attribute)' ng-disabled="!candecrease"> - </button>
+</div>
+
+<div class="point-buy-attribute-col">
+    <span ng-transclude></span>
+</div>
+<div class="point-buy-value-col">
+    {{value.displayName}}
+</div>
+
+<div class="point-buy-button-col point-buy-inc-col">
+    <button ng-click='inc()(attribute)' ng-disabled="!canincrease"> + </button>
+</div>

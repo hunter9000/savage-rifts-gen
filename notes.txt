@@ -201,9 +201,9 @@ http://jsonpatch.com/
 
 
 
-//	Cyber-Knight,   no stat starting bonus or max
+//	Cyber-Knight,   no attribute starting bonus or max
 
-//	Glitter Boy,    no stat starting bonus or max
+//	Glitter Boy,    no attribute starting bonus or max
 
 //	Juicer,         startingVgr = d8, no max
 //					startingAgi = d8, no max

@@ -7,54 +7,13 @@ import savagerifts.model.sheet.Sheet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AttributeBuy {
+public class AttributeBuyResponse {
 	
-	public Roll strength = new Roll();
-	public Roll agility = new Roll();
-	public Roll smarts = new Roll();
-	public Roll spirit = new Roll();
-	public Roll vigor = new Roll();
-	
+	public Map<AttributeType, Roll> attributes = new HashMap<>();
+	public Map<AttributeType, Boolean> canIncrease = new HashMap<>();
+	public Map<AttributeType, Boolean> canDecrease = new HashMap<>();
 	public int remainingAttrPoints;
 
-	public Map<AttributeType, Boolean> canIncrease = new HashMap<>();
-
-	public Map<AttributeType, Boolean> canDecrease = new HashMap<>();
-
-	public Roll getStrength() {
-		return strength;
-	}
-	public void setStrength(Roll strength) {
-		this.strength = strength;
-	}
-
-	public Roll getAgility() {
-		return agility;
-	}
-	public void setAgility(Roll agility) {
-		this.agility = agility;
-	}
-
-	public Roll getSmarts() {
-		return smarts;
-	}
-	public void setSmarts(Roll smarts) {
-		this.smarts = smarts;
-	}
-
-	public Roll getSpirit() {
-		return spirit;
-	}
-	public void setSpirit(Roll spirit) {
-		this.spirit = spirit;
-	}
-
-	public Roll getVigor() {
-		return vigor;
-	}
-	public void setVigor(Roll vigor) {
-		this.vigor = vigor;
-	}
 
 	public int getRemainingAttrPoints() {
 		return remainingAttrPoints;

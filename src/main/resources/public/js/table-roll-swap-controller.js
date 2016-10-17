@@ -76,7 +76,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
             'swapPerk' : $scope.newPerkSelection
         }
 
-        $http.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
+        $http.put('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
             postData,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} })
         .then(function successCallback(response) {
@@ -92,7 +92,15 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
 		console.log($scope.perkItems);
 		console.log($scope.selectedTable);
 
-		
+        $http.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
+            {},
+            { headers: {'x-access-token': $window.localStorage['jwtToken']} })
+        .then(function successCallback(response) {
+            $location.path('/editsheet/' + $routeParams.sheetId);
+        }, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+        });
 	}
 
     $scope.back = function() {

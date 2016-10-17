@@ -4,25 +4,35 @@ import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.perk.PerkSelection;
-import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
-import savagerifts.request.PointBuyRequest;
-import savagerifts.response.AttributeBuy;
+import savagerifts.model.skill.SkillRoll;
+import savagerifts.model.skill.SkillType;
+import savagerifts.model.user.User;
+import savagerifts.request.AttributeBuyRequest;
+import savagerifts.request.NewSheetRequest;
+import savagerifts.request.SkillBuyRequest;
+import savagerifts.response.AttributeBuyResponse;
+import savagerifts.response.SkillBuyResponse;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SheetUtils {
 	
 	private static DieType DEFAULT_STARTING_ATTRIBUTE = DieType.D4;
-	
-	public static Sheet createSheet() {
+
+	public static Sheet createSheet(User owner, NewSheetRequest sheetRequest, Framework framework) {
 		Sheet sheet = new Sheet();
-        sheet.setOwner(owner);
-        sheet.setName(sheetRequest.characterName);
-        sheet.setFramework(framework);
+		sheet.setOwner(owner);
+		sheet.setName(sheetRequest.characterName);
+		sheet.setFramework(framework);
 
 		List<SkillRoll> skillList = new ArrayList<>();
-		for (SkillType skillType : SkillType.values()) {}
+		for (SkillType skillType : SkillType.values()) {
 			SkillRoll skill = new SkillRoll();
 			skill.setSheet(sheet);
 			skill.setSkillType(skillType);
@@ -74,7 +84,41 @@ public class SheetUtils {
 		return Sheet.DEFAULT_ATTRIBUTE_POINTS;
 	}
 
-	public static Roll getMinStrength(Sheet sheet) {
+	private static Roll getMinAttribute(Sheet sheet, AttributeType attrType) {
+		switch(attrType) {
+			case STRENGTH:
+				return getMinStrength(sheet);
+			case AGILITY:
+				return getMinAgility(sheet);
+			case SMARTS:
+				return getMinSmarts(sheet);
+			case SPIRIT:
+				return getMinSpirit(sheet);
+			case VIGOR:
+				return getMinVigor(sheet);
+			default:
+				throw new RuntimeException();
+		}
+	}
+
+	private static Roll getMaxAttribute(Sheet sheet, AttributeType attrType) {
+		switch(attrType) {
+			case STRENGTH:
+				return getMaxStrength(sheet);
+			case AGILITY:
+				return getMaxAgility(sheet);
+			case SMARTS:
+				return getMaxSmarts(sheet);
+			case SPIRIT:
+				return getMaxSpirit(sheet);
+			case VIGOR:
+				return getMaxVigor(sheet);
+			default:
+				throw new RuntimeException();
+		}
+	}
+
+	private static Roll getMinStrength(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getStartingStrength() != null) {
 			return framework.getStartingStrength();
@@ -82,7 +126,7 @@ public class SheetUtils {
 		return new Roll();		// d4+0
 	}
 
-	public static Roll getMinAgility(Sheet sheet) {
+	private static Roll getMinAgility(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getStartingAgility() != null) {
 			return framework.getStartingAgility();
@@ -90,7 +134,7 @@ public class SheetUtils {
 		return new Roll();		// d4+0
 	}
 
-	public static Roll getMinSmarts(Sheet sheet) {
+	private static Roll getMinSmarts(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getStartingSmarts() != null) {
 			return framework.getStartingSmarts();
@@ -98,7 +142,7 @@ public class SheetUtils {
 		return new Roll();		// d4+0
 	}
 
-	public static Roll getMinSpirit(Sheet sheet) {
+	private static Roll getMinSpirit(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getStartingSpirit() != null) {
 			return framework.getStartingSpirit();
@@ -106,7 +150,7 @@ public class SheetUtils {
 		return new Roll();		// d4+0
 	}
 
-	public static Roll getMinVigor(Sheet sheet) {
+	private static Roll getMinVigor(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getStartingVigor() != null) {
 			return framework.getStartingVigor();
@@ -114,7 +158,7 @@ public class SheetUtils {
 		return new Roll();		// d4+0
 	}
 
-	public static Roll getMaxStrength(Sheet sheet) {
+	private static Roll getMaxStrength(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getMaxStrength() != null) {
 			return framework.getMaxStrength();
@@ -122,7 +166,7 @@ public class SheetUtils {
 		return new Roll(DieType.D12, 0);		// d4+0
 	}
 
-	public static Roll getMaxAgility(Sheet sheet) {
+	private static Roll getMaxAgility(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getMaxAgility() != null) {
 			return framework.getMaxAgility();
@@ -130,7 +174,7 @@ public class SheetUtils {
 		return new Roll(DieType.D12, 0);		// d4+0
 	}
 
-	public static Roll getMaxSmarts(Sheet sheet) {
+	private static Roll getMaxSmarts(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getMaxSmarts() != null) {
 			return framework.getMaxSmarts();
@@ -138,7 +182,7 @@ public class SheetUtils {
 		return new Roll(DieType.D12, 0);		// d4+0
 	}
 
-	public static Roll getMaxSpirit(Sheet sheet) {
+	private static Roll getMaxSpirit(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getMaxSpirit() != null) {
 			return framework.getMaxSpirit();
@@ -146,7 +190,7 @@ public class SheetUtils {
 		return new Roll(DieType.D12, 0);		// d4+0
 	}
 
-	public static Roll getMaxVigor(Sheet sheet) {
+	private static Roll getMaxVigor(Sheet sheet) {
 		Framework framework = sheet.getFramework();
 		if (framework != null && framework.getMaxVigor() != null) {
 			return framework.getMaxVigor();
@@ -165,33 +209,20 @@ public class SheetUtils {
 	/** Create the attribute point buy info based on this sheet. Sheet must have all steps prior to attr point buy
 	  * step finished (framework, race, etc). The current values are set, and the min and max are calculated based
 	  * on looking at the framework and race, etc. */
-	public static AttributeBuy calculateAttributePurchases(Sheet sheet) {
+	public static AttributeBuyResponse calculateAttributePurchases(Sheet sheet) {
 		
-		AttributeBuy attrs = new AttributeBuy();
+		AttributeBuyResponse attrs = new AttributeBuyResponse();
 		
 		attrs.remainingAttrPoints = sheet.getRemainingAttrPoints();
-		
-		attrs.strength = sheet.getStrength();
-		attrs.agility = sheet.getAgility();
-		attrs.smarts = sheet.getSmarts();
-		attrs.spirit = sheet.getSpirit();
-		attrs.vigor = sheet.getVigor();
-		
+		attrs.attributes = populateAttributeMap(sheet);
+
 		// get the max and min from the framework/race
-		// can increase if the current is less than the max and there are points left
-		attrs.canIncrease.put(AttributeType.STRENGTH, attrs.strength.compareTo(getMaxStrength(sheet)) < 0 && attrs.remainingAttrPoints > 0);
-		attrs.canIncrease.put(AttributeType.AGILITY, attrs.agility.compareTo(getMaxAgility(sheet)) < 0 && attrs.remainingAttrPoints > 0);
-		attrs.canIncrease.put(AttributeType.SMARTS, attrs.smarts.compareTo(getMaxSmarts(sheet)) < 0 && attrs.remainingAttrPoints > 0);
-		attrs.canIncrease.put(AttributeType.SPIRIT, attrs.spirit.compareTo(getMaxSpirit(sheet)) < 0 && attrs.remainingAttrPoints > 0);
-		attrs.canIncrease.put(AttributeType.VIGOR, attrs.vigor.compareTo(getMaxVigor(sheet)) < 0 && attrs.remainingAttrPoints > 0);
-
-		// can decrease if current is above min, and current points are less than the max starting number
-		attrs.canDecrease.put(AttributeType.STRENGTH, attrs.strength.compareTo(getMinStrength(sheet)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
-		attrs.canDecrease.put(AttributeType.AGILITY, attrs.agility.compareTo(getMinAgility(sheet)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
-		attrs.canDecrease.put(AttributeType.SMARTS, attrs.smarts.compareTo(getMinSmarts(sheet)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
-		attrs.canDecrease.put(AttributeType.SPIRIT, attrs.spirit.compareTo(getMinSpirit(sheet)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
-		attrs.canDecrease.put(AttributeType.VIGOR, attrs.vigor.compareTo(getMinVigor(sheet)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
-
+		for (AttributeType type : AttributeType.values()) {
+			// can increase if the current is less than the max and there are points left
+			attrs.canIncrease.put(type, attrs.attributes.get(type).compareTo(getMaxAttribute(sheet, type)) < 0 && attrs.remainingAttrPoints > 0);
+			// can decrease if current is above min, and current points are less than the max starting number
+			attrs.canDecrease.put(type, attrs.attributes.get(type).compareTo(getMinAttribute(sheet, type)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
+		}
 
 		// get race, set can increase to compareto(race.max)			???
 
@@ -199,77 +230,96 @@ public class SheetUtils {
 		return attrs;
 	}
 
-	public static boolean validateAndMakeAttributeChange(Sheet sheet, PointBuyRequest pointBuyRequest) {
-		AttributeBuy attributes = SheetUtils.calculateAttributePurchases(sheet);
+	/** Adds all the sheet's skillrolls to a map for convenience */
+	public static Map<AttributeType, Roll> populateAttributeMap(Sheet sheet) {
+		Map<AttributeType, Roll> map = new HashMap<>();
+		map.put(AttributeType.STRENGTH, sheet.getStrength());
+		map.put(AttributeType.AGILITY, sheet.getAgility());
+		map.put(AttributeType.SMARTS, sheet.getSmarts());
+		map.put(AttributeType.SPIRIT, sheet.getSpirit());
+		map.put(AttributeType.VIGOR, sheet.getVigor());
+		return map;
+	}
 
-		Roll attrRoll = null;
-		switch(pointBuyRequest.getStat()) {
-			case STRENGTH:
-				attrRoll = sheet.getStrength();
-				break;
-			case AGILITY:
-				attrRoll = sheet.getAgility();
-				break;
-			case SMARTS:
-				attrRoll = sheet.getSmarts();
-				break;
-			case SPIRIT:
-				attrRoll = sheet.getSpirit();
-				break;
-			case VIGOR:
-				attrRoll = sheet.getVigor();
-				break;
-		}
+	public static boolean validateAndMakeAttributeChange(Sheet sheet, AttributeBuyRequest pointBuyRequest) {
+		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
 
-		// check that the stat can actually be inc'd/dec'd
-		if (pointBuyRequest.getOperation() == PointBuyRequest.OperationType.INC) {
-			if (attributes.canIncrease.get(pointBuyRequest.getStat())) {
+		// get the attribute that we want to change
+		Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
+		Roll attrRoll = attrMap.get(pointBuyRequest.getAttribute());
+
+		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
+		if (pointBuyRequest.getOperation() == AttributeBuyRequest.OperationType.INC) {
+			if (attributes.canIncrease.get(pointBuyRequest.getAttribute())) {
 				attrRoll.increase();
 				sheet.setRemainingAttrPoints(sheet.getRemainingAttrPoints() - 1);
-			}
-			else {
-				return false;
+				return true;
 			}
 		}
-		else {
-			if (attributes.canDecrease.get(pointBuyRequest.getStat())) {
+		else if (pointBuyRequest.getOperation() == AttributeBuyRequest.OperationType.DEC) {
+			if (attributes.canDecrease.get(pointBuyRequest.getAttribute())) {
 				attrRoll.decrease();
 				sheet.setRemainingAttrPoints(sheet.getRemainingAttrPoints() + 1);
-			}
-			else {
-				return false;
+				return true;
 			}
 		}
 
-		return true;
+		return false;
 	}
-	
-	public static SkillBuy calculateSkillPurchases(Sheet sheet) {
-		SkillBuy skillBuy = new SkillBuy();
+
+	public static SkillBuyResponse calculateSkillPurchases(Sheet sheet) {
+		SkillBuyResponse skillBuyResponse = new SkillBuyResponse();
 		
-		Map<SkillType, SkillRoll> skillMap = populateSkillMap(Sheet sheet);
+		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
 		
-		skillBuy.skills = skillMap;
-		skillBuy.remainingSkillPoints = sheet.getRemainingSkillPoints();
+		skillBuyResponse.skills = skillMap;
+		skillBuyResponse.remainingSkillPoints = sheet.getRemainingSkillPoints();
 		
-		for (SkillType skillType : skillMap) {
+		for (SkillType skillType : skillMap.keySet()) {
 			skillMap.get(skillType);
+
+			SkillRoll skill = skillMap.get(skillType);
+			skillBuyResponse.canIncrease.put(skillType, skill.getRoll().compareTo(new Roll(DieType.D12, 0)) < 0 && sheet.getRemainingSkillPoints() > 0);
 			
-			skillBuy.canIncreaseSkill.put(skillType, true);
-			
-			skillBuy.canDecreaseSkill.put(skillType, true);
+			skillBuyResponse.canDecrease.put(skillType, skill.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15);
 		}
 		
-		return skillBuy;
+		return skillBuyResponse;
 	}
 	
 	/** Adds all the sheet's skillrolls to a map for convenience */
-	public Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
+	public static Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
 		Map<SkillType, SkillRoll> map = new HashMap<>();
 		for (SkillRoll roll : sheet.getSkills()) {
-			map.put(roll.getType(), roll);
+			map.put(roll.getSkillType(), roll);
 		}
 		return map;
+	}
+
+	public static boolean validateAndMakeSkillChange(Sheet sheet, SkillBuyRequest skillBuyRequest) {
+		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+
+		// get the skill that we want to change
+		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
+		SkillRoll skillRoll = skillMap.get(skillBuyRequest.getSkill());
+
+		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
+		if (skillBuyRequest.getOperation() == SkillBuyRequest.OperationType.INC) {
+			if (skills.canIncrease.get(skillBuyRequest.getSkill())) {
+				skillRoll.getRoll().increase();
+				sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() - 1);
+				return true;
+			}
+		}
+		else if (skillBuyRequest.getOperation() == SkillBuyRequest.OperationType.DEC) {
+			if (skills.canDecrease.get(skillBuyRequest.getSkill())) {
+				skillRoll.getRoll().decrease();
+				sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() + 1);
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

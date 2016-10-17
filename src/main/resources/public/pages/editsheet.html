@@ -2,7 +2,6 @@
 
 <p>{{ message }}</p>
 
-<!--<form ng-submit="save()">-->
 <div class="container">
 
     <!-- BASIC STUFF -->
@@ -111,42 +110,30 @@
             <pf-collapse-section identifier="skills-section">
                 <pf-collapse-section-header>
                     <span class="field-header">Skills</span>
-                    <span >Points Remaining: {{char.skillPoints}}</span>
                 </pf-collapse-section-header>
 
                 <pf-collapse-section-body>
-                    <div ng-repeat="skillRank in sheet.skillRanks">
+                    <div ng-repeat="skillRoll in sheet.skills">
                         <div class="skill-name">
-                            {{skillRank.skill.name}}
+                            {{skillRoll.displayName}}
                         </div>
-                        <div class="skill-attr">
-                            {{skillRank.skill.linkedAttribute}}
-                        </div>
+
                         <div class="skill-ranks">
-                            {{skillRank.rank}}
+                            {{skillRoll.roll.displayName}}
                         </div>
-                        <div class="skill-ranks-button">
-                            <button class="glyphicon glyphicon-chevron-down" ng-click="decreaseSkillRank(skillRank)" ng-disabled="skillRank.rank == 0"></button>
-                            <button class="glyphicon glyphicon-chevron-up" ng-click="increaseSkillRank(skillRank)" ng-disabled="sheet.skillPoints == 0"></button>
+
+                        <div class="skill-attr">
+                            ({{skillRoll.linkedAttributeDisplayName}})
                         </div>
+                        <!--<div class="skill-ranks-button">-->
+                            <!--<button class="glyphicon glyphicon-chevron-down" ng-click="decreaseSkillRank(skillRank)" ng-disabled="skillRank.rank == 0"></button>-->
+                            <!--<button class="glyphicon glyphicon-chevron-up" ng-click="increaseSkillRank(skillRank)" ng-disabled="sheet.skillPoints == 0"></button>-->
+                        <!--</div>-->
                     </div>
                 </pf-collapse-section-body>
             </pf-collapse-section>
         </div>
 
-        <!--<div class="skill-wrapper field-wrapper panel-group">-->
-            <!--<pf-collapse-section identifier="test-section">-->
-                <!--<pf-collapse-section-header>-->
-                    <!--Collapsible Group Item #2-->
-                <!--</pf-collapse-section-header>-->
-
-                <!--<pf-collapse-section-body>-->
-                    <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
-                <!--</pf-collapse-section-body>-->
-            <!--</pf-collapse-section>-->
-        <!--</div>-->
     </div>
 </div>
-
-<!--</form>-->
 

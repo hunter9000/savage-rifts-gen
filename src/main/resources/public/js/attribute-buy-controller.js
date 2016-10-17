@@ -13,11 +13,11 @@ savageRiftsApp.controller('attributeBuyController', function($scope, $http, $win
 		$location.path('/error');
 	});
 
-	$scope.decStat = function(stat) {
-	    console.log('dec ' + stat);
+	$scope.decAttribute = function(attribute) {
+	    console.log('dec ' + attribute);
 
         $http.put('/api/sheet/' + $routeParams.sheetId + '/attributes/',
-            { 'stat': stat, 'operation': 'DEC' },       // data
+            { 'attribute': attribute, 'operation': 'DEC' },       // data
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
         )
         .then(function successCallback(response) {
@@ -27,11 +27,11 @@ savageRiftsApp.controller('attributeBuyController', function($scope, $http, $win
             $location.path('/error');
         });
 	}
-	$scope.incStat = function(stat) {
-        console.log('inc ' + stat);
+	$scope.incAttribute = function(attribute) {
+        console.log('inc ' + attribute);
 
         $http.put('/api/sheet/' + $routeParams.sheetId + '/attributes/',
-            { 'stat': stat, 'operation': 'INC' },       // data
+            { 'attribute': attribute, 'operation': 'INC' },       // data
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
         )
         .then(function successCallback(response) {

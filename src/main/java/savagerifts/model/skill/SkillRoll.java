@@ -1,8 +1,10 @@
 package savagerifts.model.skill;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import savagerifts.model.AttributeType;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
-import savagerifts.model.user.User;
 
 import javax.persistence.*;
 
@@ -16,22 +18,53 @@ public class SkillRoll {
 
 	@OneToOne
 	@JoinColumn(name = "sheet", nullable = false, updatable = false)
+	@JsonIgnore
 	private Sheet sheet;
 
 	@Column(name = "skillType", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private SkillType skillType;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "roll", nullable = false)
 	private Roll roll;
 
+	@Transient
+	public String getDisplayName() {
+		return skillType.getDisplayName();
+	}
+	public void setDisplayName(String displayName) {
+		// nothing, read only property
+	}
+
+	@Transient
+	public AttributeType getLinkedAttribute() {
+		return skillType.getLinkedAttribute();
+	}
+	public void setLinkedAttribute(AttributeType linkedAttribute) {
+		// nothing, readonly property
+	}
+
+	@Transient
+	public String getLinkedAttributeDisplayName() {
+		return this.skillType.getLinkedAttribute().getDisplayName();
+	}
+	public void setLinkedAttributeDisplayName(String linkedAttributeDisplayName) {
+		// nothing, readonly property
+	}
 
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Sheet getSheet() {
+		return sheet;
+	}
+	public void setSheet(Sheet sheet) {
+		this.sheet = sheet;
 	}
 
 	public SkillType getSkillType() {

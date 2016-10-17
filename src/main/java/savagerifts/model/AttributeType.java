@@ -1,9 +1,19 @@
 package savagerifts.model;
 
 public enum AttributeType {
-	STRENGTH,
-	AGILITY,
-	SMARTS,
-	SPIRIT,
-	VIGOR;
+	STRENGTH("Strength"),
+	AGILITY("Agility"),
+	SMARTS("Smarts"),
+	SPIRIT("Spirit"),
+	VIGOR("Vigor");
+
+	private String displayName;
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	AttributeType(String displayName) {
+		this.displayName = displayName;
+	}
 }

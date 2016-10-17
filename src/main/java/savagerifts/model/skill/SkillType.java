@@ -30,6 +30,12 @@ public enum SkillType {
 	private String skillName;
 	private AttributeType linkedAttribute;
 
+	public String getDisplayName() {
+		return skillName;
+	}
+	public AttributeType getLinkedAttribute() {
+		return linkedAttribute;
+	}
 	SkillType(String skillName, AttributeType linkedAttribute) {
 		this.skillName = skillName;
 		this.linkedAttribute = linkedAttribute;

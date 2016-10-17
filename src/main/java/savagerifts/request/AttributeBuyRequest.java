@@ -2,19 +2,19 @@ package savagerifts.request;
 
 import savagerifts.model.AttributeType;
 
-public class PointBuyRequest {
-    private AttributeType stat;
+public class AttributeBuyRequest {
+    private AttributeType attribute;
     private OperationType operation;		// inc or dec
 
     public enum OperationType {
         INC, DEC
     }
 
-    public AttributeType getStat() {
-        return stat;
+    public AttributeType getAttribute() {
+        return attribute;
     }
-    public void setStat(AttributeType stat) {
-        this.stat = stat;
+    public void setAttribute(AttributeType attribute) {
+        this.attribute = attribute;
     }
 
     public OperationType getOperation() {

@@ -91,7 +91,7 @@ public class AuthController {
 
     @RequestMapping(value="/api/roles/", method = RequestMethod.GET)
     @RolePermissions(allowedRoles = {RoleType.ADMIN})
-    public List<Role> getRoles() {
+    public Iterable<Role> getRoles() {
         return roleRepository.findAll();
     }
 

@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 @Qualifier(value="roleRepository")
 public interface RoleRepository extends CrudRepository<Role, Long> {
-    public List<Role> findAll();
 }

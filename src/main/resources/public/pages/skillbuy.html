@@ -1,3 +1,18 @@
 
+<link rel="stylesheet" href="css/skill-point-buy.css" />
 
-skillbuy
+<div class="container point-buy-wrapper">
+    <div class="row" ng-repeat="skill in skills.skills">
+        <skillbuy skill="{{skill.skillType}}" value="skill" canincrease="skills.canIncrease[skill.skillType]" candecrease="skills.canDecrease[skill.skillType]" dec="decSkill" inc="incSkill" >
+            {{skill.displayName}}
+        </skillbuy>
+    </div>
+
+    <div>
+        Remaining Points: {{skills.remainingSkillPoints}}
+    </div>
+</div>
+
+<div class="container">
+    <button ng-click='finalize()' ng-disabled="skills.remainingSkillPoints < 0">Finish Point Buy</button>
+</div>

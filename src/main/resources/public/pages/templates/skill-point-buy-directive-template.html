@@ -1,0 +1,20 @@
+<div class="point-buy-button-col point-buy-dec-col">
+    <button ng-click='dec()(skill)' ng-disabled="!candecrease"> - </button>
+</div>
+
+<div class="point-buy-attribute-col">
+    <span ng-transclude></span>
+</div>
+<div class="point-buy-value-col">
+    <span>{{value.roll.displayName}}</span>
+</div>
+<div class="point-buy-value-col">
+    <span>({{value.linkedAttributeDisplayName}})</span>
+</div>
+
+<div class="point-buy-button-col point-buy-inc-col">
+    <button ng-click='inc()(skill)' ng-disabled="!canincrease"> + </button>
+</div>
+
+
+
