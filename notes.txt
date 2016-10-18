@@ -247,3 +247,14 @@ sheet needs 'equipped armor' slots
 sheet has money, and framework has starting money along with gear
 
 
+framework starting gear
+	List<Gear>
+
+framework features
+	List<FrameworkFeature>
+	-- benefit type (bonus or complication)
+	-- type
+	-- Edge providedEdge (nullable)
+	-- skill bonuses?
+	-- Gear providedGear (nullable)
+

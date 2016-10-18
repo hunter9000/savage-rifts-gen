@@ -102,7 +102,7 @@
 
     <div class="row">
 		<!-- Attributes -->
-		<div class="panel-group" >
+		<div class="attribute-wrapper field-wrapper panel-group" >
 			<span>Strength: {{sheet.strength.displayName}}</span>
 			<span>Agility: {{sheet.agility.displayName}}</span>
 			<span>Smarts: {{sheet.smarts.displayName}}</span>
@@ -118,9 +118,7 @@
 			<span>ISP: {{sheet.isp}}</span>
 			<span>PPE: {{sheet.ppe}}</span>
 		</div>
-    </div>
 
-    <div class="row">
         <!-- SKILLS -->
         <div class="skill-wrapper field-wrapper panel-group">
             <pf-collapse-section identifier="skills-section">
@@ -149,7 +147,23 @@
                 </pf-collapse-section-body>
             </pf-collapse-section>
         </div>
+		
+		
+		<div class="framework-abilities-wrapper field-wrapper panel-group">
+            <pf-collapse-section identifier="skills-section">
+                <pf-collapse-section-header>
+                    <span class="field-header">Framework Features</span>
+                </pf-collapse-section-header>
 
+                <pf-collapse-section-body>
+					<div ng-repeat="feature in sheet.framework.frameworkFeatures">
+						<div>{{feature.frameworkFeatureType}}
+						<div>{{feature.frameworkAbilityType}}
+						<div>
+					</div>
+                </pf-collapse-section-body>
+            </pf-collapse-section>
+        </div>
     </div>
 </div>
 

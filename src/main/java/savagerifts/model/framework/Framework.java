@@ -23,7 +23,9 @@ public class Framework {
 	@OneToMany(mappedBy = "framework", cascade = CascadeType.ALL)
 	private List<BenefitTableRoll> tableRolls;
 
-
+	@OneToMany(mappedBy = "framework", cascade = CascadeType.ALL)
+	private List<FrameworkFeature> frameworkFeatures;
+	
 //	private List<Edge> builtInEdges;
 //	private List<Hindrance> builtInHinderance;
 //	private PowerList powerList;

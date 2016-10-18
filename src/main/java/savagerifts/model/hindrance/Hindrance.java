@@ -6,8 +6,8 @@ import savagerifts.model.sheet.Sheet;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "hindrance")
+@Entity
+@Table(name = "hindrance")
 public class Hindrance {
 	
 	@Id
@@ -15,17 +15,35 @@ public class Hindrance {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "sheet")
-	private Sheet sheet;
-	
 	@Column(name="type", nullable = false, updatable = false)
 	@Enumerated(EnumType.STRING)
 	private HindranceType type;
 	
-	// the severity that the player chose
-	@Column(name="severityType", nullable = false, updatable = false)
-	@Enumerated(EnumType.STRING)
-	private SeverityType severityType;
+	@Column(name = "description", nullable = false, updateable = false)
+	private String description;
+	
+	@Transient
+	public boolean isMinor() {
+		return type.isMinor();
+	}
+	public void isMinor(boolean isMinor) {
+		// nothing, readonly property
+	}
+	
+	@Transient
+	public boolean isMajor() {
+		return type.isMajor();
+	}
+	public void isMajor(boolean isMajor) {
+		// nothing, readonly property
+	}
+	
+	@Transient
+	public String getDisplayName() {
+		return type.getDisplayName();
+	}
+	public void setDisplayName(String displayName) {
+		// nothing, readonly property
+	}
 		
 }
