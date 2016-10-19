@@ -1,3 +1,4 @@
+USE savage_rifts;
 
 CREATE TABLE `hindrance` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -5,8 +6,20 @@ CREATE TABLE `hindrance` (
 	`description` VARCHAR(1000) NOT NULL,
 	`is_minor` BIT(1) NOT NULL,
 	`is_major` BIT(1) NOT NULL,
-	PRIMARY KEY (`id`),
+	PRIMARY KEY (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
+
+CREATE TABLE `hindrance_selection` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`hindrance` BIGINT(20) NULL DEFAULT NULL,
+	`sheet` BIGINT(20) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `FK_hindrance_selection__hindrance` (`hindrance`),
+	INDEX `FK_hindrance_selection__sheet` (`sheet`),
+	CONSTRAINT `FK_hindrance_selection__hindrance` FOREIGN KEY (`hindrance`) REFERENCES `hindrance` (`id`),
+	CONSTRAINT `FK_hindrance_selection__sheet` FOREIGN KEY (`sheet`) REFERENCES `sheet` (`id`)
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
+
 
 INSERT INTO `hindrance` (`type`, `description`, `is_minor`, `is_major`) VALUES 
 ('ALL_THUMBS', '', true, false),
@@ -56,3 +69,5 @@ INSERT INTO `hindrance` (`type`, `description`, `is_minor`, `is_major`) VALUES
 ('YELLOW', '', false, true),
 ('YOUNG', '', false, true);
 
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('12.sql', NOW());

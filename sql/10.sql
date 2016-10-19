@@ -12,3 +12,6 @@ INSERT INTO `race` (`type`, `has_magic`, `has_psionics`) VALUES ('PSI_STALKER', 
 INSERT INTO `race` (`type`, `has_magic`, `has_psionics`) VALUES ('QUICK_FLEX', false, true);
 INSERT INTO `race` (`type`, `has_magic`, `has_psionics`) VALUES ('SIMVAN', true, true);
 INSERT INTO `race` (`type`, `has_magic`, `has_psionics`) VALUES ('TRIMADORE', true, true);
+
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('10.sql', NOW());

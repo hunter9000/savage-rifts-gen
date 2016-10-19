@@ -16,3 +16,5 @@ CREATE TABLE `perk_selection` (
 	CONSTRAINT `FK_gec2ca9tyeqrq5x6q1c8y8xn7` FOREIGN KEY (`sheet`) REFERENCES `sheet` (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('9.sql', NOW());

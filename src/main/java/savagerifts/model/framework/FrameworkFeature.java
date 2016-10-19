@@ -9,7 +9,7 @@ public class FrameworkFeature {
 	private Long id;
 	
 	@OneToOne
-	@JoinColumn(name = "framework", updatable = false)
+	@JoinColumn(name = "framework", nullable = false, updatable = false)
 	private Framework framework;
 	
 	@Column(name = "frameworkFeatureType", nullable = false, unique = true, updatable = false)

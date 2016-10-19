@@ -124,3 +124,4 @@ INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_i
 
 
 
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('8.sql', NOW());

@@ -27,3 +27,6 @@ CREATE TABLE `perk_range` (
 	CONSTRAINT `FK_83exhdxjix3en3jaaj4rs9aoa` FOREIGN KEY (`perk`) REFERENCES `perk` (`id`),
 	CONSTRAINT `FK_bq5f8911o4x6r0phrka9gs8g0` FOREIGN KEY (`benefit_table`) REFERENCES `benefit_table` (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
+
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('6.sql', NOW());

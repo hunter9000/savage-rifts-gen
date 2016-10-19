@@ -12,3 +12,4 @@ ALTER TABLE `skill_roll` ADD COLUMN `sheet` BIGINT(20) NOT NULL;
 CREATE INDEX `FK_skill_roll__sheet` ON `skill_roll` (`sheet`);
 ALTER TABLE `skill_roll` ADD CONSTRAINT `FK_skill_roll__sheet` FOREIGN KEY (`sheet`) REFERENCES `sheet` (`id`);
 
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('11.sql', NOW());

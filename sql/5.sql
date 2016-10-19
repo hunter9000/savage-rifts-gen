@@ -46,3 +46,5 @@ UPDATE framework SET starting_agility = @CRAZY_START_AGI WHERE id = @CRAZY_ID;
 INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
 SET @CRAZY_START_VGR = LAST_INSERT_ID();
 UPDATE framework SET starting_vigor = @CRAZY_START_VGR WHERE id = @CRAZY_ID;
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('5.sql', NOW());

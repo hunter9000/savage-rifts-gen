@@ -216,3 +216,4 @@ INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (17, 18, @EDUCATIO
 INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @EDUCATION_ID, @EDUCATION12);
 
 
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('7.sql', NOW());

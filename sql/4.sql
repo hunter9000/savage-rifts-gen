@@ -38,7 +38,7 @@ CREATE TABLE `framework` (
     CONSTRAINT `FK_roll_starting_spirit` FOREIGN KEY (`starting_spirit`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_starting_strength` FOREIGN KEY (`starting_strength`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_starting_vigor` FOREIGN KEY (`starting_vigor`) REFERENCES `roll` (`id`)
-) COLLATE='latin1_swedish_ci' ENGINE=InnoDB;
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
 CREATE TABLE `edge` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -130,4 +130,6 @@ CREATE TABLE `sheet` (
     CONSTRAINT `FK_roll_spirit` FOREIGN KEY (`spirit`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_strength` FOREIGN KEY (`strength`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_vigor` FOREIGN KEY (`vigor`) REFERENCES `roll` (`id`)
-) COLLATE='latin1_swedish_ci' ENGINE=InnoDB;
+) COLLATE='utf8_general_ciENGINE=InnoDB;
+
+INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('4.sql', NOW());
