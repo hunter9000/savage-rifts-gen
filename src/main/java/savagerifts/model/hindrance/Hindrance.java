@@ -1,7 +1,5 @@
 package savagerifts.model.hindrance;
 
-// the hindrace that a sheet has chosen
-
 import savagerifts.model.sheet.Sheet;
 
 import javax.persistence.*;
@@ -21,6 +19,12 @@ public class Hindrance {
 	
 	@Column(name = "description", nullable = false, updateable = false)
 	private String description;
+	
+	@Column(name = "isMinor", nullable = false, updatable = false)
+	private boolean isMinor;
+	
+	@Column(name = "isMajor", nullable = false, updatable = false)
+	private boolean isMajor;
 	
 	@Transient
 	public boolean isMinor() {
