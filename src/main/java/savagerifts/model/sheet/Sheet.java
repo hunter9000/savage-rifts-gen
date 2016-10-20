@@ -101,7 +101,7 @@ public class Sheet {
 //
 //	private List<Power> powers;		// known powers
 
-	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<HindranceSelection> chosenHindrances;		// chosen hindrances
 
 /*	@Column(name = "hasSelectedHindrances")

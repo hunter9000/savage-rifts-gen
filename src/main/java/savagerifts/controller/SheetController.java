@@ -341,7 +341,7 @@ public class SheetController {
 		return skills;
 	}
 
-	/** Get the current skills with info about inc/dec and cost. */
+	/** Increase or decrease the given skill die roll */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.PUT)
 	public SkillBuyResponse increaseDecreseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
@@ -360,12 +360,58 @@ public class SheetController {
 		return skills;
 	}
 
+	/** Finish purchasing skills. */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.POST)
 	public ResponseEntity<?> finishSkillPurchases() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		if (sheet.getCreationStep() == SheetCreationStep.SKILLS) {
+			SheetUtils.moveToNextCreationStep(sheet);
+		}
+		sheetRepository.save(sheet);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/** Get the current hindrances with info about inc/dec and cost. */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.GET)
+	public HindranceBuyResponse getHindranceBuy() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		HindranceBuyResponse skills = SheetUtils.calculateHindrancePurchases(sheet);
+
+		return skills;
+	}
+
+	/** Get the current hindrances with info about inc/dec and cost. */
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.PUT)
+	public HindranceBuyResponse increaseDecreaseHindranceBuy(@RequestBody HindranceBuyRequest hindranceBuyRequest) {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		Hindrance hindrance = hindranceRepository.findByType(hindranceBuyRequest.getType());
+		
+		// make the change, returns false if the change isn't valid
+		if (!SheetUtils.validateAndMakeHindranceChange(sheet, hindrance, hindranceBuyRequest)) {
+			throw new BadRequestException();
+		}
+
+		sheetRepository.save(sheet);
+
+		// recreate the hindrances after the change
+		HindranceBuyResponse hindrances = SheetUtils.calculateHindrancePurchases(sheet);
+
+		return hindrances;
+	}
+
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.POST)
+	public ResponseEntity<?> finishHindracePurchases() {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		if (sheet.getCreationStep() == SheetCreationStep.HINDRANCES) {
 			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);

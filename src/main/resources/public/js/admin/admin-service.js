@@ -64,7 +64,7 @@
                     $location.path('/skillbuy/' + sheet.id);
                 }
 				else if (sheet.creationStep == 'HINDRANCES') {
-//                    $location.path('//' + sheet.id);
+                    $location.path('/hindrancebuy/' + sheet.id);
                 }
 				else if (sheet.creationStep == 'EDGES') {
 //                    $location.path('//' + sheet.id);

@@ -322,4 +322,89 @@ public class SheetUtils {
 		return false;
 	}
 
+	
+	public static HindranceBuyResponse calculateHindrancePurchases(Sheet sheet) {
+		HindranceBuyResponse hindranceBuyResponse = new HindranceBuyResponse();
+		
+		List<HindranceSelection> hindranceSelections = sheet.getChosenHindrances();
+		
+		int majorCount = 0;
+		int minorCount = 0;
+		for (HindranceSelection hs : hindranceSelections) {
+			if (hs.isMajor()) {
+				hindranceBuyResponse.setMajor(hs.getHindrance());
+				majorCount++;
+			}
+			if (hs.isMinor()) {
+				if (minorCount == 0) {
+					hs.setMinor1(hs.getHindrance());
+				}
+				else {
+					hs.setMinor2(hs.getHindrance());
+				}
+				minorCount++;
+			}
+		}
+		
+		if (majorCount > 1 || minorCount > 2) {
+			throw new BadDataExceptionOfSomeKind();
+		}
+		
+		hindranceBuyResponse.numMajorsChosen = majorCount;
+		hindranceBuyResponse.numMinorsChosen = minorCount;
+		hindranceBuyResponse.remainingHindrancePoints = sheet.getRemainingHindrancePoints();
+		
+		return hindranceBuyResponse;
+	}
+	
+	public static boolean validateAndMakeHindranceChange(Sheet sheet, Hindrance hindrance, HindranceBuyRequest hindranceBuyRequest) {
+		HindranceBuyResponse hindranceBuyResponse = SheetUtils.calculateHindrancePurchases(sheet);
+
+		// check that the hindrance can actually be added or removed, and then add or remove it
+		if (hindranceBuyRequest.getOperation() == HindranceBuyRequest.OperationType.ADD) {
+			// make sure the sheet doesn't already have the hindrance
+			for (HindranceSelection hs : sheet.getChosenHindrances()) {
+				if (hs.getHindrance().getHindranceType() == hindrance.getHindranceType()) {		// can only take each hindrance one time, regardless of severity
+					return false;
+				}
+			}
+			
+			// make sure that the sheet doesn't already have too many of this type
+			if (hindranceBuyRequest.getSeverityType() == SeverityType.MAJOR && hindranceBuyResponse.getNumMajor() >= 1) {
+				return false;
+			}
+			else if (hindranceBuyRequest.getSeverityType() == SeverityType.MINOR && hindranceBuyResponse.getNumMinor() >= 2) {
+				return false;
+			}
+			
+			// everything seems to be in order, lets add that hindrance!
+			HindraceSelection hs = new HindranceSelection();
+			hs.setSheet(sheet);
+			hs.setHindrance(hindrance);
+			
+			sheet.getChosenHindrances().add(hs);
+			sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() + hindranceBuyRequest.getSeverityType().getNumPoints());
+			
+			return true;
+		}
+		else if (hindranceBuyRequest.getOperation() == HindranceBuyRequest.OperationType.REMOVE) {
+			// check that the sheet already has this hindrace
+			HindranceSelection hindranceSelection = null;
+			for (HindraceSelection hs : sheet.getChosenHindrances()) {
+				if (hs.getHindrance().getHindranceType() == hindrance.getHindranceType() && hs.getSeverityType() == hindranceBuyRequest.getSeverityType()) {
+					hindranceSelection = hs;
+					break;
+				}
+			}
+			if (hindranceSelection == null) {
+				throw new BadRequestException();
+			}
+			
+			sheet.getChosenHindrances().remove(hindranceSelection);
+			sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - hindranceBuyRequest.getSeverityType().getNumPoints());
+		}
+
+		return false;
+	}
+	
 }

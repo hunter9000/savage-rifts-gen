@@ -21,5 +21,19 @@ public class HindranceSelection {
 	@OneToOne
 	@JoinColumn(name = "hindrance")
 	private Hindrance hindrance;
-			
+	
+	@Column(name = "severityType", nullable = false)
+	@Enumerated(Enumeration.STRING)
+	private SeverityType severityType;
+	
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof HindranceSelection) {
+			HindranceSelection other = (HindranceSelection)o;
+			return this.hindrance.getHindranceType() == other.getHindrance().getHindranceType() 
+					&& this.severityType == other.severityType;
+		}
+		return false;
+	}
 }

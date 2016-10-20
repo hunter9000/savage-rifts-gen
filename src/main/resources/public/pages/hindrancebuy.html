@@ -1,0 +1,57 @@
+
+<link rel="stylesheet" href="css/hindrance-buy.css" />
+
+<div class="container point-buy-wrapper">
+	<div class="row">
+		<!-- already selected -->
+		<div class="col-md-6">
+			<!-- chosen major -->
+			<div class="row">
+				<div ng-show="sheetHindrances.numMajorsChosen == 1">
+					{{sheetHindrances.major}}
+				</div>
+				<div ng-show="sheetHindrances.numMajorsChosen < 1">
+					You may choose {{sheetHindrances.numMajorsChosen}} Major hindrance
+				</div>
+			</div>
+			
+			<!-- chosen minor -->
+			<div class="row">
+				<div ng-show="sheetHindrances.minor1">
+					{{sheetHindrances.minor1}}
+				</div>
+				<div ng-show="sheetHindrances.minor2">
+					{{sheetHindrances.minor2}}
+				</div>
+				<div ng-show="sheetHindrances.numMinorsChosen < 2">
+					You may choose {{sheetHindrances.numMinorsChosen}} Minor hindrances
+				</div>
+			</div>
+			
+			<div class="row">
+				Instructions...
+			</div>
+			
+			<div class="row">
+				<button>I'm done!</button>
+			</div>
+		</div>
+	
+		<!-- options -->
+		<div class="col-md-6">
+			<div class="row" ng-repeat=" in sheetHindrances.hindrances">
+				<skillbuy skill="{{skill.skillType}}" value="skill" canincrease="skills.canIncrease[skill.skillType]" candecrease="skills.canDecrease[skill.skillType]" dec="decSkill" inc="incSkill" >
+					{{skill.displayName}}
+				</skillbuy>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+
+<div class="container">
+    <button ng-click='finalize()' ng-disabled="skills.remainingSkillPoints < 0">Finish Point Buy</button>
+</div>
