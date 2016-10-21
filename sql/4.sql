@@ -130,6 +130,6 @@ CREATE TABLE `sheet` (
     CONSTRAINT `FK_roll_spirit` FOREIGN KEY (`spirit`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_strength` FOREIGN KEY (`strength`) REFERENCES `roll` (`id`),
     CONSTRAINT `FK_roll_vigor` FOREIGN KEY (`vigor`) REFERENCES `roll` (`id`)
-) COLLATE='utf8_general_ciENGINE=InnoDB;
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('4.sql', NOW());

@@ -1,6 +1,7 @@
 package savagerifts.model.sheet;
 
 import savagerifts.model.framework.Framework;
+import savagerifts.model.hindrance.HindranceSelection;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.skill.SkillRoll;
