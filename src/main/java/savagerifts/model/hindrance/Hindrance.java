@@ -17,7 +17,7 @@ public class Hindrance {
 	@Enumerated(EnumType.STRING)
 	private HindranceType type;
 	
-	@Column(name = "description", nullable = false, updateable = false)
+	@Column(name = "description", length = 1500, nullable = false, updatable = false)
 	private String description;
 	
 	@Column(name = "isMinor", nullable = false, updatable = false)
@@ -25,23 +25,7 @@ public class Hindrance {
 	
 	@Column(name = "isMajor", nullable = false, updatable = false)
 	private boolean isMajor;
-	
-	@Transient
-	public boolean isMinor() {
-		return type.isMinor();
-	}
-	public void isMinor(boolean isMinor) {
-		// nothing, readonly property
-	}
-	
-	@Transient
-	public boolean isMajor() {
-		return type.isMajor();
-	}
-	public void isMajor(boolean isMajor) {
-		// nothing, readonly property
-	}
-	
+
 	@Transient
 	public String getDisplayName() {
 		return type.getDisplayName();
@@ -49,5 +33,39 @@ public class Hindrance {
 	public void setDisplayName(String displayName) {
 		// nothing, readonly property
 	}
-		
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public HindranceType getType() {
+		return type;
+	}
+	public void setType(HindranceType type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isMinor() {
+		return isMinor;
+	}
+	public void setMinor(boolean minor) {
+		isMinor = minor;
+	}
+
+	public boolean isMajor() {
+		return isMajor;
+	}
+	public void setMajor(boolean major) {
+		isMajor = major;
+	}
 }

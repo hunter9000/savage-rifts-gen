@@ -10,6 +10,7 @@ public enum FrameworkFeatureType {
 	SIZE("Size +1"),
 	UPGRADABLE("Upgradable"),
 	UNARMED_COMBAT("Unarmed Combat"),
+
 	ALL_THOSE_MOVING_PARTS("All Those Moving Parts"),
 	GRAY_MATTER("Gray Matter"),
 	HEAVY("Heavy"),
@@ -29,10 +30,19 @@ public enum FrameworkFeatureType {
 	QUICK("Quick"),
 	SUPER_ENDURANCE("Super Endurance"),
 	SUPER_REFLEXES("Super Reflexes"),
+
 	CYBERNETICS("Cybernetics"),
 	DISTINCTIVE_APPEARANCE("Distinctive Appearance"),
 	MAGIC("Magic"),
 	NEEDS_ACTION("Needs Action"),
-	UNSTABLE_PSYCHO("Unstable Psycho")
+	UNSTABLE_PSYCHO("Unstable Psycho");
+
+	private String displayName;
+	public String getDisplayName() {
+		return displayName;
+	}
+	FrameworkFeatureType(String displayName) {
+		this.displayName = displayName;
+	}
 	
 }

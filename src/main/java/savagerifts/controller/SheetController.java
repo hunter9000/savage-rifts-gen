@@ -11,6 +11,7 @@ import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
+import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
@@ -18,11 +19,9 @@ import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
 import savagerifts.repository.*;
-import savagerifts.request.NewSheetRequest;
-import savagerifts.request.PerkSwapRequest;
-import savagerifts.request.AttributeBuyRequest;
-import savagerifts.request.SkillBuyRequest;
+import savagerifts.request.*;
 import savagerifts.response.AttributeBuyResponse;
+import savagerifts.response.HindranceBuyResponse;
 import savagerifts.response.PerkSelectionResponse;
 import savagerifts.response.SkillBuyResponse;
 import savagerifts.security.BadRequestException;
@@ -56,6 +55,9 @@ public class SheetController {
 
 	@Autowired
 	private RaceRepository raceRepository;
+
+	@Autowired
+	private HindranceRepository hindranceRepository;
 
     @Autowired
     private HttpServletRequest request;
@@ -391,7 +393,7 @@ public class SheetController {
 	public HindranceBuyResponse increaseDecreaseHindranceBuy(@RequestBody HindranceBuyRequest hindranceBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		Hindrance hindrance = hindranceRepository.findByType(hindranceBuyRequest.getType());
+		Hindrance hindrance = hindranceRepository.findByType(hindranceBuyRequest.getHindranceType());
 		
 		// make the change, returns false if the change isn't valid
 		if (!SheetUtils.validateAndMakeHindranceChange(sheet, hindrance, hindranceBuyRequest)) {

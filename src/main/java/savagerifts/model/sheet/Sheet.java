@@ -1,6 +1,7 @@
 package savagerifts.model.sheet;
 
 import savagerifts.model.framework.Framework;
+import savagerifts.model.hindrance.HindranceSelection;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.skill.SkillRoll;
@@ -55,7 +56,7 @@ public class Sheet {
 	private Integer remainingSkillPoints = DEFAULT_SKILL_POINTS;
 	
 	@Column(name = "remainingHindrancePoints")
-	private Integer remainingHindrancePoints;		// points left from buying hindrances that can be spent on edges, etc
+	private Integer remainingHindrancePoints = 0;		// points left from buying hindrances that can be spent on edges, etc
 	
 	@Column(name = "strain")
 	private Integer strain;
@@ -281,6 +282,13 @@ public class Sheet {
 	}
 	public void setSkills(List<SkillRoll> skills) {
 		this.skills = skills;
+	}
+
+	public List<HindranceSelection> getChosenHindrances() {
+		return chosenHindrances;
+	}
+	public void setChosenHindrances(List<HindranceSelection> chosenHindrances) {
+		this.chosenHindrances = chosenHindrances;
 	}
 
 	//	public List<Language> getLanguages() {

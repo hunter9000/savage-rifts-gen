@@ -1,5 +1,7 @@
 CREATE DATABASE `savage_rifts`;
 
+USE savage_rifts;
+
 CREATE TABLE `sql_files` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`sql_file_name` VARCHAR(255) NOT NULL,

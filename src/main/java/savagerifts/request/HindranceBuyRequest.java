@@ -1,5 +1,7 @@
 package savagerifts.request;
 
+import savagerifts.model.hindrance.HindranceType;
+import savagerifts.model.hindrance.SeverityType;
 import savagerifts.model.skill.SkillType;
 
 public class HindranceBuyRequest {
