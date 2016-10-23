@@ -29,7 +29,10 @@ import java.util.Map;
 
 public class SheetUtils {
 	
-	private static DieType DEFAULT_STARTING_ATTRIBUTE = DieType.D4;
+	private static final DieType DEFAULT_STARTING_ATTRIBUTE = DieType.D4;
+
+	private static final int NUM_MAJOR_HINDRANCES = 1;
+	private static final int NUM_MINOR_HINDRANCES = 2;
 
 	public static Sheet createSheet(User owner, NewSheetRequest sheetRequest, Framework framework) {
 		Sheet sheet = new Sheet();
@@ -350,12 +353,14 @@ public class SheetUtils {
 			}
 		}
 		
-		if (majorCount > 1 || minorCount > 2) {
+		if (majorCount > NUM_MAJOR_HINDRANCES || minorCount > NUM_MINOR_HINDRANCES) {
 			throw new BadRequestException();
 		}
 		
 		hindranceBuyResponse.setNumMajorsChosen(majorCount);
 		hindranceBuyResponse.setNumMinorsChosen(minorCount);
+		hindranceBuyResponse.setNumMajorSelections(NUM_MAJOR_HINDRANCES - majorCount);
+		hindranceBuyResponse.setNumMinorSelections(NUM_MINOR_HINDRANCES - minorCount);
 		hindranceBuyResponse.setNumRemainingHindrancePoints(sheet.getRemainingHindrancePoints());
 		
 		return hindranceBuyResponse;
@@ -374,10 +379,10 @@ public class SheetUtils {
 			}
 			
 			// make sure that the sheet doesn't already have too many of this type
-			if (hindranceBuyRequest.getSeverityType() == SeverityType.MAJOR && hindranceBuyResponse.getNumMajorsChosen() >= 1) {
+			if (hindranceBuyRequest.getSeverityType() == SeverityType.MAJOR && hindranceBuyResponse.getNumMajorsChosen() >= NUM_MAJOR_HINDRANCES) {
 				return false;
 			}
-			else if (hindranceBuyRequest.getSeverityType() == SeverityType.MINOR && hindranceBuyResponse.getNumMinorsChosen() >= 2) {
+			else if (hindranceBuyRequest.getSeverityType() == SeverityType.MINOR && hindranceBuyResponse.getNumMinorsChosen() >= NUM_MINOR_HINDRANCES) {
 				return false;
 			}
 			

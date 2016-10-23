@@ -4,30 +4,35 @@
 <div class="container point-buy-wrapper">
 	<div class="row">
 		<!-- already selected -->
-		<div class="col-md-6">
-			<!-- chosen major -->
-			<div class="row">
-				<div ng-show="sheetHindrances.numMajorsChosen == 1">
-					{{sheetHindrances.major}}
-				</div>
-				<div ng-show="sheetHindrances.numMajorsChosen < 1">
-					You may choose {{sheetHindrances.numMajorsChosen}} Major hindrance
-				</div>
-			</div>
-			
-			<!-- chosen minor -->
-			<div class="row">
-				<div ng-show="sheetHindrances.minor1">
-					{{sheetHindrances.minor1}}
-				</div>
-				<div ng-show="sheetHindrances.minor2">
-					{{sheetHindrances.minor2}}
-				</div>
-				<div ng-show="sheetHindrances.numMinorsChosen < 2">
-					You may choose {{sheetHindrances.numMinorsChosen}} Minor hindrances
+		<div class="col-md-3">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Major Hindrance</div>
+				<div class="panel-body">
+					<div ng-show="sheetHindranceSelections.numMajorsChosen == 1">
+						{{sheetHindranceSelections.major}}
+					</div>
+					<div ng-show="sheetHindranceSelections.numMajorSelections > 0">
+						You may choose {{sheetHindranceSelections.numMajorSelections}} Major hindrance
+					</div>
 				</div>
 			</div>
-			
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Minor Hindrances</div>
+				<div class="panel-body">
+					<div ng-show="sheetHindranceSelections.minor1">
+						{{sheetHindranceSelections.minor1}}
+					</div>
+					<div ng-show="sheetHindranceSelections.minor2">
+						{{sheetHindranceSelections.minor2}}
+					</div>
+					<div ng-show="sheetHindranceSelections.numMinorSelections > 0">
+						You may choose {{sheetHindranceSelections.numMinorSelections}} Minor hindrances
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 				Instructions...
 			</div>
@@ -38,13 +43,20 @@
 		</div>
 	
 		<!-- options -->
-		<!--<div class="col-md-6">-->
-			<!--<div class="row" ng-repeat=" in sheetHindrances.hindrances">-->
-				<!--<skillbuy skill="{{skill.skillType}}" value="skill" canincrease="skills.canIncrease[skill.skillType]" candecrease="skills.canDecrease[skill.skillType]" dec="decSkill" inc="incSkill" >-->
-					<!--{{skill.displayName}}-->
-				<!--</skillbuy>-->
-			<!--</div>-->
-		<!--</div>-->
+		<div class="col-md-9">
+			<div class="row" ng-repeat="hindrance in hindrances">
+				<dl class="dl-horizontal">
+					<dt>
+						<div>{{hindrance.displayName}}</div>
+						<h5>
+							<button ng-show="hindrance.minor">Minor</button>
+							<button ng-show="hindrance.major">Major</button>
+						</h5>
+					</dt>
+					<dd class="text-left">{{hindrance.description}}</dd>
+				</dl>
+			</div>
+		</div>
 	</div>
 
 

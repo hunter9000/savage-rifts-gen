@@ -13,8 +13,12 @@ public class HindranceBuyResponse {
 	private Hindrance minor1;
 	private Hindrance minor2;
 
+	// numer already chosen
 	private int numMinorsChosen;
 	private int numMajorsChosen;
+	// the number left to choose
+	private int numMinorSelections;
+	private int numMajorSelections;
 
 	private int numRemainingHindrancePoints;
 
@@ -51,6 +55,20 @@ public class HindranceBuyResponse {
 	}
 	public void setNumMajorsChosen(int numMajorsChosen) {
 		this.numMajorsChosen = numMajorsChosen;
+	}
+
+	public int getNumMinorSelections() {
+		return numMinorSelections;
+	}
+	public void setNumMinorSelections(int numMinorSelections) {
+		this.numMinorSelections = numMinorSelections;
+	}
+
+	public int getNumMajorSelections() {
+		return numMajorSelections;
+	}
+	public void setNumMajorSelections(int numMajorSelections) {
+		this.numMajorSelections = numMajorSelections;
 	}
 
 	public int getNumRemainingHindrancePoints() {
