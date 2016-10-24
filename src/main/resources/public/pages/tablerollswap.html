@@ -8,9 +8,22 @@
 
             <h4>Choose two perks to swap for another perk, or skip to keep selected perks. You may make {{remainingSwaps}} more swaps.</h4>
 
+            <!-- perks to choose for swapping -->
             <dl class="dl-horizontal" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}">
                 <dt>
                     <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">
+                    {{chosenPerk.perk.benefitTableDisplayName}}
+                </dt>
+                <dd class="text-left">
+                    {{chosenPerk.perk.description}}
+                </dd>
+            </dl>
+
+            <hr>
+
+            <!-- already swapped perks -->
+            <dl class="dl-horizontal" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: true}">
+                <dt>
                     {{chosenPerk.perk.benefitTableDisplayName}}
                 </dt>
                 <dd class="text-left">
