@@ -1,5 +1,6 @@
 package savagerifts.model.framework;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import savagerifts.model.edge.Edge;
 
 import javax.persistence.*;
@@ -11,7 +12,8 @@ public class FrameworkFeature {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false, updatable = false)
 	private Long id;
-	
+
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "framework", nullable = false, updatable = false)
 	private Framework framework;

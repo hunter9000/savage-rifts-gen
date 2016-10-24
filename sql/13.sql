@@ -15,6 +15,7 @@ CREATE TABLE `framework_feature` (
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
 SELECT @COMBAT_CYBORG_ID:=id FROM `framework` WHERE type = 'COMBAT_CYBORG';
+SELECT @CRAZY_ID:=id FROM `framework` WHERE type = 'CRAZY';
 
 INSERT INTO `framework_feature` (`framework`, `framework_feature_type`, `framework_ability_type`, `description`) VALUES
 (@COMBAT_CYBORG_ID, 'BIONIC_AUGMENTATION', 'BONUS', 'Combat Cyborgs begin with Strength d12+2, Agility d10, and Vigor d12. These traits do not have an attribute maximum.'),
@@ -36,19 +37,19 @@ INSERT INTO `framework_feature` (`framework`, `framework_feature_type`, `framewo
 (@COMBAT_CYBORG_ID, 'SPIRITUALLY_NUMB', 'COMPLICATION', 'Combat Cyborgs can’t take Arcane Background.'),
 (@COMBAT_CYBORG_ID, 'TOTAL_CONVERSION', 'COMPLICATION', 'Becoming a Combat Cyborg uses all of a character’s personal Strain ever. They start with only the 6 Strain from the Upgradable Edge and can only gain more from the Beyond the Limit Edge.'),
 
-(@COMBAT_CYBORG_ID, 'BIO_REGENERATION', 'BONUS', 'Awakening certain portions of the brain via the Mind Over Matter implants grants the Crazy a natural healing roll once every 24 hours.'),
-(@COMBAT_CYBORG_ID, 'ENHANCED_ATTRIBUTES', 'BONUS', 'Crazies gain +2 die types to Agility, Strength, and Vigor. These traits have no maximum.'),
-(@COMBAT_CYBORG_ID, 'ENHANCED_SPEED', 'BONUS', 'Crazies double their base Pace.'),
-(@COMBAT_CYBORG_ID, 'HEIGHTENED_SENSES', 'BONUS', 'Crazies gain +2 to Notice and Tracking rolls. They also ignore two points of Range penalties.'),
-(@COMBAT_CYBORG_ID, 'MINOR_PSIONIC', 'BONUS', 'Unlocking the brain’s potential grants a Crazy Arcane Background (Psionics), 10 ISP, three powers, and Psionics d6. Crazies have access to the following powers: armor, barrier, blind, bolt, boost/lower Trait, clairvoyance, confusion, damage field, darksight, deflection, disguise, dispel, divination, drain Power Points, entangle, environmental protection, farsight, fear, fly, havoc, healing, illusion, intangibility, invisibility, mind reading, pummel, puppet, slow, slumber, smite, speak language, stun, telekinesis, telepathy, teleport, warrior’s gift.'),
-(@COMBAT_CYBORG_ID, 'QUICK', 'BONUS', 'Crazies begin with the Quick Edge.'),
-(@COMBAT_CYBORG_ID, 'SUPER_ENDURANCE', 'BONUS', 'Crazies require only half the normal amount of sleep, and gain +4 on all checks to resist Fatigue.'),
-(@COMBAT_CYBORG_ID, 'SUPER_REFLEXES', 'BONUS', 'Crazies have uncanny reflexes, granting them a −2 to be hit as long as they are aware of the attack.'),
+(@CRAZY_ID, 'BIO_REGENERATION', 'BONUS', 'Awakening certain portions of the brain via the Mind Over Matter implants grants the Crazy a natural healing roll once every 24 hours.'),
+(@CRAZY_ID, 'ENHANCED_ATTRIBUTES', 'BONUS', 'Crazies gain +2 die types to Agility, Strength, and Vigor. These traits have no maximum.'),
+(@CRAZY_ID, 'ENHANCED_SPEED', 'BONUS', 'Crazies double their base Pace.'),
+(@CRAZY_ID, 'HEIGHTENED_SENSES', 'BONUS', 'Crazies gain +2 to Notice and Tracking rolls. They also ignore two points of Range penalties.'),
+(@CRAZY_ID, 'MINOR_PSIONIC', 'BONUS', 'Unlocking the brain’s potential grants a Crazy Arcane Background (Psionics), 10 ISP, three powers, and Psionics d6. Crazies have access to the following powers: armor, barrier, blind, bolt, boost/lower Trait, clairvoyance, confusion, damage field, darksight, deflection, disguise, dispel, divination, drain Power Points, entangle, environmental protection, farsight, fear, fly, havoc, healing, illusion, intangibility, invisibility, mind reading, pummel, puppet, slow, slumber, smite, speak language, stun, telekinesis, telepathy, teleport, warrior’s gift.'),
+(@CRAZY_ID, 'QUICK', 'BONUS', 'Crazies begin with the Quick Edge.'),
+(@CRAZY_ID, 'SUPER_ENDURANCE', 'BONUS', 'Crazies require only half the normal amount of sleep, and gain +4 on all checks to resist Fatigue.'),
+(@CRAZY_ID, 'SUPER_REFLEXES', 'BONUS', 'Crazies have uncanny reflexes, granting them a −2 to be hit as long as they are aware of the attack.'),
 
-(@COMBAT_CYBORG_ID, 'CYBERNETICS', 'COMPLICATION', 'Crazies suffer −1 to Psionics per point of Strain (page 108).'),
-(@COMBAT_CYBORG_ID, 'DISTINCTIVE_APPEARANCE', 'COMPLICATION', 'The protrusions from the skull alone mark a Crazy for what she is. Most also indulge in tattoos, body piercings, and other means of declaring themselves to the world.'),
-(@COMBAT_CYBORG_ID, 'MAGIC', 'COMPLICATION', 'M.O.M. implants jumble the mind in such a way as to make the use of magic impossible.'),
-(@COMBAT_CYBORG_ID, 'NEEDS_ACTION', 'COMPLICATION', 'Crazies live in a constant state of heightened adrenaline and awareness, even those suffering from depression cannot escape the feeling. During particular slow periods, the Game Master may call for a Spirit roll. Failure means the Crazy gains −2 Charisma as she becomes irritable and impatient. She also suffers a −1 to all Trait rolls from the distraction of her frenzied mind, until some kind of high alert status or action kicks in.'),
-(@COMBAT_CYBORG_ID, 'UNSTABLE_PSYCHO', 'COMPLICATION', 'From the start (and for no added benefit), the character gains a psychological or emotional Hindrance determined by rolling on the Psyche Degradation Table. Representing the constant degradation of the Crazy’s psychological state, the character gains an additional Hindrance from the table each time she achieves a new Rank.');
+(@CRAZY_ID, 'CYBERNETICS', 'COMPLICATION', 'Crazies suffer −1 to Psionics per point of Strain (page 108).'),
+(@CRAZY_ID, 'DISTINCTIVE_APPEARANCE', 'COMPLICATION', 'The protrusions from the skull alone mark a Crazy for what she is. Most also indulge in tattoos, body piercings, and other means of declaring themselves to the world.'),
+(@CRAZY_ID, 'MAGIC', 'COMPLICATION', 'M.O.M. implants jumble the mind in such a way as to make the use of magic impossible.'),
+(@CRAZY_ID, 'NEEDS_ACTION', 'COMPLICATION', 'Crazies live in a constant state of heightened adrenaline and awareness, even those suffering from depression cannot escape the feeling. During particular slow periods, the Game Master may call for a Spirit roll. Failure means the Crazy gains −2 Charisma as she becomes irritable and impatient. She also suffers a −1 to all Trait rolls from the distraction of her frenzied mind, until some kind of high alert status or action kicks in.'),
+(@CRAZY_ID, 'UNSTABLE_PSYCHO', 'COMPLICATION', 'From the start (and for no added benefit), the character gains a psychological or emotional Hindrance determined by rolling on the Psyche Degradation Table. Representing the constant degradation of the Crazy’s psychological state, the character gains an additional Hindrance from the table each time she achieves a new Rank.');
 
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('13.sql', NOW());

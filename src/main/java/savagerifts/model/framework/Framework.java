@@ -114,6 +114,13 @@ public class Framework {
 		this.tableRolls = tableRolls;
 	}
 
+	public List<FrameworkFeature> getFrameworkFeatures() {
+		return frameworkFeatures;
+	}
+	public void setFrameworkFeatures(List<FrameworkFeature> frameworkFeatures) {
+		this.frameworkFeatures = frameworkFeatures;
+	}
+
 	public Integer getStartingAttributePoints() {
 		return startingAttributePoints;
 	}
@@ -232,6 +239,5 @@ public class Framework {
 	public void setHasVigorLimit(boolean hasVigorLimit) {
 		this.hasVigorLimit = hasVigorLimit;
 	}
-
 
 }
