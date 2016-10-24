@@ -338,11 +338,11 @@ public class SheetUtils {
 		int majorCount = 0;
 		int minorCount = 0;
 		for (HindranceSelection hs : sheet.getChosenHindrances()) {
-			if (hs.getHindrance().isMajor()) {
+			if (hs.getSeverityType() == SeverityType.MAJOR) {
 				hindranceBuyResponse.setMajor(hs.getHindrance());
 				majorCount++;
 			}
-			if (hs.getHindrance().isMinor()) {
+			if (hs.getSeverityType() == SeverityType.MINOR) {
 				if (minorCount == 0) {
 					hindranceBuyResponse.setMinor1(hs.getHindrance());
 				}
@@ -390,6 +390,7 @@ public class SheetUtils {
 			HindranceSelection hs = new HindranceSelection();
 			hs.setSheet(sheet);
 			hs.setHindrance(hindrance);
+			hs.setSeverityType(hindranceBuyRequest.getSeverityType());
 			
 			sheet.getChosenHindrances().add(hs);
 			sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() + hindranceBuyRequest.getSeverityType().getNumPoints());
@@ -400,7 +401,7 @@ public class SheetUtils {
 			// check that the sheet already has this hindrace
 			HindranceSelection hindranceSelection = null;
 			for (HindranceSelection hs : sheet.getChosenHindrances()) {
-				if (hs.getHindrance().getType() == hindrance.getType() && hs.getSeverityType() == hindranceBuyRequest.getSeverityType()) {
+				if (hs.getHindrance().getType() == hindrance.getType()) {
 					hindranceSelection = hs;
 					break;
 				}
@@ -410,10 +411,10 @@ public class SheetUtils {
 			}
 			
 			sheet.getChosenHindrances().remove(hindranceSelection);
-			sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - hindranceBuyRequest.getSeverityType().getNumPoints());
+			sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - hindranceSelection.getSeverityType().getNumPoints());
 		}
 
-		return false;
+		return true;
 	}
 	
 }

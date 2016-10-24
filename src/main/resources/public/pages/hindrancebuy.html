@@ -10,7 +10,8 @@
 				<div class="panel-heading">Major Hindrance</div>
 				<div class="panel-body">
 					<div ng-show="sheetHindranceSelections.numMajorsChosen == 1">
-						{{sheetHindranceSelections.major}}
+						<strong>{{sheetHindranceSelections.major.displayName}}</strong>
+						<a ng-click="removeHindrance(sheetHindranceSelections.major)"><span class="glyphicon glyphicon-remove"></span></a>
 					</div>
 					<div ng-show="sheetHindranceSelections.numMajorSelections > 0">
 						You may choose {{sheetHindranceSelections.numMajorSelections}} Major hindrance
@@ -22,16 +23,22 @@
 				<div class="panel-heading">Minor Hindrances</div>
 				<div class="panel-body">
 					<div ng-show="sheetHindranceSelections.minor1">
-						{{sheetHindranceSelections.minor1}}
+						<strong>{{sheetHindranceSelections.minor1.displayName}}</strong>
+						<a ng-click="removeHindrance(sheetHindranceSelections.minor1)"><span class="glyphicon glyphicon-remove"></span></a>
 					</div>
 					<div ng-show="sheetHindranceSelections.minor2">
-						{{sheetHindranceSelections.minor2}}
+						<strong>{{sheetHindranceSelections.minor2.displayName}}</strong>
+						<a ng-click="removeHindrance(sheetHindranceSelections.minor2)"><span class="glyphicon glyphicon-remove"></span></a>
 					</div>
 					<div ng-show="sheetHindranceSelections.numMinorSelections > 0">
 						You may choose {{sheetHindranceSelections.numMinorSelections}} Minor hindrances
 					</div>
 				</div>
 			</div>
+
+			<h5>
+				You currently have {{sheetHindranceSelections.numRemainingHindrancePoints}} points from Hindrances
+			</h5>
 
 			<div class="row text-left">
 				<p>You can take one Major Hindrance and two Minor
@@ -50,19 +57,19 @@
 			</div>
 			
 			<div class="row">
-				<button class="btn btn-primary" ng-click="">I'm done!</button>
+				<button class="btn btn-primary" ng-click="finishHindrances()">I'm done!</button>
 			</div>
 		</div>
 	
 		<!-- options -->
 		<div class="col-md-9">
-			<div class="row" ng-repeat="hindrance in hindrances">
+			<div class="row" ng-repeat="hindrance in hindrances | filter: chosenTypeFilterFunc">
 				<dl class="dl-horizontal">
 					<dt>
 						<div>{{hindrance.displayName}}</div>
 						<h5>
-							<button class="btn btn-default" ng-show="hindrance.minor" ng-click="addMinor(hindrance)">Minor</button>
-							<button class="btn btn-default" ng-show="hindrance.major" ng-click="addMajor(hindrance)">Major</button>
+							<button class="btn btn-default" ng-show="canSelectMinor(hindrance)" ng-click="addHindrance(hindrance, 'MINOR')">Minor</button>
+							<button class="btn btn-default" ng-show="canSelectMajor(hindrance)" ng-click="addHindrance(hindrance, 'MAJOR')">Major</button>
 						</h5>
 					</dt>
 					<dd class="text-left">{{hindrance.description}}</dd>
