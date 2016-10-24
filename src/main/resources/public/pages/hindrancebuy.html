@@ -33,12 +33,24 @@
 				</div>
 			</div>
 
-			<div class="row">
-				Instructions...
+			<div class="row text-left">
+				<p>You can take one Major Hindrance and two Minor
+				Hindrances. A Major Hindrance is worth 2 points, and a Minor
+				Hindrance is worth 1 point.</p>
+				<p>For 2 points you can:</p>
+				<ul>
+					<li>Raise an attribute one die type, or</li>
+					<li>Choose an Edge</li>
+				</ul>
+				<p>For 1 point you can:</p>
+				<ul>
+					<li>Gain another skill point, or</li>
+					<li>Gain additional money equal to your starting funds (if you start with $500, you gain an additional $500)</li>
+				</ul>
 			</div>
 			
 			<div class="row">
-				<button>I'm done!</button>
+				<button class="btn btn-primary" ng-click="">I'm done!</button>
 			</div>
 		</div>
 	
@@ -49,8 +61,8 @@
 					<dt>
 						<div>{{hindrance.displayName}}</div>
 						<h5>
-							<button ng-show="hindrance.minor">Minor</button>
-							<button ng-show="hindrance.major">Major</button>
+							<button class="btn btn-default" ng-show="hindrance.minor" ng-click="addMinor(hindrance)">Minor</button>
+							<button class="btn btn-default" ng-show="hindrance.major" ng-click="addMajor(hindrance)">Major</button>
 						</h5>
 					</dt>
 					<dd class="text-left">{{hindrance.description}}</dd>
@@ -59,11 +71,4 @@
 		</div>
 	</div>
 
-
-
-
 </div>
-
-<!--<div class="container">-->
-    <!--<button ng-click='finalize()' ng-disabled="skills.remainingSkillPoints < 0">Finish Point Buy</button>-->
-<!--</div>-->

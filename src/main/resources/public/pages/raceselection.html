@@ -1,6 +1,16 @@
 
-	<select name="repeatSelect" id="repeatSelect" ng-model="selectedRaceId">
-		<option ng-repeat="race in races" value="{{race.id}}">{{race.displayName}}</option>
-	</select>
-	
-	<button ng-click="selectRace()">Select Race</button>
+
+<div class="container width-extra-small">
+	<div class="panel panel-default">
+		<div class="panel-heading">Choose Race</div>
+		<div class="panel-body">
+
+			<select class="form-control margin-bottom-small" name="repeatSelect" id="repeatSelect" ng-model="selectedRaceId">
+				<option ng-repeat="race in races" value="{{race.id}}">{{race.displayName}}</option>
+			</select>
+
+			<button class="btn btn-primary" ng-click="selectRace()">Select Race</button>
+
+		</div>
+	</div>
+</div>

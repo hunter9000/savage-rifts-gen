@@ -25,20 +25,20 @@ savageRiftsApp.controller('hindranceBuyController', function($scope, $http, $win
 		$location.path('/error');
 	});
 	
-//	$scope.decSkill = function(skill) {
-//	    console.log('dec ' + skill);
-//
-//        $http.put('/api/sheet/' + $routeParams.sheetId + '/hindrances/',
-//            { 'skill': skill, 'operation': 'DEC' },       // data
-//            { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-//        )
-//        .then(function successCallback(response) {
-//            $scope.skills = response.data;
-//        }, function errorCallback(response) {
-//            console.log(response);
-//            $location.path('/error');
-//        });
-//	}
+	$scope.addMajor = function(hindrance) {
+	    console.log('add ' + hindrance);
+
+        $http.put('/api/sheet/' + $routeParams.sheetId + '/hindrances/',
+            { 'hindrance': skill, 'operation': 'ADD' },       // data
+            { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
+        )
+        .then(function successCallback(response) {
+            $scope.sheetHindranceSelections = response.data;
+        }, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+        });
+	}
 //	$scope.incSkill = function(skill) {
 //        console.log('inc ' + skill);
 //

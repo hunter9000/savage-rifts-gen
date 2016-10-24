@@ -1,5 +1,11 @@
 
-edit profile
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Edit Profile</div>
+        <div class="panel-body">
+            <user-info user="user" edit-name="false" roles="roles"/>
+            <button class="btn btn-primary" ng-click="save()">Save</button>
+        </div>
+    </div>
+</div>
 
-<user-info user="user" edit-name="false"/>
-<button ng-click="save()">Save</button>

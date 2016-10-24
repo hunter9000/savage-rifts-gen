@@ -1,27 +1,38 @@
 
+<link rel="stylesheet" href="css/table-rolls.css" />
 
+<!-- Table options -->
+<div class="container width-medium" ng-hide="selectedPerk">
+	<div class="panel panel-default">
+		<div class="panel-heading">Table Rolls</div>
+		<div class="panel-body">
 
-<div class="container well well-sm" ng-hide="selectedPerk" >
+			<dl class="dl-horizontal" ng-repeat="perkRange in benefitTable.perkRanges" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''">
+				<dt>{{perkRange.min}}
+					<span ng-hide="perkRange.min == perkRange.max">
+						- {{perkRange.max}}
+					</span></dt>
+				<dd class="text-left">{{perkRange.perk.description}}</dd>
+			</dl>
 
-	<div class="row" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in benefitTable.perkRanges">
-		<div class="col-md-1">
-			{{perkRange.min}}
-			<span ng-hide="perkRange.min == perkRange.max">
-				- {{perkRange.max}}
-			</span>
-		</div>
-		<div class="col-md-11 text-left">
-			{{perkRange.perk.description}}
+			<button class="btn btn-primary" ng-click="roll()">Roll</button>
+			<button class="btn btn-default" ng-click="goBack()">Back</button>
+
 		</div>
 	</div>
-
-	<button ng-click="roll()">Roll</button>
-	<button ng-click="goBack()">Back</button>
 </div>
 
-<div ng-hide="!selectedPerk" >
-	<div>
-		{{selectedPerk.perk.description}}
+<!-- chosen perk -->
+<div class="container width-medium" ng-hide="!selectedPerk">
+	<div class="panel panel-default">
+		<div class="panel-heading">Table Rolls</div>
+		<div class="panel-body">
+
+			<div>
+				{{selectedPerk.perk.description}}
+			</div>
+			<button class="btn btn-primary" ng-click="goBack()">Back</button>
+
+		</div>
 	</div>
-	<button ng-click="goBack()">Back</button>
 </div>

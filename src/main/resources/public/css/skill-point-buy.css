@@ -12,12 +12,17 @@
 }
 .point-buy-attribute-col {
     display:inline-block;
-    width: 120px;
+    width: 100px;
     text-align: left;
 }
 .point-buy-value-col {
     display:inline-block;
     width: 50px;
+    text-align: left;
+}
+.point-buy-attr-col {
+    display:inline-block;
+    width: 75px;
     text-align: left;
 }
 .point-buy-mod-col {

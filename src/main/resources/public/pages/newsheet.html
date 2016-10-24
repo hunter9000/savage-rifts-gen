@@ -1,20 +1,26 @@
 
-	new char
-	
-	<p>{{ message }}</p>
-	
-	<form ng-submit="save()">
-		<div class="form-group row">
-			<label>Name: </label>
-			<input type="text" ng-model="formData.characterName">
-		</div>
+<div class="container width-small">
+	<div class="panel panel-default">
+		<div class="panel-heading">New Character</div>
+		<div class="panel-body">
+			<form ng-submit="save()">
 
-		<div class="form-group row">
-			<label>Framework: </label>
-			<select name="repeatSelect" id="repeatSelect" ng-model="formData.frameworkId">
-				<option ng-repeat="option in frameworks" value="{{option.id}}">{{option.displayName}}</option>
-			</select>
-		</div>
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" ng-model="formData.characterName">
+				</div>
 
-		<button>Save</button>
-	</form>
+				<div class="form-group">
+					<label for="framework">Framework</label>
+					<select name="repeatSelect" class="form-control" id="framework" ng-model="formData.frameworkId">
+						<option ng-repeat="option in frameworks" value="{{option.id}}">{{option.displayName}}</option>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Save</button>
+				<a href="#/charselect" class="btn btn-default">Back</a>
+			</form>
+		</div>
+	</div>
+</div>
+

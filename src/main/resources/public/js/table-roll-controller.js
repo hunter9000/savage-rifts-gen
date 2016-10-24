@@ -18,6 +18,17 @@ savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http
         $location.path('/error');
     });
 
+    // get the sheet
+    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
+        { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+    )
+    .then(function successCallback(response) {
+        $scope.sheet = response.data;
+    }, function errorCallback(response) {
+        console.log(response);
+        $location.path('/error');
+    });
+
 	$scope.roll = function() {
 		$http({method:'POST',
 			   url: '/api/sheet/' + $routeParams.sheetId + '/tableroll/' + $routeParams.tableId + '/' + $routeParams.rollId + '/',

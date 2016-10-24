@@ -1,60 +1,58 @@
 
-<style>
-    .perk-checkbox {width:100px;}
-    .perk-name {width:100px;}
-    .perk-description {width:100px;}
+<link rel="stylesheet" href="css/table-rolls.css" />
 
-</style>
+<div class="container" ng-hide="swapTable">
+    <div class="panel panel-default">
+        <div class="panel-heading">Swap Table Rolls</div>
+        <div class="panel-body">
 
+            <h4>Choose two perks to swap for another perk, or skip to keep selected perks. You may make {{remainingSwaps}} more swaps.</h4>
 
-<div class="container well well-sm" ng-hide="swapTable" >
+            <dl class="dl-horizontal" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}">
+                <dt>
+                    <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">
+                    {{chosenPerk.perk.benefitTableDisplayName}}
+                </dt>
+                <dd class="text-left">
+                    {{chosenPerk.perk.description}}
+                </dd>
+            </dl>
 
-    <h4>Choose two perks to swap for another perk, or skip to keep selected perks. You may make {{remainingSwaps}} more swaps.</h4>
+            <h4>Choose the table to select the new perk from</h4>
 
-    <div class="row" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}" >
-        <div class="col-md-1">
-            <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">
-        </div>
+            <select name="table-selection " class="form-control margin-bottom-small width-extra-small center" id="table-selection" ng-model="selectedTableId">
+                <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
+            </select>
 
-        <div class="col-md-2">
-            {{chosenPerk.perk.benefitTableDisplayName}} :
-        </div>
-        <div class="col-md-9 text-left">
-            {{chosenPerk.perk.description}}
+            <button class="btn btn-primary" ng-click="swap()">Swap</button>
+            <button class="btn btn-primary" ng-click="finishSwapping()">Skip Perk Swapping</button>
+
         </div>
     </div>
-
-    Choose the table to select the new perk from
-
-
-    <div class="row" ng-repeat="table in benefitTables" >
-        <div class="col-md-5"> </div>
-        <div class="col-md-1 text-right">
-            <input type="radio" name="tableSelection" ng-model="$parent.selectedTable" ng-value="table">
-        </div>
-        <div class="col-md-2 text-left">
-            {{table.displayName}}
-        </div>
-        <div class="col-md-4"> </div>
-    </div>
-
-    <button ng-click="swap()">Swap</button>
-
 </div>
 
-<div class="container well well-sm" ng-show="swapTable" >
 
-    <div class="row" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in swapTable.perkRanges">
-        <div class="col-md-1">
-            <input type="radio" name="newPerkSelection" ng-model="$parent.newPerkSelection" ng-value="perkRange.perk" ng-disabled="perkRange.perkHasBeenChosen" >
-        </div>
-        <div class="col-md-11 text-left">
-            {{perkRange.perk.description}}
+
+<div class="container" ng-show="swapTable">
+    <div class="panel panel-default">
+        <div class="panel-heading">Swap Table Rolls</div>
+        <div class="panel-body">
+
+            <dl class="dl-horizontal" ng-class="(perkRange.perkHasBeenChosen) ? 'selected' : ''" ng-repeat="perkRange in swapTable.perkRanges">
+                <dt>
+                    <input type="radio" name="newPerkSelection" ng-model="$parent.newPerkSelection" ng-value="perkRange.perk" ng-disabled="perkRange.perkHasBeenChosen" >
+                </dt>
+                <dd class="text-left">
+                    {{perkRange.perk.description}}
+                </dd>
+            </dl>
+
+            <button class="btn btn-primary" ng-click="confirmSwap()">Swap</button>
+            <button class="btn btn-default" ng-click="back()">Back</button>
+
         </div>
     </div>
-
-    <button ng-click="back()">Back</button>
-    <button ng-click="confirmSwap()">Swap</button>
 </div>
 
-<button ng-click="finishSwapping()">Skip perk swapping</button>
+
+

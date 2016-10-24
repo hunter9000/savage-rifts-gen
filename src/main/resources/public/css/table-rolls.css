@@ -1,0 +1,13 @@
+
+.table-wrapper {
+    display: inline;
+    margin-right: 15px;
+}
+
+.selected {
+    background-color:darkseagreen;
+}
+
+.perk-checkbox {width:100px;}
+.perk-name {width:100px;}
+.perk-description {width:100px;}

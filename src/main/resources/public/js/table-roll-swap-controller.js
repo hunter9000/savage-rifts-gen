@@ -4,7 +4,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     $scope.sheet = null;
     $scope.benefitTables = null;            // all the tables
     $scope.perkItems = [];                  // the chosen perks to swap: Perk[]
-    $scope.selectedTable = null;            // the table to choose from
+    $scope.selectedTableId = null;            // the table to choose from
     $scope.swapTable = null;                // the BenefitTable that the new selection is to be made from
     $scope.newPerkSelection = null;         // the selected new perk: Perk
 
@@ -42,10 +42,10 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     }
 
     $scope.swap = function() {
-        if ($scope.perkItems.length == 2 && $scope.selectedTable) {
+        if ($scope.perkItems.length == 2 && $scope.selectedTableId) {
             var perkId1 = $scope.perkItems[0].perk.id;
             var perkId2 = $scope.perkItems[1].perk.id;
-            var tableId = $scope.selectedTable.id;
+            var tableId = $scope.selectedTableId;
 
             $http.get('/api/benefittable/'+ tableId +'/'+ $routeParams.sheetId +'/',
                 { headers: {'x-access-token': $window.localStorage['jwtToken']} }
@@ -90,7 +90,7 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
 	$scope.finishSwapping = function() {
 		// post to set flag true, go to editsheet
 		console.log($scope.perkItems);
-		console.log($scope.selectedTable);
+		console.log($scope.selectedTableId);
 
         $http.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
             {},

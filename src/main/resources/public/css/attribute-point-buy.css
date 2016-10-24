@@ -1,10 +1,5 @@
 /** Point buy screen */
-.point-buy-wrapper div {
-    //display:inline-block;
-}
-.point-buy-wrapper {
-    //width: 320px;
-}
+
 .point-buy-button-col {
     display:inline-block;
     width: 60px;

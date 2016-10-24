@@ -1,4 +1,4 @@
-savageRiftsApp.directive('statbuy', function() {
+savageRiftsApp.directive('attributeBuy', function() {
   return {
 	templateUrl: "pages/templates/attribute-point-buy-directive-template.html",
 	restrict: 'E',

@@ -1,11 +1,29 @@
 
-	<form ng-submit="login()">
-	  <label>Username</label>
-	  <input type="text" ng-model="formData.name">
-	  <label>Password</label>
-	  <input type="password" ng-model="formData.password">
-	  
-	  <button>Login</button>
-	</form>
-	
-	<p>{{ message }}</p>
+<div class="container width-small">
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<form ng-submit="login()">
+
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" ng-model="formData.name" class="form-control" id="username" placeholder="Username">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" ng-model="formData.password" class="form-control" id="password" placeholder="Password">
+				</div>
+
+				<!--<label>Username</label>-->
+				<!--<input type="text" ng-model="formData.name">-->
+				<!--<label>Password</label>-->
+				<!--<input type="password" ng-model="formData.password">-->
+
+				<button class="btn btn-primary">Login</button>
+			</form>
+
+			<p>{{ message }}</p>
+
+		</div>
+	</div>
+</div>
