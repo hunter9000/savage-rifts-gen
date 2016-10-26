@@ -123,6 +123,27 @@
     </plugins>
   </build>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <build.profile.id>local</build.profile.id>
+                <build.application.properties>src/main/resources/local/application.properties</build.application.properties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <build.profile.id>prod</build.profile.id>
+                <build.application.properties>src/main/resources/local/application.properties</build.application.properties>
+            </properties>
+        </profile>
+    </profiles>
+
   <repositories>
     <repository>
       <id>spring-releases</id>
