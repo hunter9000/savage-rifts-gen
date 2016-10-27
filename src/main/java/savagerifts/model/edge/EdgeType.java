@@ -65,7 +65,7 @@ public enum EdgeType {
 	//leadership
 	COMMAND,
 	COMMAND_PRESENCE,
-	FERVER,
+	FERVOR,
 	HOLD_THE_LINE,
 	INSPIRE,
 	LEADER_OF_MEN,

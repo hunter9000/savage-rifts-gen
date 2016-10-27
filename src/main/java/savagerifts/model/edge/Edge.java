@@ -24,7 +24,10 @@ public class Edge {
 	@Enumerated(EnumType.STRING)
 	private EdgeCategoryType edgeCategoryType;
 	
-	@Column(name = "XpLevelType")
+	@Column(name = "description", nullable = false, updatable = false, length = 2000)
+	private String description;
+	
+	@Column(name = "xpLevelType", updatable = false)
 	@Enumerated(EnumType.STRING)
 	private XPRank requiredLevel;
 
