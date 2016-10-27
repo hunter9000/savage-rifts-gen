@@ -287,20 +287,20 @@ public class SheetUtils {
 		Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
 		
 		for (SkillType skillType : skillMap.keySet()) {
-			SkillRoll skill = skillMap.get(skillType);
+			SkillRoll skillRoll = skillMap.get(skillType);
 			
-			int pointCost = getSkillPointCost(skill, attrMap);
-			skillBuyResponse.canIncrease.put(skillType, skill.getRoll().compareTo(new Roll(DieType.D12, 0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost);
+			int pointCost = getSkillPointCost(skillRoll, attrMap);
+			skillBuyResponse.canIncrease.put(skillType, skillRoll.getRoll().compareTo(new Roll(DieType.D12, 0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost);
 			
-			skillBuyResponse.canDecrease.put(skillType, skill.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15);
+			skillBuyResponse.canDecrease.put(skillType, skillRoll.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15);
 		}
 		
 		return skillBuyResponse;
 	}
 	
-	private static int getSkillPointCost(Skill skill, Map<AttributeType, Roll> attrMap) {
+	private static int getSkillPointCost(SkillRoll skillRoll, Map<AttributeType, Roll> attrMap) {
 		// cost to increase is 1 if the skill is less than it's attr, 2 if it's greater than or equal to the attr
-		return skill.getRoll().compareTo(attrMap.get(skill.getAttribute()).getRoll()) < 0 ? 1 : 2;
+		return skillRoll.getRoll().compareTo(attrMap.get(skillRoll.getLinkedAttribute())) < 0 ? 1 : 2;
 	}
 	
 	/** Adds all the sheet's skillrolls to a map for convenience */
@@ -319,7 +319,7 @@ public class SheetUtils {
 		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
 		SkillRoll skillRoll = skillMap.get(skillBuyRequest.getSkill());
 		
-		int pointCost = getSkillPointCost(skillBuyRequest.getSkill(), populateAttributeMap(sheet));
+		int pointCost = getSkillPointCost(skillMap.get(skillBuyRequest.getSkill()), populateAttributeMap(sheet));
 		
 		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
 		if (skillBuyRequest.getOperation() == SkillBuyRequest.OperationType.INC) {
