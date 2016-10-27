@@ -79,7 +79,7 @@ public class SheetUtils {
 		// set the minimum starting attribute from the framework/race/etc to the current stat.
 		// if not specified, it will be ignored and the default will be used
 		for (AttributeType type : AttributeType.values()) {
-			sheet.getAttribute(type).copy(getMinAttribute(type));
+			sheet.getAttribute(type).copy(getMinAttribute(sheet, type));
 		}
 		// sheet.getStrength().copy(getMinStrength(sheet));
 		// sheet.getAgility().copy(getMinAgility(sheet));
@@ -131,8 +131,8 @@ public class SheetUtils {
 	// }
 
 	private static Roll getMinAttribute(Sheet sheet, AttributeType type) {
-		if (sheet.getFramework() != null && framework.getStartingAttribute(type) != null) {
-			return framework.getStartingAttribute(type);
+		if (sheet.getFramework() != null && sheet.getFramework().getStartingAttribute(type) != null) {
+			return sheet.getFramework().getStartingAttribute(type);
 		}
 		return new Roll();		// d4+0
 	}
@@ -178,8 +178,8 @@ public class SheetUtils {
 	// }
 	
 	private static Roll getMaxAttribute(Sheet sheet, AttributeType type) {
-		if (sheet.getFramework() != null && framework.getMaxAttribute(type) != null) {
-			return framework.getMaxAttribute(type);
+		if (sheet.getFramework() != null && sheet.getFramework().getMaxAttribute(type) != null) {
+			return sheet.getFramework().getMaxAttribute(type);
 		}
 		return new Roll(DieType.D12, 0);		// d12+0
 	}

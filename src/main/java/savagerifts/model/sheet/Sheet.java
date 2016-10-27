@@ -1,5 +1,6 @@
 package savagerifts.model.sheet;
 
+import savagerifts.model.AttributeType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.HindranceSelection;
 import savagerifts.model.perk.PerkSelection;
@@ -117,11 +118,12 @@ public class Sheet {
 
 	public Roll getAttribute(AttributeType type) {
 		switch(type) {
-			case STRENGTH: return sheet.getStrength());
-			case AGILITY: return sheet.getAgility());
-			case SMARTS: return sheet.getSmarts());
-			case SPIRIT: return sheet.getSpirit());
-			case VIGOR: return sheet.getVigor());
+			case STRENGTH: return getStrength();
+			case AGILITY: return getAgility();
+			case SMARTS: return getSmarts();
+			case SPIRIT: return getSpirit();
+			case VIGOR: return getVigor();
+			default: throw new RuntimeException("AttributeType " + type + " not implemented");
 		}
 	}
 

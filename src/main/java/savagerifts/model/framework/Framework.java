@@ -1,5 +1,6 @@
 package savagerifts.model.framework;
 
+import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
 import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.sheet.Roll;
@@ -93,22 +94,24 @@ public class Framework {
 		// nothing, read only property
 	}
 
-	public Roll getStartingRoll(AttributeType type) {
+	public Roll getStartingAttribute(AttributeType type) {
 		switch(type) {
 			case STRENGTH: return getStartingStrength();
 			case AGILITY: return getStartingAgility();
 			case SMARTS: return getStartingSmarts();
 			case SPIRIT: return getStartingSpirit();
 			case VIGOR: return getStartingVigor();
+			default: throw new RuntimeException("AttributeType " + type + " not implemented");
 		}
 	}
-	public Roll getMaxRoll(AttributeType type) {
+	public Roll getMaxAttribute(AttributeType type) {
 		switch(type) {
 			case STRENGTH: return getMaxStrength();
 			case AGILITY: return getMaxAgility();
 			case SMARTS: return getMaxSmarts();
 			case SPIRIT: return getMaxSpirit();
 			case VIGOR: return getMaxVigor();
+			default: throw new RuntimeException("AttributeType " + type + " not implemented");
 		}
 	}
 	
