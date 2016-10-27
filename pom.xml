@@ -100,6 +100,7 @@
         </executions>
       </plugin>
 
+      <!-- runs bower -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -120,6 +121,26 @@
         </configuration>
       </plugin>
 
+      <!-- copies the application.properties file that corresponds to the profile to the correct location -->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <delete file="${project.build.outputDirectory}/application.properties"/>
+                <copy file="src/main/resources/${build.profile.id}/application.properties"
+                      tofile="${project.build.outputDirectory}/application.properties"/>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 
@@ -128,7 +149,6 @@
             <id>local</id>
             <properties>
                 <build.profile.id>local</build.profile.id>
-                <build.application.properties>src/main/resources/local/application.properties</build.application.properties>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -139,7 +159,6 @@
             <id>prod</id>
             <properties>
                 <build.profile.id>prod</build.profile.id>
-                <build.application.properties>src/main/resources/local/application.properties</build.application.properties>
             </properties>
         </profile>
     </profiles>
