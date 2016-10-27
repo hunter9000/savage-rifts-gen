@@ -93,6 +93,25 @@ public class Framework {
 		// nothing, read only property
 	}
 
+	public Roll getStartingRoll(AttributeType type) {
+		switch(type) {
+			case STRENGTH: return getStartingStrength();
+			case AGILITY: return getStartingAgility();
+			case SMARTS: return getStartingSmarts();
+			case SPIRIT: return getStartingSpirit();
+			case VIGOR: return getStartingVigor();
+		}
+	}
+	public Roll getMaxRoll(AttributeType type) {
+		switch(type) {
+			case STRENGTH: return getMaxStrength();
+			case AGILITY: return getMaxAgility();
+			case SMARTS: return getMaxSmarts();
+			case SPIRIT: return getMaxSpirit();
+			case VIGOR: return getMaxVigor();
+		}
+	}
+	
 	public Long getId() {
 		return id;
 	}

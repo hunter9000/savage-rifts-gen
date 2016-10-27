@@ -115,6 +115,16 @@ public class Sheet {
 	boolean hasSelectedEdges;
 */	
 
+	public Roll getAttribute(AttributeType type) {
+		switch(type) {
+			case STRENGTH: return sheet.getStrength());
+			case AGILITY: return sheet.getAgility());
+			case SMARTS: return sheet.getSmarts());
+			case SPIRIT: return sheet.getSpirit());
+			case VIGOR: return sheet.getVigor());
+		}
+	}
+
 
 	public Long getId() {
 		return id;
