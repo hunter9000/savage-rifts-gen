@@ -1,13 +1,19 @@
 
-
-<div class="container width-extra-small">
+<div class="container width-medium">
 	<div class="panel panel-default">
 		<div class="panel-heading">Choose Race</div>
 		<div class="panel-body">
 
-			<select class="form-control margin-bottom-small" name="repeatSelect" id="repeatSelect" ng-model="selectedRaceId">
-				<option ng-repeat="race in races" value="{{race.id}}">{{race.displayName}}</option>
+			<select ng-options="race as race.displayName for race in races track by race.id"
+					ng-model="selectedRace"
+					class="form-control margin-bottom-small width-extra-small center"
+					name="repeatSelect"
+					id="repeatSelect">
 			</select>
+
+			<div class="text-left">
+				{{selectedRace.description}}
+			</div>
 
 			<button class="btn btn-primary" ng-click="selectRace()">Select Race</button>
 

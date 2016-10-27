@@ -41,8 +41,27 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
         return Math.floor(count/2);
     }
 
+    $scope.isCheckBoxDisabled = function(chosenPerk) {
+        if ($scope.perkItems.length == 2) {
+            // return if this perk is not in the list
+            for (i=0; i<$scope.perkItems.length; i++) {
+                if ($scope.perkItems[i] == chosenPerk) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    $scope.canSwap = function() {
+        return $scope.perkItems.length == 2 && $scope.selectedTableId;
+    }
+
     $scope.swap = function() {
-        if ($scope.perkItems.length == 2 && $scope.selectedTableId) {
+        if ($scope.canSwap()) {
             var perkId1 = $scope.perkItems[0].perk.id;
             var perkId2 = $scope.perkItems[1].perk.id;
             var tableId = $scope.selectedTableId;

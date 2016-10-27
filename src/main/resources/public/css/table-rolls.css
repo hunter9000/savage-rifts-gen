@@ -11,3 +11,7 @@
 .perk-checkbox {width:100px;}
 .perk-name {width:100px;}
 .perk-description {width:100px;}
+
+dl {
+    margin-bottom: 10px !important;
+}

@@ -2,7 +2,7 @@
 
 savageRiftsApp.controller('raceSelectionController', function($scope, $http, $window, $routeParams, $location) {
 	$scope.races = [];
-	$scope.selectedRaceId = null;
+	$scope.selectedRace = null;
 	
 	$http.get('/api/race/', 
 		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
@@ -16,7 +16,7 @@ savageRiftsApp.controller('raceSelectionController', function($scope, $http, $wi
 	});
 
 	$scope.selectRace = function() {
-		$http.post('/api/sheet/' + $routeParams.sheetId + '/race/' + $scope.selectedRaceId + '/',
+		$http.post('/api/sheet/' + $routeParams.sheetId + '/race/' + $scope.selectedRace.id + '/',
 		    {},
 			{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
 		.then(function successCallback(response) {

@@ -11,7 +11,7 @@
             <!-- perks to choose for swapping -->
             <dl class="dl-horizontal" ng-repeat="chosenPerk in sheet.chosenPerks | filter: {wasSwappedFor: false}">
                 <dt>
-                    <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk">
+                    <input type="checkbox" checklist-model="perkItems" checklist-value="chosenPerk" ng-disabled="isCheckBoxDisabled(chosenPerk)">
                     {{chosenPerk.perk.benefitTableDisplayName}}
                 </dt>
                 <dd class="text-left">
@@ -37,13 +37,13 @@
                 <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
             </select>
 
-            <button class="btn btn-primary" ng-click="swap()">Swap</button>
+            <button class="btn btn-primary" ng-click="swap()" ng-disabled="!canSwap()">Swap</button>
+            <div>Or</div>
             <button class="btn btn-primary" ng-click="finishSwapping()">Skip Perk Swapping</button>
 
         </div>
     </div>
 </div>
-
 
 
 <div class="container" ng-show="swapTable">
