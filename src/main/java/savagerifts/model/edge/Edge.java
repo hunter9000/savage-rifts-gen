@@ -16,6 +16,14 @@ public class Edge {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
+	@Column(name = "edgeType", nullable = false, updatable = false, unique = true)
+	@Enumerated(EnumType.STRING)
+	private EdgeType edgeType;
+	
+	@Column(name = "edgeCategoryType", nullable = false, updatable = false, unique = true)
+	@Enumerated(EnumType.STRING)
+	private EdgeCategoryType edgeCategoryType;
+	
 	@Column(name = "XpLevelType")
 	@Enumerated(EnumType.STRING)
 	private XPRank requiredLevel;
@@ -27,9 +35,6 @@ public class Edge {
 	private List<Framework> requiredFrameworks;
 
 	// i.e. STRENGTH d10+
-	//AttributeType requiredAttribute;
-	//DieType requiredAttributeDie;
-
 	@OneToOne
 	@JoinColumn(name = "requiredAttribute", updatable = false)
 	private Roll requiredAttribute;
