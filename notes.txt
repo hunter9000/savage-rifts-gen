@@ -1,3 +1,13 @@
+
+FEEDBACK:
+- go straight to editing after creating a sheet, don't go to sheet list
+- vertical spacing
+- crazy can't increase vigor over d8?
+
+
+Logging!
+
+
 abilities - default values for 5, derived values, isp, ppe
 frameworks - table rolls and choices, predefined edges/hinds (non-selectable framework specific edges?), power lists, starting gear
 MARS?
