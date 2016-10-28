@@ -78,11 +78,14 @@ public class SheetUtils {
 
 		// set the minimum starting attribute from the framework/race/etc to the current stat.
 		// if not specified, it will be ignored and the default will be used
-		sheet.getStrength().copy(getMinStrength(sheet));
-		sheet.getAgility().copy(getMinAgility(sheet));
-		sheet.getSmarts().copy(getMinSmarts(sheet));
-		sheet.getSpirit().copy(getMinSpirit(sheet));
-		sheet.getVigor().copy(getMinVigor(sheet));
+		for (AttributeType type : AttributeType.values()) {
+			sheet.getAttribute(type).copy(getMinAttribute(sheet, type));
+		}
+		// sheet.getStrength().copy(getMinStrength(sheet));
+		// sheet.getAgility().copy(getMinAgility(sheet));
+		// sheet.getSmarts().copy(getMinSmarts(sheet));
+		// sheet.getSpirit().copy(getMinSpirit(sheet));
+		// sheet.getVigor().copy(getMinVigor(sheet));
 	}
 
 	public static Integer getMaxAttributePoints(Sheet sheet) {
@@ -93,120 +96,133 @@ public class SheetUtils {
 		return Sheet.DEFAULT_ATTRIBUTE_POINTS;
 	}
 
-	private static Roll getMinAttribute(Sheet sheet, AttributeType attrType) {
-		switch(attrType) {
-			case STRENGTH:
-				return getMinStrength(sheet);
-			case AGILITY:
-				return getMinAgility(sheet);
-			case SMARTS:
-				return getMinSmarts(sheet);
-			case SPIRIT:
-				return getMinSpirit(sheet);
-			case VIGOR:
-				return getMinVigor(sheet);
-			default:
-				throw new RuntimeException();
-		}
-	}
+	// private static Roll getMinAttribute(Sheet sheet, AttributeType attrType) {
+		// switch(attrType) {
+			// case STRENGTH:
+				// return getMinStrength(sheet);
+			// case AGILITY:
+				// return getMinAgility(sheet);
+			// case SMARTS:
+				// return getMinSmarts(sheet);
+			// case SPIRIT:
+				// return getMinSpirit(sheet);
+			// case VIGOR:
+				// return getMinVigor(sheet);
+			// default:
+				// throw new RuntimeException();
+		// }
+	// }
 
-	private static Roll getMaxAttribute(Sheet sheet, AttributeType attrType) {
-		switch(attrType) {
-			case STRENGTH:
-				return getMaxStrength(sheet);
-			case AGILITY:
-				return getMaxAgility(sheet);
-			case SMARTS:
-				return getMaxSmarts(sheet);
-			case SPIRIT:
-				return getMaxSpirit(sheet);
-			case VIGOR:
-				return getMaxVigor(sheet);
-			default:
-				throw new RuntimeException();
-		}
-	}
+	// private static Roll getMaxAttribute(Sheet sheet, AttributeType attrType) {
+		// switch(attrType) {
+			// case STRENGTH:
+				// return getMaxStrength(sheet);
+			// case AGILITY:
+				// return getMaxAgility(sheet);
+			// case SMARTS:
+				// return getMaxSmarts(sheet);
+			// case SPIRIT:
+				// return getMaxSpirit(sheet);
+			// case VIGOR:
+				// return getMaxVigor(sheet);
+			// default:
+				// throw new RuntimeException();
+		// }
+	// }
 
-	private static Roll getMinStrength(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getStartingStrength() != null) {
-			return framework.getStartingStrength();
-		}
-		return new Roll();		// d4+0
-	}
-
-	private static Roll getMinAgility(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getStartingAgility() != null) {
-			return framework.getStartingAgility();
+	private static Roll getMinAttribute(Sheet sheet, AttributeType type) {
+		if (sheet.getFramework() != null && sheet.getFramework().getStartingAttribute(type) != null) {
+			return sheet.getFramework().getStartingAttribute(type);
 		}
 		return new Roll();		// d4+0
 	}
+	
+	// private static Roll getMinStrength(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getStartingStrength() != null) {
+			// return framework.getStartingStrength();
+		// }
+		// return new Roll();		// d4+0
+	// }
 
-	private static Roll getMinSmarts(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getStartingSmarts() != null) {
-			return framework.getStartingSmarts();
+	// private static Roll getMinAgility(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getStartingAgility() != null) {
+			// return framework.getStartingAgility();
+		// }
+		// return new Roll();		// d4+0
+	// }
+
+	// private static Roll getMinSmarts(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getStartingSmarts() != null) {
+			// return framework.getStartingSmarts();
+		// }
+		// return new Roll();		// d4+0
+	// }
+
+	// private static Roll getMinSpirit(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getStartingSpirit() != null) {
+			// return framework.getStartingSpirit();
+		// }
+		// return new Roll();		// d4+0
+	// }
+
+	// private static Roll getMinVigor(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getStartingVigor() != null) {
+			// return framework.getStartingVigor();
+		// }
+		// return new Roll();		// d4+0
+	// }
+	
+	private static Roll getMaxAttribute(Sheet sheet, AttributeType type) {
+		if (sheet.getFramework() != null && sheet.getFramework().getMaxAttribute(type) != null) {
+			return sheet.getFramework().getMaxAttribute(type);
 		}
-		return new Roll();		// d4+0
+		return new Roll(DieType.D12, 0);		// d12+0
 	}
+	
+	// private static Roll getMaxStrength(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getMaxStrength() != null) {
+			// return framework.getMaxStrength();
+		// }
+		// return new Roll(DieType.D12, 0);		// d4+0
+	// }
 
-	private static Roll getMinSpirit(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getStartingSpirit() != null) {
-			return framework.getStartingSpirit();
-		}
-		return new Roll();		// d4+0
-	}
+	// private static Roll getMaxAgility(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getMaxAgility() != null) {
+			// return framework.getMaxAgility();
+		// }
+		// return new Roll(DieType.D12, 0);		// d4+0
+	// }
 
-	private static Roll getMinVigor(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getStartingVigor() != null) {
-			return framework.getStartingVigor();
-		}
-		return new Roll();		// d4+0
-	}
+	// private static Roll getMaxSmarts(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getMaxSmarts() != null) {
+			// return framework.getMaxSmarts();
+		// }
+		// return new Roll(DieType.D12, 0);		// d4+0
+	// }
 
-	private static Roll getMaxStrength(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getMaxStrength() != null) {
-			return framework.getMaxStrength();
-		}
-		return new Roll(DieType.D12, 0);		// d4+0
-	}
+	// private static Roll getMaxSpirit(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getMaxSpirit() != null) {
+			// return framework.getMaxSpirit();
+		// }
+		// return new Roll(DieType.D12, 0);		// d4+0
+	// }
 
-	private static Roll getMaxAgility(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getMaxAgility() != null) {
-			return framework.getMaxAgility();
-		}
-		return new Roll(DieType.D12, 0);		// d4+0
-	}
-
-	private static Roll getMaxSmarts(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getMaxSmarts() != null) {
-			return framework.getMaxSmarts();
-		}
-		return new Roll(DieType.D12, 0);		// d4+0
-	}
-
-	private static Roll getMaxSpirit(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getMaxSpirit() != null) {
-			return framework.getMaxSpirit();
-		}
-		return new Roll(DieType.D12, 0);		// d4+0
-	}
-
-	private static Roll getMaxVigor(Sheet sheet) {
-		Framework framework = sheet.getFramework();
-		if (framework != null && framework.getMaxVigor() != null) {
-			return framework.getMaxVigor();
-		}
-		return new Roll(DieType.D12, 0);		// d4+0
-	}
-
+	// private static Roll getMaxVigor(Sheet sheet) {
+		// Framework framework = sheet.getFramework();
+		// if (framework != null && framework.getMaxVigor() != null) {
+			// return framework.getMaxVigor();
+		// }
+		// return new Roll(DieType.D12, 0);		// d4+0
+	// }
 
 	/** Moves the character to the next step, which will be null if done with all steps. */
 	public static void moveToNextCreationStep(Sheet sheet) {
@@ -239,8 +255,8 @@ public class SheetUtils {
 		return attrs;
 	}
 
-	/** Adds all the sheet's skillrolls to a map for convenience */
-	public static Map<AttributeType, Roll> populateAttributeMap(Sheet sheet) {
+	/** Adds all the sheet's skillrolls to a map for serialization. Use sheet.getAttribute(type) if you just need to find out an attribute value. */
+	private static Map<AttributeType, Roll> populateAttributeMap(Sheet sheet) {
 		Map<AttributeType, Roll> map = new HashMap<>();
 		map.put(AttributeType.STRENGTH, sheet.getStrength());
 		map.put(AttributeType.AGILITY, sheet.getAgility());
@@ -254,8 +270,9 @@ public class SheetUtils {
 		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
 
 		// get the attribute that we want to change
-		Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
-		Roll attrRoll = attrMap.get(pointBuyRequest.getAttribute());
+		//Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
+		//Roll attrRoll = attrMap.get(pointBuyRequest.getAttribute());
+		Roll attrRoll = sheet.getAttribute(pointBuyRequest.getAttribute());
 
 		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
 		if (pointBuyRequest.getOperation() == AttributeBuyRequest.OperationType.INC) {
@@ -303,7 +320,7 @@ public class SheetUtils {
 		return skillRoll.getRoll().compareTo(attrMap.get(skillRoll.getLinkedAttribute())) < 0 ? 1 : 2;
 	}
 	
-	/** Adds all the sheet's skillrolls to a map for convenience */
+	/** Adds all the sheet's skillrolls to a map for serialization. */
 	public static Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
 		Map<SkillType, SkillRoll> map = new HashMap<>();
 		for (SkillRoll roll : sheet.getSkills()) {

@@ -1,5 +1,13 @@
 USE savage_rifts;
 
+CREATE TABLE `sql_files` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`sql_file_name` VARCHAR(255) NOT NULL,
+	`run_date` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
+
+
 CREATE TABLE `role` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`role_name` VARCHAR(20) NOT NULL,

@@ -1,5 +1,6 @@
 package savagerifts.model.sheet;
 
+import savagerifts.model.AttributeType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.HindranceSelection;
 import savagerifts.model.perk.PerkSelection;
@@ -114,6 +115,17 @@ public class Sheet {
 	@Column(name = "hasSelectedEdges")
 	boolean hasSelectedEdges;
 */	
+
+	public Roll getAttribute(AttributeType type) {
+		switch(type) {
+			case STRENGTH: return getStrength();
+			case AGILITY: return getAgility();
+			case SMARTS: return getSmarts();
+			case SPIRIT: return getSpirit();
+			case VIGOR: return getVigor();
+			default: throw new RuntimeException("AttributeType " + type + " not implemented");
+		}
+	}
 
 
 	public Long getId() {
