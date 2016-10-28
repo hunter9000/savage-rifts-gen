@@ -311,6 +311,34 @@ public class Sheet {
 		this.chosenHindrances = chosenHindrances;
 	}
 
+	public List<EdgeSelection> getChosenEdges() {
+		return chosenEdges;
+	}
+	public void setChosenEdges(List<EdgeSelection> chosenEdges) {
+		this.chosenEdges = chosenEdges;
+	}
+
+	public List<AttributeRaiseSelection> getChosenAttributeRaises() {
+		return chosenAttributeRaises;
+	}
+	public void setChosenAttributeRaises(List<AttributeRaiseSelection> chosenAttributeRaises) {
+		this.chosenAttributeRaises = chosenAttributeRaises;
+	}
+
+	public List<SkillRaiseSelection> getChosenSkillRaises() {
+		return chosenSkillRaises;
+	}
+	public void setChosenSkillRaises(List<SkillRaiseSelection> chosenSkillRaises) {
+		this.chosenSkillRaises = chosenSkillRaises;
+	}
+
+	public List<MoneyRaiseSelection> getChosenMoneyRaises() {
+		return chosenMoneyRaises;
+	}
+	public void setChosenMoneyRaises(List<MoneyRaiseSelection> chosenMoneyRaises) {
+		this.chosenMoneyRaises = chosenMoneyRaises;
+	}
+
 	//	public List<Language> getLanguages() {
 //		return languages;
 //	}

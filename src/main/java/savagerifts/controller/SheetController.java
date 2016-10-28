@@ -414,7 +414,7 @@ public class SheetController {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		if (sheet.getCreationStep() != SheetCreationStep.HINDRANCES) {
-			throw new BadDataException();		// can't call this on this sheet
+			throw new BadRequestException();		// can't call this on this sheet
 		}
 		
 		if (sheet.getCreationStep() == SheetCreationStep.HINDRANCES) {
