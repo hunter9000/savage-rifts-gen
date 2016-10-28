@@ -1,0 +1,46 @@
+
+
+<div class="container point-buy-wrapper">
+	<div class="panel panel-default">
+		<div class="panel-heading">Edges etc...</div>
+		<div class="panel-body">
+
+			<div class="row">
+				<!-- chosen options -->
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Chosen</div>
+						<div class="panel-body">
+							<div ng-repeat="edge in sheet.chosenEdges"> </div>
+							<div ng-repeat="attr in sheet.chosenAttributeRaises"> </div>
+							<div ng-repeat="skill in sheet.chosenSkillRaises"> </div>
+							<div ng-repeat="money in sheet.chosenMoneyRaises"> </div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- selections to make -->
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Selections</div>
+						<div class="panel-body">
+							<div ng-show="sheet.remainingHindrancePoints >= 2">
+								For 2 points:
+								<a class="btn btn-primary" ng-click="choose('edge')">Edge</a>
+								<a class="btn btn-primary" ng-click="choose('attr')">Attribute</a>
+							</div>
+							
+							<div ng-show="sheet.remainingHindrancePoints >= 1">
+								For 1 point:
+								<a class="btn btn-primary" ng-click="choose('skill')">Skill</a>
+								<a class="btn btn-primary" ng-click="chooseMoney()">Starting Money</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>

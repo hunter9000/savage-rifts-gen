@@ -106,15 +106,23 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<HindranceSelection> chosenHindrances;		// chosen hindrances
 
-/*	@Column(name = "hasSelectedHindrances")
-	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
-*/	
-//	boolean hasMagic? hasPsionics?
+	// things bought with hindrance points
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<EdgeSelection> chosenEdges;
 	
-/*
-	@Column(name = "hasSelectedEdges")
-	boolean hasSelectedEdges;
-*/	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<AttributeRaiseSelection> chosenAttributeRaises;
+	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SkillRaiseSelection> chosenSkillRaises;
+	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<MoneyRaiseSelection> chosenMoneyRaises;
+
+	
+	
+//	boolean hasMagic? hasPsionics?
+		
 
 	public Roll getAttribute(AttributeType type) {
 		switch(type) {

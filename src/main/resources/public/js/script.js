@@ -88,6 +88,15 @@ savageRiftsApp.config(function($routeProvider) {
             controller : 'hindranceBuyController'
         })
 		
+		.when('/edgebuy/:sheetId', {
+			templateUrl: 'pages/edges.html',
+			controller : 'edgesController'
+		})
+		.when('/edgebuy/:sheetId/:purchaseType', {
+			templateUrl: 'pages/edgebuy.html',
+			controller : 'edgeBuyController'
+		})
+		
         // generic error page
         .when('/error', {
             templateUrl: 'pages/error.html',
