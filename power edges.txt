@@ -1,0 +1,29 @@
+New Power 
+
+Requirements: Novice, Arcane Background 
+
+An arcane character may learn a new power by choosing this Edge (which may be taken multiple times). He may choose from any powers normally available to his particular Arcane Background. 
+
+Power Points 
+
+Requirements: Novice, Arcane Background 
+
+Wizards, weird scientists, and other arcane types always want more power. This Edge grants them an additional 5 Power Points. Power Points may be selected more than once, but only once per Rank. 
+
+Rapid Recharge
+
+Requirements: Seasoned, Spirit d6+, Arcane Background 
+
+This Edge allows an arcane character to regain 1 Power Point every 30 minutes. 
+
+Improved Rapid Recharge
+
+Requirements: Veteran, Rapid Recharge 
+
+The character regains 1 Power Point every 15 minutes. 
+
+Soul Drain 
+
+Rank: Seasoned, Arcane Background (any but Weird Science), Knowledge (Arcana) d10+ 
+
+Spellcasters, mentalists, and other arcane types in dire need of Power Points may use this Edge to drain energy from their own souls. To use this dangerous ability, the arcane character first decides how many Power Points he wants to draw from himself. Then he makes a Spirit roll minus the number of points he’s trying to drain. (This is a free action.) On a Spirit total of 1 or less, the character suffers a wound and falls unconscious for 1d6 hours. On a failure, the character suffers a wound. On a success or better, the character gets the points he needed and may attempt to cast a spell with them immediately (they may not be saved). 

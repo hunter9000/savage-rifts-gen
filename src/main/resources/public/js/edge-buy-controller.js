@@ -13,15 +13,42 @@ savageRiftsApp.controller('edgeBuyController', function($scope, $http, $window, 
     });
 	
 	if ($routeParams.purchaseType == 'edge') {
-		
+		$http.get('/api/edge/',
+		    { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+		)
+		.then(function successCallback(response) {
+		    $scope.edges = response.data;
+		}, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+		});
 	}
 	else if ($routeParams.purchaseType == 'attr') {
-		
+        $http.get('/api/sheet/' + $routeParams.sheetId + '/attributes/',
+            { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+        )
+        .then(function successCallback(response) {
+            $scope.attrs = response.data;
+        }, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+        });
 	}
 	else if ($routeParams.purchaseType == 'skill') {
-		
+        $http.get('/api/sheet/' + $routeParams.sheetId + '/skills/',
+            { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+        )
+        .then(function successCallback(response) {
+            $scope.skills = response.data;
+        }, function errorCallback(response) {
+            console.log(response);
+            $location.path('/error');
+        });
 	}
-	
+
+	$scope.back = function() {
+	    $location.path('/edgebuy/' + $routeParams.sheetId);
+	}
 	
 	// get sheet's hindrance selections
 	// $http.get('/api/sheet/'+ $routeParams.sheetId +'/hindrances/',

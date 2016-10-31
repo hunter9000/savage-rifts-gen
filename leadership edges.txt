@@ -1,0 +1,49 @@
+Command 
+
+Requirements: Novice, Smarts d6+ 
+
+Command is the ability to give clear instructions to surrounding allies and enforce your hero’s will upon them. This makes your character’s compatriots more willing to fight on despite their wounds, and so adds +1 to their Spirit rolls to recover from being Shaken. 
+
+Command Presence 
+
+Requirements: Novice, Command 
+
+A booming voice, effective commands, natural charisma, or simple training results in a much more effective combat element. At the center of that element is the officer in command. A hero with this Edge has a “command radius” of 10” instead of the usual 5”. 
+
+Fervor 
+
+Requirements: Veteran, Command, Spirit d8+ 
+
+A simple phrase uttered by a great leader can sometimes have momentous results. A leader with this ability can inspire his men to bloody fervor by yelling a motto, slogan, or other inspirational words. Those in the command radius add +1 to their Fighting damage rolls. 
+
+Hold the Line! 
+
+Requirements: Seasoned, Command, Smarts d8+ 
+
+This Edge strengthens the will of the men under the hero’s command. The troops add +1 to their Toughness. 
+Inspire
+
+Requirements: Seasoned, Command 
+
+Leaders with exceptional reputations and experience in battle inspire the soldiers around them. They add +2 to Spirit rolls when recovering from being Shaken (this includes the original +1 bonus for the Command Edge). 
+
+Leader of Men 
+
+Requirements: Veteran, Command 
+
+Command comes easy to this commander. Those under his command work like a well-oiled machine when he’s in charge. 
+
+Allies under the leader’s command roll a d10 as the Wild Die instead of a d6 when making group rolls. 
+
+Natural Leader 
+
+Requirements: Novice, Command, Spirit d8+ 
+
+This Edge signifies a special link between a leader and his men. With it, he may share his Bennies with any troops under his command. 
+
+Tactician 
+
+Requirements: Seasoned, Command, Wild Card, 
+Smarts d8+, Knowledge (Battle) d6+ 
+
+The leader has a natural grasp of small unit tactics and can frequently take advantage of a rapidly changing situation. At the beginning of a fight and before any Action Cards are dealt, the hero makes a Knowledge (Battle) roll. For each success and raise he receives one Action Card. These are kept separate from his regular Action Cards and are not placed back into the deck until used or the combat ends (including Jokers!). At the start of any round, the hero may give one or more of these extra cards to his allies, whether Extras or Wild Cards, who then use it as their Action Card for the round in place of the one dealt them. This allows Extras to operate independently of Wild Card characters for one round if they receive their own card. Only one character per encounter may use this Edge. 

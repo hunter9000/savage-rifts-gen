@@ -1,0 +1,18 @@
+Dead Shot 
+
+Requirements: Wild Card, Seasoned, Shooting/ 
+Throwing d10+ 
+
+The character doubles his total damage when making a successful Shooting or Throwing attack this round. 
+
+Mighty Blow
+
+Requirements: Wild Card, Seasoned, Fighting d10+ 
+
+The character doubles his total damage when making a successful Fighting attack this round. 
+
+Power Surge
+
+Requirements: Wild Card, Seasoned, arcane skill d10+ 
+
+This Edge is for those characters with Arcane Backgrounds. When dealt a Joker, the character recovers 2d6 Power Points. He may not exceed his usual limit. 
