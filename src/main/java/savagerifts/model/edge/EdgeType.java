@@ -18,7 +18,6 @@ public enum EdgeType {
 	LINGUIST,
 	LUCK,
 	GREAT_LUCK,
-	NOBLE,
 	QUICK,
 	RICH,
 	FILTHY_RICH,
