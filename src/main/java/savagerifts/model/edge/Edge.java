@@ -101,12 +101,12 @@ public class Edge {
 		this.requiredFrameworks = requiredFrameworks;
 	}
 
-	public Roll getRequiredAttribute() {
-		return requiredAttribute;
-	}
-	public void setRequiredAttribute(Roll requiredAttribute) {
-		this.requiredAttribute = requiredAttribute;
-	}
+//	public Roll getRequiredAttribute() {
+//		return requiredAttribute;
+//	}
+//	public void setRequiredAttribute(Roll requiredAttribute) {
+//		this.requiredAttribute = requiredAttribute;
+//	}
 
 //	public SkillType getRequiredSkill() {
 //		return requiredSkill;
