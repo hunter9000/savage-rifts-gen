@@ -1,0 +1,15 @@
+1: create db
+2: create sql_files, create user, role, user_role, add default admin user
+3: create roll, skill_roll, language
+4: create framework, sheet, edge, edge_prerequisite, edge_required_framework, race, race_ability
+5: add combat cyborg and crazy framework with basic attribute info
+6: create perk, benefit_table, perk_range
+7: add all benefit tables, add perks for body armor, ccw, cybernetics, education
+8: create benefit_table_roll, benefit_table_roll_allowance, add table rolls for 4 tables above to combat cyborg and crazy
+9: create perk_selection
+10: add race type, add all races
+11: add max attrs to framework, add xp rank to sheet, add reference to sheet to skill_roll
+12: create hindrance, hindrance_selection, insert hindrances
+13: create framework_feature, insert framework features for combat cyborg and crazy
+14: add columns to edge. create attribute_raise_selection, edge_selection, money_raise_selection, skill_raise_selection, edge_attribute_prerequisite, edge_skill_prerequisite
+15: add more races

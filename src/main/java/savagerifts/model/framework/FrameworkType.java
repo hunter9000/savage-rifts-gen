@@ -3,7 +3,7 @@ package savagerifts.model.framework;
 public enum FrameworkType {
 	COMBAT_CYBORG("Combat Cyborg"),
 	CRAZY("Crazy"),
-	CYPER_KNIGHT("Cyber-Knight"),
+	CYBER_KNIGHT("Cyber-Knight"),
 	GLITTER_BOY("Glitter Boy"),
 	JUICER("Juicer"),
 	MARS("MARS"),
