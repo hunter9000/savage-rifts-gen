@@ -3,6 +3,19 @@
 savageRiftsApp.controller('raceSelectionController', function($scope, $http, $window, $routeParams, $location) {
 	$scope.races = [];
 	$scope.selectedRace = null;
+	$scope.sheet = null;
+
+    // lookup the character
+    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
+		{headers: {'x-access-token': $window.localStorage['jwtToken']}}
+    )
+    .then(function successCallback(response) {
+        $scope.sheet = response.data;
+    }, function errorCallback(response) {
+        $scope.message = "error loading sheet";
+        console.log(response);
+        $location.path('/error');
+    });
 	
 	$http.get('/api/race/', 
 		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
@@ -21,7 +34,8 @@ savageRiftsApp.controller('raceSelectionController', function($scope, $http, $wi
 			{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
 		.then(function successCallback(response) {
 			console.log('set race successfully');
-			$location.path('/editsheet/' + $routeParams.sheetId);
+			//$location.path('/editsheet/' + $routeParams.sheetId);
+			JwtData.redirectToCreationSteps($scope.sheet);
 		}, function errorCallback(response) {
 			console.log(response);
 			$location.path('/error');

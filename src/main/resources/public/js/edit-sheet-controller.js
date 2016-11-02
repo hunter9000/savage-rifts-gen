@@ -6,10 +6,9 @@ savageRiftsApp.controller('editSheetController', function(JwtData, $scope, $http
     $scope.sheet = null;
 
     // lookup the character
-    $http({method:'GET',
-           url: '/api/sheet/' + $routeParams.sheetId + '/',
-           headers: {'x-access-token': $window.localStorage['jwtToken']}
-    })
+    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
+		{headers: {'x-access-token': $window.localStorage['jwtToken']}}
+    )
     .then(function successCallback(response) {
         $scope.sheet = response.data;
 

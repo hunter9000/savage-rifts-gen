@@ -268,7 +268,7 @@ public class SheetController {
 	/** Select the race for this sheet */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
-	public ResponseEntity<?> selectRace(@PathVariable long raceId) {
+	public Sheet selectRace(@PathVariable long raceId) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		if (sheet.getRace() != null) {
@@ -286,7 +286,7 @@ public class SheetController {
 
 		sheetRepository.save(sheet);
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return sheet;
 	}
 
 	/** Get the current attributes with info about inc/dec and cost. */
