@@ -1,26 +1,32 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function($scope, $window, $http, $location, $uibModal) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $window, $http, $location, $uibModal) {
 		$scope.message = '';
 
 		$scope.sheets = [];
 
         $scope.loadSheets = function() {
-            $http({
-                method: 'GET',
-                url: '/api/sheet/',
-                headers: {'x-access-token': $window.localStorage['jwtToken']}
-            })
-            .success(function(response) {
+            APIService.getSheets(function(response) {
                 $scope.sheets = response;
                 console.log('got these sheets back: ');
                 console.log(response);
-            })
-            .error(function(response) {
-                console.log('Error: ');
-                console.log(response);
-                $location.path('/error');
             });
+
+//            $http({
+//                method: 'GET',
+//                url: '/api/sheet/',
+//                headers: {'x-access-token': $window.localStorage['jwtToken']}
+//            })
+//            .success(function(response) {
+//                $scope.sheets = response;
+//                console.log('got these sheets back: ');
+//                console.log(response);
+//            })
+//            .error(function(response) {
+//                console.log('Error: ');
+//                console.log(response);
+//                $location.path('/error');
+//            });
         }
         $scope.loadSheets();
 
@@ -56,16 +62,20 @@
         };
 
         $scope.deleteSheet = function(sheetId) {
-            $http.delete('/api/sheet/' + sheetId + '/',
-                { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-            )
-            .then(function successCallback(response) {
+            APIService.deleteSheet(successCallback(response) {
                 console.log('deleted sheet, reloading sheets');
                 $scope.loadSheets();
-            }, function errorCallback(response) {
-                console.log(response);
-                $location.path('/error');
             });
+//            $http.delete('/api/sheet/' + sheetId + '/',
+//                { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
+//            )
+//            .then(function successCallback(response) {
+//                console.log('deleted sheet, reloading sheets');
+//                $scope.loadSheets();
+//            }, function errorCallback(response) {
+//                console.log(response);
+//                $location.path('/error');
+//            });
         }
 
 	});

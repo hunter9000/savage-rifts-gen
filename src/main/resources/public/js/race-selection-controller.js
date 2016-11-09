@@ -1,6 +1,6 @@
 
 
-savageRiftsApp.controller('raceSelectionController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('raceSelectionController', function(SheetService, $scope, $http, $window, $routeParams, $location) {
 	$scope.races = [];
 	$scope.selectedRace = null;
 	$scope.sheet = null;
@@ -35,7 +35,7 @@ savageRiftsApp.controller('raceSelectionController', function($scope, $http, $wi
 		.then(function successCallback(response) {
 			console.log('set race successfully');
 			//$location.path('/editsheet/' + $routeParams.sheetId);
-			JwtData.redirectToCreationSteps($scope.sheet);
+			SheetService.redirectToCreationSteps($scope.sheet);
 		}, function errorCallback(response) {
 			console.log(response);
 			$location.path('/error');

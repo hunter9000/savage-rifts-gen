@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('editSheetController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('editSheetController', function(SheetService, $scope, $http, $window, $routeParams, $location) {
 
     $scope.message = '';
 
@@ -12,7 +12,7 @@ savageRiftsApp.controller('editSheetController', function(JwtData, $scope, $http
     .then(function successCallback(response) {
         $scope.sheet = response.data;
 
-        JwtData.redirectToCreationSteps($scope.sheet);
+        SheetService.redirectToCreationSteps($scope.sheet);
 
     }, function errorCallback(response) {
         $scope.message = "error loading sheet";

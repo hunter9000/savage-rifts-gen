@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('tableRollController', function(SheetService, $scope, $http, $window, $routeParams, $location) {
 
     $scope.sheet = null;
 	$scope.benefitTable = null;
@@ -45,7 +45,7 @@ savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http
 	}
 	
     $scope.goBack = function() {
-        JwtData.redirectToCreationSteps($scope.sheet);
+        SheetService.redirectToCreationSteps($scope.sheet);
     }
 
 });
