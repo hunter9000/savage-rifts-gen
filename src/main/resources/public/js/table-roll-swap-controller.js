@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope, $routeParams, $location) {
 
     $scope.sheet = null;
     $scope.benefitTables = null;            // all the tables
@@ -9,26 +9,14 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
     $scope.newPerkSelection = null;         // the selected new perk: Perk
 
     // get the sheet
-    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
-        { headers: {'x-access-token': $window.localStorage['jwtToken']} }
-    )
-    .then(function successCallback(response) {
+    APIService.getSheet($routeParams.sheetId, function(response) {
         $scope.sheet = response.data;
         $scope.remainingSwaps = $scope.numberOfSwapsRemaining($scope.sheet);
-    }, function errorCallback(response) {
-        console.log(response);
-        $location.path('/error');
     });
 
     // get the selectable table rolls
-    $http.get('/api/benefittable/',
-        { headers: {'x-access-token': $window.localStorage['jwtToken']} }
-    )
-    .then(function successCallback(response) {
+    APIService.getAllBenefitTables(function(response) {
         $scope.benefitTables = response.data;
-    }, function errorCallback(response) {
-        console.log(response);
-        $location.path('/error');
     });
 
     $scope.numberOfSwapsRemaining = function(sheet) {
@@ -62,18 +50,8 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
 
     $scope.swap = function() {
         if ($scope.canSwap()) {
-            var perkId1 = $scope.perkItems[0].perk.id;
-            var perkId2 = $scope.perkItems[1].perk.id;
-            var tableId = $scope.selectedTableId;
-
-            $http.get('/api/benefittable/'+ tableId +'/'+ $routeParams.sheetId +'/',
-                { headers: {'x-access-token': $window.localStorage['jwtToken']} }
-            )
-            .then(function successCallback(response) {
+            APIService.getBenefitTablesForSheet(tableId, $routeParams.sheetId, function(response) {
                 $scope.swapTable = response.data;
-            }, function errorCallback(response) {
-                console.log(response);
-                $location.path('/error');
             });
         }
         else {
@@ -95,14 +73,8 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
             'swapPerk' : $scope.newPerkSelection
         }
 
-        $http.put('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
-            postData,
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} })
-        .then(function successCallback(response) {
+        APIService.makeTableRollSwap($routeParams.sheetId, postData, function(response) {
             $location.path('/editsheet/' + $routeParams.sheetId);
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
         });
     }
 
@@ -111,14 +83,8 @@ savageRiftsApp.controller('tableRollSwapController', function($scope, $http, $wi
 		console.log($scope.perkItems);
 		console.log($scope.selectedTableId);
 
-        $http.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/',
-            {},
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} })
-        .then(function successCallback(response) {
+        APIService.finalizeTableRollSwaps($routeParams.sheetId, function(response) {
             $location.path('/editsheet/' + $routeParams.sheetId);
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
         });
 	}
 

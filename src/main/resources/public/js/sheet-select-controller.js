@@ -1,33 +1,17 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $window, $http, $location, $uibModal) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $location, $uibModal) {
 		$scope.message = '';
 
 		$scope.sheets = [];
 
         $scope.loadSheets = function() {
             APIService.getSheets(function(response) {
-                $scope.sheets = response;
+                $scope.sheets = response.data;
                 console.log('got these sheets back: ');
                 console.log(response);
             });
-
-//            $http({
-//                method: 'GET',
-//                url: '/api/sheet/',
-//                headers: {'x-access-token': $window.localStorage['jwtToken']}
-//            })
-//            .success(function(response) {
-//                $scope.sheets = response;
-//                console.log('got these sheets back: ');
-//                console.log(response);
-//            })
-//            .error(function(response) {
-//                console.log('Error: ');
-//                console.log(response);
-//                $location.path('/error');
-//            });
-        }
+        };
         $scope.loadSheets();
 
         $scope.newSheet = function() {
@@ -62,21 +46,11 @@
         };
 
         $scope.deleteSheet = function(sheetId) {
-            APIService.deleteSheet(successCallback(response) {
+            APIService.deleteSheet(sheetId, function(response) {
                 console.log('deleted sheet, reloading sheets');
                 $scope.loadSheets();
             });
-//            $http.delete('/api/sheet/' + sheetId + '/',
-//                { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-//            )
-//            .then(function successCallback(response) {
-//                console.log('deleted sheet, reloading sheets');
-//                $scope.loadSheets();
-//            }, function errorCallback(response) {
-//                console.log(response);
-//                $location.path('/error');
-//            });
-        }
+        };
 
 	});
 

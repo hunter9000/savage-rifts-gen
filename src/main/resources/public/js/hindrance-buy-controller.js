@@ -1,58 +1,42 @@
 
-savageRiftsApp.controller('hindranceBuyController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope, $routeParams, $location) {
 	$scope.hindrances = [];
 	$scope.sheetHindranceSelections = null;
 
 	// get sheet's hindrance selections
-	$http.get('/api/sheet/'+ $routeParams.sheetId +'/hindrances/',
-		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
-	.then(function successCallback(response) {
-		console.log('got skills');
-		console.log(response.data);
-		$scope.sheetHindranceSelections = response.data;
-	}, function errorCallback(response) {
-		console.log(response);
-		$location.path('/error');
+	APIService.getSheetHindrances($routeParams.sheetId, function(response) {
+	    console.log('got skills');
+        console.log(response.data);
+        $scope.sheetHindranceSelections = response.data;
 	});
 
     // get all hindrances
-	$http.get('/api/hindrance/',
-		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
-	.then(function successCallback(response) {
+    APIService.getAllHindrances(function(response) {
 		console.log('got hindrances');
 		console.log(response.data);
 		$scope.hindrances = response.data;
-	}, function errorCallback(response) {
-		console.log(response);
-		$location.path('/error');
-	});
+    });
 	
 	$scope.addHindrance = function(hindrance, severityType) {
 	    console.log('add ' + hindrance);
-        $http.put('/api/sheet/' + $routeParams.sheetId + '/hindrances/',
-            { 'hindranceType': hindrance.type, 'severityType': severityType, 'operation': 'ADD' },       // data
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-        )
-        .then(function successCallback(response) {
-            $scope.sheetHindranceSelections = response.data;
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
-        });
+
+	    APIService.changeHindrance($routeParams.sheetId,
+            {'hindranceType': hindrance.type, 'severityType': severityType, 'operation': 'ADD'},
+            function(response) {
+                $scope.sheetHindranceSelections = response.data;
+            }
+        );
 	}
 
 	$scope.removeHindrance = function(hindrance) {
 	    console.log('add ' + hindrance);
-        $http.put('/api/sheet/' + $routeParams.sheetId + '/hindrances/',
-            { 'hindranceType': hindrance.type, 'severityType': null, 'operation': 'REMOVE' },       // data
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-        )
-        .then(function successCallback(response) {
-            $scope.sheetHindranceSelections = response.data;
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
-        });
+
+        APIService.changeHindrance($routeParams.sheetId,
+            {'hindranceType': hindrance.type, 'severityType': null, 'operation': 'REMOVE'},
+            function(response) {
+                $scope.sheetHindranceSelections = response.data;
+            }
+        );
 	}
 
     $scope.chosenTypeFilterFunc = function(hindrance) {
@@ -85,17 +69,10 @@ savageRiftsApp.controller('hindranceBuyController', function($scope, $http, $win
 
 
 	$scope.finishHindrances = function() {
-        $http.post('/api/sheet/' + $routeParams.sheetId + '/hindrances/',
-            {},       // data
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
-        )
-        .then(function successCallback(response) {
+	    APIService.finalizeHindranceBuy($routeParams.sheetId, function(response) {
             console.log(response.data);
             $location.path("/editsheet/" + $routeParams.sheetId);
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
-        });
+	    });
 	}
 
 });
