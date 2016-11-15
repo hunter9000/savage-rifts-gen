@@ -41,6 +41,15 @@ savageRiftsApp.factory('APIService', function($window, $location, $http) {
         authenticate: function(data, successCallback) {
             this.post('/api/authenticate/', data, successCallback);
         },
+        getUser: function(userId, successCallback) {
+            this.get('/api/users/'+userId+'/', successCallback);
+        },
+        updateUser: function(userId, data, successCallback) {
+            this.put('/api/users/'+userId+'/', data, successCallback);
+        },
+        createUser: function(data, successCallback) {
+            this.post('/api/user/', data, successCallback);
+        },
         getProfile: function(successCallback) {
             this.get('/api/profile/', successCallback);
         },

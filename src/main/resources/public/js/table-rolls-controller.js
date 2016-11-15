@@ -30,17 +30,22 @@ savageRiftsApp.controller('tableRollsController', function(APIService, $scope, $
 
 
     $scope.save = function() {
-        $http.patch('/api/sheet/' + $routeParams.sheetId + '/',
-            $scope.sheet,
-            { headers: {'x-access-token': $window.localStorage['jwtToken']} }
-        )
-        .then(function successCallback(response) {
+        APIService.updateSheet($routeParams.sheetId, $scope.sheet, function (response) {
             $scope.message = 'saved';
             $scope.sheet = response.data;
-        }, function errorCallback(response) {
-            console.log(response);
-            $location.path('/error');
         });
+
+//        $http.patch('/api/sheet/' + $routeParams.sheetId + '/',
+//            $scope.sheet,
+//            { headers: {'x-access-token': $window.localStorage['jwtToken']} }
+//        )
+//        .then(function successCallback(response) {
+//            $scope.message = 'saved';
+//            $scope.sheet = response.data;
+//        }, function errorCallback(response) {
+//            console.log(response);
+//            $location.path('/error');
+//        });
     };
 
     $scope.goToTable = function (rollId, tableId) {
