@@ -1,15 +1,22 @@
 USE savage_rifts;
 
+
+SELECT @COMBAT_CYBORG_ID:=id FROM `framework` WHERE type = 'COMBAT_CYBORG';
+SELECT @CRAZY_ID:=id FROM `framework` WHERE type = 'CRAZY';
+
+-- set combat cyborg to not be able to select race
+UPDATE framework SET can_select_race = false WHERE id = @COMBAT_CYBORG_ID;
+
 -- CYBER_KNIGHT
-INSERT INTO framework (type, starting_attribute_points) VALUES ('CYBER_KNIGHT', NULL);
+INSERT INTO framework (type) VALUES ('CYBER_KNIGHT');
 SET @CYBER_KNIGHT_ID = LAST_INSERT_ID();
 
 -- GLITTER_BOY
-INSERT INTO framework (type, starting_attribute_points) VALUES ('GLITTER_BOY', NULL);
+INSERT INTO framework (type) VALUES ('GLITTER_BOY');
 SET @GLITTER_BOY_ID = LAST_INSERT_ID();
 
 -- JUICER
-INSERT INTO framework (type, starting_attribute_points, has_strength_limit, has_agility_limit, has_vigor_limit) VALUES ('JUICER', NULL, false, false, false);
+INSERT INTO framework (type, has_strength_limit, has_agility_limit, has_vigor_limit) VALUES ('JUICER', false, false, false);
 SET @JUICER_ID = LAST_INSERT_ID();
 
 INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
@@ -24,22 +31,20 @@ INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
 SET @JUICER_START_VGR = LAST_INSERT_ID();
 UPDATE framework SET starting_vigor = @JUICER_START_VGR WHERE id = @JUICER_ID;
 
--- #######
-
 -- MARS
-INSERT INTO framework (type, starting_attribute_points) VALUES ('MARS', NULL);
-SET @MARS_ID = LAST_INSERT_ID();
+--INSERT INTO framework (type, starting_attribute_points) VALUES ('MARS', NULL);
+--SET @MARS_ID = LAST_INSERT_ID();
 
 -- BURSTER
-INSERT INTO framework (type, starting_attribute_points) VALUES ('BURSTER', NULL);
+INSERT INTO framework (type) VALUES ('BURSTER');
 SET @BURSTER_ID = LAST_INSERT_ID();
 
 -- MIND_MELTER
-INSERT INTO framework (type, starting_attribute_points) VALUES ('MIND_MELTER', NULL);
+INSERT INTO framework (type) VALUES ('MIND_MELTER');
 SET @MIND_MELTER_ID = LAST_INSERT_ID();
 
 -- LEY_LINE_WALKER
-INSERT INTO framework (type, starting_attribute_points) VALUES ('LEY_LINE_WALKER', NULL);
+INSERT INTO framework (type) VALUES ('LEY_LINE_WALKER');
 SET @LEY_LINE_WALKER_ID = LAST_INSERT_ID();
 
 -- MYSTIC
@@ -51,59 +56,21 @@ INSERT INTO framework (type, starting_attribute_points) VALUES ('TECHNO_WIZARD',
 SET @TECHNO_WIZARD_ID = LAST_INSERT_ID();
 
 -- DRAGON
-INSERT INTO framework (type, starting_attribute_points) VALUES ('DRAGON', NULL);
+INSERT INTO framework (type, starting_attribute_points, can_select_race, has_strength_limit, has_vigor_limit) VALUES ('DRAGON', 3, false, false, false);
 SET @DRAGON_ID = LAST_INSERT_ID();
+--starting_skill_points = 10
+
+-- start: str d12+4 no limit, vgr d8 no limit
+INSERT INTO roll (die_type, modifier) VALUES ('D12', 4);
+SET @DRAGON_START_STR = LAST_INSERT_ID();
+UPDATE framework SET starting_strength = @DRAGON_START_STR WHERE id = @DRAGON_ID;
+
+INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
+SET @DRAGON_START_VGR = LAST_INSERT_ID();
+UPDATE framework SET starting_vigor = @DRAGON_START_VGR WHERE id = @DRAGON_ID;
 
 
-
--- ---------------
-
-
-
--- start: str d12+2, agi d10, vgr d12
--- INSERT INTO roll (die_type, modifier) VALUES ('D12', 2);
--- SET @COMBAT_CYBORG_START_STR = LAST_INSERT_ID();
--- UPDATE framework SET starting_strength = @COMBAT_CYBORG_START_STR WHERE id = @COMBAT_CYBORG_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D10', 0);
--- SET @COMBAT_CYBORG_START_AGI = LAST_INSERT_ID();
--- UPDATE framework SET starting_agility = @COMBAT_CYBORG_START_AGI WHERE id = @COMBAT_CYBORG_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D12', 0);
--- SET @COMBAT_CYBORG_START_VGR = LAST_INSERT_ID();
--- UPDATE framework SET starting_vigor = @COMBAT_CYBORG_START_VGR WHERE id = @COMBAT_CYBORG_ID;
-
--- max: str d12+2, agi d10, vgr d12
--- INSERT INTO roll (die_type, modifier) VALUES ('D12', 2);
--- SET @COMBAT_CYBORG_MAX_STR = LAST_INSERT_ID();
--- UPDATE framework SET max_strength = @COMBAT_CYBORG_MAX_STR WHERE id = @COMBAT_CYBORG_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D10', 0);
--- SET @COMBAT_CYBORG_MAX_AGI = LAST_INSERT_ID();
--- UPDATE framework SET max_agility = @COMBAT_CYBORG_MAX_AGI WHERE id = @COMBAT_CYBORG_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D12', 0);
--- SET @COMBAT_CYBORG_MAX_VGR = LAST_INSERT_ID();
--- UPDATE framework SET max_vigor = @COMBAT_CYBORG_MAX_VGR WHERE id = @COMBAT_CYBORG_ID;
-
--- CRAZY
--- INSERT INTO framework (type, starting_attribute_points) VALUES ('CRAZY', null);
--- SET @CRAZY_ID = LAST_INSERT_ID();
-
--- start: str d8, agi d8, vgr d8
--- INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
--- SET @CRAZY_START_STR = LAST_INSERT_ID();
--- UPDATE framework SET starting_strength = @CRAZY_START_STR WHERE id = @CRAZY_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
--- SET @CRAZY_START_AGI = LAST_INSERT_ID();
--- UPDATE framework SET starting_agility = @CRAZY_START_AGI WHERE id = @CRAZY_ID;
-
--- INSERT INTO roll (die_type, modifier) VALUES ('D8', 0);
--- SET @CRAZY_START_VGR = LAST_INSERT_ID();
--- UPDATE framework SET starting_vigor = @CRAZY_START_VGR WHERE id = @CRAZY_ID;
-
-
+-- FRAMEWORK FEATURES
 
 INSERT INTO `framework_feature` (`framework`, `framework_feature_type`, `framework_ability_type`, `description`) VALUES
 (@CYBER_KNIGHT_ID, 'CK_CYBER_ARMOR', 'BONUS', 'As a free action, Cyber-Knights can summon an organic metal shell, granting +2 Toughness.'),
@@ -131,17 +98,105 @@ INSERT INTO `framework_feature` (`framework`, `framework_feature_type`, `framewo
 (@GLITTER_BOY_ID, 'GB_SONIC_BOOM', 'COMPLICATION', 'Firing a Boom Gun causes a sonic boom affecting everyone (except the pilot) within a Large Burst Template. A failure on a Vigor roll −2 inflicts Hard of Hearing (Major) for 3d6 minutes and makes the character Shaken. If he fails with a 1 on the Vigor die, he is Incapacitated and makes a Vigor roll each round to become conscious but Shaken. Anyone in environmentally sealed armor gains +2 to the roll, as do characters with Hard of Hearing (Minor). Characters with the Major version are immune!'),
 (@GLITTER_BOY_ID, 'GB_STAND_BY_TO_FIRE', 'COMPLICATION', 'A Glitter Boy cannot move and fire its Boom Gun on the same round. This is why some carry other firearms as alternatives for when they need to move and shoot.'),
 
-(@JUICER_ID, 'JC_INTERNAL_REPAIR_SYSTEM', 'The biocomp system managing the drugs and chemical processes of the Juicer’s body also works overtime to ensure his continued health and good repair. The Juicer gains Slow Regeneration (a natural healing roll once per day). As well, there’s a continuously replenishing supply of nanites and chemical concoctions available for “emergency repairs.” As an action, the Juicer can makea natural healing roll at +2 to heal wounds; this costs one charge. The system holds a maximum of three charges and requires eight hours to recover one charge.'),
-(@JUICER_ID, 'JC_SUPER_ENDURANCE', 'Juicers begin with +2 Vigor die types, with no Trait maximum. They require only half the normal amount of sleep, and gain +2 on all Fatigue checks.'),
-(@JUICER_ID, 'JC_SUPER_REFLEXES', 'Juicers begin with +2 Agility die types, with no Trait maximum. They have Uncanny Reflexes, granting them −2 to be hit by all attacks. Finally, they begin with the Quick Edge.'),
-(@JUICER_ID, 'JC_SUPER_SPEED', 'Juicers cover enormous ground quickly, doubling their base Pace. They also have the Fleet-Footed Edge (meaning they have Pace of 16” with a d10 running die).'),
-(@JUICER_ID, 'JC_SUPER_STRENGTH', 'Juicers begin with +2 Strength die types, with no Trait maximum. They also begin with the Brawny Edge.'),
+(@JUICER_ID, 'JC_INTERNAL_REPAIR_SYSTEM', 'BONUS', 'The biocomp system managing the drugs and chemical processes of the Juicer’s body also works overtime to ensure his continued health and good repair. The Juicer gains Slow Regeneration (a natural healing roll once per day). As well, there’s a continuously replenishing supply of nanites and chemical concoctions available for “emergency repairs.” As an action, the Juicer can makea natural healing roll at +2 to heal wounds; this costs one charge. The system holds a maximum of three charges and requires eight hours to recover one charge.'),
+(@JUICER_ID, 'JC_SUPER_ENDURANCE', 'BONUS', 'Juicers begin with +2 Vigor die types, with no Trait maximum. They require only half the normal amount of sleep, and gain +2 on all Fatigue checks.'),
+(@JUICER_ID, 'JC_SUPER_REFLEXES', 'BONUS', 'Juicers begin with +2 Agility die types, with no Trait maximum. They have Uncanny Reflexes, granting them −2 to be hit by all attacks. Finally, they begin with the Quick Edge.'),
+(@JUICER_ID, 'JC_SUPER_SPEED', 'BONUS', 'Juicers cover enormous ground quickly, doubling their base Pace. They also have the Fleet-Footed Edge (meaning they have Pace of 16” with a d10 running die).'),
+(@JUICER_ID, 'JC_SUPER_STRENGTH', 'BONUS', 'Juicers begin with +2 Strength die types, with no Trait maximum. They also begin with the Brawny Edge.'),
 
-(@JUICER_ID, 'JC_CYBERNETICS', 'Although it is possible to add cybernetics to the Juicer’s already hacked biology, there is a severe drawback: each point of Strain removes a point of Burn!'),
-(@JUICER_ID, 'JC_DEATH_WISH', 'The Juicer knows he’s going to die, and he wants to go out magnificently, having done something folks remember and are inspired by. He has the Death Wish Hindrance (Minor).'),
-(@JUICER_ID, 'JC_DRUG_INDUCED_EUPHORIA_TRANQUILITY', 'In order to keep the Juicer from burning out over a matter of days, the bio-comp constantly supplies a combination of psychotropic drugs and chemical inhibitors to keep the subject happy and calm. This results in a Juicer living in a constant state somewhere between mildly ecstatic and stoned, which causes −1 to all Smarts or Smarts-linked skill rolls in non-combat or low stress situations. On the first round of any combat, he doesn’t gain the benefits of Uncanny Reflexes or Quick.'),
-(@JUICER_ID, 'JC_PSIONICS_AND_MAGIC', 'The chemical cocktail inside the Juicer makes it impossible for him to use magic or psionics in any way.'),
+(@JUICER_ID, 'JC_CYBERNETICS', 'COMPLICATION', 'Although it is possible to add cybernetics to the Juicer’s already hacked biology, there is a severe drawback: each point of Strain removes a point of Burn!'),
+(@JUICER_ID, 'JC_DEATH_WISH', 'COMPLICATION', 'The Juicer knows he’s going to die, and he wants to go out magnificently, having done something folks remember and are inspired by. He has the Death Wish Hindrance (Minor).'),
+(@JUICER_ID, 'JC_DRUG_INDUCED_EUPHORIA_TRANQUILITY', 'COMPLICATION', 'In order to keep the Juicer from burning out over a matter of days, the bio-comp constantly supplies a combination of psychotropic drugs and chemical inhibitors to keep the subject happy and calm. This results in a Juicer living in a constant state somewhere between mildly ecstatic and stoned, which causes −1 to all Smarts or Smarts-linked skill rolls in non-combat or low stress situations. On the first round of any combat, he doesn’t gain the benefits of Uncanny Reflexes or Quick.'),
+(@JUICER_ID, 'JC_PSIONICS_AND_MAGIC', 'COMPLICATION', 'The chemical cocktail inside the Juicer makes it impossible for him to use magic or psionics in any way.'),
 
+
+(@BURSTER_ID, 'BRST_ARCANE_BACKGROUND_PSIONICS', 'BONUS', '')
+(@BURSTER_ID, 'BRST_EVERYTHING_BURNS', 'BONUS', '')
+(@BURSTER_ID, 'BRST_FIERY_AURA', 'BONUS', '')
+(@BURSTER_ID, 'BRST_FIRE_MASTERY', 'BONUS', '')
+(@BURSTER_ID, 'BRST_FIREWALKER', 'BONUS', '')
+(@BURSTER_ID, 'BRST_FLAME_BOLT', 'BONUS', '')
+(@BURSTER_ID, 'BRST_MAJOR_PSIONICS', 'BONUS', '')
+
+(@BURSTER_ID, 'BRST_CYBERNETICS', 'COMPLICATION', '')
+(@BURSTER_ID, 'BRST_ENEMIES', 'COMPLICATION', '')
+(@BURSTER_ID, 'BRST_QUIRK_PYROMANIAC', 'COMPLICATION', '')
+
+
+(@MIND_MELTER_ID, 'MM_ARCANE_BACKGROUND_PSIONICS', 'BONUS', '')
+(@MIND_MELTER_ID, 'MM_EXPANDED_AWARENESS', 'BONUS', '')
+(@MIND_MELTER_ID, 'MM_MAJOR_PSIONIC', 'BONUS', '')
+(@MIND_MELTER_ID, 'MM_MASTER_PSIONIC', 'BONUS', '')
+(@MIND_MELTER_ID, 'MM_MENTAL_RESISTANCE', 'BONUS', '')
+
+(@MIND_MELTER_ID, 'MM_A_LITTLE_ODD', 'COMPLICATION', '')
+(@MIND_MELTER_ID, 'MM_CYBERNETICS', 'COMPLICATION', '')
+(@MIND_MELTER_ID, 'MM_ENEMIES', 'COMPLICATION', '')
+(@MIND_MELTER_ID, 'MM_FEARED', 'COMPLICATION', '')
+
+
+(@LEY_LINE_WALKER_ID, 'LLW_ARCANE_BACKGROUND_MAGIC', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_EXPANDED_AWARENESS', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_LEY_LINE_MAGIC_MASTERY', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_LEY_LINE_REJUVINATION', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_LEY_LINE_SENSE', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_LEY_LINE_TRANSMISSION', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_LEY_LINE_WALKING', 'BONUS', '')
+(@LEY_LINE_WALKER_ID, 'LLW_MASTER_OF_MAGIC', 'BONUS', '')
+
+(@LEY_LINE_WALKER_ID, 'LLW_CYBERNETICS', 'COMPLICATION', '')
+(@LEY_LINE_WALKER_ID, 'LLW_DISCONNECTED', 'COMPLICATION', '')
+(@LEY_LINE_WALKER_ID, 'LLW_ENEMIES', 'COMPLICATION', '')
+
+
+(@MYSTIC_ID, 'MYST_ARCANE_BACKGROUND_MIRACLES', 'BONUS', '')
+(@MYSTIC_ID, 'MYST_ARCANE_BACKGROUND_PSIONICS', 'BONUS', '')
+(@MYSTIC_ID, 'MYST_COSMIC_CONFLUENCE', 'BONUS', '')
+(@MYSTIC_ID, 'MYST_MASTER_OF_MAGIC', 'BONUS', '')
+(@MYSTIC_ID, 'MYST_MYSTIC_AWARENESS', 'BONUS', '')
+(@MYSTIC_ID, 'MYST_SPIRITUAL_CHANNEL', 'BONUS', '')
+
+(@MYSTIC_ID, 'MYST_ARCANE_DUALITY', 'COMPLICATION', '')
+(@MYSTIC_ID, 'MYST_CYBERNETICS', 'COMPLICATION', '')
+(@MYSTIC_ID, 'MYST_ENEMIES', 'COMPLICATION', '')
+(@MYSTIC_ID, 'MYST_HIGHER_STANDARD', 'COMPLICATION', '')
+
+(@TECHNO_WIZARD_ID, 'TW_ARCANE_BACKGROUND_WEIRD_SCIENCE', 'BONUS', '')
+(@TECHNO_WIZARD_ID, 'TW_ARCANE_MACHINIST', 'BONUS', '')
+(@TECHNO_WIZARD_ID, 'TW_MACHINE_MAESTRO', 'BONUS', '')
+(@TECHNO_WIZARD_ID, 'TW_REQUIRED_KNOWLEDGE', 'BONUS', '')
+
+(@TECHNO_WIZARD_ID, 'TW_CYBERNETICS', 'COMPLICATION', '')
+(@TECHNO_WIZARD_ID, 'TW_DEVICE_DEPENDENT', 'COMPLICATION', '')
+(@TECHNO_WIZARD_ID, 'TW_ENEMIES', 'COMPLICATION', '')
+(@TECHNO_WIZARD_ID, 'TW_GEARHEAD_GEEK', 'COMPLICATION', '')
+
+
+(@DRAGON_ID, 'DRGN_ARCANE_BACKGROUND_PSIONICS', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_ARMORED_HIDE', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_CLAWS_BITE', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_FEAR', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_FIRE_BREATH', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_FLIGHT', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_IMPERVIOUS_TO_FIRE', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_INFRAVISION', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_INHERENTLY_MAGICAL', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_LIMITED_METAMORPHOSIS', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_MIGHTY', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_NIGH_IMMORTALITY', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_SIZE', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_SLOW_REGENERATION', 'BONUS', '')
+(@DRAGON_ID, 'DRGN_TAIL_LASH', 'BONUS', '')
+
+(@DRAGON_ID, 'DRGN_CYBERNETICS', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_ENEMIES', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_FORM_LIMITS', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_HATCHED', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_LARGE', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_OUTSIDER', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_TERRITORIAL', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_UNTESTED', 'COMPLICATION', '')
+(@DRAGON_ID, 'DRGN_VERY_YOUNG', 'COMPLICATION', '')
 
 
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('15.sql', NOW());
