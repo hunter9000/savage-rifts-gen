@@ -1,24 +1,21 @@
 package savagerifts.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.servlet.HandlerMapping;
-import savagerifts.model.user.User;
-import savagerifts.repository.UserRepository;
-import savagerifts.security.JwtSubject;
-import savagerifts.security.ForbiddenAccessException;
-import savagerifts.util.AuthUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import savagerifts.model.user.User;
+import savagerifts.repository.UserRepository;
+import savagerifts.security.ForbiddenAccessException;
+import savagerifts.security.JwtSubject;
 import savagerifts.security.SecurityManager;
+import savagerifts.util.AuthUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 @Component
 public class JWTInterceptor implements HandlerInterceptor {
@@ -28,9 +25,6 @@ public class JWTInterceptor implements HandlerInterceptor {
 
     @Autowired
     private SecurityManager securityManager;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     /** Validates that the jwt token passed in matches  */
     @Override
