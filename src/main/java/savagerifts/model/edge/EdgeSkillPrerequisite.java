@@ -1,5 +1,10 @@
 package savagerifts.model.edge;
 
+import savagerifts.model.DieType;
+import savagerifts.model.skill.SkillType;
+
+import javax.persistence.*;
+
 @Entity
 @Table(name = "edge_skill_prerequisite")
 public class EdgeSkillPrerequisite {

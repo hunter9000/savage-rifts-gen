@@ -1,5 +1,10 @@
 package savagerifts.model.edge;
 
+import savagerifts.model.AttributeType;
+import savagerifts.model.DieType;
+
+import javax.persistence.*;
+
 @Entity
 @Table(name = "edge_attribute_prerequisite")
 public class EdgeAttributePrerequisite {

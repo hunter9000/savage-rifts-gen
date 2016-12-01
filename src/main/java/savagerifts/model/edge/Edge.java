@@ -1,7 +1,6 @@
 package savagerifts.model.edge;
 
 import savagerifts.model.framework.Framework;
-import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.XPRank;
 
 import javax.persistence.*;
@@ -42,10 +41,10 @@ public class Edge {
 	// @OneToOne
 	// @JoinColumn(name = "requiredAttribute", updatable = false)
 	// private Roll requiredAttribute;
-	@OneToMany(mappedBy = "sheet", cascadeType = CascadeType.)		// don't cascade changes
+	@OneToMany(mappedBy = "sheet")		// don't cascade changes
 	private List<EdgeAttributePrerequisite> attributePrereqs;
 	
-	@OneToMany(mappedBy = "sheet", cascadeType = CascadeType.)		// don't cascade changes
+	@OneToMany(mappedBy = "sheet")		// don't cascade changes
 	private List<EdgeSkillPrerequisite> skillPrereqs;
 	
 	@Column(name = "attributePrerequisiteLogicType", nullable = false, updatable = false)

@@ -9,6 +9,7 @@ public enum EdgeCategoryType {
 	SOCIAL,
 	WEIRD,
 	WILD_CARD,
-	LEGENDARY;
+	LEGENDARY,
+	ICONIC;
 	
 }
