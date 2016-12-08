@@ -1,7 +1,6 @@
 package savagerifts.model.skill;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import savagerifts.model.AttributeType;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
@@ -24,6 +23,10 @@ public class SkillRoll {
 	@Column(name = "skillType", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private SkillType skillType;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "skillKnowledge")
+	private SkillKnowledge skillKnowledge;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "roll", nullable = false)
@@ -72,6 +75,13 @@ public class SkillRoll {
 	}
 	public void setSkillType(SkillType skillType) {
 		this.skillType = skillType;
+	}
+
+	public SkillKnowledge getSkillKnowledge() {
+		return skillKnowledge;
+	}
+	public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
+		this.skillKnowledge = skillKnowledge;
 	}
 
 	public Roll getRoll() {

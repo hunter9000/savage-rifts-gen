@@ -1,13 +1,13 @@
 
 savageRiftsApp.controller('skillBuyController', function($scope, $http, $window, $routeParams, $location) {
-	$scope.skills = [];
+	$scope.skillResponse = {};
 
 	$http.get('/api/sheet/'+ $routeParams.sheetId +'/skills/',
 		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
 	.then(function successCallback(response) {
 		console.log('got skills');
 		console.log(response.data);
-		$scope.skills = response.data;
+		$scope.skillResponse = response.data;
 	}, function errorCallback(response) {
 		console.log(response);
 		$location.path('/error');
@@ -21,7 +21,7 @@ savageRiftsApp.controller('skillBuyController', function($scope, $http, $window,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
         )
         .then(function successCallback(response) {
-            $scope.skills = response.data;
+            $scope.skillResponse = response.data;
         }, function errorCallback(response) {
             console.log(response);
             $location.path('/error');
@@ -35,7 +35,7 @@ savageRiftsApp.controller('skillBuyController', function($scope, $http, $window,
             { headers: {'x-access-token': $window.localStorage['jwtToken']} }       // config
         )
         .then(function successCallback(response) {
-            $scope.skills = response.data;
+            $scope.skillResponse = response.data;
         }, function errorCallback(response) {
             console.log(response);
             $location.path('/error');
