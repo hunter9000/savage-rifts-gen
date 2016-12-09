@@ -50,7 +50,7 @@ savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope
 
     $scope.swap = function() {
         if ($scope.canSwap()) {
-            APIService.getBenefitTablesForSheet(tableId, $routeParams.sheetId, function(response) {
+            APIService.getBenefitTablesForSheet($scope.selectedTableId, $routeParams.sheetId, function(response) {
                 $scope.swapTable = response.data;
             });
         }

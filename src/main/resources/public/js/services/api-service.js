@@ -61,7 +61,7 @@ savageRiftsApp.factory('APIService', function($window, $location, $http) {
         },
         getAllRoles: function(successCallback) {
             this.get('/api/roles/', successCallback);
-        }
+        },
 
         createSheet: function(data, successCallback) {
             this.post('/api/sheet/', data, successCallback);
@@ -134,13 +134,13 @@ savageRiftsApp.factory('APIService', function($window, $location, $http) {
             this.put('/api/sheet/'+sheetId+'/tablerollswap/', data, successCallback);
         },
         finalizeTableRollSwaps: function(sheetId, successCallback) {
-            this.post('/api/sheet/' + $routeParams.sheetId + '/tablerollswap/', {}, successCallback);
+            this.post('/api/sheet/' + sheetId + '/tablerollswap/', {}, successCallback);
         },
         getAllBenefitTables: function(successCallback) {
             this.get('/api/benefittable/', successCallback);
         },
         getSheetTableRolls: function(sheetId, successCallback) {
-            this.get('/api/sheet/'+ $routeParams.sheetId +'/tableroll/', successCallback);
+            this.get('/api/sheet/'+ sheetId +'/tableroll/', successCallback);
         },
 
 

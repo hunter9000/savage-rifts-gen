@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-savageRiftsApp.controller('loginController', function(APIService, $scope, $location) {
+savageRiftsApp.controller('loginController', function(APIService, $scope, $location, $window) {
     // create a message to display in our view
     $scope.message = '';
 
