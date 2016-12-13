@@ -1,11 +1,11 @@
 
-savageRiftsApp.controller('skillBuyController', function(APIService, $scope, $routeParams, $location) {
-	$scope.skills = [];
+savageRiftsApp.controller('skillBuyController', function($scope, $http, $window, $routeParams, $location) {
+	$scope.skillResponse = {};
 
     APIService.getSheetSkills($routeParams.sheetId, function(response) {
         console.log('got skills');
         console.log(response.data);
-        $scope.skills = response.data;
+        $scope.skillResponse = response.data;
     });
 
 	$scope.decSkill = function(skill) {
@@ -14,7 +14,7 @@ savageRiftsApp.controller('skillBuyController', function(APIService, $scope, $ro
         APIService.changeSkill($routeParams.sheetId,
             {'skill': skill, 'operation': 'DEC'},
             function(response) {
-                $scope.skills = response.data;
+                $scope.skillResponse = response.data;
             }
         );
 	}
@@ -24,7 +24,7 @@ savageRiftsApp.controller('skillBuyController', function(APIService, $scope, $ro
         APIService.changeSkill($routeParams.sheetId,
             {'skill': skill, 'operation': 'INC'},
             function(response) {
-                $scope.skills = response.data;
+                $scope.skillResponse = response.data;
             }
         );
 	}

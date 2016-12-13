@@ -1,9 +1,11 @@
 package savagerifts.request;
 
+import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillType;
 
 public class SkillBuyRequest {
     private SkillType skill;
+    private SkillKnowledge skillKnowledge;
     private OperationType operation;		// inc or dec
 
     public enum OperationType {
@@ -22,5 +24,12 @@ public class SkillBuyRequest {
     }
     public void setOperation(OperationType operation) {
         this.operation = operation;
+    }
+
+    public SkillKnowledge getSkillKnowledge() {
+        return skillKnowledge;
+    }
+    public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
+        this.skillKnowledge = skillKnowledge;
     }
 }

@@ -1,38 +1,20 @@
 package savagerifts.response;
 
-import savagerifts.model.skill.SkillRoll;
-import savagerifts.model.skill.SkillType;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class SkillBuyResponse {
 
-    public Map<SkillType, SkillRoll> skills = new HashMap<>();
-    public Map<SkillType, Boolean> canIncrease = new HashMap<>();
-    public Map<SkillType, Boolean> canDecrease = new HashMap<>();
+//    public List<SkillRoll> skills = new ArrayList<>();
+//    public Map<SkillType, Boolean> canIncrease = new HashMap<>();
+//    public Map<SkillType, Boolean> canDecrease = new HashMap<>();
+    public List<SkillRollInfo> skillRollInfos;
     public Integer remainingSkillPoints;
 
-
-    public Map<SkillType, SkillRoll> getSkills() {
-        return skills;
+    public List<SkillRollInfo> getSkillRollInfos() {
+        return skillRollInfos;
     }
-    public void setSkills(Map<SkillType, SkillRoll> skills) {
-        this.skills = skills;
-    }
-
-    public Map<SkillType, Boolean> getCanIncrease() {
-        return canIncrease;
-    }
-    public void setCanIncrease(Map<SkillType, Boolean> canIncrease) {
-        this.canIncrease = canIncrease;
-    }
-
-    public Map<SkillType, Boolean> getCanDecrease() {
-        return canDecrease;
-    }
-    public void setCanDecrease(Map<SkillType, Boolean> canDecrease) {
-        this.canDecrease = canDecrease;
+    public void setSkillRollInfos(List<SkillRollInfo> skillRollInfos) {
+        this.skillRollInfos = skillRollInfos;
     }
 
     public Integer getRemainingSkillPoints() {
@@ -41,4 +23,27 @@ public class SkillBuyResponse {
     public void setRemainingSkillPoints(Integer remainingSkillPoints) {
         this.remainingSkillPoints = remainingSkillPoints;
     }
+
+//    public List<SkillRoll> getSkills() {
+//        return skills;
+//    }
+//    public void setSkills(List<SkillRoll> skills) {
+//        this.skills = skills;
+//    }
+//
+//    public Map<SkillType, Boolean> getCanIncrease() {
+//        return canIncrease;
+//    }
+//    public void setCanIncrease(Map<SkillType, Boolean> canIncrease) {
+//        this.canIncrease = canIncrease;
+//    }
+//
+//    public Map<SkillType, Boolean> getCanDecrease() {
+//        return canDecrease;
+//    }
+//    public void setCanDecrease(Map<SkillType, Boolean> canDecrease) {
+//        this.canDecrease = canDecrease;
+//    }
+
+
 }
