@@ -1,0 +1,622 @@
+BURN BRIGHTER
+
+Every drop of life is precious to a Juicer.
+She never wants to see it wasted. With
+this Edge, any time a Burn Die rolls a 1 or
+2, the player may re-roll it. She must accept
+the second result.
+
+BURN FOR GLORY
+
+For the rare Juicer who lives long enough
+to become Legendary, the possibilities are
+truly spectacular for what she can do with
+her remaining days.
+A Juicer with this Edge may spend a point
+of Burn to double the result of any Trait
+or damage roll!
+
+BURN PAST THE PAIN
+
+He doesn’t have time to bleed or feel
+pain. The Juicer can spend a Burn to ignore
+all wound penalties for the remainder of a
+combat, including wound penalties to Vigor
+rolls if he is Incapacitated during the combat
+(as per the Hard to Kill Edge).
+
+BURN FOR TOMORROW
+
+Though Death remains close on the
+Juicer’s heels, he refuses to acknowledge
+its presence until his time has truly come.
+When rolling on the Death & Defeat Table,
+he may add his Burn Die to the d20 roll.
+
+CYBERKINETIC AWARENESS
+
+As an action, the Cyber-Knight can
+stretch out his senses to understand all
+of the tech weapons and defenses he’s
+engaged with. The -2 to attacks against him
+with technical weapons expands to -2 to all
+Trait rolls against him where technology
+is involved. This includes Notice checks
+and opposed rolls.
+
+IMPROVED CYBERKINETIC AWARENESS
+
+All rolls against the Cyber-Knight where
+technology is involved suffer a -4 penalty.
+
+CYBERKINETIC DENIAL
+
+The Cyber-Knight can shut down
+technological devices. As an action, she
+can target a device or vehicle within her
+Spirit range and make a Psionics roll to
+shut it down for three rounds, or a full
+minute with a raise.
+Simple items like firearms or
+communicators are rolled with no
+penalty. To affect advanced systems
+like a computer or a vehicle’s weapon
+system imposes a -2 modifier, while
+shutting down robot armor, a suit of
+power armor (including a Glitter Boy),
+or an entire vehicle requires a roll
+at -4. To affect a cyborg requires an
+opposed roll at -4 against the target’s
+Smarts. The target loses the use of
+his cybernetics for the duration. This
+Incapacitates a Combat Cyborg for that
+period of time.
+
+FLAME BLAST
+
+For a single ISP, the Burster’s Flame Bolt
+affects a Medium Burst Template. For two
+ISP, he can expand the radius to a Large
+Burst Template. Alternately, the Burster can
+spend one ISP to use the Cone Template at no
+range (targets make an opposed Agility roll
+against Psionics to avoid the effect). Unless
+otherwise stated, enhancements from other
+Edges (such as Improved Flame Bolt) apply
+to this use of this Edge as well.
+
+FRESHLY JUICED
+
+For some Juicers, the surgical operations
+are as fresh in their memory as the chemical
+cocktails flowing through their veins.
+“Last Call” is a long way off for this Juicer.
+She adds +2 to her Burn score. This must
+be taken at character creation, and Freshly
+Juiced characters cannot also take the Last
+Call Hindrance.
+
+GUN NUT
+
+For many Crazies, the gun is a tool of
+unrestrained violence and a key partner in
+the ballet of rage that overcomes them.
+A Crazy with this Edge can use his
+Shooting skill as effectively as his Fighting
+while in the Losing It state (including
+a +2 on Shooting attacks, though not to
+Shooting damage).
+
+GYMNASTIC MASTERY
+
+Some transcend from naturally talented to
+preternaturally gifted in matters of motion
+and space. This Edge allows the character
+to add +2 to the Strength roll to increase
+jumping distance. She also adds the bonus to
+Climbing checks, and she can ascend at her
+Strength die per round (instead of half). She
+ignores Difficult Ground when moving and
+gains an additional +2 to Parry when using
+the Defend maneuver (but not Full Defense).
+Finally, a character with Gymnastic
+Mastery can make an Agility roll (with the
++2 from Acrobat) to reduce effective falling
+distance by 10 feet, or 20 feet on a raise. A
+fall of over 20 yards imposes a -2 penalty.
+
+IMPROVED CYBER-ARMOR
+
+The protection of the Cyber-Armor is
+enhanced to +4 Toughness total.
+
+MASTER CYBER-ARMOR
+
+In addition to +4 Toughness, the
+Cyber-Armor now also provides +2
+M.D.C. Armor, which stacks with
+any worn armor.
+
+IMPROVED FIERY AURA
+
+The Burster’s Fiery Aura damage
+increases to 3d8, and he may choose to
+affect a Medium Burst Template centered on
+himself (everyone in the area takes damage
+at the end of the Burster’s turn).
+
+IMPROVED FIRE MASTERY
+
+Many Bursters grow in their absolute
+control over fire and heat, improving their
+natural Fire Mastery in a number of ways.
+A Burster with this Edge increases
+the Range of his Fire Mastery to 24”.
+Alternatively, he can center the effect on
+himself and affect a radius equal to 2 × his
+Spirit. All other effects remain the same.
+
+IMPROVED FLAME BOLT
+
+For some Bursters, more destructive
+power is the summation of their true self.
+This Edge improves the Burster’s Flame
+Bolt damage to 6d6.
+
+
+GREATER FLAME BOLT
+
+The next evolution of the Burster’s raw
+attack force, this Edge brings the damage
+up to 6d8. It also enhances the Range
+categories to 15/30/60.
+
+IMPROVED PSI-SWORD
+
+The Cyber-Knight’s weapon is enhanced
+in power, doing Strength + 3 × Spirit, AP
+8. If split, each blade does Strength +
+3 × Spirit, AP 4.
+
+MASTER PSI-SWORD
+
+The Cyber-Knight knows how to
+channel his inner strength for extra
+damage with his blade. Before rolling an
+attack, the player declares how many ISP
+he wishes to spend on damage, up to 3
+points. Each point adds +4 to the damage
+(up to a maximum of +12). If using the split
+blade option, each blade gains +2 damage
+per ISP spent (to a maximum of +6 each).
+
+LEY LINE OBSERVATION SPHERE
+
+Some Walkers are able to conjure up a
+glowing bluish-white sphere the size of a
+soccer ball, which they can send anywhere
+up or down a ley line. It travels at 30 mph
+and has a range of one mile, acting as a
+focus point for the Walker to use any of her
+senses to observe what’s around the ball as
+though she were standing there (she cannot
+cast her powers through it, however). Using
+the sphere counts as an action, imposing
+a -2 multi-action penalty on any other
+actions while active.
+
+LEY LINE PHASING
+
+Some Walkers become so intricately tied
+to the lines that they are capable of phasing
+into the energies for an instant, transporting
+to any other point along the line in the
+blink of an eye.
+Ley Line Walkers with this Edge may take
+a full round to concentrate (taking no other
+actions, not even free actions), and on the
+next round they can teleport flawlessly to any
+other point along the same line. Though it
+costs no PPE, the Walker must make a Vigor
+check or suffer a Fatigue level (requiring
+four hours to recover). Each subsequent
+use of this ability imposes a cumulative -2
+penalty to the Vigor check until the Walker
+has a full night’s rest. Ley Line Phasing
+cannot be used to transport others, but see
+Ley Line Gate, below.
+
+LEY LINE GATE
+
+A truly powerful Ley Line Walker ability,
+the hero can carry up to his Smarts die
+in passengers when he phases to another
+location on the line. Carrying passengers,
+even just one, imposes an additional -2
+penalty to his Vigor check to resist Fatigue.
+
+OFF THE HANDLE
+
+A Crazy with this Edge can start Losing It
+as a free action.
+Interestingly, such a Crazy also has an
+easier time coming out of it. He doesn’t
+suffer the usual -2 penalty to his Smarts roll
+when trying to recover.
+
+PSI-SHIELD
+
+Cyber-Knights with this Edge can
+summon forth a Psi-Shield, granting +3
+Parry and +4 Armor against ranged damage
+(stacking with worn armor and the armor
+power). It costs no ISP and can be summoned
+as a free action. If he has a Psi-Shield and a
+Psi-Sword manifested, it counts as having
+two Psi-Blades active (meaning the Psi-
+Sword’s AP value is reduced by 4).
+
+RAPID FLAME BOLT
+
+The Burster can use his Flame Bolt power
+(along with any enhancements from other
+Edges) with a Rate of Fire of 3.
+
+READ THE FLAME
+
+Bursters with this Edge can make a Notice
+check to read and understand a fire, or the
+site of one. With a success, she can tell how it
+started and how long it burned. With a raise,
+she can sense what kind of being, if any,
+started the fire, as well as other interesting
+details the GM might be wish to share, such
+as the fire’s purpose, if any.
+
+SPLIT THE SECONDS
+
+Juicers and Crazies often find themselves
+living between the ticks of the clock. This
+Edge grants an extra action to the character
+each round. There is no multi-action penalty
+for this action, and it can be a repeat action,
+such as firing a gun or swinging a sword
+again. It cannot, however, be used for
+movement, such as Running.
+
+BURN FASTER
+
+There never seems to be quite enough
+time left, so the Juicer just has to go faster
+to get it all done. She can spend a Burn
+to take an immediate second turn, just
+like the quickness power. Once she does
+this, the effect (two turns per round) lasts
+for 3+1d6 rounds.
+
+SUBLIME CHAOS
+
+The tumultuous storm of neuroses,
+psychoses, and other issues crashing about
+in a Crazy’s head sometimes swirl into a
+beautiful rainbow of total disconnection
+from reality. The Crazy with this Edge
+understands how to ride the waves of her
+insanity like a surfer masters those of the
+sea. The greater part of her mind is simply
+elsewhere, leaving behind a nearly machinelike
+entity that gets the job done.
+While Losing It, a Crazy with this Edge
+is able to perform actions not normally
+allowed by Berserk, including using her
+psionics. She also only suffers a -1 to Trait
+rolls during her Coming Back period.
+
+UPGRADE
+
+For those who embrace cybernetics as a
+part of their being (by choice or necessity),
+the desire to upgrade is often an allencompassing
+goal on its own.
+Taking this Edge—which may only
+be selected once per Rank—means the
+cybernetic hero manages to achieve the
+necessary resources and opportunity to
+have a new piece of cybernetic technology
+installed, or have one upgraded to a
+higher degree. Though the GM has final
+say on what is and is not appropriate,
+anything in the Cybernetics section is fair
+game otherwise.
+Background Edges
+
+UPGRADABLE
+
+This hero can handle a lot more cybernetic
+invasion in his body than most. He increases
+his Maximum Strain by +6. Note Combat
+Cyborgs and Cybernetic Techno-Warriors
+already have this Edge.
+Combat Edges
+
+BATTLE HARDENED
+
+The hero’s conditioning reflects the
+rigors of a martial career. He adds +2 to
+all Soak rolls.
+
+CHARGE
+
+The warrior is experienced at moving
+across a large distance and getting the
+most effect out of rushing her foe. She may
+ignore the multi-action penalty for Running
+when making a Fighting attack at the end
+of her movement.
+
+OVERRUN
+
+If he moves at least one inch beyond his
+normal Pace before making any Fighting
+attacks, the hero adds +2 to the damage
+rolls. Any target Shaken by such an attack
+is knocked prone.
+
+COMBAT SENSE
+
+The champion has the perception,
+skill, and agility to handle multiple foes.
+Opponents halve any Gang Up bonuses
+against him (round down).
+
+IMPROVED COMBAT SENSE
+
+Opponents gain no Gang Up bonus
+against this warrior.
+
+DIRTY FIGHTER
+
+Some fight with honor. Some fight to win.
+This Edge is most likely known by thugs,
+mercenaries, and assassins. A Dirty Fighter
+is particularly good at Trick maneuvers,
+gaining a +2 bonus with them.
+
+TRICKY FIGHTER
+
+The hero suffers no multi-action penalty
+when using a Trick in the same round as
+a Fighting attack. The player must choose
+which type of Trick this Edge applies to
+(Agility or Smarts) and must have a d8+ in
+that attribute. The character may take this
+Edge twice to apply it to both kinds of Tricks.
+Power Edges
+
+CYBER-PSYCHIC ALIGNMENT
+
+The character’s mind and body are aligned
+strongly enough to offset one level of Strain
+penalty when using powers. Having a
+single Strain’s worth of cybernetics means
+there is no impact on rolling for powers use,
+while having three points of Strain value
+embedded only applies a -2.
+
+IMPROVED CYBER-PSYCHIC ALIGNMENT
+
+The character can ignore two levels of
+Strain penalties when using her powers.
+
+ENERGY CONTROL
+
+The psionic master has greater control
+over a specific form of non-living matter
+(such as water, earth, or metal) or the ability
+to affect a particular type of energy (like
+electricity, fire, or cold) while using the
+telekinesis power. This allows him to create
+minor effects related to what he controls—
+radio interference (electricity), putting out
+small fires (water), light small fires (fire)—
+as a free action.
+The character also has three major effects
+which require an action to use. Using his
+element, he can:
+??Create environmental effects which
+apply a -2 penalty to Trait rolls (-4
+with a raise).
+??Inflict 2d6 damage over the area (3d6
+Mega Damage if exalted telekinesis is used).
+??Dampen the energy or kinetic energy of
+the matter, causing attacks of that type
+to do only half damage within the area.
+All effects occur within a Medium Burst
+Template (a Large Burst Template with exalted
+telekinesis) and require use of the telekinesis
+power, including a Psionics skill roll and
+normal ISP cost. When taking this Edge, the
+player selects an energy or form of matter to
+control; he can take this Edge multiple times,
+choosing a new type each time.
+
+PSI-BLADE
+
+Another powerful manifestation of will
+and telekinetic strength, the Psi-Blade
+provides the psionic with a mental energy
+blade that does Strength + Spirit melee
+damage (i.e., roll Strength and Spirit dice
+for damage). The blade is AP 6 and does
+Mega Damage. The psi simply activates
+her smite power, summoning the Psi-Blade
+instead of putting the power on another
+weapon or set of ammunition (the smite
+bonus adds directly to the Psi-Blade’s base
+damage). This Edge can be used with exalted
+smite, as well.
+
+EXCEPTIONAL RAPID RECHARGE
+
+The caster with this Edge recovers Power
+Points (PPE/ISP) at a rate of one point
+every five minutes.
+
+SIXTH SENSE
+
+A psionic can develop extraordinary
+extrasensory perception and awareness of
+potential danger. A character with this Edge
+suffers no -2 penalty to her Notice check for
+Danger Sense. With success she gains the
+normal Danger Sense bonus, beginning the
+round on Hold. With a raise, she can take
+a single immediate action (such as run to
+cover, activate a defensive power, or draw
+a weapon). This Edge works even when the
+character is in power armor or robot armor.
+
+TELEMECHANICS
+
+This peculiar yet powerful Master Psionic
+ability permits the psi to directly connect
+to and interface with machines, vehicles,
+computers, and electronic devices. When
+activating telepathy, instead of using the
+normal power effects, he can choose to gain
++4 to all checks involving computers and
+electronics, including Investigation checks
+to dig through data and files. This bonus
+also applies to attempts to bypass security
+systems and electronic locks.
+The psi also has the benefits of the Ace
+Edge when interfacing with a vehicle via
+telepathy which has an electronic control
+system, increasing to a +4 bonus if the
+character already has the Edge. This Edge
+works even when the character is in power
+armor or robot armor.
+Professional Edges
+
+COMBAT ACE
+
+Integrating vehicle operation with
+weapons control in one fluid moment of
+expertise, the pilot with this Edge ignores
+the multi-action penalty for making a
+Boating, Driving, or Piloting check and
+firing a weapon on the same round.
+
+MAJOR PSIONIC
+
+A greater control of mind, body, and spirit
+combined with the overwhelming power
+available on Rifts Earth means this hero
+can do much more with her inner strength.
+Major Psionics double their base ISP, and
+they gain +10 ISP (instead of the usual +5)
+from the Power Points Edge.
+Major Psionics may also:
+??Spend 2 ISP when rolling their Psionics
+skill to gain a +1 to the roll, or 4 ISP for +2.
+??Spend 1 ISP to double the Range of a
+power, or 2 ISP to multiply the base
+range × 10. This ability does not affect
+powers that have Range of Self or Touch.
+The two effects can be combined, but the
+decision to spend ISP for either must be
+made before the roll.
+While on a ley line, all above bonuses are
+doubled in effect.
+
+MASTER PSIONIC
+
+Superhuman powers of the mind and
+spirit become the purview of the Master
+Psionic, making her a true threat against
+the most powerful foes in the world. Upon
+taking this Edge, the character gains the
+Mega Power option for all the powers
+she knows. Each time she takes the New
+Power Edge, she gains both the power and
+its Mega Power version.
+
+MASTER OF MAGIC
+
+True understanding of the ley lines, Rifts,
+and eldritch flow of power through the world
+grants many spellcasters exceptional might
+and capability with their magic. A Master
+of Magic gains the Mega Power option for
+each power he knows upon taking this
+Edge. Each time he takes the New Power
+Edge, he gains both the power and its Mega
+Power use as well.
+
+POWER ARMOR JOCK
+
+Power armor requires a basic level
+of training and experience to operate
+effectively. A character must have this Edge
+to avoid a -2 penalty to Agility and all skill
+rolls while wearing power armor.
+
+ROBOT ARMOR JOCK
+
+Robot armor suits are highly complex
+vehicles which require a great deal of
+training to operate. Without this Edge, the
+operator suffers a -2 penalty to all skill rolls
+while piloting robot armor.
+Social Edges
+
+I KNOW A GUY
+
+Some people seem to know someone
+everywhere they go. The contact may not
+be the most amazingly helpful person—
+they may even hate the hero for some past
+slight or money owed. The person known
+may be well-placed in an organization, or
+just as easily homeless and only know a
+few possibly helpful rumors. The point is,
+however, almost anywhere he goes, the hero
+seems to know someone, and that person
+usually at least knows something of value
+or can contact some helpful folks. Once per
+session, the player can invoke this Edge
+to effectively have the Connections Edge
+with any person or group. Use the rules for
+Connections to determine if the contact can
+be reached, and if he will help in any way.
+If the attempt to contact a particular person
+fails, the once-per-session use of this Edge
+is not used up; failures on the Persuasion
+check to get help still trigger that session’s
+use of the Edge.
+
+SCROUNGER
+
+Some people are just very skilled at
+knowing how to find what they need in
+an urban setting. They know where to
+look, who to talk to, and how to get what
+their group needs. A Scrounger can make
+a Streetwise check, once per session, in any
+city or large town (-2 in smaller urban areas)
+to accomplish one of the following:
+??Gain 1d6+2 fully charged e-clips for the
+firearms she and her teammates use.
+??Acquire a complete reload for one Mega
+Damage weapon, such as a Boom Gun,
+Mini Rail Gun, or grenade launcher.
+??Procure food for 2d6 people for a week.
+??Fully restock one Trauma Kit, or find
+1d4+1 first aid kits (as found in the NGS2
+Survival Pack).
+??Obtain a non-secured cred-card with
+2d10 × 2,000 credits on it.
+??Find some rare (not necessarily valuable)
+and needed item (entertainment chips
+for computers, a spare part for a suit of
+armor or vehicle, snacks and treats, etc.).
