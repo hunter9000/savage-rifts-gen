@@ -6,6 +6,7 @@ public enum SkillType {
 	BOATING("Boating", AttributeType.AGILITY),
 	CLIMBING("Climbing", AttributeType.STRENGTH),
 	DRIVING("Driving", AttributeType.AGILITY),
+	FAITH("Faith", AttributeType.SPIRIT),
 	FIGHTING("Fighting", AttributeType.AGILITY),
 	GAMBLING("Gambling", AttributeType.SMARTS),
 	HEALING("Healing", AttributeType.SMARTS),
@@ -16,16 +17,19 @@ public enum SkillType {
 	NOTICE("Notice", AttributeType.SMARTS),
 	PERSUASION("Persuasion", AttributeType.SPIRIT),
 	PILOTING("Piloting", AttributeType.AGILITY),
+	PSIONICS("Psionics", AttributeType.SMARTS),
 	REPAIR("Repair", AttributeType.SMARTS),
 	RIDING("Riding", AttributeType.AGILITY),
 	SHOOTING("Shooting", AttributeType.AGILITY),
+	SPELLCASTING("Spellcasting", AttributeType.SMARTS),
 	STEALTH("Stealth", AttributeType.AGILITY),
 	STREETWISE("Streetwise", AttributeType.SMARTS),
 	SURVIVAL("Survivial", AttributeType.SMARTS),
 	SWIMMING("Swimming", AttributeType.AGILITY),
 	TAUNT("Taunt", AttributeType.SMARTS),
 	THROWING("Throwing", AttributeType.AGILITY),
-	TRACKING("Tracking", AttributeType.SMARTS);
+	TRACKING("Tracking", AttributeType.SMARTS),
+	WEIRD_SCIENCE("Weird Science", AttributeType.SMARTS);
 
 	private String skillName;
 	private AttributeType linkedAttribute;

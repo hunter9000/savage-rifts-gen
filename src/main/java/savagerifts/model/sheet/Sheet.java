@@ -106,15 +106,23 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<HindranceSelection> chosenHindrances;		// chosen hindrances
 
-/*	@Column(name = "hasSelectedHindrances")
-	boolean hasSelectedHindrances;		// if the player has finished choosing hindrances, either by clicking finished, or selecting the last one
-*/	
-//	boolean hasMagic? hasPsionics?
+	// things bought with hindrance points
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<EdgeSelection> chosenEdges;
 	
-/*
-	@Column(name = "hasSelectedEdges")
-	boolean hasSelectedEdges;
-*/	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<AttributeRaiseSelection> chosenAttributeRaises;
+	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SkillRaiseSelection> chosenSkillRaises;
+	
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<MoneyRaiseSelection> chosenMoneyRaises;
+
+	
+	
+//	boolean hasMagic? hasPsionics?
+		
 
 	public Roll getAttribute(AttributeType type) {
 		switch(type) {
@@ -301,6 +309,34 @@ public class Sheet {
 	}
 	public void setChosenHindrances(List<HindranceSelection> chosenHindrances) {
 		this.chosenHindrances = chosenHindrances;
+	}
+
+	public List<EdgeSelection> getChosenEdges() {
+		return chosenEdges;
+	}
+	public void setChosenEdges(List<EdgeSelection> chosenEdges) {
+		this.chosenEdges = chosenEdges;
+	}
+
+	public List<AttributeRaiseSelection> getChosenAttributeRaises() {
+		return chosenAttributeRaises;
+	}
+	public void setChosenAttributeRaises(List<AttributeRaiseSelection> chosenAttributeRaises) {
+		this.chosenAttributeRaises = chosenAttributeRaises;
+	}
+
+	public List<SkillRaiseSelection> getChosenSkillRaises() {
+		return chosenSkillRaises;
+	}
+	public void setChosenSkillRaises(List<SkillRaiseSelection> chosenSkillRaises) {
+		this.chosenSkillRaises = chosenSkillRaises;
+	}
+
+	public List<MoneyRaiseSelection> getChosenMoneyRaises() {
+		return chosenMoneyRaises;
+	}
+	public void setChosenMoneyRaises(List<MoneyRaiseSelection> chosenMoneyRaises) {
+		this.chosenMoneyRaises = chosenMoneyRaises;
 	}
 
 	//	public List<Language> getLanguages() {

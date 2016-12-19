@@ -1,0 +1,54 @@
+
+
+<div class="container width-large">
+	<div class="panel panel-default">
+		<div class="panel-heading">Edges etc...</div>
+		<div class="panel-body">
+
+			<div class="row">
+				<!-- chosen options -->
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Chosen</div>
+						<div class="panel-body">
+							<div ng-repeat="edge in sheet.chosenEdges"> </div>
+							<div ng-repeat="attr in sheet.chosenAttributeRaises"> </div>
+							<div ng-repeat="skill in sheet.chosenSkillRaises"> </div>
+							<div ng-repeat="money in sheet.chosenMoneyRaises"> </div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- selections to make -->
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Selections</div>
+						<div class="panel-body">
+							<div ng-show="sheet.remainingHindrancePoints >= 2">
+								<dl class="dl-horizontal">
+									<dt style="width:120px;">For 2 points:</dt>
+									<dd style="margin-left:140px;" class="text-left">
+										<span><a class="btn btn-primary" ng-click="choose('edge')">Edge</a></span>
+										<span><a class="btn btn-primary" ng-click="choose('attr')">Attribute</a></span>
+									</dd>
+								</dl>
+							</div>
+							
+							<div ng-show="sheet.remainingHindrancePoints >= 1">
+								<dl class="dl-horizontal">
+									<dt style="width:120px;">For 1 point:</dt>
+									<dd style="margin-left:140px;" class="text-left">
+										<span><a class="btn btn-primary" ng-click="choose('skill')">Skill</a></span>
+										<span><a class="btn btn-primary" ng-click="chooseMoney()">Starting Money</a></span>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-savageRiftsApp.controller('loginController', function($scope, $location, $http, $window) {
+savageRiftsApp.controller('loginController', function(APIService, $scope, $location, $window) {
     // create a message to display in our view
     $scope.message = '';
 
@@ -8,14 +8,10 @@ savageRiftsApp.controller('loginController', function($scope, $location, $http, 
 
     // when submitting the add form, send the text to the node API
     $scope.login = function() {
-        $http.post('/api/authenticate/', $scope.formData)
-        .then(function successCallback(response) {
+        APIService.authenticate($scope.formData, function(response) {
             console.log(response);
             $window.localStorage['jwtToken'] = response.data.response;
             $location.path("/sheetselect");
-        }, function errorCallback(response) {
-            console.log('Error: ' + response);
-            $scope.message = 'invalid login - error returned';
         });
     };
 });

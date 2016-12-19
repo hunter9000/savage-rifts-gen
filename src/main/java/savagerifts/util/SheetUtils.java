@@ -20,6 +20,7 @@ import savagerifts.request.SkillBuyRequest;
 import savagerifts.response.AttributeBuyResponse;
 import savagerifts.response.HindranceBuyResponse;
 import savagerifts.response.SkillBuyResponse;
+import savagerifts.response.SkillRollInfo;
 import savagerifts.security.BadRequestException;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class SheetUtils {
 
 		List<SkillRoll> skillList = new ArrayList<>();
 		for (SkillType skillType : SkillType.values()) {
+			// TODO don't create a plain knowledge skill here
 			SkillRoll skill = new SkillRoll();
 			skill.setSheet(sheet);
 			skill.setSkillType(skillType);
@@ -296,22 +298,25 @@ public class SheetUtils {
 	public static SkillBuyResponse calculateSkillPurchases(Sheet sheet) {
 		SkillBuyResponse skillBuyResponse = new SkillBuyResponse();
 		
-		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
-		
-		skillBuyResponse.skills = skillMap;
+//		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
+		List<SkillRoll> skillRolls = new ArrayList<>();
+		List<SkillRollInfo> skillRollInfos = new ArrayList<>();
+
 		skillBuyResponse.remainingSkillPoints = sheet.getRemainingSkillPoints();
 		
 		Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
 		
-		for (SkillType skillType : skillMap.keySet()) {
-			SkillRoll skillRoll = skillMap.get(skillType);
-			
+		for (SkillRoll skillRoll : skillRolls) {
+//			SkillRoll skillRoll = skillMap.get(skillType);
+			SkillRollInfo info = new SkillRollInfo();
+
 			int pointCost = getSkillPointCost(skillRoll, attrMap);
-			skillBuyResponse.canIncrease.put(skillType, skillRoll.getRoll().compareTo(new Roll(DieType.D12, 0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost);
-			
-			skillBuyResponse.canDecrease.put(skillType, skillRoll.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15);
+			info.canIncrease = skillRoll.getRoll().compareTo(new Roll(DieType.D12,0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost;
+			info.canDecrease = skillRoll.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15;
 		}
-		
+
+		skillBuyResponse.skillRollInfos = skillRollInfos;
+
 		return skillBuyResponse;
 	}
 	
@@ -321,34 +326,41 @@ public class SheetUtils {
 	}
 	
 	/** Adds all the sheet's skillrolls to a map for serialization. */
-	public static Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
-		Map<SkillType, SkillRoll> map = new HashMap<>();
-		for (SkillRoll roll : sheet.getSkills()) {
-			map.put(roll.getSkillType(), roll);
-		}
-		return map;
-	}
+//	public static Map<SkillType, SkillRoll> populateSkillMap(Sheet sheet) {
+//		Map<SkillType, SkillRoll> map = new HashMap<>();
+//		for (SkillRoll roll : sheet.getSkills()) {
+//			map.put(roll.getSkillType(), roll);
+//		}
+//		return map;
+//	}
 
 	public static boolean validateAndMakeSkillChange(Sheet sheet, SkillBuyRequest skillBuyRequest) {
 		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
 
 		// get the skill that we want to change
-		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
-		SkillRoll skillRoll = skillMap.get(skillBuyRequest.getSkill());
-		
-		int pointCost = getSkillPointCost(skillMap.get(skillBuyRequest.getSkill()), populateAttributeMap(sheet));
+//		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
+//		List<SkillRoll> skillRolls = new ArrayList<>();
+		SkillRollInfo skillRollInfo = null;
+		for (SkillRollInfo sri : skills.getSkillRollInfos()) {
+			if (sri.getSkillRoll().getSkillType() == skillBuyRequest.getSkill() && sri.getSkillRoll().getSkillKnowledge().equals(skillBuyRequest.getSkillKnowledge())) {
+				skillRollInfo = sri;
+				break;
+			}
+		}
+
+		int pointCost = getSkillPointCost(skillRollInfo.getSkillRoll(), populateAttributeMap(sheet));
 		
 		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
 		if (skillBuyRequest.getOperation() == SkillBuyRequest.OperationType.INC) {
-			if (skills.canIncrease.get(skillBuyRequest.getSkill())) {
-				skillRoll.getRoll().increase();
+			if (skillRollInfo.canIncrease) {
+				skillRollInfo.getSkillRoll().getRoll().increase();
 				sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() - pointCost);
 				return true;
 			}
 		}
 		else if (skillBuyRequest.getOperation() == SkillBuyRequest.OperationType.DEC) {
-			if (skills.canDecrease.get(skillBuyRequest.getSkill())) {
-				skillRoll.getRoll().decrease();
+			if (skillRollInfo.canDecrease) {
+				skillRollInfo.getSkillRoll().getRoll().decrease();
 				sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() + pointCost);
 				return true;
 			}

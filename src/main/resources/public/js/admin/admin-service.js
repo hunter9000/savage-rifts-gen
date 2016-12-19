@@ -32,7 +32,7 @@
             // parses the token and returns the subject object (userName:'', roles:['','']}
             parseJwt: function() {
                 var token = $window.localStorage['jwtToken'];
-                if (!token || token == null) {
+                if (!token || token == null || token == 'null') {
 //                    console.log('error, no token');
                     return null;
                 }
@@ -67,7 +67,7 @@
                     $location.path('/hindrancebuy/' + sheet.id);
                 }
 				else if (sheet.creationStep == 'EDGES') {
-//                    $location.path('//' + sheet.id);
+                    $location.path('/edgebuy/' + sheet.id);
                 }
 				else if (sheet.creationStep == 'FINISHED') {
 					// do nothing, we're here

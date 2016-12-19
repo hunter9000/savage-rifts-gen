@@ -1,0 +1,35 @@
+Beast Bond 
+
+Requirements: Novice 
+
+Some individuals can exert incredible will over their animal companions. These characters may spend their own Bennies for any animals under their control, including mounts, pet dogs, familiars, and so on. 
+
+Beast Master 
+
+Requirements: Novice, Spirit d8+ 
+
+Animals like your hero, and won’t attack him unless he attacks them first or they are enraged for some reason. His “animal magnetism” is so great he’s attracted a loyal animal of some sort as well. This is typically a dog, wolf, or raptor, though the GM may allow other companions if it fits the setting. The beast is an Extra (not a Wild Card). If it should be killed, the hero finds a replacement in 2d6 days. 
+
+Danger Sense
+
+Requirements: Novice 
+
+Your hero can sense when something bad is about to happen. Anytime he’s about to be the victim of a surprise attack, ambush, or other nasty surprise, he gets a Notice roll at –2 just before the attack or event occurs. If successful, the character knows something is about to happen and may take appropriate action against it. This means the hero is on Hold for the first round of a combat. Should the hero fail his roll, he still follows the normal Surprise rules, if applicable (see page 65). 
+
+Healer 
+
+Requirements: Novice, Spirit d8+ 
+
+A hero with this Edge adds +2 to all Healing rolls (including natural healing rolls for his own wounds), whether natural or magical in nature. Up to five companions traveling with a Healer add the bonus to their natural healing rolls as well. 
+
+Liquid Courage
+
+Requirements: Novice, Vigor d8+ 
+
+Your hero processes alcohol far differently than most. The round after consuming a stiff drink (at least 8 ounces of hard liquor or equivalent), the character’s Vigor increases by one die type (increasing Toughness as well). The hard drinker can also ignore one level of wound modifiers (which stacks with other abilities that do the same). The effect lasts for one hour after it begins. If the drunkard seeks inebriation he suffers –2 to Smarts and Agility-based rolls for as long as he continues to drink and the next 1d6 hours thereafter. 
+
+Scavenger
+
+Requirements: Novice, Luck 
+
+Once per session the hero may “suddenly remember” that he has a much-needed piece of equipment on his person. The item must be capable of being stored in the hero’s pocket or bag (assuming he has one), and the Game Master has the final word on what can be found. 
