@@ -1,0 +1,96 @@
+Ace 
+
+Requirements: Novice, Agility d8+ 
+
+Aces are special pilots and drivers who feel more comfortable behind the wheel, throttle, or flight stick than on their own two feet. Aces add +2 to Boating, Driving, and Piloting rolls. In addition, they may also spend Bennies to make Soak rolls for any vehicle or vessel they control. This is a Boating, Driving, or Piloting roll at –2 (cancelling their usual +2). Each success and raise negates a wound and any critical hit that would have resulted from it. 
+
+Acrobat 
+
+Requirements: Novice, Agility d8+, Strength d6+ 
+
+Those who have formal training in the acrobatic arts or are naturally agile may take this Edge. It adds +2 to all Agility rolls made to perform acrobatic maneuvers (including Trick maneuvers), and also adds +1 to a character’s Parry as long as he has no encumbrance penalty. 
+
+Adept
+
+Requirements: Novice, Arcane Background (Miracles), 
+Martial Artist, Faith d8+, Fighting d8+ 
+
+Adepts are holy warriors who have trained themselves to be living weapons. Some do so to be ultimate warriors; others do it in the service of a cause or deity. As a free action, an adept can spend 1 Power Point to gain AP 2 with all of his unarmed attacks until his next action. In addition, upon taking this Edge and at each new Rank, they may choose to change the trappings of one of the following powers to work only on themselves but be activated as a free action: boost/lower trait, deflection, healing, smite, or speed. The Adept must have the power to begin with, and this does not allow him to activate more than one power in a round. 
+
+Assassin 
+
+Requirements: Novice, Agility d8+, Climbing d6+, Fighting d6+, Stealth d8+ 
+
+Assassins are trained killers who know how to kill with deadly precision — if they can properly approach their prey. Assassins add +2 to any damage roll where they strike a foe unawares (even with ranged attacks). 
+
+Champion
+
+Requirements: Novice, Arcane Background (Miracles), Spirit d8+, Strength d6+, Vigor d8+, Faith d6+, Fighting d8+ 
+
+Champions are holy (or unholy) men and women chosen to fight for a particular deity or religion. Most are pious souls ready and willing to lay down their lives for a greater cause, but some may have been born into the role and follow their path with some reluctance. Champions fight the forces of darkness (or good). They add +2 damage when attacking supernaturally evil (or good) creatures, and have +2 Toughness when suffering damage from supernaturally evil (or good) sources, including arcane powers and the weapons, claws, teeth, etc., of such creatures. 
+
+Gadgeteer
+
+Requirements: Novice, Arcane Background (Weird Science), Smarts d8+, Repair d8+, Weird Science d8+, at least two other scientific Knowledge skills at d6+ 
+
+These mechanical gurus are so technically savvy they can quickly build a machine to handle nearly any situation. Once per game session, a gadgeteer can create a “juryrigged” device from spare parts. The device functions just like any other Weird Science device, and uses any power available to Weird Scientists in that setting (though this is still subject to Rank restrictions). It has half the inventor’s Power Points, and once these are used up, the gadget burns out and does not recharge. The inventor must have access to some parts and a reasonable amount of time (GM’s call, but at least 1d20 minutes) to create the gizmo. 
+
+Holy/Unholy Warrior
+
+Requirements: Novice, Arcane Background (Miracles), Spirit d8+, Faith d6+ 
+
+Acolytes, clerics, paladins, holy slayers, and other avatars of the gods are frequently tasked with battling the forces of evil in the mortal world. This Edge gives them a slight advantage against such foes. As an action, a priest or other holy person may call upon his chosen deity to repulse supernaturally evil creatures, such as the undead, demons, and the like. It also works on evil characters with the Arcane Background (Miracles) Edge. Repulsing evil costs 1 Power Point and has a range of the character’s Spirit. Targeted creatures within that range must make a Spirit roll. Failure means the creature is Shaken; a 1 means it is destroyed. Wild Cards suffer an automatic Wound instead. A character may also be an Unholy Warrior working for the forces of evil. In this case, he repulses good creatures, such as angels, paladins, or good characters with Arcane Background (Miracles). 
+
+Investigator
+
+Requirements: Novice, Smarts d8+, Investigation d8+, Streetwise d8+ 
+
+Investigators have spent a great deal of time researching ancient legends, working the streets, or deducing devilish mysteries. Some of these heroes are actual Private Investigators for hire while others may be sleuthing mages in a fantasy world or perhaps inquisitive college professors stumbling upon Things Man Was Not Meant to Know in the dark of night. Investigators add +2 to Investigation and Streetwise rolls, as well as Notice rolls made to search through evidence. 
+
+Jack-of-All-Trades 
+
+Requirements: Novice, Smarts d10+ 
+
+Through advanced schooling, book-learning, computer-  enhanced skill programs, or just amazing intuitive perception, your hero has a talent for picking up skills on the fly. There is little he can’t figure out given a little time and a dash of luck. Any time he makes an unskilled roll for a Smarts-based skill, he may do so at d4 instead of the usual d4–2. 
+
+McGyver
+
+Requirements: Novice, Smarts d6+, Repair d6+, Notice d8+ 
+
+This character can improvise something when the need for a tool arises. He suffers no negative penalties on Trait rolls for lack of equipment in most situations. In addition, given a few simple tools, props, or devices, he can generally rig devices to help escape from death-traps, weapons to match some bizarre need, or otherwise create something that’s needed when such a thing isn’t actually present. The extent of this is completely up to the Game Master, but creativity should be rewarded, particularly in dire situations where few other answers are possible. 
+
+Mentalist 
+
+Requirements: Novice, Arcane Background (Psionics), Smarts d8+, Psionics d6+ 
+
+Mentalists are masters of mind control and psionics. Some are pulp heroes, others are trained in secret government academies to root out traitors. Their frequent toying with human minds gives them a +2 on any opposed Psionics roll, whether they are using their powers against a foe or are trying to defend against a rival Mentalist. 
+
+Mr. Fix it 
+
+Requirements: Novice, Arcane Background (Weird Science), Smarts d10+, Repair d8+, Weird Science d8+, at least two other scientific Knowledge skills at d6+ 
+
+The inventor adds +2 to Repair rolls. With a raise, he halves the time normally required to fix something. This means that if a particular Repair job already states that a raise repairs it in half the time, a Mr. Fix It could finish the job in one-quarter the time with a raise. 
+
+Scholar 
+
+Requirements: Novice, d8+ in affected skill 
+
+Learned professors, devoted students, and amateur enthusiasts spend months of their lives studying particular subjects. They become experts in these fields, and rarely fail to answer questions in their particular area of expertise. Pick any two Knowledge skills the Scholar has a d8 or better in. Add +2 to your total whenever these skills are used. Those who study military history have a natural edge when commanding troops in Mass Battles (see page 92)—a +2 to a Knowledge (Battle) roll can mean the difference between a rousing victory and a crushing defeat. 
+
+Thief 
+
+Requirements: Novice, Agility d8+, Climbing d6+, Lockpicking d6+, Stealth d8+ 
+
+Thieves specialize in deceit, treachery, and acrobatics. They can be invaluable where traps must be detected, walls must be climbed, and locks must be picked. Thieves add +2 to Climbing, Lockpick, Stealth, as well as Notice or Repair rolls that relate to traps and similar devices. The bonus to Stealth does not apply when the character is in a wilderness environment—only in urban areas. 
+
+Wizard 
+
+Requirements: Novice, Arcane Background (Magic), Smarts d8+, Knowledge (Arcana) d8+, Spellcasting d6+ 
+
+Wizards range from young apprentices to frighteningly powerful supreme sorcerers. They are often physically weak, however, and rarely have the divine powers or healing abilities of priestly spellcasters. What they lack in spiritual favor, however, they more than make up for in utility and eldritch might. Wizards tend to learn their craft in formalized institutions or under the tutelage of experienced masters. Each raise a Wizard gets on his Spellcasting roll reduces the cost of the spell by 1 Power Point. The Wizard must have the points available to cast the spell in the first place before rolling. 
+
+Woodsman 
+
+Requirements: Novice, Spirit d6+, Survival d8+, Tracking d8+ 
+
+Woodsmen are rangers, scouts, and hunters who are more at home in the wilderness than in urban areas. They are skilled trackers and scouts, and know how to live off the land for months at a time. Woodsmen gain +2 to Tracking, Survival, and Stealth rolls made in the wilderness (not towns, ruins, or underground). 

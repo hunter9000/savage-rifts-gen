@@ -1,0 +1,59 @@
+Followers 
+
+Requirements: Wild Card, Legendary 
+
+Heroes often acquire dedicated warbands, “merry men,” or others who voluntarily follow the hero on his adventures. Each time this Edge is chosen, five followers join the hero’s band. Casualties are not automatically replaced, so a hero may need to choose this Edge again on occasion to replenish his losses. The followers must have some way to eat and earn income, and generally want a piece of whatever loot, treasure, or other rewards the hero acquires. Otherwise, they are completely dedicated to their idol and risk their lives for him under any normal conditions. They won’t knowingly throw their lives away except under very special circumstances. The GM determines the followers’ statistics, but in general, use the Soldier statistics presented on page 81. Followers generally come with only basic equipment depending on their particular setting (warriors in fantasy come with at least leather armor and short swords, for example). The hero must purchase any additional equipment for his Followers himself. 
+
+Martial Arts Master 
+
+Requirements: Legendary, Improved Martial Arts, Fighting d12+ 
+
+The warrior is deadly with his hands. He adds +2 to his bare-handed damage every time he takes this Edge, up to a maximum of five times for a total damage bonus of +10. 
+
+Professional 
+
+Requirements: Legendary, d12 in affected Trait 
+
+The character is an expert at a particular skill or attribute (his choice). That Trait becomes d12+1. This Edge may be selected more than once, but it may never be applied to the same skill or attribute twice. 
+
+Expert
+
+Requirements: Legendary, Professional in affected Trait 
+
+As above, but the Trait increases to d12+2. 
+
+Master 
+
+Requirements: Wild Card, Legendary, Expert in affected Trait 
+
+The character’s Wild Die increases to a d10 when rolling a particular Trait of his choice. This Edge may be chosen multiple times, though it only affects a particular Trait once. 
+
+Sidekick 
+
+Requirements: Wild Card, Legendary 
+
+A character who triumphs over evil time and time again becomes an inspiration to others. Eventually, one of these young crusaders may attempt to join the hero in his epic quests. The hero gains a Novice Rank sidekick. The sidekick is a Wild Card, gains experience as usual, and has abilities that complement or mimic his hero’s. The player character should control his sidekick just like any other ally. Of course, the sidekick may occasionally cause trouble (by getting captured, running into danger when he’s not supposed to, etc.). The player should be prepared for his “Edge” to occasionally become a “Hindrance.” If the sidekick dies, he isn’t replaced unless the hero chooses this Edge again. 
+
+Tough as Nails
+
+Requirements: Legendary 
+
+Your hero is a grizzled veteran. Increase his Toughness by +1. 
+
+Improved Tough as Nails
+
+Requirements: Legendary, Tough as Nails 
+
+Increase your hero’s Toughness by another +1. 
+
+Weapon Master
+
+Requirements: Legendary, Fighting d12 
+
+Increase your hero’s Parry by +1. 
+
+Master of Arms 
+
+Requirements: Legendary, Weapon Master 
+
+Increase your hero’s Parry by another +1. 

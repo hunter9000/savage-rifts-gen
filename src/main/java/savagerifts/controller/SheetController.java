@@ -413,7 +413,14 @@ public class SheetController {
 	public ResponseEntity<?> finishHindracePurchases() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
+		if (sheet.getCreationStep() != SheetCreationStep.HINDRANCES) {
+			throw new BadRequestException();		// can't call this on this sheet
+		}
+		
 		if (sheet.getCreationStep() == SheetCreationStep.HINDRANCES) {
+			SheetUtils.moveToNextCreationStep(sheet);
+		}
+		if (sheet.getCreationStep() == SheetCreationStep.EDGES && sheet.getRemainingHindrancePoints() == 0) {
 			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);

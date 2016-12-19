@@ -1,0 +1,221 @@
+Block 
+
+Requirements: Seasoned, Fighting d8+ 
+
+Warriors who engage in frequent hand-to-hand combat are far more skilled in personal defense than most others. They’ve learned not only how to attack, but how to block their opponent’s blows as well. A fighter with this Edge adds +1 to his Parry. 
+
+Improved Block
+
+Requirements: Veteran, Block 
+
+As above, but the hero adds +2 to his Parry. 
+
+Brawler 
+
+Requirements: Novice, Str d8+ 
+
+Frequent fights with his bare hands have given this thug a powerful punch. When he hits a foe with a successful bare-handed Fighting roll, he adds +2 to his damage. 
+
+Bruiser 
+
+Requirements: Seasoned, Brawler 
+
+When the bruiser gets a raise on his bare-handed Fighting attack, he rolls a d8 instead of a d6. 
+
+Combat Reflexes 
+
+Requirements: Seasoned 
+
+Your adventurer recovers quickly from shock and trauma. He adds +2 to his Spirit roll when attempting to recover from being Shaken. 
+
+Counterattack 
+
+Requirements: Seasoned, Fighting d8+ 
+
+Fighters with this Edge know how to respond instantly to an enemy’s mistakes. Once per round (if not Shaken), the character receives one free Fighting attack against one adjacent foe who failed a Fighting attack against him. This attack is made at –2, and the Counterattack must be a normal attack (no Disarm, Wild Attack, or other maneuvers), and may not be combined with Frenzy or Sweep. It may be used with the Defend maneuver, but not Full Defense. 
+
+Improved Counterattack
+
+Requirements: Veteran, Counterattack 
+
+As above but the character may ignore the –2 penalty. 
+
+Dodge
+
+Requirements: Seasoned, Agility d8+ 
+
+Some crafty types know how to get out of harm’s way. This Edge allows them to use cover, movement, and concealment to make them harder to hit. Unless they are the victim of a surprise attack and taken completely unaware, attackers must subtract 1 from their ranged attack rolls when targeting them (even in close combat). Characters who attempt to evade area effect attacks may add +1 to their Agility roll as well (when allowed). 
+
+Improved Dodge
+
+Requirements: Veteran, Dodge 
+
+As above but attackers subtract 2 from their attack rolls, and the character adds +2 to evade area effect weapons when allowed. 
+
+Elan 
+
+Requirements: Novice, Spirit d8+ 
+
+When this spirited hero puts his heart into something it tends to pay off in big ways. When you spend a Benny on a Trait roll (including Soak rolls), add +2 to the final total. 
+
+Extraction 
+
+Requirements: Novice, Agility d8+ 
+
+When a character normally withdraws from a melee, his attacker gets a free attack before he does so—a very dangerous proposition for most. Your hero is adept at retreating from an engagement. Make an Agility roll. If successful, one opponent doesn’t get a free attack anytime you disengage (see page 76). 
+
+Improved Extraction
+
+Requirements: Novice, Extraction 
+
+As above but if you succeed with a raise all opponents currently in melee with the character lose their free attack as your warrior withdraws. 
+
+First Strike 
+
+Requirements: Novice, Agility d8+ 
+
+Once per turn the hero (if not Shaken) gets a free Fighting attack against a single foe who moves adjacent to him. This automatically interrupts the opponent’s action and does not cost the hero his action if he is on Hold or has not yet acted this round. 
+
+Improved First Strike
+
+Requirements: Heroic, First Strike 
+
+As above but the hero may make one free attack against each and every foe who moves adjacent to him. 
+
+Florentine 
+
+Requirements: Novice, Agility d8+, Fighting d8+ 
+
+A character trained to fight “Florentine” is a master at wielding two weapons at once. He adds +1 to his Fighting rolls versus an opponent with a single weapon and no shield. In addition, opponents subtract 1 from any “gang up” bonuses they would normally get against the fighter as his two flashing blades parry their blows. 
+
+Frenzy
+
+Requirements: Seasoned, Fighting d10+ 
+
+Frenzied fighters make fast and furious melee attacks, sacrificing finesse for raw speed. This allows them to make an extra Fighting attack per round at a –2 penalty to all Fighting rolls. This attack must be taken at the same time as another Fighting attack though it may target any two foes adjacent to the hero (Wild Cards roll two Fighting dice and one Wild Die). The –2 penalty is subtracted from all attacks. A character armed with two weapons still only makes one extra attack. 
+
+Improved Frenzy
+
+Requirements: Veteran, Frenzy 
+
+As above but the character may ignore the –2 Frenzy penalty. 
+
+Giant Killer 
+
+Requirements: Veteran 
+
+The bigger they are, the harder they are to kill. At least for most. But your hero knows how to find the weak points in massive creatures. Your hero does +1d6 damage when attacking creatures three sizes or more larger than himself. An ogre (Size +3) with this ability, for example, gains the bonus only against creatures of Size +6 or greater. A human Giant Killer (Size 0), can claim the bonus against the ogre, however. 
+
+Hard to Kill 
+
+Requirements: Wild Card, Novice, Spirit d8+ 
+
+This adventurer has more lives than a truckload of cats. When forced to make Vigor rolls due to Incapacitation, he may ignore his wound modifiers. This only applies to Vigor rolls called for to resist Incapacitation or death (see page 68). He still suffers from wound modifiers for other Trait rolls normally. 
+
+Harder to Kill 
+
+Requirements: Veteran, Hard to Kill 
+
+Your hero is tougher to kill than Rasputin. If he is ever “killed,” roll a die. On an odd result, he’s dead as usual. On an even roll, he’s Incapacitated but somehow escapes death. He may be captured, stripped of all his belongings, or mistakenly left for dead, but he somehow survives. 
+
+Improvisational Fighter
+
+Requirements: Seasoned, Smarts d6+ 
+
+Heroes often find themselves fighting with pieces of equipment or furnishings not designed for combat. A character with this Edge has a knack for using such improvised weapons, and does not suffer the usual –1 penalty to attack and Parry when wielding them. See page 73 for details. 
+
+Killer Instinct 
+
+Requirements: Heroic 
+
+This hero hates losing. If he ties on an opposed roll of any sort, he wins. In addition, if his skill die on an opposed skill roll is a 1, he can reroll it (but must keep the second result, even if it’s another 1). 
+
+Level Headed 
+
+Requirements: Seasoned, Smarts d8+ 
+
+Fighters who can keep their cool when everyone else is running for cover are deadly customers in combat. A hero with this Edge draws an additional Action Card in combat and acts on the best of the draw. 
+
+Improved Level Headed
+
+Requirements: Seasoned, Level Headed 
+
+As above but the hero draws 3 cards. 
+
+Marksman 
+
+Requirements: Seasoned 
+
+The hero excels at taking controlled, measured shots. If he does not move in a turn, he may fire as if he took the Aim maneuver. Marksman may never be used with a Rate of Fire greater than 1. Marksman works with both Shooting and Throwing. 
+
+Martial Artist 
+
+Requirements: Novice, Fighting d6+ 
+
+This character is highly trained in hand-to-hand fighting. He is never considered unarmed in combat and so is never subject to the Unarmed Defender rule (page 76). With a successful unarmed attack, he adds +d4 to his Strength roll (as if he were using a small weapon). 
+
+Improved Martial Artist
+
+Requirements: Veteran, Martial Arts, Fighting d10+ 
+
+The character now adds +d6 to his bare-handed damage. 
+
+Nerves of Steel 
+
+Requirements: Wild Card, Novice, Vigor d8+ 
+
+Your hero has learned to fight on through the most intense pain. He may ignore 1 point of wound penalties. 
+
+Improved Nerves of Steel
+
+Requirements: Novice, Nerves of Steel 
+
+The hero ignores 2 points of wound penalties. 
+
+Quick Draw 
+
+Requirements: Novice, Agility d8+ 
+
+This Edge allows a hero to draw a weapon as a free action (and thus ignore the usual –2 multi-action penalty if he chooses to fire as well). If the character must make an Agility roll to draw a weapon (see page 66), he adds +2 to the roll. 
+
+Rock and Roll! 
+
+Requirements: Seasoned, Shooting d8+ 
+
+Some veteran shooters learn to compensate for the recoil of fully automatic weapons. If a character with this Edge does not move, he may ignore the recoil penalty for firing a weapon on full automatic. 
+
+Steady Hands
+
+Requirements: Novice, Agility d8+ 
+
+Your hero ignores the “unstable platform” penalty for firing from the backs of animals or while riding in moving vehicles. In addition, when performing actions while Running (see page 65), his penalty is –1 instead of –2. 
+
+Sweep
+
+Requirements: Novice, Strength d8+, Fighting d8+ 
+
+Sweep allows a character to make a single Fighting attack and apply it against all currently adjacent targets at a –2 penalty (friends and foes alike—be careful). Resolve each damage roll separately. The attack is applied immediately when rolled and only affects targets adjacent at that time. A character may not use Sweep in the same round she uses Frenzy, nor may she Sweep more than once per round, or with a second weapon held in another hand. In effect, the hero may only perform Sweep once per action unless she somehow gets two entire actions (perhaps under the effects of a spell or power, for example). 
+
+Improved Sweep
+
+Requirements: Veteran, Sweep 
+
+As above but the hero may ignore the –2 penalty. 
+
+Trademark Weapon
+
+Requirements: Novice, Fighting or Shooting of d10+ 
+
+The hero knows one unique weapon (Excalibur, Old Betsy, Sting) like the back of his hand. When using that weapon, he adds +1 to his Fighting, Shooting, or Throwing rolls. A hero can take this Edge multiple times, applying it to a different weapon each time. If a Trademark Weapon is lost, the hero can replace it, but the benefit of the Edge doesn’t kick in for two game weeks. 
+
+Improved Trademark Weapon
+
+Requirements: Veteran, Trademark Weapon 
+
+As above but the bonus when using the weapon increases to +2. 
+
+Two-Fisted 
+
+Requirements: Novice, Agility d8+ 
+
+A Two-Fisted hero isn’t ambidextrous—he’s simply learned to fight with two weapons (or both fists) at once. When attacking with a weapon in each hand, he rolls each attack separately but ignores the multi-action penalty (see page 66). 
