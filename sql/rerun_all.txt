@@ -1,0 +1,14 @@
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 1.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 2.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 3.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 4.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 5.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 6.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 7.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 8.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 9.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 10.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 11.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 12.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 13.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 14.sql

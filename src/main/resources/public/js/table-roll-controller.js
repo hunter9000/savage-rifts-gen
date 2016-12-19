@@ -1,51 +1,29 @@
 
-savageRiftsApp.controller('tableRollController', function(JwtData, $scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('tableRollController', function(APIService, SheetService, $scope, $routeParams) {
 
     $scope.sheet = null;
 	$scope.benefitTable = null;
 	$scope.selectedPerk = null;
 	
     // lookup the benefit table to make the roll on
-    $http({method:'GET',
-           url: '/api/benefittable/' + $routeParams.tableId + '/' + $routeParams.sheetId + '/',
-           headers: {'x-access-token': $window.localStorage['jwtToken']}
-    })
-    .then(function successCallback(response) {
+    APIService.getBenefitTablesForSheet($routeParams.tableId, $routeParams.sheetId, function(response) {
         $scope.benefitTable = response.data;
-    }, function errorCallback(response) {
-        $scope.message = "error loading table";
-        console.log(response);
-        $location.path('/error');
     });
 
     // get the sheet
-    $http.get('/api/sheet/' + $routeParams.sheetId + '/',
-        { headers: {'x-access-token': $window.localStorage['jwtToken']} }
-    )
-    .then(function successCallback(response) {
+    APIService.getSheet($routeParams.sheetId, function successCallback(response) {
         $scope.sheet = response.data;
-    }, function errorCallback(response) {
-        console.log(response);
-        $location.path('/error');
     });
 
 	$scope.roll = function() {
-		$http({method:'POST',
-			   url: '/api/sheet/' + $routeParams.sheetId + '/tableroll/' + $routeParams.tableId + '/' + $routeParams.rollId + '/',
-			   headers: {'x-access-token': $window.localStorage['jwtToken']}
-		})
-		.then(function successCallback(response) {
-			$scope.selectedPerk = response.data.perkSelection;
-			$scope.sheet = response.data.sheet;
-		}, function errorCallback(response) {
-			$scope.message = "error loading table";
-			console.log(response);
-			$location.path('/error');
-		});
+	    APIService.makeTableRoll($routeParams.sheetId, $routeParams.tableId, $routeParams.rollId, function(response) {
+            $scope.selectedPerk = response.data.perkSelection;
+            $scope.sheet = response.data.sheet;
+        });
 	}
 	
     $scope.goBack = function() {
-        JwtData.redirectToCreationSteps($scope.sheet);
+        SheetService.redirectToCreationSteps($scope.sheet);
     }
 
 });

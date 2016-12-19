@@ -156,7 +156,13 @@
                 </pf-collapse-section-header>
 
                 <pf-collapse-section-body>
-					<div ng-repeat="feature in sheet.framework.frameworkFeatures">
+					<div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">
+						<div>{{feature.frameworkFeatureType}}
+						<div>{{feature.frameworkAbilityType}}
+						<div>
+					</div>
+					
+					<div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'COMPLICATION'}">
 						<div>{{feature.frameworkFeatureType}}
 						<div>{{feature.frameworkAbilityType}}
 						<div>

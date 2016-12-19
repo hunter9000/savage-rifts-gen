@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-savageRiftsApp.controller('mainController', function($scope, $location, $window, JwtData) {
+savageRiftsApp.controller('mainController', function($scope, $location, $window, JwtService) {
     // create a message to display in our view
     $scope.message = 'main';
 
@@ -16,16 +16,16 @@ savageRiftsApp.controller('mainController', function($scope, $location, $window,
     };*/
 
     $scope.isAdmin = function() {
-        return JwtData.isAdmin();
+        return JwtService.isAdmin();
     }
     $scope.isDm = function() {
-        return JwtData.isDm();
+        return JwtService.isDm();
     }
     $scope.isPlayer = function() {
-        return JwtData.isPlayer();
+        return JwtService.isPlayer();
     }
     $scope.getUserName = function() {
-        return JwtData.getUserName();
+        return JwtService.getUserName();
     }
 
     var init = function() {

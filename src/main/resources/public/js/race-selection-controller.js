@@ -1,31 +1,27 @@
 
-
-savageRiftsApp.controller('raceSelectionController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('raceSelectionController', function(APIService, SheetService, $scope, $routeParams) {
 	$scope.races = [];
 	$scope.selectedRace = null;
-	
-	$http.get('/api/race/', 
-		{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
-	.then(function successCallback(response) {
-		console.log('got all races');
-		console.log(response.data);
-		$scope.races = response.data;
-	}, function errorCallback(response) {
-		console.log(response);
-		$location.path('/error');
-	});
+	$scope.sheet = null;
+
+    // lookup the character
+    APIService.getSheet($routeParams.sheetId, function(response) {
+        $scope.sheet = response.data;
+    });
+
+    APIService.getAllRaces(function(response) {
+        console.log('got all races');
+        console.log(response.data);
+        $scope.races = response.data;
+    });
 
 	$scope.selectRace = function() {
-		$http.post('/api/sheet/' + $routeParams.sheetId + '/race/' + $scope.selectedRace.id + '/',
-		    {},
-			{ headers: {'x-access-token': $window.localStorage['jwtToken']} } )
-		.then(function successCallback(response) {
-			console.log('set race successfully');
-			$location.path('/editsheet/' + $routeParams.sheetId);
-		}, function errorCallback(response) {
-			console.log(response);
-			$location.path('/error');
-		});
+	    APIService.createSheetRace($routeParams.sheetId, $scope.selectedRace.id, function successCallback(response) {
+            console.log('set race successfully');
+            APIService.getSheet($routeParams.sheetId, function(response) {
+                SheetService.redirectToCreationSteps(response.data);
+            });
+        });
 	}
 	
 });

@@ -1,0 +1,21 @@
+Arcane Background (Magic): Ley Line Walkers are powerful arcane wielders. They begin with five powers from the list above, 15 PPE, and a d8 Spellcasting skill. 
+
+Expanded Awareness: Ley Line Walkers can use detect arcana at will, with no PPE cost, as a free action. 
+
+Ley Line Magic Mastery: Like all arcane casters (see Ley Lines, page 119), Ley Line Walkers can draw extra PPE from ley lines, though they do so with greater advantage. As a free action, they can roll their Spellcasting skill to draw PPE from a line at a distance of Spirit × 3, and they multiply their current maximum PPE by ×3 while at that distance or closer. 
+
+Ley Line Rejuvenation: While on a ley line, a Walker gains a natural healing roll once per day. 
+
+Ley Line Sense: A Ley Line Walker can sense a ley line within 10 miles, and she can automatically tell how powerful it is, in what directions it flows, where it meets other ley lines at nexus points, and other aspects as might apply (such as if a huge amount of its energy is being siphoned for some other purpose). She can also sense any nearby Rifts within 10 miles, and she can automatically sense the eruption of a new Rift, or one opening anew, within 50 miles. 
+
+Ley Line Transmission: Walkers are able to send and receive spoken messages along ley lines, at any distance. This can be a wide broadcast that anyone along the line can hear, or it can be directed to a single recipient (who needs to be on the line and expecting the message). 
+
+Ley Line Walking: A Ley Line Walker can, as her name implies, walk the line as though walking across level ground. She can fly at twice her Pace, at an altitude as high as 1,000 feet. 
+
+Master of Magic: She has Mega Powers for her spells, and A Ley Line Walker begins with the Master of Magic Edge, gaining Mega Powers for all known spells, and also starts with the Rapid Recharge Edge. 
+
+Cybernetics: Such technology creates havoc for the flow of energy a Walker relies upon, imposing −1 to the Spellcasting skill for each point of Strain. 
+
+Disconnected: Ley Line Walkers constantly deal with the strange, alien, and inhuman. This makes them more than a bit difficult to deal with for the average person. The Walker has a −2 Charisma penalty in most social situations. 
+
+Enemies: As with all wielders of magic, Ley Line Walkers are “shoot-on-sight” targets for Coalition forces. Any who refuse to swear fealty to Lord Dunscon may consider the True Federation to be hostile territory as well. 

@@ -1,0 +1,15 @@
+Arcane Background (Weird Science): Techno-Wizards begin with three powers, each in a gizmo of their own design as with all Weird Science types. Unlike other Weird Scientists, Techno- Wizards have 15 PPE of their own and their gizmos have none. Their PPE pool is used to activate all of their own gizmos, as well as use Techno-Wizard (TW) devices. These sorcerer-scientists start with the Techno-Wizardry skill at d8 (which is equivalent to the Weird Science skill). Anyone who can use a TW device (page 76) can also use a Techno-Wizard’s gizmo, but must spend PPE/ISP to power it as usual. Gizmos are unique items and cease to function after 2d6 days without attention from their creator. 
+
+Arcane Machinist: Techno-Wizards begin with a variant of the Gadgeteer Edge which grants enormous flexibility. As an action (instead of 1d20 minutes), 43 the character produces a magical gadget replicating any power available to Techno-Wizards. To make the device requires a successful Techno-Wizardry roll at −2 per Rank the power is above her own. The device has its own pool of PPE equal to half the Techno-Wizard’s normal maximum PPE pool (round down). With a raise, the device gets +5 PPE. The item can only be activated with its own PPE and once used up (or at the end of the session), the device burns out or otherwise becomes unusable. A Techno-Wizard can use Arcane Machinist up to half her Smarts die per session. 
+
+Machine Maestro: A Techno-Wizard can interface with any electronic or mechanical device by touch, gaining +2 to most (see below) non-combat Trait rolls where such are involved (bypassing security, picking locks, operating vehicles, using sensors.). When interfacing with an arcane (usually TW) device, the bonus increases to +4. For combat-related Trait rolls and the creation or repair of TW gizmos and devices, the bonuses lower to +1 and +2, respectively. 
+
+Required Knowledge: A combination of intense study, practical experience, and intuitive understanding makes the Techno-Wizard an expert in a number of fields. They begin with the following skills for free: Knowledge (Arcana) d6, Knowledge (Engineering) d6, Knowledge (Science) d6, and Repair d6. 
+
+Cybernetics: Despite their love of technology, even Techno-Wizards suffer penalties to their magic from implanted cybernetics (page 108). 
+
+Device Dependent: As with any Weird Scientist, a Techno-Wizard must have her gizmos for her powers or parts to use Arcane Machinist. She must have gear and tools to make her magic work. 
+
+Enemies: Like all practitioners of arcane arts, Techno-Wizards are outlaws in Coalition States. Those who do not bow to Lord Dunscon’s authority in the True Federation—including those serving the Tomorrow Legion—are also deemed enemies of the state there. 
+
+Gearhead Geek: The Techno-Wizard relationship with technology and machinery results in odd behaviors. Some talk, hum, or sing to their gear, while others paint sigils, runes, and arcane diagrams all over their machines. However it manifests, every Techno-Wizard has a Quirk Hindrance of this kind. 

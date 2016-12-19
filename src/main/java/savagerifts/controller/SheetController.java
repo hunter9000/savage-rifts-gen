@@ -268,7 +268,7 @@ public class SheetController {
 	/** Select the race for this sheet */
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
-	public ResponseEntity<?> selectRace(@PathVariable long raceId) {
+	public Sheet selectRace(@PathVariable long raceId) {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		if (sheet.getRace() != null) {
@@ -286,7 +286,7 @@ public class SheetController {
 
 		sheetRepository.save(sheet);
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return sheet;
 	}
 
 	/** Get the current attributes with info about inc/dec and cost. */
@@ -413,7 +413,14 @@ public class SheetController {
 	public ResponseEntity<?> finishHindracePurchases() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
+		if (sheet.getCreationStep() != SheetCreationStep.HINDRANCES) {
+			throw new BadRequestException();		// can't call this on this sheet
+		}
+		
 		if (sheet.getCreationStep() == SheetCreationStep.HINDRANCES) {
+			SheetUtils.moveToNextCreationStep(sheet);
+		}
+		if (sheet.getCreationStep() == SheetCreationStep.EDGES && sheet.getRemainingHindrancePoints() == 0) {
 			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);

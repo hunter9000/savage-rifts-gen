@@ -1,0 +1,23 @@
+Charismatic 
+
+Requirements: Novice, Spirit d8+ 
+
+Your hero has learned how to work with others, even those who might be somewhat opposed to him or his efforts. This adds +2 to his Charisma. 
+
+Common Bond 
+
+Requirements: Wild Card, Novice, Spirit d8+ 
+
+This Edge signifies a special link between close companions— such as a typical party. It doesn’t matter whether or not the characters get along perfectly or not, they’ve just formed a close and common bond during their epic adventures. A character with this Edge may freely give his Bennies to any other Wild Card he can communicate with. This represents the character giving his verbal or spiritual support to the ally. The player should say what his character is doing to give the support. The gesture could be as complex as a rousing speech, or as simple as a knowing nod. 
+
+Connections 
+
+Requirements: Novice 
+
+Whether it’s to the Feds, the cops, the Mob, or some big corporation, your heroine knows someone on the inside— someone who is willing to lend her a hand on occasion (usually once per game session). This Edge may be taken more than once, but each time must be applied to a different organization. The GM should also ensure the organization is limited to a single, unique organization. A hero may, for instance, have Connections (US Army), but he shouldn’t have a blanket Connections (Military). To use a character’s Connections requires that she first get in touch with one of her contacts. This requires a Streetwise roll. Failure means the particular contact wasn’t available, their cell phone wasn’t on, or they were otherwise tied up. Once in contact, the hero must make a Persuasion roll. The GM should feel free to modify both the Persuasion roll and any results based on the circumstances. A failure indicates the heroine’s contacts just couldn’t come through this time, or perhaps just weren’t persuaded that their help was really necessary. On a success, the contact might share information, but won’t do anything too risky to help. On a raise, the contact is willing to leak sensitive information, but stops short of outright betrayal. Two or more raises means the heroine has pushed the right buttons and can count on serious help. The Connection will risk serious consequences for the heroine, and if she needs financial assistance, may provide more than he’s comfortable with. If the heroine asks for muscle, the contact delivers either one expert (a safe-cracker, wheel-man, security expert, etc.) or five average fighter-types for the contact’s particular organization (a mob boss sends five thugs, the Army sends five infantrymen, etc.). 
+
+Strong Willed
+
+Requirements: Novice, Intimidation d6+, Taunt d6+ 
+
+Characters with strong willpower use their voice, steely stares, or quick wits to unnerve their opponents. Strong Willed adds +2 to a character’s Intimidation and Taunt rolls, as well as his Spirit and Smarts rolls when resisting Test of Wills attacks. 
