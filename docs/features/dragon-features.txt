@@ -1,0 +1,47 @@
+Arcane Background (Psionics): As a Minor Psionic, a Dragon Hatchling begins with three powers (from the Mind Melter list) and 10 ISP. He also has a beginning Psionic skill of d6. 
+
+Armored Hide*: The Hatchling has +16 M.D.C. Armor and +6 Toughness in dragon form. 
+
+Claws/Bite*: Dragons can naturally attack with massive teeth and talons (Str+3d6 AP 4, Mega Damage). 
+
+Fear*: In his natural form, a Dragon Hatchling is a terrifying creature to most folks, who must make a Fear check when first seeing him. 
+
+Fire Breath*: Flame Wind Hatchlings can fire a bolt of flame at Range 12/24/48 and Damage 4d6 (Mega Damage), using their Shooting skill. Alternately, they can do 2d10, Mega Damage in a Cone Template starting from their mouths. Every target within the cone makes an Agility roll −2 to avoid the attack. Those who fail suffer 2d10 damage. 
+
+Flight*: The Hatchling has a Flying Pace of 12" and Climb 0. Flight is usable in another form if it has wings. 
+
+Impervious to Fire: Fire and heat (including plasma weapons) do not affect a Flame Wind Dragon at all. 
+
+Infravision: Dragons halve the penalties for dark lighting against living targets (round down). 
+
+Inherently Magical: Hatchlings know no magic spells, but they have a natural pool of 10 PPE and can use any Techno- Wizard devices. A dragon who takes an Arcane Background adds his starting PPE to any gained from the Edge. Additionally, whenever he takes the Power Points Edge, he gains +10 PPE instead of +5. 
+
+Limited Metamorphosis: A dragon begins life able to adopt a single human or humanoid form for a limited amount of time each day. He can maintain this humanoid form for a number of hours equal to his Spirit die before needing at least six hours of rest. The dragon gains no special properties of what he mimics, only the size and appearance, but he retains all of his own abilities except those only usable in dragon form (marked with an *). Weapons and other personal effects (up to body armor) are assumed into the dragon’s form and reappear when returning to humanoid form. Any other objects are dropped. The process does not work in reverse, all gear carried by the dragon is dropped when transforming into humanoid form. 
+
+Mighty: Even Dragon Hatchlings are incredibly strong, beginning with a Strength of d12+4. They are also very resilient, starting with a d8 Vigor. Neither attribute has a maximum limit. 
+
+Nigh-Immortality: Unless killed through violence or other means, dragons can live anywhere from 6,000 to 12,000 years. They require only magical energy to sustain themselves, eating and drinking simply for pleasure. They are immune to normal poisons and diseases. 
+
+Size +6*: In their natural forms, Dragon Hatchlings are usually 15 –20 feet from snout to tail-tip, and weigh up to 7 tons. This means, when not using their Metamorphosis abilities, Hatchlings gain +6 Toughness. 
+
+Slow Regeneration: These creatures can even regenerate lost limbs over time, making a natural healing roll once per day. 
+
+Tail Lash*: The dragon can sweep all opponents in his rear facing in a 2" long by 4" wide rectangle. This is a Fighting attack which ignores size penalties, doing Str+d8 (Mega Damage). DRAGON HATCHLING COMPLICATIONS For all their power, Dragon Hatchlings begin life with a number of limitations and difficulties. 
+
+Cybernetics: Dragons cannot take cybernetics at any point. Their bodies reject such foreign implants. 
+
+Enemies: Dragons are illegal and reviled by the Coalition. Any known dragon is immediately hunted with extreme prejudice. 
+
+Form Limits: If a dragon transforms into a humanoid race with a restriction based on its body type (such as Non- Standard Physiology, see page 51), it suffers the same penalties as that race. The GM m akes t he fi nal c all o n what 47 counts as a body type restriction. In their natural form, dragons cannot wear any armor and can only use vehicular weapons specially adapted for their use at four times the normal cost. Most other gear can only be used in humanoid form (again, GM’s call). 
+
+Hatched: Dragons are born not made. They do not choose a race. 
+
+Large: When not shape shifted into a humanoid form, dragons make for very big targets. Normal-sized opponents gain +2 on all attacks against them. 
+
+Outsider : Dragon Hatchlings understand so little of the world, they inevitably cause socially awkward situations wherever they go, even in humanoid form. All Dragon Hatchlings have the Outsider Hindrance. 
+
+Territorial: Dragons tend to dislike their own, and other dragons generally treat a newcomer as invading their territory unless great care is taken in interactions. 
+
+Untested: Being so young and without any life experiences, Dragon Hatchlings have not had time to develop moral codes, physical limitations, or foibles. When creating a Dragon Hatchling character, the player selects no Hindrances to start (and, thus, doesn’t get the extra points to spend on character creation). Instead, he selects one Hindrance at the end of the first session. He may then select another Hindrance at the end of the second session, and a last one at the end of the third session. Only when all Hindrances are selected (one Major and two Minor, per normal rules), may the player spend the points on his character, working out what is appropriate with the Game Master. This represents imprinting and a “growth spurt” for the Dragon Hatchling. 
+
+Very Young: Very Young: Dragon Hatchlings start out very young. They begin with only 3 points to adjust their attributes and only 10 skill points. Unlike the Young Hindrance (which they cannot take), this complication does not grant an extra Benny each session. 

@@ -1,0 +1,19 @@
+Arcane Background (Miracles): Mystics begin with four starting powers (from the list above) and 15 PPE. They also have the Mysticism skill at d8 (which counts as Faith for all other Edge requirements). 
+
+Arcane Background (Psionics): As a minor psionic, a Mystic begins with three powers (from the above list) and 10 ISP. He also has a beginning Psionics skill of d6. 
+
+Cosmic Confluence: Not only do Mystics enjoy the unique capacity to possess two Arcane Backgrounds, they are able to interchange their ISP and PPE as needed. A Mystic can sacrifice two ISP to use as one PPE, and vice versa. Power Points shifted like this must be used at the moment they are exchanged, they cannot be shifted and then simply stored. For example, if a Mystic shifts 4 PPE in order to gain 2 ISP, he must immediately use those points of ISP to enact a psionic power. 
+
+Master of Magic: Mystics have the Master of Magic Edge, gaining Mega Powers for all their known powers. They also have the Rapid Recharge Edge, though it only applies to their PPE recovery (not ISP). 
+
+Mystic Awareness: Mystics have powerful extrasensory perception and attunement, granting them the Alertness and Danger Sense Edges, as well as the use of detect arcana at will, costing no PPE or ISP, as a free action. They can also sense powerful supernatural beings with a Notice check, anywhere within line of sight. 
+
+Spiritual Channel: Constantly in contact with spirits, and possibly divine messengers of his faith, a Mystic can use the divination power without using ISP or PPE. Each time he uses it, he must make a Vigor roll to resist gaining a level of Fatigue. Each subsequent use of the power imposes a cumulative −1 penalty on the Vigor check until he gets a full night’s rest (eight hours). It is possible for a Mystic to Incapacitate himself with this ability. Fatigue levels gained from Spiritual Channel can only be recovered with eight hours of rest (succor cannot restore). Mystics have access to communion but activate it normally with 10 PPE. 
+
+Arcane Duality: Mystics get the Arcane Background Edge twice for two different types of powers, but whenever they take a Power Edge, they must choose whether it applies to magic or psionics. Mystics can take the Power Points Edge twice per Rank but only to gain PPE with one use and ISP with the other. 
+
+Cybernetics: Mystics suffer the same penalties from cybernetics as any other arcane character (page 108). Except for them the disruption affects two skills (−1 to both Mysticism and Psionics skills per point of Strain). 
+
+Enemies: Mystics are equally illegal and reviled in the Coalition and the True Federation of Magic. 
+
+Higher Standard: For no added benefit, a Mystic must take a Hindrance representing his spiritual path and cosmological belief system such as Code of Honor, Major Pacifist, or Major Vow (the Vow must be “good” per GM’s approval). He must hold to that or risk his Arcane Background (Miracles) powers (per Protector in Savage Worlds). 

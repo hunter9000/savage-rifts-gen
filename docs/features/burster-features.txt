@@ -1,0 +1,19 @@
+Arcane Background (Psionics): A Burster begins with three powers from the list above, 20 ISP, and a d8 Psionics skill. 
+
+Everything Burns: The fires started by Bursters are some of the most intense possible. They can catch almost anything on fire, and combustible materials don’t stand much of a chance against them. Any time a Burster causes damage with a flame ability, roll a d10 (instead of the usual d6 as indicated in Savage Worlds under Fire). Anything flammable catches fire on a 6 –10, while highly flammable targets ignite on a 3 –10. Things that normally don’t catch fire (metal, ceramics, stone) ignite from a Burster’s flames on a 10, or at least begin to melt. Water super-heats and evaporates nigh-instantly on a 10 as well, and boils away over 2d6 rounds on an 8 or 9. 
+
+Fiery Aura: At will, as an action (no roll required), a Burster can surround himself with a sheath of flame and heat, causing 3d6 damage to anyone who touches him (with a melee or touch attack, for example). He can add this damage to any Fighting attack he makes, as well. When the aura is activated, it provides +6 Armor to the Burster (this stacks with the armor power, but not worn armor). Neither effect costs any ISP. However, if he spends 3 ISP when he activates his Fiery Aura, the damage becomes Mega Damage and the Armor gains the M.D.C. quality. Fiery Aura goes away whenever the Burster is Incapacitated or is otherwise unconscious. 
+
+Fire Mastery: Over a Large Burst Template centered anywhere within 12”, the Burster can create, control, and eliminate fire. He can create minor fire and heat effects (or douse flames) as a free action with no roll. As an action, he can create environmental effects that impose a −2 to Trait rolls (−4 with a raise). For any Trait rolls, use the Psionics skill. None of these effects cost ISP. 
+
+Firewalker: The Burster is completely impervious to all sources of fire and heat; he could take a dive into a river of lava and come out unscathed. He only suffers half damage from lightning and electrical attacks, as well as laser weapons. He’s also immune to plasma weapon damage. 
+
+Flame Bolt: The Burster can hurl forth a flaming bolt of 4d6 Damage with a Range of 12/24/48. This costs no ISP and does Mega Damage. The Burster may add +2 AP by spending 1 ISP per Flame Bolt, or +4 AP for 2 ISP. Double the bonus for the same cost when on a ley line. Rolling a 1 on the Psionics die when using flame bolt does not result in Brainburn (per Savage Worlds). 
+
+Major Psionics: Bursters begin with the Major Psionics Edge. When they take the Power Points Edge, they gain 10 ISP 33 (instead of 5). They are able to spend 2 ISP for a +1 to Psionics rolls, and 4 ISP for a +2 (added before the roll). They can spend +1 ISP for Range × 2 for any ranged (not Self or Touch) powers, or +2 ISP for Range × 10. These last two effects are doubled when on a ley line. 
+
+Cybernetics: Simply not a good option for a Burster, as they interfere too much with his powers. If circumstances force a bionic addition, each point of Strain imposes a −1 penalty to the Psionics skill. 
+
+Enemies: The Coalition considers Bursters a dire threat to life and property, and they are to be destroyed on sight. There are more than a few settlements with long memories of rogue Bursters causing enormous property damage. 
+
+Quirk—Pyromaniac: Though most are not sociopathic arsonists, Bursters tend to have a thing about starting fires just to watch them burn with loving fascination. This is more aggravating than dangerous (at least most of the time). 
