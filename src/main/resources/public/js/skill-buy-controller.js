@@ -1,9 +1,9 @@
 
-savageRiftsApp.controller('skillBuyController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('skillBuyController', function($scope, $http, $window, $routeParams, $location, APIService) {
 	$scope.skillResponse = {};
 
     APIService.getSheetSkills($routeParams.sheetId, function(response) {
-        console.log('got skills');
+        console.log('got skills:');
         console.log(response.data);
         $scope.skillResponse = response.data;
     });

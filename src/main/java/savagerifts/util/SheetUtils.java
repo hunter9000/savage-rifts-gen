@@ -299,7 +299,7 @@ public class SheetUtils {
 		SkillBuyResponse skillBuyResponse = new SkillBuyResponse();
 		
 //		Map<SkillType, SkillRoll> skillMap = populateSkillMap(sheet);
-		List<SkillRoll> skillRolls = new ArrayList<>();
+		List<SkillRoll> skillRolls = sheet.getSkills();
 		List<SkillRollInfo> skillRollInfos = new ArrayList<>();
 
 		skillBuyResponse.remainingSkillPoints = sheet.getRemainingSkillPoints();
@@ -313,6 +313,8 @@ public class SheetUtils {
 			int pointCost = getSkillPointCost(skillRoll, attrMap);
 			info.canIncrease = skillRoll.getRoll().compareTo(new Roll(DieType.D12,0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost;
 			info.canDecrease = skillRoll.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15;
+
+			skillRollInfos.add(info);
 		}
 
 		skillBuyResponse.skillRollInfos = skillRollInfos;

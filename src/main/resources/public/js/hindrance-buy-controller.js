@@ -5,7 +5,7 @@ savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope,
 
 	// get sheet's hindrance selections
 	APIService.getSheetHindrances($routeParams.sheetId, function(response) {
-	    console.log('got skills');
+	    console.log('got hindrances:');
         console.log(response.data);
         $scope.sheetHindranceSelections = response.data;
 	});
