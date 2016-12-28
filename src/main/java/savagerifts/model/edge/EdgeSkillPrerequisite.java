@@ -13,7 +13,8 @@ public class EdgeSkillPrerequisite {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
-	
+
+	@OneToOne
 	@JoinColumn(name = "edge", nullable = false, updatable = false)
 	private Edge edge;
 	

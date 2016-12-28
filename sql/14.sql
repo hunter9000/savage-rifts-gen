@@ -48,6 +48,8 @@ ALTER TABLE `edge`
 	ADD COLUMN `skill_prerequisite_logic_type` VARCHAR(255) NOT NULL,
 	ADD COLUMN `edge_prerequisite_logic_type` VARCHAR(255) NOT NULL,
 	MODIFY COLUMN `xp_level_type` VARCHAR(255) NOT NULL,
+	DROP FOREIGN KEY `FK_8g4u4vjp6ejrgbbna8aa7n2x`,
+	DROP INDEX `FK_8g4u4vjp6ejrgbbna8aa7n2x`,
 	DROP COLUMN `required_attribute`;
 
 CREATE TABLE `edge_attribute_prerequisite` (
