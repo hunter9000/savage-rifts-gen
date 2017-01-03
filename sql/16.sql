@@ -3,7 +3,11 @@ USE savage_rifts;
 -- Adding the benefit table definitions for the remaining tables, and added their rolls
 -- added missing table rolls for combat cyborg and crazy frameworks
 
--- TODO copy descriptions for all tables
+SELECT @MIND_MELTER_ID:=id FROM framework WHERE type = 'MIND_MELTER';
+SELECT @LEY_LINE_WALKER_ID:=id FROM framework WHERE type = 'LEY_LINE_WALKER';
+SELECT @MYSTIC_ID:=id FROM framework WHERE type = 'MYSTIC';
+SELECT @TECHNO_WIZARD_ID:=id FROM framework WHERE type = 'TECHNO_WIZARD';
+SELECT @DRAGON_ID:=id FROM framework WHERE type = 'DRAGON';
 
 -- these 4 have already had their rolls defined in 7.sql, they're here to add them to more frameworks
 SELECT @BODY_ARMOR_ID:=id FROM benefit_table WHERE type = 'BODY_ARMOR';
@@ -13,7 +17,7 @@ SELECT @EDUCATION_ID:=id FROM benefit_table WHERE type = 'EDUCATION';
 
 -- these 7 are having their rolls defined here
 SELECT @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID:=id FROM benefit_table WHERE type = 'ENCHANTED_ITEMS_MYSTIC_GADGETS';
-SELECT @RANGED_WEAPONS_ID:=id FROM benefit_table WHERE type = 'RANGED_WEAPONS';
+SELECT @EXPERIENCE_WISDOM_ID:=id FROM benefit_table WHERE type = 'EXPERIENCE_WISDOM';
 SELECT @MAGIC_MYSTICISM_ID:=id FROM benefit_table WHERE type = 'MAGIC_MYSTICISM';
 SELECT @PSIONICS_ID:=id FROM benefit_table WHERE type = 'PSIONICS';
 SELECT @RANGED_WEAPONS_ID:=id FROM benefit_table WHERE type = 'RANGED_WEAPONS';
@@ -90,18 +94,18 @@ SET @EXPERIENCE_WISDOM_11_ID = LAST_INSERT_ID();
 INSERT INTO `perk` (description, type) VALUES ('You may choose any one of the previous results.', 'EXPERIENCE_WISDOM_12');
 SET @EXPERIENCE_WISDOM_12_ID = LAST_INSERT_ID();
 
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 2, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_1_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (3, 4, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_2_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (5, 5, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_3_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (6, 6, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_4_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (7, 8, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_5_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (9, 9, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_6_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (10, 11, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_7_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (12, 13, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_8_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (14, 14, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_9_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (15, 16, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_10_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (17, 18, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_11_ID);
-INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @RANGED_WEAPONS_ID, @RANGED_WEAPONS_12_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (1, 2, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_1_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (3, 4, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_2_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (5, 5, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_3_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (6, 6, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_4_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (7, 8, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_5_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (9, 9, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_6_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (10, 11, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_7_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (12, 13, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_8_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (14, 14, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_9_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (15, 16, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_10_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (17, 18, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_11_ID);
+INSERT INTO perk_range (min, max, benefit_table, perk) VALUES (19, 20, @EXPERIENCE_WISDOM_ID, @EXPERIENCE_WISDOM_12_ID);
 
 
 -- magic and mysticism table
@@ -353,7 +357,444 @@ INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_i
 INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CRAZY_ID_TABLE_ROLL_5, @TRAINING_ID);
 INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CRAZY_ID_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
 
+SELECT @CYBER_KNIGHT_ID:=id FROM framework WHERE type = 'CYBER_KNIGHT';
+SELECT @GLITTER_BOY_ID:=id FROM framework WHERE type = 'GLITTER_BOY';
+SELECT @JUICER_ID:=id FROM framework WHERE type = 'JUICER';
+SELECT @BURSTER_ID:=id FROM framework WHERE type = 'BURSTER';
+SELECT @MIND_MELTER_ID:=id FROM framework WHERE type = 'MIND_MELTER';
+SELECT @LEY_LINE_WALKER_ID:=id FROM framework WHERE type = 'LEY_LINE_WALKER';
+SELECT @MYSTIC_ID:=id FROM framework WHERE type = 'MYSTIC';
+SELECT @TECHNO_WIZARD_ID:=id FROM framework WHERE type = 'TECHNO_WIZARD';
+SELECT @DRAGON_ID:=id FROM framework WHERE type = 'DRAGON';
+
 -- add allowances for other frameworks
+
+-- cyber knight gets 5 rolls
+-- Cyber-Knights gain three rolls on any of the 
+-- following tables: Education, Experience & 
+-- Wisdom, Psionics, and Training. 
+
+-- Cyber-Knights gain two rolls on any table 
+-- except Cybernetics and Magic & Mysticism. 
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @CYBER_KNIGHT_ID);
+SET @CYBER_KNIGHT_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @CYBER_KNIGHT_ID);
+SET @CYBER_KNIGHT_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @CYBER_KNIGHT_ID);
+SET @CYBER_KNIGHT_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @CYBER_KNIGHT_ID);
+SET @CYBER_KNIGHT_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @CYBER_KNIGHT_ID);
+SET @CYBER_KNIGHT_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+--  rolls 1 2 and 3 gets Education, Experience & Wisdom, Psionics, and Training
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_1, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_1, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_1, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_1, @TRAINING_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_2, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_2, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_2, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_2, @TRAINING_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_3, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_3, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_3, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_3, @TRAINING_ID);
+
+--  rolls 4 and 5 are any table except Cybernetics and Magic & Mysticism
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@CYBER_KNIGHT_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+-- glitter boy 5 rolls
+-- 3 on any of cybernetics, ccw, ranged weapons, training
+-- 2 on any table
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @GLITTER_BOY_ID);
+SET @GLITTER_BOY_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @GLITTER_BOY_ID);
+SET @GLITTER_BOY_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @GLITTER_BOY_ID);
+SET @GLITTER_BOY_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @GLITTER_BOY_ID);
+SET @GLITTER_BOY_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @GLITTER_BOY_ID);
+SET @GLITTER_BOY_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+-- rolls 1 2 3 are any of cybernetics, ccw, ranged weapons, training
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_1, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_1, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_1, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_1, @TRAINING_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_2, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_2, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_2, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_2, @TRAINING_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_3, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_3, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_3, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_3, @TRAINING_ID);
+
+-- rolls 4 5 are ANY table
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@GLITTER_BOY_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+-- Juicers get 5 rolls
+-- Juicers gain three rolls on any of the 
+-- following tables: Body Armor, Close 
+-- Combat Weapons, Ranged Weapons, 
+-- Training, and Underworld & Black Ops. 
+
+-- Juicers gain two additional rolls on 
+-- any tables except those dealing with 
+-- magic or psionics. 
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @JUICER_ID);
+SET @JUICER_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @JUICER_ID);
+SET @JUICER_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @JUICER_ID);
+SET @JUICER_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @JUICER_ID);
+SET @JUICER_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @JUICER_ID);
+SET @JUICER_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+-- rolls 1, 2, 3 are Body Armor, Close Combat Weapons, Ranged Weapons, Training, and Underworld & Black Ops
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_1, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_1, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_1, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_1, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_1, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_2, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_2, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_2, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_2, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_2, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_3, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_3, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_3, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_3, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_3, @UNDERWORLD_BLACK_OPS_ID);
+
+-- rolls 4 and 5 are any but magic or psionics. 
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@JUICER_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+
+-- bursters get 4 rolls
+-- Bursters gain three rolls on the Experience 
+-- & Wisdom Table or the Psionics Table. 
+
+-- Bursters gain one additional roll on any 
+-- table except Cybernetics or anything 
+-- to do with magic. 
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @BURSTER_ID);
+SET @BURSTER_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @BURSTER_ID);
+SET @BURSTER_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @BURSTER_ID);
+SET @BURSTER_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @BURSTER_ID);
+SET @BURSTER_TABLE_ROLL_4 = LAST_INSERT_ID();
+
+-- rolls 1 2 and 3 are on Experience & Wisdom Table or the Psionics
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_1, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_1, @PSIONICS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_2, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_2, @PSIONICS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_3, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_3, @PSIONICS_ID);
+
+-- roll 4 is anything except Cybernetics or anything to do with magic
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@BURSTER_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+
+
+-- mind melter 4 rolls
+-- 3 on any of enchanted items, xp + wisdom, or psionics
+-- one on anything except cybernetics or magic + mysticism
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @MIND_MELTER_ID);
+SET @MIND_MELTER_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @MIND_MELTER_ID);
+SET @MIND_MELTER_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @MIND_MELTER_ID);
+SET @MIND_MELTER_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @MIND_MELTER_ID);
+SET @MIND_MELTER_TABLE_ROLL_4 = LAST_INSERT_ID();
+
+-- rolls 1, 2, 3 any of enchanted items, xp + wisdom, or psionics
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_1, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_1, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_1, @PSIONICS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_2, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_2, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_2, @PSIONICS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_3, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_3, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_3, @PSIONICS_ID);
+
+-- roll 4 anything except cybernetics or magic + mysticism
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MIND_MELTER_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+-- ley line walkers get 5 rolls
+-- Walkers gain three rolls on any of the 
+-- following tables: Enchanted Items & Mystic 
+-- Gadgets, Education, Experience & Wisdom, 
+-- and Magic & Mysticism. 
+
+-- They also get two rolls on any table of 
+-- their choice, except for Psionics. 
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @LEY_LINE_WALKER_ID);
+SET @LEY_LINE_WALKER_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @LEY_LINE_WALKER_ID);
+SET @LEY_LINE_WALKER_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @LEY_LINE_WALKER_ID);
+SET @LEY_LINE_WALKER_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @LEY_LINE_WALKER_ID);
+SET @LEY_LINE_WALKER_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @LEY_LINE_WALKER_ID);
+SET @LEY_LINE_WALKER_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+-- rolls 1 2 3 any of Enchanted Items & Mystic Gadgets, Education, Experience & Wisdom, or Magic & Mysticism
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_1, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_1, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_1, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_1, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_2, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_2, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_2, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_2, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_3, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_3, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_3, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_3, @MAGIC_MYSTICISM_ID);
+
+-- rolls 4 and 5 are any except for Psionics. 
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@LEY_LINE_WALKER_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+-- mystic 5 rolls
+-- 3 on enchanted items, xp + wisdom, or magic + mysticism
+-- 2 on any except cybernetics
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @MYSTIC_ID);
+SET @MYSTIC_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @MYSTIC_ID);
+SET @MYSTIC_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @MYSTIC_ID);
+SET @MYSTIC_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @MYSTIC_ID);
+SET @MYSTIC_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @MYSTIC_ID);
+SET @MYSTIC_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+-- rolls 1, 2, 3 any of enchanted items, xp + wisdom, or magic + mysticism
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_1, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_1, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_1, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_2, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_2, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_2, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_3, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_3, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_3, @MAGIC_MYSTICISM_ID);
+
+-- rolls 4, 5 any except cybernetics
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@MYSTIC_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+
+-- techno wizard gets 5 rolls
+-- Techno-Wizards gain three rolls 
+-- on the following tables: Education, 
+-- Enchanted Items & Mystic Gadgets, and 
+-- Magic & Mysticism. 
+
+-- Techno-Wizards gain two rolls on any 
+-- table except Psionics. 
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @TECHNO_WIZARD_ID);
+SET @TECHNO_WIZARD_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @TECHNO_WIZARD_ID);
+SET @TECHNO_WIZARD_TABLE_ROLL_2 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (3, @TECHNO_WIZARD_ID);
+SET @TECHNO_WIZARD_TABLE_ROLL_3 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (4, @TECHNO_WIZARD_ID);
+SET @TECHNO_WIZARD_TABLE_ROLL_4 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (5, @TECHNO_WIZARD_ID);
+SET @TECHNO_WIZARD_TABLE_ROLL_5 = LAST_INSERT_ID();
+
+-- rolls 1 2 3 any of Education, Enchanted Items & Mystic Gadgets, and Magic & Mysticism. 
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_1, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_1, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_1, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_2, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_2, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_2, @MAGIC_MYSTICISM_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_3, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_3, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_3, @MAGIC_MYSTICISM_ID);
+
+-- rolls 4 and 5 on any except Psionics
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_4, @UNDERWORLD_BLACK_OPS_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @BODY_ARMOR_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @CCW_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @CYBERNETICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @ENCHANTED_ITEMS_MYSTIC_GADGETS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @EXPERIENCE_WISDOM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @MAGIC_MYSTICISM_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @RANGED_WEAPONS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @TRAINING_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@TECHNO_WIZARD_TABLE_ROLL_5, @UNDERWORLD_BLACK_OPS_ID);
+
+-- dragon 2 rolls
+-- both rolls are any of education, psionics, training
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (1, @DRAGON_ID);
+SET @DRAGON_TABLE_ROLL_1 = LAST_INSERT_ID();
+INSERT INTO benefit_table_roll (roll_number, framework) VALUES (2, @DRAGON_ID);
+SET @DRAGON_TABLE_ROLL_2 = LAST_INSERT_ID();
+
+-- rolls 1 and 2 are any of education, psionics, training
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_1, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_1, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_1, @TRAINING_ID);
+
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_2, @EDUCATION_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_2, @PSIONICS_ID);
+INSERT INTO benefit_table_roll_allowance (benefit_table_roll_id, benefit_table_id) VALUES (@DRAGON_TABLE_ROLL_2, @TRAINING_ID);
+
 
 
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('16.sql', NOW());
