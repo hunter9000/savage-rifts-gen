@@ -41,10 +41,10 @@ public class Edge {
 	// @OneToOne
 	// @JoinColumn(name = "requiredAttribute", updatable = false)
 	// private Roll requiredAttribute;
-	@OneToMany(mappedBy = "sheet")		// don't cascade changes
+	@OneToMany(mappedBy = "edge")		// don't cascade changes
 	private List<EdgeAttributePrerequisite> attributePrereqs;
 	
-	@OneToMany(mappedBy = "sheet")		// don't cascade changes
+	@OneToMany(mappedBy = "edge")		// don't cascade changes
 	private List<EdgeSkillPrerequisite> skillPrereqs;
 	
 	@Column(name = "attributePrerequisiteLogicType", nullable = false, updatable = false)

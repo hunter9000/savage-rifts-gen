@@ -12,4 +12,6 @@
 12: create hindrance, hindrance_selection, insert hindrances
 13: create framework_feature, insert framework features for combat cyborg and crazy
 14: add columns to edge. create attribute_raise_selection, edge_selection, money_raise_selection, skill_raise_selection, edge_attribute_prerequisite, edge_skill_prerequisite
-15: add more frameworks
+15: add more frameworks with framework features
+16:
+17: add skill knowledge table, and add it to the skill_roll table
