@@ -73,7 +73,7 @@
 }
 
 .skill-wrapper {
-    width: 310px;
+    //width: 310px;
 }
 .skill-name {
     width: 125px;
@@ -96,4 +96,8 @@
     text-align:left;
 }
 
+.column-wrapper {
+    float: left;
+    width: 100%;
+}
 
