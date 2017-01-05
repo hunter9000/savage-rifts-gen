@@ -1,5 +1,5 @@
 
-savageRiftsApp.factory('JwtService', function($window, $location) {
+savageRiftsApp.factory('JwtService', function($window, $location, $log) {
     return {
         getUserName: function() {
             var subject = this.parseJwt();
@@ -33,7 +33,7 @@ savageRiftsApp.factory('JwtService', function($window, $location) {
         parseJwt: function() {
             var token = $window.localStorage['jwtToken'];
             if (!token || token == null || token == 'null') {
-//                    console.log('error, no token');
+                $log.debug('error, no token');
                 return null;
             }
             var arrayOfStrings = token.split('.');

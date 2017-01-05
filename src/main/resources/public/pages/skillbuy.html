@@ -9,7 +9,7 @@
             <ul class="list-group">
                 <!-- skill is a SkillRollInfo object -->
                 <li class="list-group-item" ng-repeat="skillRollInfo in skillResponse.skillRollInfos">
-                    <skillbuy skill="{{skillRollInfo.skillRoll.skillType}}" value="skillRollInfo" canincrease="skillRollInfo.canIncrease" candecrease="skillRollInfo.canDecrease" dec="decSkill" inc="incSkill" >
+                    <skillbuy skill="{{skillRollInfo.skillRoll.skillType}}" value="skillRollInfo.skillRoll" canincrease="skillRollInfo.canIncrease" candecrease="skillRollInfo.canDecrease" dec="decSkill" inc="incSkill" >
                         {{skillRollInfo.skillRoll.displayName}}
                     </skillbuy>
                 </li>

@@ -26,6 +26,31 @@ public class EdgeAttributePrerequisite {
 	@Enumerated(EnumType.STRING)
 	private DieType dieType;
 
-	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Edge getEdge() {
+		return edge;
+	}
+	public void setEdge(Edge edge) {
+		this.edge = edge;
+	}
+
+	public AttributeType getAttributeType() {
+		return attributeType;
+	}
+	public void setAttributeType(AttributeType attributeType) {
+		this.attributeType = attributeType;
+	}
+
+	public DieType getDieType() {
+		return dieType;
+	}
+	public void setDieType(DieType dieType) {
+		this.dieType = dieType;
+	}
 }

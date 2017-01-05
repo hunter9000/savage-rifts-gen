@@ -15,7 +15,7 @@ public enum PerkType {
     BODY_ARMOR_9(BenefitTableType.BODY_ARMOR),
     BODY_ARMOR_10(BenefitTableType.BODY_ARMOR),
     BODY_ARMOR_11(BenefitTableType.BODY_ARMOR),
-    BODY_ARMOR_12(BenefitTableType.BODY_ARMOR),
+    BODY_ARMOR_12(BenefitTableType.BODY_ARMOR, true),
 
     CLOSE_COMBAT_WEAPONS_1(BenefitTableType.CLOSE_COMBAT_WEAPONS),
     CLOSE_COMBAT_WEAPONS_2(BenefitTableType.CLOSE_COMBAT_WEAPONS),
@@ -29,7 +29,7 @@ public enum PerkType {
     CLOSE_COMBAT_WEAPONS_10(BenefitTableType.CLOSE_COMBAT_WEAPONS),
     CLOSE_COMBAT_WEAPONS_11(BenefitTableType.CLOSE_COMBAT_WEAPONS),
     CLOSE_COMBAT_WEAPONS_12(BenefitTableType.CLOSE_COMBAT_WEAPONS),
-    CLOSE_COMBAT_WEAPONS_13(BenefitTableType.CLOSE_COMBAT_WEAPONS),
+    CLOSE_COMBAT_WEAPONS_13(BenefitTableType.CLOSE_COMBAT_WEAPONS, true),
 
     CYBERNETICS_1(BenefitTableType.CYBERNETICS),
     CYBERNETICS_2(BenefitTableType.CYBERNETICS),
@@ -58,7 +58,7 @@ public enum PerkType {
     EDUCATION_9(BenefitTableType.EDUCATION),
     EDUCATION_10(BenefitTableType.EDUCATION),
     EDUCATION_11(BenefitTableType.EDUCATION),
-    EDUCATION_12(BenefitTableType.EDUCATION),
+    EDUCATION_12(BenefitTableType.EDUCATION, true),
 
 
     ENCHANTED_ITEMS_MYSTIC_GADGETS_1(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS),
@@ -73,7 +73,7 @@ public enum PerkType {
     ENCHANTED_ITEMS_MYSTIC_GADGETS_10(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS),
     ENCHANTED_ITEMS_MYSTIC_GADGETS_11(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS),
     ENCHANTED_ITEMS_MYSTIC_GADGETS_12(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS),
-    ENCHANTED_ITEMS_MYSTIC_GADGETS_13(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS),
+    ENCHANTED_ITEMS_MYSTIC_GADGETS_13(BenefitTableType.ENCHANTED_ITEMS_MYSTIC_GADGETS, true),
 
 
     EXPERIENCE_WISDOM_1(BenefitTableType.EXPERIENCE_WISDOM),
@@ -87,7 +87,7 @@ public enum PerkType {
     EXPERIENCE_WISDOM_9(BenefitTableType.EXPERIENCE_WISDOM),
     EXPERIENCE_WISDOM_10(BenefitTableType.EXPERIENCE_WISDOM),
     EXPERIENCE_WISDOM_11(BenefitTableType.EXPERIENCE_WISDOM),
-    EXPERIENCE_WISDOM_12(BenefitTableType.EXPERIENCE_WISDOM),
+    EXPERIENCE_WISDOM_12(BenefitTableType.EXPERIENCE_WISDOM, true),
 
 
     MAGIC_MYSTICISM_1(BenefitTableType.MAGIC_MYSTICISM),
@@ -99,7 +99,7 @@ public enum PerkType {
     MAGIC_MYSTICISM_7(BenefitTableType.MAGIC_MYSTICISM),
     MAGIC_MYSTICISM_8(BenefitTableType.MAGIC_MYSTICISM),
     MAGIC_MYSTICISM_9(BenefitTableType.MAGIC_MYSTICISM),
-    MAGIC_MYSTICISM_10(BenefitTableType.MAGIC_MYSTICISM),
+    MAGIC_MYSTICISM_10(BenefitTableType.MAGIC_MYSTICISM, true),
 
 
     PSIONICS_1(BenefitTableType.PSIONICS),
@@ -112,7 +112,7 @@ public enum PerkType {
     PSIONICS_8(BenefitTableType.PSIONICS),
     PSIONICS_9(BenefitTableType.PSIONICS),
     PSIONICS_10(BenefitTableType.PSIONICS),
-    PSIONICS_11(BenefitTableType.PSIONICS),
+    PSIONICS_11(BenefitTableType.PSIONICS, true),
 
 
     RANGED_WEAPONS_1(BenefitTableType.RANGED_WEAPONS),
@@ -128,7 +128,7 @@ public enum PerkType {
     RANGED_WEAPONS_11(BenefitTableType.RANGED_WEAPONS),
     RANGED_WEAPONS_12(BenefitTableType.RANGED_WEAPONS),
     RANGED_WEAPONS_13(BenefitTableType.RANGED_WEAPONS),
-    RANGED_WEAPONS_14(BenefitTableType.RANGED_WEAPONS),
+    RANGED_WEAPONS_14(BenefitTableType.RANGED_WEAPONS, true),
 
 
     TRAINING_1(BenefitTableType.TRAINING),
@@ -141,7 +141,7 @@ public enum PerkType {
     TRAINING_8(BenefitTableType.TRAINING),
     TRAINING_9(BenefitTableType.TRAINING),
     TRAINING_10(BenefitTableType.TRAINING),
-    TRAINING_11(BenefitTableType.TRAINING),
+    TRAINING_11(BenefitTableType.TRAINING, true),
 
 
     UNDERWORLD_BLACK_OPS_1(BenefitTableType.UNDERWORLD_BLACK_OPS),
@@ -154,14 +154,24 @@ public enum PerkType {
     UNDERWORLD_BLACK_OPS_8(BenefitTableType.UNDERWORLD_BLACK_OPS),
     UNDERWORLD_BLACK_OPS_9(BenefitTableType.UNDERWORLD_BLACK_OPS),
     UNDERWORLD_BLACK_OPS_10(BenefitTableType.UNDERWORLD_BLACK_OPS),
-    UNDERWORLD_BLACK_OPS_11(BenefitTableType.UNDERWORLD_BLACK_OPS);
+    UNDERWORLD_BLACK_OPS_11(BenefitTableType.UNDERWORLD_BLACK_OPS, true);
 
     private BenefitTableType tableType;
+    private boolean mustSwap = false;
+
+    public BenefitTableType getTableType() {
+        return tableType;
+    }
+    public boolean isMustSwap() {
+        return mustSwap;
+    }
+
     PerkType(BenefitTableType tableType) {
         this.tableType = tableType;
     }
-    public BenefitTableType getTableType() {
-        return tableType;
+    PerkType(BenefitTableType tableType, boolean mustSwap) {
+        this.tableType = tableType;
+        this.mustSwap = mustSwap;
     }
 
 }

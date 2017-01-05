@@ -1,6 +1,7 @@
 package savagerifts.model.benefittable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import savagerifts.model.perk.Perk;
 
 import javax.persistence.*;
@@ -37,6 +38,10 @@ public class PerkRange {
 		return (roll >= min && roll <= max);
 	}
 
+	@JsonProperty(value = "mustSwap")
+	public boolean isMustSwap() {
+		return perk.getType().isMustSwap();
+	}
 
 	public Long getId() {
 		return id;

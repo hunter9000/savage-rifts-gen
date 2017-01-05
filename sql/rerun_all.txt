@@ -13,3 +13,4 @@ mysql -uroot -ppassword --verbose --default-character-set=utf8 < 12.sql
 mysql -uroot -ppassword --verbose --default-character-set=utf8 < 13.sql
 mysql -uroot -ppassword --verbose --default-character-set=utf8 < 14.sql
 mysql -uroot -ppassword --verbose --default-character-set=utf8 < 15.sql
+mysql -uroot -ppassword --verbose --default-character-set=utf8 < 17.sql

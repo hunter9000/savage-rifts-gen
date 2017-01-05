@@ -26,6 +26,31 @@ public class EdgeSkillPrerequisite {
 	@Enumerated(EnumType.STRING)
 	private DieType dieType;
 
-	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Edge getEdge() {
+		return edge;
+	}
+	public void setEdge(Edge edge) {
+		this.edge = edge;
+	}
+
+	public SkillType getSkillType() {
+		return skillType;
+	}
+	public void setSkillType(SkillType skillType) {
+		this.skillType = skillType;
+	}
+
+	public DieType getDieType() {
+		return dieType;
+	}
+	public void setDieType(DieType dieType) {
+		this.dieType = dieType;
+	}
 }
