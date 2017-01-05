@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope, $routeParams, $location) {
+savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope, $routeParams, $location, $log) {
 
     $scope.sheet = null;
     $scope.benefitTables = null;            // all the tables
@@ -55,13 +55,13 @@ savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope
             });
         }
         else {
-            console.log('invalid selection');
+            $log.debug('invalid selection');
         }
     }
 
     $scope.confirmSwap = function() {
-        console.log('confirm swap');
-        console.log($scope.newPerkSelection);
+        $log.debug('confirm swap');
+        $log.debug($scope.newPerkSelection);
 
 		if (!$scope.newPerkSelection) {
 		    return;
@@ -80,8 +80,8 @@ savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope
 
 	$scope.finishSwapping = function() {
 		// post to set flag true, go to editsheet
-		console.log($scope.perkItems);
-		console.log($scope.selectedTableId);
+		$log.debug($scope.perkItems);
+		$log.debug($scope.selectedTableId);
 
         APIService.finalizeTableRollSwaps($routeParams.sheetId, function(response) {
             $location.path('/editsheet/' + $routeParams.sheetId);

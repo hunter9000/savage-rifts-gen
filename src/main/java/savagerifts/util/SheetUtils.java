@@ -10,6 +10,7 @@ import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
+import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillRoll;
 import savagerifts.model.skill.SkillType;
 import savagerifts.model.user.User;
@@ -313,6 +314,7 @@ public class SheetUtils {
 			int pointCost = getSkillPointCost(skillRoll, attrMap);
 			info.canIncrease = skillRoll.getRoll().compareTo(new Roll(DieType.D12,0)) < 0 && sheet.getRemainingSkillPoints() >= pointCost;
 			info.canDecrease = skillRoll.getRoll().compareTo(new Roll()) > 0 && sheet.getRemainingSkillPoints() < 15;
+			info.skillRoll = skillRoll;
 
 			skillRollInfos.add(info);
 		}
@@ -336,6 +338,18 @@ public class SheetUtils {
 //		return map;
 //	}
 
+	public static boolean skillMatches(SkillType typeA, SkillKnowledge knowledgeTypeA, SkillType typeB, SkillKnowledge knowledgeTypeB) {
+		if (typeA == typeB && typeA != null) {		// if the types match
+			if (typeA != SkillType.KNOWLEDGE) {			// if these aren't knowledge skills, they're equal
+				return true;
+			}
+			else {		// check knowledge subtypes are equal
+				return (knowledgeTypeA != null && knowledgeTypeA.equals(knowledgeTypeB));
+			}
+		}
+		return false;
+	}
+
 	public static boolean validateAndMakeSkillChange(Sheet sheet, SkillBuyRequest skillBuyRequest) {
 		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
 
@@ -344,7 +358,8 @@ public class SheetUtils {
 //		List<SkillRoll> skillRolls = new ArrayList<>();
 		SkillRollInfo skillRollInfo = null;
 		for (SkillRollInfo sri : skills.getSkillRollInfos()) {
-			if (sri.getSkillRoll().getSkillType() == skillBuyRequest.getSkill() && sri.getSkillRoll().getSkillKnowledge().equals(skillBuyRequest.getSkillKnowledge())) {
+			if (skillMatches(sri.getSkillRoll().getSkillType(), sri.getSkillRoll().getSkillKnowledge(), skillBuyRequest.getSkill(), skillBuyRequest.getSkillKnowledge())) {
+//			if (sri.getSkillRoll().getSkillType() == skillBuyRequest.getSkill() && sri.getSkillRoll().getSkillKnowledge().equals(skillBuyRequest.getSkillKnowledge())) {
 				skillRollInfo = sri;
 				break;
 			}

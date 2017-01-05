@@ -1,15 +1,13 @@
 
-savageRiftsApp.controller('attributeBuyController', function(APIService, $scope, $routeParams, $location) {
+savageRiftsApp.controller('attributeBuyController', function(APIService, $scope, $routeParams, $location, $log) {
 	$scope.attributes = [];
 
 	APIService.getSheetAttributes($routeParams.sheetId, function(response) {
-		console.log('got attributes');
-		console.log(response.data);
 		$scope.attributes = response.data;
 	});
 
 	$scope.decAttribute = function(attribute) {
-	    console.log('dec ' + attribute);
+	    $log.debug('dec ' + attribute);
 
         APIService.changeAttribute($routeParams.sheetId,
             {'attribute': attribute, 'operation': 'DEC'},
@@ -19,7 +17,7 @@ savageRiftsApp.controller('attributeBuyController', function(APIService, $scope,
         );
 	}
 	$scope.incAttribute = function(attribute) {
-        console.log('inc ' + attribute);
+        $log.debug('inc ' + attribute);
 
         APIService.changeAttribute($routeParams.sheetId,
             {'attribute': attribute, 'operation': 'INC'},
@@ -31,7 +29,6 @@ savageRiftsApp.controller('attributeBuyController', function(APIService, $scope,
 
 	$scope.finalize = function() {
 	    APIService.finalizeAttributeBuy($routeParams.sheetId, function(response) {
-	        console.log(response.data);
             $location.path("/editsheet/" + $routeParams.sheetId);
 	    });
 	}

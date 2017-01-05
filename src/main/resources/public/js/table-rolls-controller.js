@@ -9,22 +9,16 @@ savageRiftsApp.controller('tableRollsController', function(APIService, $scope, $
 
     // lookup the sheet
     APIService.getSheet($routeParams.sheetId, function(response) {
-        console.log('received from /api/sheet/' + $routeParams.sheetId);
-        console.log(response.data);
         $scope.sheet = response.data;
     });
 
     // get the selectable table rolls
     APIService.getAllBenefitTables(function(response) {
-        console.log('received from /api/benefittable/');
-        console.log(response.data);
         $scope.benefitTables = response.data;
     });
 
     // get the tables
     APIService.getSheetTableRolls($routeParams.sheetId, function successCallback(response) {
-        console.log('received from /api/sheet/' + $routeParams.sheetId + '/tableroll/');
-        console.log(response.data);
         $scope.choosableTables = response.data;
     });
 

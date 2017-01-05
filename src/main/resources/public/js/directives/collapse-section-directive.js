@@ -18,8 +18,6 @@ savageRiftsApp.directive('pfCollapseSection', function() {
             return $scope;
 		},
 		link: function postLink(scope, element, attrs) {
-//		  console.log('collapse directive');
-//		  console.log(scope);
 		}
 	}
 });
@@ -40,8 +38,6 @@ savageRiftsApp.directive('pfCollapseSectionHeader', function() {
 		replace: true,
 		require: '^pfCollapseSection',
 		link: function postLink(scope, iElement, iAttrs, firstDirectiveController) {
-//		  console.log('header directive');
-//		  console.log(firstDirectiveController);
 		  scope.id = firstDirectiveController.identifier;
 		}
 	}
@@ -61,8 +57,6 @@ savageRiftsApp.directive('pfCollapseSectionBody', function() {
 		replace: true,
 		require: '^pfCollapseSection',
 		link: function postLink(scope, iElement, iAttrs, firstDirectiveController) {
-//		  console.log('body directive');
-//		  console.log(firstDirectiveController);
 		  scope.id = firstDirectiveController.identifier;
           scope.initialCollapsed = firstDirectiveController.initialCollapsed;
 		}

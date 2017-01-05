@@ -1,5 +1,5 @@
 
-savageRiftsApp.factory('APIService', function($window, $location, $http) {
+savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
     return {
         getHeaders: function() {
             return { headers: {'x-access-token': $window.localStorage['jwtToken']} };
@@ -7,34 +7,54 @@ savageRiftsApp.factory('APIService', function($window, $location, $http) {
 
         getStandardFailureCallback: function(response) {
             return function(response) {
-                console.log(response);
+                $log.debug(response);
                 $location.path('/error');
             };
         },
 
+        getSuccessCallbackWrapper: function(callback, method, uri, data) {
+            return function(response) {
+                $log.debug('Response from '+method+': ' + uri);
+                if (data) {
+                    $log.debug('With data: ');
+                    $log.debug(data);
+                }
+                $log.debug(response);
+                callback(response);
+            };
+        },
+
         get: function(uri, successCallback) {
+            $log.debug('GET: ' + uri);
             $http.get(uri, this.getHeaders())
-            .then(successCallback, this.getStandardFailureCallback());
+            .then(this.getSuccessCallbackWrapper(successCallback, 'GET', uri), this.getStandardFailureCallback());
         },
 
         post: function(uri, data, successCallback) {
+            $log.debug('POST: ' + uri + ' DATA:');
+            $log.debug(data);
             return $http.post(uri, data, this.getHeaders())
-            .then(successCallback, this.getStandardFailureCallback());
+            .then(this.getSuccessCallbackWrapper(successCallback, 'POST', uri, data), this.getStandardFailureCallback());
         },
 
         put: function(uri, data, successCallback) {
+            $log.debug('PUT: ' + uri + ' DATA:');
+            $log.debug(data);
             return $http.put(uri, data, this.getHeaders())
-            .then(successCallback, this.getStandardFailureCallback());
+            .then(this.getSuccessCallbackWrapper(successCallback, 'PUT', uri, data), this.getStandardFailureCallback());
         },
 
         patch: function(uri, data, successCallback) {
+            $log.debug('PATCH: ' + uri + ' DATA:');
+            $log.debug(data);
             return $http.patch(uri, data, this.getHeaders())
-            .then(successCallback, this.getStandardFailureCallback());
+            .then(this.getSuccessCallbackWrapper(successCallback, 'PATCH', uri, data), this.getStandardFailureCallback());
         },
 
         delete: function(uri, successCallback) {
+            $log.debug('DELETE: ' + uri);
             return $http.delete(uri, this.getHeaders())
-            .then(successCallback, this.getStandardFailureCallback());
+            .then(this.getSuccessCallbackWrapper(successCallback, 'DELETE', uri), this.getStandardFailureCallback());
         },
 
         // API CALLS
@@ -143,7 +163,9 @@ savageRiftsApp.factory('APIService', function($window, $location, $http) {
             this.get('/api/sheet/'+ sheetId +'/tableroll/', successCallback);
         },
 
-
+        getEdges: function(successCallback) {
+            this.get('/api/edge/', successCallback);
+        },
 
     };
 });

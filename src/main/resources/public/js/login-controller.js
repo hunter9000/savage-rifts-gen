@@ -9,7 +9,6 @@ savageRiftsApp.controller('loginController', function(APIService, $scope, $locat
     // when submitting the add form, send the text to the node API
     $scope.login = function() {
         APIService.authenticate($scope.formData, function(response) {
-            console.log(response);
             $window.localStorage['jwtToken'] = response.data.response;
             $location.path("/sheetselect");
         });

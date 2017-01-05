@@ -1,24 +1,20 @@
 
-savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope, $routeParams, $location) {
+savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope, $routeParams, $location, $log) {
 	$scope.hindrances = [];
 	$scope.sheetHindranceSelections = null;
 
 	// get sheet's hindrance selections
 	APIService.getSheetHindrances($routeParams.sheetId, function(response) {
-	    console.log('got hindrances:');
-        console.log(response.data);
         $scope.sheetHindranceSelections = response.data;
 	});
 
     // get all hindrances
     APIService.getAllHindrances(function(response) {
-		console.log('got hindrances');
-		console.log(response.data);
 		$scope.hindrances = response.data;
     });
 	
 	$scope.addHindrance = function(hindrance, severityType) {
-	    console.log('add ' + hindrance);
+	    $log.debug('add ' + hindrance);
 
 	    APIService.changeHindrance($routeParams.sheetId,
             {'hindranceType': hindrance.type, 'severityType': severityType, 'operation': 'ADD'},
@@ -29,7 +25,7 @@ savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope,
 	}
 
 	$scope.removeHindrance = function(hindrance) {
-	    console.log('add ' + hindrance);
+	    $log.debug('add ' + hindrance);
 
         APIService.changeHindrance($routeParams.sheetId,
             {'hindranceType': hindrance.type, 'severityType': null, 'operation': 'REMOVE'},
@@ -70,7 +66,6 @@ savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope,
 
 	$scope.finishHindrances = function() {
 	    APIService.finalizeHindranceBuy($routeParams.sheetId, function(response) {
-            console.log(response.data);
             $location.path("/editsheet/" + $routeParams.sheetId);
 	    });
 	}

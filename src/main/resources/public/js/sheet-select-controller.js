@@ -1,6 +1,6 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $location, $uibModal) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $location, $uibModal, $log) {
 		$scope.message = '';
 
 		$scope.sheets = [];
@@ -8,8 +8,6 @@
         $scope.loadSheets = function() {
             APIService.getSheets(function(response) {
                 $scope.sheets = response.data;
-                console.log('got these sheets back: ');
-                console.log(response);
             });
         };
         $scope.loadSheets();
@@ -37,17 +35,14 @@
             });
 
             modalInstance.result.then(function (sheet) {
-                console.log('sheet Id to delete ');
-                console.log(sheet);
                 $scope.deleteSheet(sheet.id);
             }, function () {
-                 console.log('Modal dismissed at: ' + new Date());
+                 $log.debug('Modal dismissed at: ' + new Date());
             });
         };
 
         $scope.deleteSheet = function(sheetId) {
             APIService.deleteSheet(sheetId, function(response) {
-                console.log('deleted sheet, reloading sheets');
                 $scope.loadSheets();
             });
         };

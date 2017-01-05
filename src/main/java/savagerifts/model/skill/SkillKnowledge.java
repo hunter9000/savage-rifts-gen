@@ -55,6 +55,9 @@ public class SkillKnowledge {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof SkillKnowledge)) {
+            return false;
+        }
         return this.name.equals(((SkillKnowledge)obj).name);
     }
 }
