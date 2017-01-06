@@ -4,6 +4,17 @@
 
 <div class="container">
 
+    <!-- experimental tabs -->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills">
+            <li class="active"><a href="">Home</a></li>
+            <li><a href="">Profile</a></li>
+            <li><a href="">Messages</a></li>
+        </ul>
+    </div>
+
+
     <!-- basic info -->
     <div class="row">
         <div class="field-wrapper name-wrapper">
@@ -128,15 +139,59 @@
                     </pf-collapse-section-header>
 
                     <pf-collapse-section-body>
-                        <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">
-                            <div>{{feature.displayName}}</div>
-                            <div>{{feature.description}}</div>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">
+
+                                <div class="panel panel-default">
+                                    <!-- header of the feature -->
+                                    <div class="panel-heading" role="tab" id="heading{{$index}}">
+                                        <h4 class="panel-title">
+                                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+                                                {{feature.displayName}}
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <!-- description of the feature -->
+                                    <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index}}">
+                                        <div class="panel-body">
+                                            {{feature.description}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+
+                        <!--<div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">-->
+                            <!--<div>{{feature.displayName}}</div>-->
+                            <!--<div>{{feature.description}}</div>-->
+                        <!--</div>-->
 
                         <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'COMPLICATION'}">
                             <div>{{feature.displayName}}</div>
                             <div>{{feature.description}}</div>
                         </div>
+
+
+                        <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
+                            <!--<div class="panel panel-default">-->
+                                <!--<div class="panel-heading" role="tab" id="headingOne">-->
+                                    <!--<h3 class="panel-title">-->
+                                        <!--<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
+                                            <!--Collapsible Group Item #1-->
+                                        <!--</a>-->
+                                    <!--</h3>-->
+                                <!--</div>-->
+                                <!--<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">-->
+                                    <!--<div class="panel-body">-->
+                                        <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+
                     </pf-collapse-section-body>
                 </pf-collapse-section>
             </div>
