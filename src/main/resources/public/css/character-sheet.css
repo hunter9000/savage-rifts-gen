@@ -101,15 +101,21 @@
     width: 100%;
 }
 
-.nav > li:not(.active) > a:hover, .nav > li:not(.active) > a:focus {
-    background-color: transparent !important;
-}
-
-.nav > li > a:hover, .nav > li > a:focus {
-    color: #337ab7;
-    cursor: default;
-}
-
 pf-collapse-section .panel-title {
     font-size: 14px;
+}
+
+/** Nav breadcrumbs */
+.nav > li:not(.active) > a:hover, .nav > li:not(.active) > a:focus {
+    background-color: transparent !important;
+    border-color: white white #ddd !important;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    cursor: default;
+}
+.nav > li > a {
+    color: #555;
+}
+.nav > li.active > a, .nav > li.active > a:hover {
+    background-color: #eee;
 }

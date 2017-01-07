@@ -7,93 +7,110 @@
     <!-- experimental tabs -->
     <div>
         <!-- Nav tabs -->
-        <ul class="nav nav-pills ">
+        <ul class="nav nav-tabs nav-justified">
             <li class="active"> <a href="" class="">Home</a> </li>
             <li> <a href="">Profile</a> </li>
             <li> <a href="">Messages</a> </li>
         </ul>
     </div>
 
-
     <!-- basic info -->
     <div class="row">
-        <div class="field-wrapper name-wrapper">
-            <label>Name</label>
-            <input type="text" class="" ng-model="sheet.name">
-        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    <div class="field-wrapper name-wrapper">
+                        <label>Name</label>
+                        <input type="text" class="" ng-model="sheet.name">
+                    </div>
 
-        <div class="field-wrapper race-wrapper">
-            <label>Race</label>
-            <span class="level-display">{{sheet.race.displayName}}</span>
-        </div>
+                    <div class="field-wrapper race-wrapper">
+                        <label>Race</label>
+                        <span class="level-display">{{sheet.race.displayName}}</span>
+                    </div>
 
-        <div class="field-wrapper curr-rank-wrapper">
-            <label>Rank</label>
-            <span class="rank-display">{{sheet.rank}}</span>
-        </div>
+                    <div class="field-wrapper curr-rank-wrapper">
+                        <label>Rank</label>
+                        <span class="rank-display">{{sheet.rank}}</span>
+                    </div>
 
-        <div class="field-wrapper curr-xp-wrapper">
-            <label>XP</label>
-            <!--<input type="text" class="curr-xp-field" ng-model="sheet.currXP">-->
-        </div>
+                    <div class="field-wrapper curr-xp-wrapper">
+                        <label>XP</label>
+                        <!--<input type="text" class="curr-xp-field" ng-model="sheet.currXP">-->
+                    </div>
 
-        <div class="field-wrapper curr-framework-wrapper">
-            <label>Framework</label>
-            <span class="framework-display">{{sheet.framework.displayName}}</span>
+                    <div class="field-wrapper curr-framework-wrapper">
+                        <label>Framework</label>
+                        <span class="framework-display">{{sheet.framework.displayName}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- attributes -->
     <div class="row">
-        <div class="field-wrapper">
-            <label>Agility</label>
-            <span class="attribute-display">{{sheet.agility.displayName}}</span>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    <div class="field-wrapper">
+                        <label>Agility</label>
+                        <span class="attribute-display">{{sheet.agility.displayName}}</span>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Smarts</label>
+                        <span class="attribute-display">{{sheet.smarts.displayName}}</span>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Spirit</label>
+                        <span class="attribute-display">{{sheet.spirit.displayName}}</span>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Strength</label>
+                        <span class="attribute-display">{{sheet.strength.displayName}}</span>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Vigor</label>
+                        <span class="attribute-display">{{sheet.vigor.displayName}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="field-wrapper">
-            <label>Smarts</label>
-            <span class="attribute-display">{{sheet.smarts.displayName}}</span>
-        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    <!-- derived attributes -->
+                    <div class="field-wrapper">
+                        <label>Strain</label>
+                        <span class="attribute-display">{{sheet.strain}}</span>
+                    </div>
 
-        <div class="field-wrapper">
-            <label>Spirit</label>
-            <span class="attribute-display">{{sheet.spirit.displayName}}</span>
-        </div>
+                    <div class="field-wrapper">
+                        <label>Toughness</label>
+                        <span class="attribute-display">{{sheet.toughness}}</span>
+                    </div>
 
-        <div class="field-wrapper">
-            <label>Strength</label>
-            <span class="attribute-display">{{sheet.strength.displayName}}</span>
-        </div>
+                    <div class="field-wrapper">
+                        <label>Charisma</label>
+                        <span class="attribute-display">{{sheet.charisma}}</span>
+                    </div>
 
-        <div class="field-wrapper">
-            <label>Vigor</label>
-            <span class="attribute-display">{{sheet.vigor.displayName}}</span>
-        </div>
+                    <div class="field-wrapper">
+                        <label>Pace</label>
+                        <span class="attribute-display">{{sheet.pace}}</span>
+                    </div>
 
-        <!-- derived attributes -->
-        <div class="field-wrapper">
-            <label>Strain</label>
-            <span class="attribute-display">{{sheet.strain}}</span>
-        </div>
-
-        <div class="field-wrapper">
-            <label>Toughness</label>
-            <span class="attribute-display">{{sheet.toughness}}</span>
-        </div>
-
-        <div class="field-wrapper">
-            <label>Charisma</label>
-            <span class="attribute-display">{{sheet.charisma}}</span>
-        </div>
-
-        <div class="field-wrapper">
-            <label>Pace</label>
-            <span class="attribute-display">{{sheet.pace}}</span>
-        </div>
-
-        <div class="field-wrapper">
-            <label>Parry</label>
-            <span class="attribute-display">{{sheet.parry}}</span>
+                    <div class="field-wrapper">
+                        <label>Parry</label>
+                        <span class="attribute-display">{{sheet.parry}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -102,7 +119,7 @@
         <!-- skills -->
         <div class="col-md-4">
             <div class="column-wrapper panel-group">
-                <pf-collapse-section identifier="skills-section">
+                <pf-collapse-section identifier="skills-section" initial-collapsed="true">
                     <pf-collapse-section-header>
                         <span class="field-header">Skills</span>
                     </pf-collapse-section-header>
@@ -133,7 +150,7 @@
         <!-- framework features -->
         <div class="col-md-4">
             <div class="column-wrapper panel-group">
-                <pf-collapse-section identifier="framework-features-section">
+                <pf-collapse-section identifier="framework-features-section" initial-collapsed="true">
                     <pf-collapse-section-header>
                         <span class="field-header">Framework Features</span>
                     </pf-collapse-section-header>
@@ -199,13 +216,22 @@
         <!-- hindrances + edges -->
         <div class="col-md-4">
             <div class="column-wrapper panel-group">
-                <pf-collapse-section identifier="hindrances-edges-section">
+                <pf-collapse-section identifier="hindrances-edges-section" initial-collapsed="true">
                     <pf-collapse-section-header>
                         <span class="field-header">Hindrances/Edges</span>
                     </pf-collapse-section-header>
 
                     <pf-collapse-section-body>
-                        Hindrances + Edges
+                        <strong>Hindrances</strong>
+
+                        <div ng-repeat="chosenHindrance in sheet.chosenHindrances">
+                            {{chosenHindrance.hindrance.displayName}}
+                            {{chosenHindrance.severityType}}
+                            {{chosenHindrance.hindrance.description}}
+                        </div>
+
+                        <strong>Edges</strong>
+
                     </pf-collapse-section-body>
                 </pf-collapse-section>
             </div>
@@ -217,17 +243,47 @@
     <div class="row">
         <!-- gear -->
         <div class="col-md-4">
-            Gear
+            <div class="column-wrapper panel-group">
+                <pf-collapse-section identifier="gear-section" initial-collapsed="true">
+                    <pf-collapse-section-header>
+                        <span class="field-header">Gear</span>
+                    </pf-collapse-section-header>
+
+                    <pf-collapse-section-body>
+
+                    </pf-collapse-section-body>
+                </pf-collapse-section>
+            </div>
         </div>
 
         <!-- weapons -->
         <div class="col-md-4">
-            Weapons
+            <div class="column-wrapper panel-group">
+                <pf-collapse-section identifier="weapons-section" initial-collapsed="true">
+                    <pf-collapse-section-header>
+                        <span class="field-header">Weapons</span>
+                    </pf-collapse-section-header>
+
+                    <pf-collapse-section-body>
+
+                    </pf-collapse-section-body>
+                </pf-collapse-section>
+            </div>
         </div>
 
         <!-- armor -->
         <div class="col-md-4">
-            Armor
+            <div class="column-wrapper panel-group">
+                <pf-collapse-section identifier="armor-section" initial-collapsed="true">
+                    <pf-collapse-section-header>
+                        <span class="field-header">Armor</span>
+                    </pf-collapse-section-header>
+
+                    <pf-collapse-section-body>
+
+                    </pf-collapse-section-body>
+                </pf-collapse-section>
+            </div>
         </div>
     </div>
 
@@ -235,17 +291,27 @@
     <div class="row">
         <!-- points -->
         <div class="col-md-2">
-            <div class="attribute-wrapper field-wrapper panel-group" >
-                <span>ISP: {{sheet.isp}}</span>
-                <span>PPE: {{sheet.ppe}}</span>
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    <dl class="dl-horizontal">
+                        <dt>ISP</dt>
+                        <dd>{{sheet.isp}}</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>PPE</dt>
+                        <dd>{{sheet.ppe}}</dd>
+                    </dl>
+                </div>
             </div>
         </div>
 
         <!-- powers -->
         <div class="col-md-10">
-            <div class=" field-wrapper panel-group" >
-                <!-- power list here -->
-                powers
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    <!-- power list here -->
+                    Powers
+                </div>
             </div>
         </div>
     </div>
@@ -253,14 +319,22 @@
     <!-- cybernetics -->
     <div class="row">
         <div class="col-md-12">
-            Cybernetics
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    Cybernetics
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- heroic path -->
     <div class="row">
         <div class="col-md-12">
-            Heroic Path
+            <div class="panel panel-default">
+                <div class="panel-body" >
+                    Heroic Path
+                </div>
+            </div>
         </div>
     </div>
 

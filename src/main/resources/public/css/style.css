@@ -56,6 +56,14 @@
     padding:5px;
 }
 
+div#main {
+    background-color: white;
+}
+
+.panel, .panel-group {
+    margin-bottom: 0px !important;
+}
+
 .panel-heading a:after {
     font-family:'Glyphicons Halflings';
     content:"\e114";
