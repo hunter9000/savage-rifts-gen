@@ -110,3 +110,34 @@ div#main {
 .text-small {
     font-size: 8px;
 }
+
+/** Nav breadcrumbs */
+.nav > li:not(.active) > a:hover,
+.nav > li:not(.active) > a:focus {
+    background-color: transparent !important;
+    border-color: white white #ddd !important;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    cursor: default;
+}
+.nav > li > a {
+    color: #555 !important;
+}
+.nav > li.active > a,
+.nav > li.active > a:hover,
+.nav > li.active {
+    background-color: #eee;
+}
+.nav-breadcrumb-wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 20px;
+}
+.nav-pills > li:not(.nav-divider) {
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+.nav .nav-divider {
+    background-color: transparent !important;
+}
