@@ -101,3 +101,15 @@
     width: 100%;
 }
 
+.nav > li:not(.active) > a:hover, .nav > li:not(.active) > a:focus {
+    background-color: transparent !important;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    color: #337ab7;
+    cursor: default;
+}
+
+pf-collapse-section .panel-title {
+    font-size: 14px;
+}

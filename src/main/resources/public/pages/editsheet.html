@@ -7,10 +7,10 @@
     <!-- experimental tabs -->
     <div>
         <!-- Nav tabs -->
-        <ul class="nav nav-pills">
-            <li class="active"><a href="">Home</a></li>
-            <li><a href="">Profile</a></li>
-            <li><a href="">Messages</a></li>
+        <ul class="nav nav-pills ">
+            <li class="active"> <a href="" class="">Home</a> </li>
+            <li> <a href="">Profile</a> </li>
+            <li> <a href="">Messages</a> </li>
         </ul>
     </div>
 
@@ -137,23 +137,27 @@
                     <pf-collapse-section-header>
                         <span class="field-header">Framework Features</span>
                     </pf-collapse-section-header>
-
                     <pf-collapse-section-body>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <!--<span id="expand-all-features">Expand</span>-->
+
+                        <!-- feature bonuses -->
+                        <strong>Bonuses</strong>
+                        <div class="panel-group" id="feature-bonus-accordion" role="tablist" aria-multiselectable="true">
                             <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">
 
                                 <div class="panel panel-default">
                                     <!-- header of the feature -->
-                                    <div class="panel-heading" role="tab" id="heading{{$index}}">
-                                        <h4 class="panel-title">
-                                            <span role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+                                    <div class="panel-heading" role="tab" id="bonus-heading-{{$index}}">
+                                        <h5 class="panel-title ">
+                                            <span role="button" data-toggle="collapse" data-parent="#feature-bonus-accordion" href="#bonus-collapse-{{$index}}" aria-expanded="true" aria-controls="bonus-collapse-{{$index}}">
                                                 {{feature.displayName}}
                                             </span>
-                                        </h4>
+                                        </h5>
                                     </div>
                                     <!-- description of the feature -->
-                                    <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index}}">
-                                        <div class="panel-body">
+                                    <div id="bonus-collapse-{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bonus-heading-{{$index}}">
+                                        <div class="panel-body text-left">
                                             {{feature.description}}
                                         </div>
                                     </div>
@@ -162,35 +166,30 @@
                             </div>
                         </div>
 
-                        <!--<div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">-->
-                            <!--<div>{{feature.displayName}}</div>-->
-                            <!--<div>{{feature.description}}</div>-->
-                        <!--</div>-->
+                        <!-- feature complications -->
+                        <strong>Complications</strong>
+                        <div class="panel-group" id="feature-complication-accordion" role="tablist" aria-multiselectable="true">
+                            <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'COMPLICATION'}">
 
-                        <div ng-repeat="feature in sheet.framework.frameworkFeatures | filter: {frameworkAbilityType: 'COMPLICATION'}">
-                            <div>{{feature.displayName}}</div>
-                            <div>{{feature.description}}</div>
+                                <div class="panel panel-default">
+                                    <!-- header of the feature -->
+                                    <div class="panel-heading" role="tab" id="complication-heading-{{$index}}">
+                                        <h5 class="panel-title ">
+                                            <span role="button" data-toggle="collapse" data-parent="#feature-complication-accordion" href="#complication-collapse-{{$index}}" aria-expanded="true" aria-controls="complication-collapse-{{$index}}">
+                                                {{feature.displayName}}
+                                            </span>
+                                        </h5>
+                                    </div>
+                                    <!-- description of the feature -->
+                                    <div id="complication-collapse-{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="complication-heading-{{$index}}">
+                                        <div class="panel-body text-left">
+                                            {{feature.description}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-
-
-                        <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
-                            <!--<div class="panel panel-default">-->
-                                <!--<div class="panel-heading" role="tab" id="headingOne">-->
-                                    <!--<h3 class="panel-title">-->
-                                        <!--<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                                            <!--Collapsible Group Item #1-->
-                                        <!--</a>-->
-                                    <!--</h3>-->
-                                <!--</div>-->
-                                <!--<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">-->
-                                    <!--<div class="panel-body">-->
-                                        <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-
 
                     </pf-collapse-section-body>
                 </pf-collapse-section>
@@ -266,3 +265,10 @@
     </div>
 
 </div>
+
+<!--<script>-->
+    <!--$('#expand-all-features').click(function() {-->
+        <!--console.log('clocked the thing');-->
+        <!--$('#feature-bonus-accordion .collapse').collapse('show');-->
+    <!--});-->
+<!--</script>-->
