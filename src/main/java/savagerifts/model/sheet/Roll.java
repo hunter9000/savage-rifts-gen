@@ -64,6 +64,9 @@ public class Roll implements Comparable {
 		if (dieType == DieType.D12) {
 			modifier = modifier + 1;
 		}
+		else if (modifier < 0) {
+			modifier++;
+		}
 		else {
 			dieType = dieType.getIncreasedType();
 		}
@@ -78,6 +81,9 @@ public class Roll implements Comparable {
 				dieType = dieType.getDecreasedType();
 			}
 		}
+		else if (dieType == DieType.D4) {
+			modifier--;
+		}
 		else {
 			dieType = dieType.getDecreasedType();
 		}
@@ -89,7 +95,24 @@ public class Roll implements Comparable {
 		if (modifier > 0) {
 			s += "+" + modifier;
 		}
+		else if (modifier < 0) {
+			s += modifier;
+		}
 		return s;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Roll)) {
+			return false;
+		}
+		Roll other = (Roll) obj;
+		return this.dieType == other.dieType && this.modifier.equals(other.modifier);
+	}
+
+	@Override
+	public int hashCode() {
+		return dieType.hashCode() + modifier.hashCode();
 	}
 
 	@Override

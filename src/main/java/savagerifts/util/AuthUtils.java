@@ -41,6 +41,7 @@ public class AuthUtils {
         return ((User)request.getAttribute(LOGGED_IN_USER));
     }
 
+    /** Populated in SheetOwnerInterceptor */
     public static Sheet getSheet(HttpServletRequest request) {
         return ((Sheet)request.getAttribute(SHEET));
     }
