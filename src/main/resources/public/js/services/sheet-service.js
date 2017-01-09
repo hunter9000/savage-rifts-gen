@@ -25,10 +25,11 @@ savageRiftsApp.factory('SheetService', function($window, $location) {
                 $location.path('/hindrancebuy/' + sheet.id);
             }
             else if (sheet.creationStep == 'EDGES') {
-//                    $location.path('//' + sheet.id);
+//                $location.path('/edgebuy/' + sheet.id);
+                $location.path('/editsheet/' + sheet.id);
             }
             else if (sheet.creationStep == 'FINISHED') {
-                // do nothing, we're here
+                $location.path('/editsheet/' + sheet.id);
             }
 
         }

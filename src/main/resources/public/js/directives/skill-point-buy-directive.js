@@ -14,5 +14,11 @@ savageRiftsApp.directive('skillbuy', function() {
 		candecrease: '=',
 	},
 	transclude: true,
+    controller: function ($scope) {
+        $scope.getTextClass = function(roll) {
+            console.log('roll ' + roll);
+            return roll.dieType == 'D4' && roll.modifier == '-2' ? 'text-light' : '';
+        }
+    }
   };
 });

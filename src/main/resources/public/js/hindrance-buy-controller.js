@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope, $routeParams, $location, $log) {
+savageRiftsApp.controller('hindranceBuyController', function(APIService, SheetService, $scope, $routeParams, $location, $log) {
 	$scope.hindrances = [];
 	$scope.sheetHindranceSelections = null;
 
@@ -66,7 +66,9 @@ savageRiftsApp.controller('hindranceBuyController', function(APIService, $scope,
 
 	$scope.finishHindrances = function() {
 	    APIService.finalizeHindranceBuy($routeParams.sheetId, function(response) {
-            $location.path("/editsheet/" + $routeParams.sheetId);
+            APIService.getSheet($routeParams.sheetId, function(response) {
+                SheetService.redirectToCreationSteps(response.data);
+            });
 	    });
 	}
 

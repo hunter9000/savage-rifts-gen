@@ -111,6 +111,10 @@ div#main {
     font-size: 8px;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 /** Nav breadcrumbs */
 .nav > li:not(.active) > a:hover,
 .nav > li:not(.active) > a:focus {

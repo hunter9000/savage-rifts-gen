@@ -35,12 +35,15 @@
 
             <h4>Choose the table to select the new perk from</h4>
 
-            <select name="table-selection " class="form-control margin-bottom-small width-extra-small center" id="table-selection" ng-model="selectedTableId">
-                <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
-            </select>
+            <div>
+                <select name="table-selection " class="form-control margin-bottom-small width-extra-small center inline-block" id="table-selection" ng-model="selectedTableId">
+                    <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
+                </select>
+                <button class="btn btn-primary" ng-click="swap()" ng-disabled="!canSwap()">Swap</button>
+            </div>
 
-            <button class="btn btn-primary" ng-click="swap()" ng-disabled="!canSwap()">Swap</button>
             <div>Or</div>
+
             <button class="btn btn-primary" ng-click="finishSwapping()">Skip Perk Swapping</button>
 
         </div>

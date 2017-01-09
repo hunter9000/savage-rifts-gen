@@ -56,27 +56,37 @@
                 <div class="panel-body" >
                     <div class="field-wrapper">
                         <label>Agility</label>
-                        <span class="attribute-display">{{sheet.agility.displayName}}</span>
+                        <span class="attribute-display">
+                            <die-roll roll="sheet.agility"></die-roll>
+                        </span>
                     </div>
 
                     <div class="field-wrapper">
                         <label>Smarts</label>
-                        <span class="attribute-display">{{sheet.smarts.displayName}}</span>
+                        <span class="attribute-display">
+                            <die-roll roll="sheet.smarts"></die-roll>
+                        </span>
                     </div>
 
                     <div class="field-wrapper">
                         <label>Spirit</label>
-                        <span class="attribute-display">{{sheet.spirit.displayName}}</span>
+                        <span class="attribute-display">
+                            <die-roll roll="sheet.spirit"></die-roll>
+                        </span>
                     </div>
 
                     <div class="field-wrapper">
                         <label>Strength</label>
-                        <span class="attribute-display">{{sheet.strength.displayName}}</span>
+                        <span class="attribute-display">
+                            <die-roll roll="sheet.strength"></die-roll>
+                        </span>
                     </div>
 
                     <div class="field-wrapper">
                         <label>Vigor</label>
-                        <span class="attribute-display">{{sheet.vigor.displayName}}</span>
+                        <span class="attribute-display">
+                            <die-roll roll="sheet.vigor"></die-roll>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -226,9 +236,13 @@
                         <strong>Hindrances</strong>
 
                         <div ng-repeat="chosenHindrance in sheet.chosenHindrances">
-                            {{chosenHindrance.hindrance.displayName}}
-                            {{chosenHindrance.severityType}}
-                            {{chosenHindrance.hindrance.description}}
+                            <div class="text-left">
+                                <dl>
+                                    <dt><strong>{{chosenHindrance.hindrance.displayName}}</strong> ({{chosenHindrance.severityType}})</dt>
+                                    <dd>{{chosenHindrance.hindrance.description}}</dd>
+                                </dl>
+                            </div>
+                            <div class="text-left"></div>
                         </div>
 
                         <strong>Edges</strong>
