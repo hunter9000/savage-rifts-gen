@@ -1,5 +1,6 @@
 package savagerifts.model.skill;
 
 public enum KnowledgeCategory {
-    SCIENTIFIC;
+    SCIENTIFIC,
+    NONE;
 }

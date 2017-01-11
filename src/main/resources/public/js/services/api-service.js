@@ -167,5 +167,16 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
             this.get('/api/edge/', successCallback);
         },
 
+        getKnowledgeSkills: function(sheetId, successCallback) {
+            this.get('/api/sheet/'+sheetId+'/skills/knowledge/', successCallback);
+        },
+
+        getKnowledgeCategories: function(successCallback) {
+            this.get('/api/knowledgecategories/', successCallback);
+        },
+        addKnowledgeSkill: function(sheetId, knowledgeSkillId, successCallback) {
+            this.put('/api/sheet/' + sheetId + '/skills/knowledge/' + knowledgeSkillId + '/', {}, successCallback);
+        },
+
     };
 });

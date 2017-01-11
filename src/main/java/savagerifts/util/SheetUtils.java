@@ -481,5 +481,13 @@ public class SheetUtils {
 
 		return true;
 	}
-	
+
+	public static boolean sheetHasKnowledgeType(Sheet sheet, SkillKnowledge skillKnowledge) {
+		for (SkillRoll skillRoll : sheet.getSkills()) {
+			if (SheetUtils.skillMatches(skillRoll.getSkillType(), skillRoll.getSkillKnowledge(), SkillType.KNOWLEDGE, skillKnowledge)) {
+				return true;
+			}
+		}
+		return true;
+	}
 }

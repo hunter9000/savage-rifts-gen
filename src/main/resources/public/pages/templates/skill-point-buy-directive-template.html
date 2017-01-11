@@ -1,16 +1,13 @@
-<style>
-    .text-light {
-        color: #ccc;
-    }
-</style>
+<link rel="stylesheet" href="css/skill-point-buy.css" />
 
 <div class="{{getTextClass(value.roll)}}">
-    <div class="point-buy-button-col point-buy-dec-col">
-        <button class="btn btn-default text-small" ng-click='dec()(skill)' ng-disabled="!candecrease"> <span class="glyphicon glyphicon-minus"/> </button>
+    <div class="point-buy-button-col point-buy-dec-col" ng-show="allowIncDec">
+        <button class="btn btn-default text-small" ng-click='dec()(value.skillType)' ng-disabled="!candecrease"> <span class="glyphicon glyphicon-minus"/> </button>
     </div>
 
     <div class="point-buy-attribute-col">
-        <span ng-transclude></span>
+        <span>{{value.displayName}}</span>
+        <span ng-show="value.skillKnowledge">({{value.skillKnowledge.name}})</span>
     </div>
     <div class="point-buy-value-col">
         <die-roll roll="value.roll"></die-roll>
@@ -20,7 +17,7 @@
         <span>({{value.linkedAttributeDisplayName}})</span>
     </div>
 
-    <div class="point-buy-button-col point-buy-inc-col">
-        <button class="btn btn-default text-small" ng-click='inc()(skill)' ng-disabled="!canincrease"> <span class="glyphicon glyphicon-plus"/> </button>
+    <div class="point-buy-button-col point-buy-inc-col" ng-show="allowIncDec">
+        <button class="btn btn-default text-small" ng-click='inc()(value.skillType)' ng-disabled="!canincrease"> <span class="glyphicon glyphicon-plus"/> </button>
     </div>
 </div>

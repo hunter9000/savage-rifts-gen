@@ -1,6 +1,7 @@
 package savagerifts.model.skill;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import savagerifts.model.AttributeType;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
@@ -33,28 +34,31 @@ public class SkillRoll {
 	private Roll roll;
 
 	@Transient
+	@JsonProperty(value = "displayName")
 	public String getDisplayName() {
 		return skillType.getDisplayName();
 	}
-	public void setDisplayName(String displayName) {
-		// nothing, read only property
-	}
+//	public void setDisplayName(String displayName) {
+//		// nothing, read only property
+//	}
 
 	@Transient
+	@JsonProperty(value = "linkedAttribute")
 	public AttributeType getLinkedAttribute() {
 		return skillType.getLinkedAttribute();
 	}
-	public void setLinkedAttribute(AttributeType linkedAttribute) {
-		// nothing, readonly property
-	}
+//	public void setLinkedAttribute(AttributeType linkedAttribute) {
+//		// nothing, readonly property
+//	}
 
 	@Transient
+	@JsonProperty(value = "linkedAttributeDisplayName")
 	public String getLinkedAttributeDisplayName() {
 		return this.skillType.getLinkedAttribute().getDisplayName();
 	}
-	public void setLinkedAttributeDisplayName(String linkedAttributeDisplayName) {
-		// nothing, readonly property
-	}
+//	public void setLinkedAttributeDisplayName(String linkedAttributeDisplayName) {
+//		// nothing, readonly property
+//	}
 
 	public Long getId() {
 		return id;

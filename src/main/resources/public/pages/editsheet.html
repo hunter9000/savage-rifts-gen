@@ -136,23 +136,12 @@
                     </pf-collapse-section-header>
 
                     <pf-collapse-section-body>
-                        <div ng-repeat="skillRoll in sheet.skills">
-                            <div class="skill-name">
-                                {{skillRoll.displayName}}
-                            </div>
-
-                            <div class="skill-ranks">
-                                {{skillRoll.roll.displayName}}
-                            </div>
-
-                            <div class="skill-attr">
-                                ({{skillRoll.linkedAttributeDisplayName}})
-                            </div>
-                            <!--<div class="skill-ranks-button">-->
-                            <!--<button class="glyphicon glyphicon-chevron-down" ng-click="decreaseSkillRank(skillRank)" ng-disabled="skillRank.rank == 0"></button>-->
-                            <!--<button class="glyphicon glyphicon-chevron-up" ng-click="increaseSkillRank(skillRank)" ng-disabled="sheet.skillPoints == 0"></button>-->
-                            <!--</div>-->
-                        </div>
+                        <ul class="list-group">
+                            <!-- skill is a SkillRollInfo object -->
+                            <li class="list-group-item" ng-repeat="skillRoll in sheet.skills">
+                                <skillbuy value="skillRoll" allow-inc-dec="false" />
+                            </li>
+                        </ul>
                     </pf-collapse-section-body>
                 </pf-collapse-section>
             </div>

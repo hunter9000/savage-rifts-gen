@@ -1,0 +1,53 @@
+
+<form class="form-inline">
+    <div class="form-group">
+        <select ng-options="knowledgeSkill as buildName(knowledgeSkill) for knowledgeSkill in knowledgeSkills"
+                ng-model="selectedKnowledgeSkill"
+                class="form-control width-extra-small margin-bottom-small"
+                name="knowledge-skill-select"
+                id="knowledge-skill-select">
+        </select>
+        <button ng-click="addExistingKnowledge()" class="btn btn-primary form-control">Add Knowledge Skill</button>
+
+        <button class="btn btn-secondary" ng-click="openModal()">Create New</button>
+    </div>
+</form>
+
+
+
+
+<!-- Modal window to confirm delete-->
+<script type="text/ng-template" id="knowledge-skill-add-modal-template.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Knowledge Skill</h3>
+    </div>
+    <div class="modal-body">
+        <!--<form class="form-inline">-->
+            <!--<div class="form-group">-->
+                <!--<select ng-options="knowledgeSkill as buildName(knowledgeSkill) for knowledgeSkill in knowledgeSkills"-->
+                        <!--ng-model="selectedKnowledgeSkill"-->
+                        <!--class="form-control width-extra-small margin-bottom-small"-->
+                        <!--name="knowledge-skill-select"-->
+                        <!--id="knowledge-skill-select">-->
+                <!--</select>-->
+                <!--<button ng-click="addExistingKnowledge()" class="btn btn-primary form-control">Add</button>-->
+            <!--</div>-->
+        <!--</form>-->
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control"/>
+                <select ng-options="knowledgeCategory as knowledgeCategory for knowledgeCategory in knowledgeCategories"
+                        ng-model="selectedKnowledgeSkill"
+                        class="form-control width-extra-small margin-bottom-small"
+                        name="knowledge-category-select"
+                        id="knowledge-category-select">
+                </select>
+                <button ng-click="addNewKnowledge()" class="btn btn-primary form-control">Add</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <!--<button class="btn btn-primary" type="button" ng-click="ok()">Add</button>-->
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
