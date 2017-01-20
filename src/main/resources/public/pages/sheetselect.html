@@ -6,7 +6,10 @@
         <div class="panel-heading">Character Sheets</div>
         <div class="panel-body">
 
-            <div class="" ng-hide="sheets.length == 0">
+            <button class="btn btn-primary" ng-click="showOverlay('hello')">Show overlay</button>
+            <button class="btn btn-primary" ng-click="hideOverlay('hello')">Hide overlay</button>
+
+            <div class="" ng-hide="sheets.length == 0" bs-loading-overlay="hello">
                 <!-- header -->
                 <div class="row text-bold margin-bottom-small" style="margin-bottom:5px;">
                     <!--<div class="sheet-select-id-col">-->
@@ -34,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="row margin-bottom-small" ng-repeat="sheet in sheets">
+                <div class="row margin-bottom-small bs-loading-container" ng-repeat="sheet in sheets">
                     <!--<div class="sheet-select-id-col">-->
                         <!--<span>{{sheet.id}}</span>-->
                     <!--</div>-->

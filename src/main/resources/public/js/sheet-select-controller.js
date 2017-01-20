@@ -1,14 +1,29 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $location, $uibModal, $log) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, bsLoadingOverlayService, $timeout, $scope, $location, $uibModal, $log) {
 		$scope.message = '';
 
 		$scope.sheets = [];
 
+	$scope.showOverlay = function(referenceId) {
+		bsLoadingOverlayService.start({
+			referenceId: referenceId
+		});
+	};
+
+	$scope.hideOverlay = function(referenceId) {
+		bsLoadingOverlayService.stop({
+			referenceId: referenceId
+		});
+	}
+
         $scope.loadSheets = function() {
+//			bsLoadingOverlayService.start('hello');
             APIService.getSheets(function(response) {
                 $scope.sheets = response.data;
             });
+//			bsLoadingOverlayService.stop();
+//            $timeout(bsLoadingOverlayService.stop, 5000);
         };
         $scope.loadSheets();
 
