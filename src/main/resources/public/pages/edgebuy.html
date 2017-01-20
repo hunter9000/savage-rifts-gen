@@ -8,18 +8,21 @@
 			<div ng-show="edges">
                 <div ng-repeat="edge in edges">
                     {{edge}}
+					<button ng-click="purchaseEdge(edge)">Purchase</button>
                 </div>
 			</div>
 
             <div ng-show="attrs">
                 <div ng-repeat="attr in attrs">
                     {{attr}}
+					<button ng-click="purchaseAttr(attr)">Purchase</button>
                 </div>
             </div>
 
             <div ng-show="skills">
                 <div ng-repeat="skill in skills">
                     {{skill}}
+					<button ng-click="purchaseSkill(skill)">Purchase</button>
                 </div>
             </div>
 

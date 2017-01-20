@@ -22,6 +22,17 @@ savageRiftsApp.controller('edgeBuyController', function(APIService, $scope, $rou
         });
 	}
 
+	$scope.purchaseEdge = function(edge) {
+		APIService.purchaseEdge(edge);
+	}
+	$scope.purchaseSkill = function(skill) {
+		
+	}
+	$scope.purchaseAttr = function(attr) {
+		
+	}
+	
+	
 	$scope.back = function() {
 	    $location.path('/edgebuy/' + $routeParams.sheetId);
 	}
