@@ -7,7 +7,7 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 
         getStandardFailureCallback: function(response) {
             return function(response) {
-                $log.debug(response);
+                $log.error(response);
                 $location.path('/error');
             };
         },

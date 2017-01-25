@@ -88,14 +88,23 @@ savageRiftsApp.config(function($routeProvider) {
             controller : 'hindranceBuyController'
         })
 		
-		.when('/edgebuy/:sheetId', {
-			templateUrl: 'pages/edges.html',
-			controller : 'edgesController'
+		.when('/bonusbuy/:sheetId', {
+			templateUrl: 'pages/bonuses.html',
+			controller : 'bonusesController'
 		})
-		.when('/edgebuy/:sheetId/:purchaseType', {
-			templateUrl: 'pages/edgebuy.html',
-			controller : 'edgeBuyController'
+		.when('/bonusbuy/:sheetId/edge', {
+			templateUrl: 'pages/bonusedgebuy.html',
+			controller : 'bonusEdgeBuyController'
 		})
+		.when('/bonusbuy/:sheetId/attr', {
+			templateUrl: 'pages/bonusattrbuy.html',
+			controller : 'bonusAttrBuyController'
+		})
+		.when('/bonusbuy/:sheetId/skill', {
+			templateUrl: 'pages/bonusskillbuy.html',
+			controller : 'bonusSkillBuyController'
+		})
+
 		
         // generic error page
         .when('/error', {

@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('edgeBuyController', function(APIService, $scope, $routeParams, $location) {
+savageRiftsApp.controller('bonusSkillBuyController', function(APIService, $scope, $routeParams, $location) {
 	$scope.sheet = null;
 
     APIService.getSheet($routeParams.sheetId, function(response) {

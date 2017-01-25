@@ -35,12 +35,28 @@ import java.util.List;
 @RestController
 public class SheetController {
 	
+	@Autowired
+	private EdgeRepository edgeRepository;
+	
 	// gets all the options for the sheet's choices
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/", method = RequestMethod.GET)
 	public BonusesResponse getBonuses() {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		List<Edge> edges = edgeRepository.findAll();
+		
+		for (Edge edge : sheet.getChosenEdges()) {
+			edges.remove(edge);
+		}
 		// edges that aren't already bought, and are qualified for
 		// if you can take another money?
+		
+		BonusesResponse response = new BonusesResponse();
+		response.setEdges(edges);
+		response.setPointsRemaining(sheet.getEdgePoints());
+		
+		return responses;
 	}
 	
 	// finalizes edge buy step
