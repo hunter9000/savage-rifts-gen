@@ -1,5 +1,5 @@
 // create the module and name it scotchApp
-var savageRiftsApp = angular.module('savageRiftsApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial']);
+var savageRiftsApp = angular.module('savageRiftsApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial', 'angularSpinner']);
 
 // configure our routes
 savageRiftsApp.config(function($routeProvider) {
