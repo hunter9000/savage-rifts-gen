@@ -1,9 +1,11 @@
 // create the module and name it scotchApp
-var savageRiftsApp = angular.module('savageRiftsApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial', 'bsLoadingOverlay']);
+var savageRiftsApp = angular.module('savageRiftsApp', ['ngRoute', 'ui.bootstrap', 'checklist-model', 'ngMaterial', 'bsLoadingOverlay', 'bsLoadingOverlaySpinJs']);
 
 savageRiftsApp.run(function(bsLoadingOverlayService) {
 	bsLoadingOverlayService.setGlobalConfig({
-		templateUrl: 'pages/templates/loading-overlay-template.html'
+	    delay: 0,
+		//templateUrl: 'pages/templates/loading-overlay-template.html',
+		templateUrl: 'bsLoadingOverlaySpinJs',
 	});
 });
 

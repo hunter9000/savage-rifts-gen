@@ -4,12 +4,10 @@
 <div class="container width-small">
     <div class="panel panel-default">
         <div class="panel-heading">Character Sheets</div>
-        <div class="panel-body">
+        <div class="panel-body" bs-loading-overlay
+            style="position: relative;">
 
-            <button class="btn btn-primary" ng-click="showOverlay('hello')">Show overlay</button>
-            <button class="btn btn-primary" ng-click="hideOverlay('hello')">Hide overlay</button>
-
-            <div class="" ng-hide="sheets.length == 0" bs-loading-overlay="hello">
+            <div class="" ng-hide="sheets.length == 0">
                 <!-- header -->
                 <div class="row text-bold margin-bottom-small" style="margin-bottom:5px;">
                     <!--<div class="sheet-select-id-col">-->
@@ -72,6 +70,10 @@
 
         </div>
     </div>
+
+    <button class="btn btn-primary" ng-click="showOverlay()">Show overlay</button>
+    <button class="btn btn-primary" ng-click="hideOverlay()">Hide overlay</button>
+
 </div>
 
 

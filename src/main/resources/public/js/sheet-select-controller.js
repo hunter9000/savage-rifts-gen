@@ -1,4 +1,5 @@
-
+// http://bsalex.github.io/angular-loading-overlay/_site/#examples-spinjs
+// https://github.com/bsalex/angular-loading-overlay-spinjs
 
 	savageRiftsApp.controller('sheetSelectController', function(APIService, bsLoadingOverlayService, $timeout, $scope, $location, $uibModal, $log) {
 		$scope.message = '';
@@ -6,24 +7,30 @@
 		$scope.sheets = [];
 
 	$scope.showOverlay = function(referenceId) {
-		bsLoadingOverlayService.start({
+		bsLoadingOverlayService.start(/*{
 			referenceId: referenceId
-		});
+		}*/);
 	};
 
 	$scope.hideOverlay = function(referenceId) {
-		bsLoadingOverlayService.stop({
+		bsLoadingOverlayService.stop(/*{
 			referenceId: referenceId
-		});
+		}*/);
 	}
 
         $scope.loadSheets = function() {
 //			bsLoadingOverlayService.start('hello');
+//            $scope.showOverlay();
+            bsLoadingOverlayService.start();
             APIService.getSheets(function(response) {
                 $scope.sheets = response.data;
+
+                bsLoadingOverlayService.stop();
+//                $timeout(bsLoadingOverlayService.stop, 3000);
             });
 //			bsLoadingOverlayService.stop();
 //            $timeout(bsLoadingOverlayService.stop, 5000);
+
         };
         $scope.loadSheets();
 
