@@ -168,35 +168,35 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
         },
 
 		// bonuses
-		getBonusOptions: function() {
-			GET"/api/sheet/{sheetId}/bonuses/"
+		getBonusOptions: function(sheetId, successCallback) {
+			this.get('/api/sheet/'+sheetId+'/bonuses/', successCallback);
 		},
 		finalizeBonusPurchases: function() {
-			POST"/api/sheet/{sheetId}/bonuses/"
+//			POST"/api/sheet/{sheetId}/bonuses/"
 		},
 		purchaseEdge: function() {
-			"/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT
+//			"/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT
 		},
 		removeEdge: function() {
-			"/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)
+//			"/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)
 		},
 		purchaseAttributeRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/attributes/", method = RequestMethod.PUT
+//			"/api/sheet/{sheetId}/bonuses/attributes/", method = RequestMethod.PUT
 		},
 		removeAttributeRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/attributes/{attributeRaiseId}/", method = RequestMethod.DELETE
+//			"/api/sheet/{sheetId}/bonuses/attributes/{attributeRaiseId}/", method = RequestMethod.DELETE
 		},
 		purchaseSkillRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT
+//			"/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT
 		},
 		removeSkillRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE
+//			"/api//sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE
 		},
 		purchaseMoneyRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.PUT
+//			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.PUT
 		},
 		removeMoneyRaise: function() {
-			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE
+//			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE
 		},
 		
 		

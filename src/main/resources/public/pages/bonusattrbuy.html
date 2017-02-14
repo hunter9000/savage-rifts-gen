@@ -14,10 +14,19 @@
             <div ng-show="attrs">
                 <div ng-repeat="attr in attrs">
                     {{attr}}
+					
 					<button ng-click="purchaseAttr(attr)">Purchase</button>
                 </div>
             </div>
 
+			<ul class="list-group">
+                <li class="list-group-item">
+                    <attribute-buy attribute="STRENGTH" value="attrs.attributes.STRENGTH" canincrease="true" inc="purchase" >
+                        Strength
+                    </attribute-buy>
+                </li>
+			</ul>
+			
             <!-- <div ng-show="skills"> -->
                 <!-- <div ng-repeat="skill in skills"> -->
                     <!-- {{skill}} -->

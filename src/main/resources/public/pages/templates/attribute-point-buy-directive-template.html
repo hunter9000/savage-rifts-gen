@@ -1,5 +1,5 @@
 <div class="point-buy-button-col point-buy-dec-col">
-    <button class="btn btn-default text-small" ng-click='dec()(attribute)' ng-disabled="!candecrease"> <span class="glyphicon glyphicon-minus"/> </button>
+    <button class="btn btn-default text-small" ng-click='dec()(attribute)' ng-disabled="!candecrease" ng-show="candecrease !== null"> <span class="glyphicon glyphicon-minus"/> </button>
 </div>
 
 <div class="point-buy-attribute-col">
@@ -10,5 +10,5 @@
 </div>
 
 <div class="point-buy-button-col point-buy-inc-col">
-    <button class="btn btn-default text-small" ng-click='inc()(attribute)' ng-disabled="!canincrease"> <span class="glyphicon glyphicon-plus"/>  </button>
+    <button class="btn btn-default text-small" ng-click='inc()(attribute)' ng-disabled="!canincrease" ng-show="canincrease !== null"> <span class="glyphicon glyphicon-plus"/>  </button>
 </div>

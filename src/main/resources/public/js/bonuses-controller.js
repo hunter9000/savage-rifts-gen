@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('bonusesController', function($scope, $http, $window, $routeParams, $location) {
+savageRiftsApp.controller('bonusesController', function(APIService, $scope, $http, $window, $routeParams, $location) {
 	$scope.sheet = null;
 
     APIService.getSheet($routeParams.sheetId, function(response) {

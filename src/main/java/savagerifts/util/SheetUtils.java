@@ -246,10 +246,16 @@ public class SheetUtils {
 
 		// get the max and min from the framework/race
 		for (AttributeType type : AttributeType.values()) {
-			// can increase if the current is less than the max and there are points left
-			attrs.canIncrease.put(type, attrs.attributes.get(type).compareTo(getMaxAttribute(sheet, type)) < 0 && attrs.remainingAttrPoints > 0);
+			boolean canIncrease = true;
+			boolean canDecrease = false;
+			if (sheet.getCreationStep() == SheetCreationStep.ATTRIBUTES) {
+				// during character creation, can increase if the current is less than the max and there are points left
+				canIncrease = attrs.attributes.get(type).compareTo(getMaxAttribute(sheet, type)) < 0 && attrs.remainingAttrPoints > 0;
+				canDecrease = attrs.attributes.get(type).compareTo(getMinAttribute(sheet, type)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet);
+			}
+			attrs.canIncrease.put(type, canIncrease);
 			// can decrease if current is above min, and current points are less than the max starting number
-			attrs.canDecrease.put(type, attrs.attributes.get(type).compareTo(getMinAttribute(sheet, type)) > 0 && attrs.remainingAttrPoints < getMaxAttributePoints(sheet));
+			attrs.canDecrease.put(type, canDecrease);
 		}
 
 		// get race, set can increase to compareto(race.max)			???
