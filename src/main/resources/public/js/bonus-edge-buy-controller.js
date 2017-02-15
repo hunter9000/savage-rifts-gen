@@ -1,15 +1,15 @@
 
 savageRiftsApp.controller('bonusEdgeBuyController', function(APIService, $scope, $routeParams, $location) {
 	$scope.sheet = null;
-	$scope.bonusOptions = null;
+	$scope.edgeOptions = null;		// array of Edge
 
     APIService.getSheet($routeParams.sheetId, function(response) {
         $scope.sheet = response.data;
     });
 
 	// if ($routeParams.purchaseType == 'edge') {
-	    APIService.getBonusOptions(function(response) {
-            $scope.bonusOptions = response.data;
+	    APIService.getEdgeOptions(function(response) {
+            $scope.edgeOptions = response.data;
         });
 	// }
 	// else if ($routeParams.purchaseType == 'attr') {

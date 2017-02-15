@@ -28,32 +28,39 @@ public class SheetBonusesController {
 	@Autowired
 	private HttpServletRequest request;
 	
-	// gets all the options for the sheet's choices
-	@SheetOwner
-	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/", method = RequestMethod.GET)
-	public BonusesResponse getBonuses() {
-		Sheet sheet = AuthUtils.getSheet(request);
-		
-		Iterable<Edge> edges = edgeRepository.findAll();
-		
-		for (EdgeSelection edge : sheet.getChosenEdges()) {
-//			edges.remove(edge);
-		}
-		// edges that aren't already bought, and are qualified for
-		// if you can take another money?
-		
-		BonusesResponse response = new BonusesResponse();
-		response.setEdges(edges);
-		response.setPointsRemaining(sheet.getRemainingHindrancePoints());
-		
-		return response;
-	}
-	
 	// finalizes edge buy step
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/", method = RequestMethod.POST)
 	public ResponseEntity<?> finalizeBonusesPurchases() {
 		return null;
+	}
+	
+	// gets all the edge options that aren't already bought, and are qualified for by the sheet
+	@SheetOwner
+	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/", method = RequestMethod.GET)
+	public Iterable<Edge> getEdgeBonusChoices() {
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		Iterable<Edge> edges = edgeRepository.findAll();
+		
+		for (EdgeSelection edge : sheet.getChosenEdges()) {
+			edges.remove(edge.getEdge());
+		}
+		
+		// loop through each edge, determine if sheet qualifies for it
+		Iterable<Edge> qualifiedEdges = new ArrayList<>();
+		for (Edge edge : edges) {
+			if (SheetUtils.sheetQualifiesForEdge(sheet, edge)) {
+				qualifiedEdges.add(edge);
+			}
+		}
+		
+		// BonusesResponse response = new BonusesResponse();
+		// response.setEdges(edges);
+		// response.setPointsRemaining(sheet.getRemainingHindrancePoints());
+		
+		// return response;
+		return qualifiedEdges;
 	}
 	
 	@SheetOwner
@@ -77,7 +84,23 @@ public class SheetBonusesController {
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeEdgeRaise(@PathVariable Long edgeRaiseId) {
-		return null;
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		EdgeSelection edgeSelection = null;
+		for (EdgeSelection edge : sheet.getChosenEdges()) {
+			if (edge.getId().equals(edgeRaiseId)) {
+				edgeSelection = edge;
+				break;
+			}
+		}
+		if (edgeSelection == null) {
+			throw new BadRequestException();
+		}
+		
+		sheet.getChosenEdges().remove(edgeSelection);
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@SheetOwner
@@ -100,7 +123,23 @@ public class SheetBonusesController {
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/attributes/{attributeRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeAttributeRaise(@PathVariable Long attributeRaiseId) {
-		return null;
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		AttributeRaiseSelection attrSelection = null;
+		for (AttributeRaiseSelection attr : sheet.getChosenAttributeRaises()) {
+			if (attr.getId().equals(attributeRaiseId)) {
+				attrSelection = attr;
+				break;
+			}
+		}
+		if (attrSelection == null) {
+			throw new BadRequestException();
+		}
+		
+		sheet.getChosenAttributeRaises().remove(attrSelection);
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@SheetOwner
@@ -123,7 +162,23 @@ public class SheetBonusesController {
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeSkillRaise(@PathVariable Long skillRaiseId) {
-		return null;
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		SkillRaiseSelection skillSelection = null;
+		for (SkillRaiseSelection skill : sheet.getChosenSkillRaises()) {
+			if (skill.getId().equals(skillRaiseId)) {
+				skillSelection = skill;
+				break;
+			}
+		}
+		if (skillSelection == null) {
+			throw new BadRequestException();
+		}
+		
+		sheet.getChosenSkillRaises().remove(skillSelection);
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@SheetOwner
@@ -146,7 +201,18 @@ public class SheetBonusesController {
 	@SheetOwner
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeMoneyRaise() {
-		return null;
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		if (!sheet.getChosenSkillRaises().isEmpty() ) {
+			sheet.getChosenSkillRaises().removeAt(0);
+		}
+		else {
+			throw new BadRequestException();
+		}
+		
+		sheetRepository.save(sheet);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 }

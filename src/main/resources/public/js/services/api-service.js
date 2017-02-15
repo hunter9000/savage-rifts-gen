@@ -168,8 +168,8 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
         },
 
 		// bonuses
-		getBonusOptions: function(sheetId, successCallback) {
-			this.get('/api/sheet/'+sheetId+'/bonuses/', successCallback);
+		getEdgeOptions: function(sheetId, successCallback) {
+			this.get('/api/sheet/'+sheetId+'/bonuses/edges/', successCallback);
 		},
 		finalizeBonusPurchases: function() {
 //			POST"/api/sheet/{sheetId}/bonuses/"

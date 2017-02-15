@@ -478,4 +478,35 @@ public class SheetUtils {
 		return true;
 	}
 	
+	public static boolean sheetQualifiesForEdge(Sheet sheet, Edge edge) {
+		// check edge's framework prereq
+		for (Framework framework : sheet.getRequiredFrameworks()) {
+			if (!framework.equals(sheet.getFramework())) {
+				return false;
+			}
+		}
+		
+		// check edge's attr prereqs
+		boolean attrsMet = sheet.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND;
+		for (EdgeAttributePrerequisite prereq : sheet.getAttributePrereqs() ) {
+			if (sheet.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND) {
+				attrsMet &= meetsAttrReq(prereq);
+			}
+			else {
+				attrsMet |= meetsAttrReq(prereq);
+			}
+		}
+		if (!attrsMet) {
+			return false;
+		}
+		
+		// check edge's skill prereqs
+		List<EdgeSkillPrerequisite> skillPrereqs;
+		PrerequisiteLogicType skillPrerequisiteLogicType;
+		
+		// check edge's edge prereqs
+		PrerequisiteLogicType edgePrerequisiteLogicType;
+		List<Edge> prerequisiteEdges;
+	}
+	
 }
