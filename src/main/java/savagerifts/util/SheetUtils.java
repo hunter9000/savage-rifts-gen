@@ -2,6 +2,9 @@ package savagerifts.util;
 
 import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
+import savagerifts.model.edge.EdgeAttributePrerequisite;
+import savagerifts.model.edge.EdgeSkillPrerequisite;
+import savagerifts.model.edge.PrerequisiteLogicType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.hindrance.HindranceSelection;
@@ -35,6 +38,12 @@ public class SheetUtils {
 
 	private static final int NUM_MAJOR_HINDRANCES = 1;
 	private static final int NUM_MINOR_HINDRANCES = 2;
+
+	public static final int EDGE_RAISE_COST = 2;
+	public static final int ATTR_RAISE_COST = 2;
+	public static final int SKILL_RAISE_COST = 1;
+	public static final int MONEY_RAISE_COST = 1;
+
 
 	public static Sheet createSheet(User owner, NewSheetRequest sheetRequest, Framework framework) {
 		Sheet sheet = new Sheet();

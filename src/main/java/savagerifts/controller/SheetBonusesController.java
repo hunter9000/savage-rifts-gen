@@ -11,10 +11,12 @@ import savagerifts.repository.EdgeRepository;
 import savagerifts.repository.SheetRepository;
 import savagerifts.request.AttributeBuyRequest;
 import savagerifts.request.SkillBuyRequest;
-import savagerifts.response.BonusesResponse;
+import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
+import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 @RestController
 public class SheetBonusesController {
@@ -40,7 +42,12 @@ public class SheetBonusesController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/", method = RequestMethod.GET)
 	public Iterable<Edge> getEdgeBonusChoices() {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
+		// validate sheet is in edge buy step
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+			throw new BadRequestException();
+		}
+
 		Iterable<Edge> edges = edgeRepository.findAll();
 		
 		for (EdgeSelection edge : sheet.getChosenEdges()) {
@@ -67,11 +74,26 @@ public class SheetBonusesController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseEdge(@PathVariable Long edgeId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
 		// validate sheet is in edge buy step
-		// validate the given edge
-		edgeRepository.findOne(edgeId);
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+			throw new BadRequestException();
+		}
+
+		// validate the given edge exists
+		Edge edge = edgeRepository.findOne(edgeId);
+		if (edge == null) {
+			throw new BadRequestException("The given edge doesn't exist.");
+		}
 		// validate sheet doesn't already own this edge, and can afford
+		for (EdgeSelection edgeSelection : sheet.getChosenEdges()) {
+			if (edgeSelection.getEdge().equals(edge)) {
+				throw new BadRequestException("This sheet already has the given edge.");
+			}
+		}
+		if (!SheetUtils.sheetQualifiesForEdge(sheet, edge)) {
+			throw new BadRequestException("This sheet does not qualify for the given edge");
+		}
 		
 		EdgeSelection edgeSelection = new EdgeSelection();
 		sheet.getChosenEdges().add(edgeSelection);
@@ -146,8 +168,12 @@ public class SheetBonusesController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseSkillRaise(@RequestBody SkillBuyRequest skillBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
 		// validate sheet is in edge buy step
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+			throw new BadRequestException();
+		}
+
 		// validate the given request
 		// validate sheet can afford
 		
@@ -163,7 +189,12 @@ public class SheetBonusesController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeSkillRaise(@PathVariable Long skillRaiseId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
+		// validate sheet is in edge buy step
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+			throw new BadRequestException();
+		}
+
 		SkillRaiseSelection skillSelection = null;
 		for (SkillRaiseSelection skill : sheet.getChosenSkillRaises()) {
 			if (skill.getId().equals(skillRaiseId)) {
@@ -187,10 +218,18 @@ public class SheetBonusesController {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		// validate sheet is in edge buy step
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+			throw new BadRequestException();
+		}
 		// validate sheet can afford
+		if (sheet.getRemainingHindrancePoints() < SheetUtils.MONEY_RAISE_COST) {
+			throw new BadRequestException();
+		}
 		
 		MoneyRaiseSelection moneyRaiseSelection = new MoneyRaiseSelection();
 		sheet.getChosenMoneyRaises().add(moneyRaiseSelection);
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - SheetUtils.MONEY_RAISE_COST);
 		
 		sheetRepository.save(sheet);
 		
@@ -202,14 +241,19 @@ public class SheetBonusesController {
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeMoneyRaise() {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
-		if (!sheet.getChosenSkillRaises().isEmpty() ) {
-			sheet.getChosenSkillRaises().removeAt(0);
-		}
-		else {
+
+		// validate sheet is in edge buy step
+		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
 			throw new BadRequestException();
 		}
-		
+
+		if (sheet.getChosenSkillRaises().isEmpty()) {
+			throw new BadRequestException();
+		}
+
+		sheet.getChosenSkillRaises().remove(0);
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() + SheetUtils.MONEY_RAISE_COST);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
