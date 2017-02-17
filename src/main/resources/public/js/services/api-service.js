@@ -2,7 +2,11 @@
 savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
     return {
         getHeaders: function() {
-            return { headers: {'x-access-token': $window.localStorage['jwtToken']} };
+            return {
+                headers: {'x-access-token': $window.localStorage['jwtToken'],
+                          'X-Requested-With': 'XMLHttpRequest'
+                }
+            };
         },
 
         getStandardFailureCallback: function(response) {

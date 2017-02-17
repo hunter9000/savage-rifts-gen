@@ -9,7 +9,7 @@ spring.datasource.url=jdbc:mysql://127.0.0.1/savage_rifts
 spring.datasource.username=<user>
 spring.datasource.password=<password>
 
-security.key=<encryptionkey>
+encryptionkey=<encryptionkey>
 ```
 5. Install maven
 6. Install bower through npm

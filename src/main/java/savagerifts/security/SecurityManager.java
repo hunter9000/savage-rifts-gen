@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityManager {
 
-    @Value("${security.key}")
+    @Value("${encryptionkey}")
     private String securityKey;
 
     public SecurityManager() {

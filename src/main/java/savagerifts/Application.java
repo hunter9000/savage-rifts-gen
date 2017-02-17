@@ -1,11 +1,11 @@
 package savagerifts;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -22,7 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableJpaRepositories(basePackages = "savagerifts.repository")
 @EntityScan(basePackages = "savagerifts")
 @SpringBootApplication
-@EnableWebSecurity
+//@EnableWebSecurity
 @EnableSwagger2
 public class Application extends WebMvcConfigurerAdapter {
 
@@ -30,6 +30,29 @@ public class Application extends WebMvcConfigurerAdapter {
         SpringApplication.run(Application.class, args);
     }
 
+	@Value("${spring.datasource.driverClassName}")
+	private String databaseDriverClassName;
+	 
+	@Value("${spring.datasource.url}")
+	private String datasourceUrl;
+	 
+	@Value("${spring.datasource.username}")
+	private String databaseUsername;
+	 
+	@Value("${spring.datasource.password}")
+	private String databasePassword;
+	
+	/** Datasource used by spring security */
+	@Bean
+	public org.apache.tomcat.jdbc.pool.DataSource datasource() {
+		org.apache.tomcat.jdbc.pool.DataSource ds = new org.apache.tomcat.jdbc.pool.DataSource();
+		ds.setDriverClassName(databaseDriverClassName);
+		ds.setUrl(datasourceUrl);
+		ds.setUsername(databaseUsername);
+		ds.setPassword(databasePassword);
+		return ds;
+	}
+	
     @Bean
     public JWTInterceptor JWTInterceptor() { return new JWTInterceptor(); }
 
