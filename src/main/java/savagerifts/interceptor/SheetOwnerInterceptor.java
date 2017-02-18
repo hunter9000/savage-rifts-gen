@@ -10,6 +10,7 @@ import savagerifts.model.sheet.Sheet;
 import savagerifts.model.user.User;
 import savagerifts.repository.SheetRepository;
 import savagerifts.security.BadRequestException;
+import savagerifts.security.ForbiddenAccessException;
 import savagerifts.util.AuthUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,7 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
 
         User user = AuthUtils.getLoggedInUser(request);
         if (!sheet.getOwner().equals(user)) {
-            throw new BadRequestException();
+            throw new ForbiddenAccessException();
         }
 
         request.setAttribute(AuthUtils.SHEET, sheet);
