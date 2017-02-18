@@ -75,8 +75,7 @@ public class Edge {
 	// scholar/professional/expert/master has req that depends on what you choose for the edge
 	
 	// wild card edges can't be chosen, they happen when dealt a joker
-	
-	
+
 	// professional edges have non-stacking elements
 
 	public Long getId() {
@@ -84,6 +83,27 @@ public class Edge {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public EdgeType getEdgeType() {
+		return edgeType;
+	}
+	public void setEdgeType(EdgeType edgeType) {
+		this.edgeType = edgeType;
+	}
+
+	public EdgeCategoryType getEdgeCategoryType() {
+		return edgeCategoryType;
+	}
+	public void setEdgeCategoryType(EdgeCategoryType edgeCategoryType) {
+		this.edgeCategoryType = edgeCategoryType;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public XPRank getRequiredLevel() {
@@ -100,28 +120,40 @@ public class Edge {
 		this.requiredFrameworks = requiredFrameworks;
 	}
 
-//	public Roll getRequiredAttribute() {
-//		return requiredAttribute;
-//	}
-//	public void setRequiredAttribute(Roll requiredAttribute) {
-//		this.requiredAttribute = requiredAttribute;
-//	}
+	public List<EdgeAttributePrerequisite> getAttributePrereqs() {
+		return attributePrereqs;
+	}
+	public void setAttributePrereqs(List<EdgeAttributePrerequisite> attributePrereqs) {
+		this.attributePrereqs = attributePrereqs;
+	}
 
-//	public SkillType getRequiredSkill() {
-//		return requiredSkill;
-//	}
-//
-//	public void setRequiredSkill(SkillType requiredSkill) {
-//		this.requiredSkill = requiredSkill;
-//	}
-//
-//	public DieType getRequiredSkillDie() {
-//		return requiredSkillDie;
-//	}
-//
-//	public void setRequiredSkillDie(DieType requiredSkillDie) {
-//		this.requiredSkillDie = requiredSkillDie;
-//	}
+	public List<EdgeSkillPrerequisite> getSkillPrereqs() {
+		return skillPrereqs;
+	}
+	public void setSkillPrereqs(List<EdgeSkillPrerequisite> skillPrereqs) {
+		this.skillPrereqs = skillPrereqs;
+	}
+
+	public PrerequisiteLogicType getAttributePrerequisiteLogicType() {
+		return attributePrerequisiteLogicType;
+	}
+	public void setAttributePrerequisiteLogicType(PrerequisiteLogicType attributePrerequisiteLogicType) {
+		this.attributePrerequisiteLogicType = attributePrerequisiteLogicType;
+	}
+
+	public PrerequisiteLogicType getSkillPrerequisiteLogicType() {
+		return skillPrerequisiteLogicType;
+	}
+	public void setSkillPrerequisiteLogicType(PrerequisiteLogicType skillPrerequisiteLogicType) {
+		this.skillPrerequisiteLogicType = skillPrerequisiteLogicType;
+	}
+
+	public PrerequisiteLogicType getEdgePrerequisiteLogicType() {
+		return edgePrerequisiteLogicType;
+	}
+	public void setEdgePrerequisiteLogicType(PrerequisiteLogicType edgePrerequisiteLogicType) {
+		this.edgePrerequisiteLogicType = edgePrerequisiteLogicType;
+	}
 
 	public List<Edge> getPrerequisiteEdges() {
 		return prerequisiteEdges;
@@ -129,7 +161,6 @@ public class Edge {
 	public void setPrerequisiteEdges(List<Edge> prerequisiteEdges) {
 		this.prerequisiteEdges = prerequisiteEdges;
 	}
-
 
 	//	// combat cyborg
 //	//Bionic Augmentation, 		// built in to starting stats

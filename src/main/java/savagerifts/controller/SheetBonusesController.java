@@ -12,9 +12,13 @@ import savagerifts.repository.SheetRepository;
 import savagerifts.request.AttributeBuyRequest;
 import savagerifts.request.SkillBuyRequest;
 import savagerifts.response.BonusesResponse;
+import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
+import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class SheetBonusesController {
@@ -41,14 +45,15 @@ public class SheetBonusesController {
 	public Iterable<Edge> getEdgeBonusChoices() {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
-		Iterable<Edge> edges = edgeRepository.findAll();
-		
-		for (EdgeSelection edge : sheet.getChosenEdges()) {
-			edges.remove(edge.getEdge());
+		List<Edge> edges = new ArrayList<>();
+		for (Edge edge : edgeRepository.findAll()) {
+			if (!sheet.getChosenEdges().contains(edge)) {
+				edges.add(edge);
+			}
 		}
-		
+
 		// loop through each edge, determine if sheet qualifies for it
-		Iterable<Edge> qualifiedEdges = new ArrayList<>();
+		List<Edge> qualifiedEdges = new ArrayList<>();
 		for (Edge edge : edges) {
 			if (SheetUtils.sheetQualifiesForEdge(sheet, edge)) {
 				qualifiedEdges.add(edge);
@@ -204,7 +209,7 @@ public class SheetBonusesController {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		if (!sheet.getChosenSkillRaises().isEmpty() ) {
-			sheet.getChosenSkillRaises().removeAt(0);
+			sheet.getChosenSkillRaises().remove(0);
 		}
 		else {
 			throw new BadRequestException();

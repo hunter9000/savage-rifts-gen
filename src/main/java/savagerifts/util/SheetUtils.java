@@ -2,6 +2,10 @@ package savagerifts.util;
 
 import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
+import savagerifts.model.edge.Edge;
+import savagerifts.model.edge.EdgeAttributePrerequisite;
+import savagerifts.model.edge.EdgeSkillPrerequisite;
+import savagerifts.model.edge.PrerequisiteLogicType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.hindrance.HindranceSelection;
@@ -479,17 +483,19 @@ public class SheetUtils {
 	}
 	
 	public static boolean sheetQualifiesForEdge(Sheet sheet, Edge edge) {
+		// check required level, if not character creation
+
 		// check edge's framework prereq
-		for (Framework framework : sheet.getRequiredFrameworks()) {
+		for (Framework framework : edge.getRequiredFrameworks()) {
 			if (!framework.equals(sheet.getFramework())) {
 				return false;
 			}
 		}
 		
 		// check edge's attr prereqs
-		boolean attrsMet = sheet.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND;
-		for (EdgeAttributePrerequisite prereq : sheet.getAttributePrereqs() ) {
-			if (sheet.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND) {
+		boolean attrsMet = edge.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND;
+		for (EdgeAttributePrerequisite prereq : edge.getAttributePrereqs() ) {
+			if (edge.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND) {
 				attrsMet &= meetsAttrReq(prereq);
 			}
 			else {
