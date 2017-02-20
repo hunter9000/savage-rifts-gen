@@ -522,6 +522,12 @@ public class SheetUtils {
 		// check edge's edge prereqs
 		PrerequisiteLogicType edgePrerequisiteLogicType;
 		List<Edge> prerequisiteEdges;
+
+		return true;
 	}
-	
+
+	private boolean meetsAttrReq(prereq) {
+
+    }
+
 }
