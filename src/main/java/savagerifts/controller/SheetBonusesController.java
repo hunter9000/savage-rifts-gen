@@ -13,6 +13,7 @@ import savagerifts.request.AttributeBuyRequest;
 import savagerifts.request.SkillBuyRequest;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
+import savagerifts.util.SheetEdgePurchaseManager;
 import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +60,7 @@ public class SheetBonusesController {
 		// loop through each edge, determine if sheet qualifies for it
 		List<Edge> qualifiedEdges = new ArrayList<>();
 		for (Edge edge : edges) {
-			if (SheetUtils.sheetQualifiesForEdge(sheet, edge)) {
+			if (SheetEdgePurchaseManager.sheetQualifiesForEdge(sheet, edge)) {
 				qualifiedEdges.add(edge);
 			}
 		}
@@ -93,7 +94,7 @@ public class SheetBonusesController {
 				throw new BadRequestException("This sheet already has the given edge.");
 			}
 		}
-		if (!SheetUtils.sheetQualifiesForEdge(sheet, edge)) {
+		if (!SheetEdgePurchaseManager.sheetQualifiesForEdge(sheet, edge)) {
 			throw new BadRequestException("This sheet does not qualify for the given edge");
 		}
 

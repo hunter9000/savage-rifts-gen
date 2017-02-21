@@ -1,6 +1,7 @@
 package savagerifts.model.edge;
 
 import savagerifts.model.DieType;
+import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillType;
 
 import javax.persistence.*;
@@ -21,7 +22,11 @@ public class EdgeSkillPrerequisite {
 	@Column(name = "skillType", nullable = false, updatable = false)
 	@Enumerated(EnumType.STRING)
 	private SkillType skillType;
-	
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "skillKnowledge")
+	private SkillKnowledge skillKnowledge;
+
 	@Column(name = "dieType", nullable = false, updatable = false)
 	@Enumerated(EnumType.STRING)
 	private DieType dieType;
@@ -45,6 +50,13 @@ public class EdgeSkillPrerequisite {
 	}
 	public void setSkillType(SkillType skillType) {
 		this.skillType = skillType;
+	}
+
+	public SkillKnowledge getSkillKnowledge() {
+		return skillKnowledge;
+	}
+	public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
+		this.skillKnowledge = skillKnowledge;
 	}
 
 	public DieType getDieType() {

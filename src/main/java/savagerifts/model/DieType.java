@@ -32,6 +32,10 @@ public enum DieType {
 		return this;
 	}
 
+	public boolean isLessThanOrEqualTo(DieType other) {
+		return this.ordinal() <= other.ordinal();
+	}
+	
 	DieType(int pips, String displayName) {
 		this.pips = pips;
 		this.displayName = displayName;

@@ -60,4 +60,19 @@ public class SkillKnowledge {
         }
         return this.name.equals(((SkillKnowledge)obj).name);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        if (id != null) {
+            hash += id.hashCode();
+        }
+        if (name != null) {
+            hash += name.hashCode();
+        }
+        if (knowledgeCategory != null) {
+            hash += knowledgeCategory.hashCode();
+        }
+        return hash;
+    }
 }

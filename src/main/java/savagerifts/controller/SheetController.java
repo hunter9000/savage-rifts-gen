@@ -2,31 +2,26 @@ package savagerifts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
-import savagerifts.model.DieType;
-import savagerifts.model.benefittable.BenefitTable;
-import savagerifts.model.benefittable.BenefitTableRoll;
-import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.Hindrance;
-import savagerifts.model.perk.Perk;
-import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.user.User;
 import savagerifts.repository.*;
-import savagerifts.request.*;
+import savagerifts.request.AttributeBuyRequest;
+import savagerifts.request.HindranceBuyRequest;
+import savagerifts.request.NewSheetRequest;
+import savagerifts.request.SkillBuyRequest;
 import savagerifts.response.AttributeBuyResponse;
 import savagerifts.response.HindranceBuyResponse;
-import savagerifts.response.PerkSelectionResponse;
 import savagerifts.response.SkillBuyResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
-import savagerifts.util.RandomUtils;
+import savagerifts.util.SheetAttributeUtils;
 import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -122,7 +117,7 @@ public class SheetController {
 		}
 		
 		sheet.setRace(race);
-		SheetUtils.recalculateAttributes(sheet);
+		SheetAttributeUtils.recalculateAttributes(sheet);
 		SheetUtils.moveToNextCreationStep(sheet);
 
 		sheetRepository.save(sheet);
@@ -136,7 +131,7 @@ public class SheetController {
 	public AttributeBuyResponse getAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
+		AttributeBuyResponse attributes = SheetAttributeUtils.calculateAttributePurchases(sheet);
 
 		return attributes;
 	}
@@ -148,14 +143,14 @@ public class SheetController {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// make the change, returns false if the change isn't valid
-		if (!SheetUtils.validateAndMakeAttributeChange(sheet, pointBuyRequest)) {
+		if (!SheetAttributeUtils.validateAndMakeAttributeChange(sheet, pointBuyRequest)) {
 			throw new BadRequestException();
 		}
 
 		sheetRepository.save(sheet);
 
 		// recreate the attributes after the change
-		AttributeBuyResponse attributes = SheetUtils.calculateAttributePurchases(sheet);
+		AttributeBuyResponse attributes = SheetAttributeUtils.calculateAttributePurchases(sheet);
 
 		return attributes;
 	}
