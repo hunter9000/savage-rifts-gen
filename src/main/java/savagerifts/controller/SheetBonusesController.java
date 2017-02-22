@@ -33,22 +33,22 @@ public class SheetBonusesController {
 	private HttpServletRequest request;
 	
 	// finalizes edge buy step
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/", method = RequestMethod.POST)
 	public ResponseEntity<?> finalizeBonusesPurchases() {
 		return null;
 	}
 	
 	// gets all the edge options that aren't already bought, and are qualified for by the sheet
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/", method = RequestMethod.GET)
 	public Iterable<Edge> getEdgeBonusChoices() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
+//		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+//			throw new BadRequestException();
+//		}
 
         List<Edge> edges = new ArrayList<>();
         for (Edge edge : edgeRepository.findAll()) {
@@ -59,29 +59,25 @@ public class SheetBonusesController {
 
 		// loop through each edge, determine if sheet qualifies for it
 		List<Edge> qualifiedEdges = new ArrayList<>();
+        SheetEdgePurchaseManager edgeManager = new SheetEdgePurchaseManager(sheet);
 		for (Edge edge : edges) {
-			if (SheetEdgePurchaseManager.sheetQualifiesForEdge(sheet, edge)) {
+			if (edgeManager.sheetQualifiesForEdge(edge, true)) {
 				qualifiedEdges.add(edge);
 			}
 		}
-		
-		// BonusesResponse response = new BonusesResponse();
-		// response.setEdges(edges);
-		// response.setPointsRemaining(sheet.getRemainingHindrancePoints());
-		
-		// return response;
+
 		return qualifiedEdges;
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseEdge(@PathVariable Long edgeId) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
+//		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
+//			throw new BadRequestException();
+//		}
 
 		// validate the given edge exists
 		Edge edge = edgeRepository.findOne(edgeId);
@@ -94,11 +90,14 @@ public class SheetBonusesController {
 				throw new BadRequestException("This sheet already has the given edge.");
 			}
 		}
-		if (!SheetEdgePurchaseManager.sheetQualifiesForEdge(sheet, edge)) {
+
+		if (!new SheetEdgePurchaseManager(sheet).sheetQualifiesForEdge(edge, true)) {
 			throw new BadRequestException("This sheet does not qualify for the given edge");
 		}
 
 		EdgeSelection edgeSelection = new EdgeSelection();
+		edgeSelection.setEdge(edge);
+		edgeSelection.setSheet(sheet);
 		sheet.getChosenEdges().add(edgeSelection);
 		
 		sheetRepository.save(sheet);
@@ -106,7 +105,7 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeEdgeRaise(@PathVariable Long edgeRaiseId) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -128,12 +127,11 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/attributes/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseAttributeRaise(@RequestBody AttributeBuyRequest attributeBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
-		// validate sheet is in edge buy step
+
 		// validate the given request
 		// validate sheet can afford
 		
@@ -145,7 +143,7 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/attributes/{attributeRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeAttributeRaise(@PathVariable Long attributeRaiseId) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -167,15 +165,10 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseSkillRaise(@RequestBody SkillBuyRequest skillBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
-
-		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
 
 		// validate the given request
 		// validate sheet can afford
@@ -188,15 +181,10 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeSkillRaise(@PathVariable Long skillRaiseId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-
-		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
 
 		SkillRaiseSelection skillSelection = null;
 		for (SkillRaiseSelection skill : sheet.getChosenSkillRaises()) {
@@ -215,15 +203,11 @@ public class SheetBonusesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseMoneyRaise() {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
-		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
 		// validate sheet can afford
 		if (sheet.getRemainingHindrancePoints() < SheetUtils.MONEY_RAISE_COST) {
 			throw new BadRequestException();
@@ -240,15 +224,10 @@ public class SheetBonusesController {
 	}
 	
 	// removes one money raise from the sheet. which one doesn't matter, they're the same
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeMoneyRaise() {
 		Sheet sheet = AuthUtils.getSheet(request);
-
-		// validate sheet is in edge buy step
-		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-			throw new BadRequestException();
-		}
 
 		if (sheet.getChosenSkillRaises().isEmpty()) {
 			throw new BadRequestException();

@@ -1,5 +1,6 @@
 package savagerifts.model.edge;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.sheet.XPRank;
 
@@ -162,6 +163,28 @@ public class Edge {
 		this.prerequisiteEdges = prerequisiteEdges;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Edge other = (Edge)obj;
+		
+		return new EqualsBuilder()
+                 .append(getEdgeType(), other.getEdgeType())
+				 .isEquals();
+		
+		// boolean equal = true;
+		// equal &= Objects.equals(this.id, other.id);
+		
+		// return equal;
+	}
+	
+	@Override 
+	public int hashCode() {
+		if (getEdgeType() != null) {
+			return getEdgeType().hashCode();
+		}
+		return 0;
+	}
+	
 	//	// combat cyborg
 //	//Bionic Augmentation, 		// built in to starting stats
 //	Cybernetic Enhancements,

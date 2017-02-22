@@ -2,7 +2,6 @@ package savagerifts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
@@ -10,20 +9,15 @@ import savagerifts.model.DieType;
 import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.benefittable.PerkRange;
-import savagerifts.model.framework.Framework;
-import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.perk.Perk;
 import savagerifts.model.perk.PerkSelection;
-import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
-import savagerifts.model.user.User;
-import savagerifts.repository.*;
-import savagerifts.request.*;
-import savagerifts.response.AttributeBuyResponse;
-import savagerifts.response.HindranceBuyResponse;
+import savagerifts.repository.BenefitTableRepository;
+import savagerifts.repository.PerkRepository;
+import savagerifts.repository.SheetRepository;
+import savagerifts.request.PerkSwapRequest;
 import savagerifts.response.PerkSelectionResponse;
-import savagerifts.response.SkillBuyResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.RandomUtils;
@@ -50,7 +44,7 @@ public class SheetBenefitTableController {
 	/**
 	 * Get the sheet's available table rolls, as array of tablerolls with arrays of tables
 	 */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/", method = RequestMethod.GET)
 	public List<BenefitTableRoll> getAvailableTableRolls(@PathVariable long sheetId) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -69,7 +63,7 @@ public class SheetBenefitTableController {
 	/**
 	 * Make the roll on this table for the given tableroll, returning the selected perk
 	 */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/{tableId}/{rollNumber}/", method = RequestMethod.POST)
 	public PerkSelectionResponse makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -155,7 +149,7 @@ public class SheetBenefitTableController {
 	/**
 	 * Swap two randomly chosen perks for a new chosen one
 	 */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLL_SWAP)
 	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.PUT)
 	// change this to PUT, make the post finish swaps
 	public ResponseEntity<?> swapPerks(@RequestBody PerkSwapRequest perkSwapRequest) {
@@ -198,7 +192,7 @@ public class SheetBenefitTableController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLL_SWAP)
 	@RequestMapping(value = "/api/sheet/{sheetId}/tablerollswap/", method = RequestMethod.POST)
 	public ResponseEntity<?> finishTableRollSwaps() {
 		Sheet sheet = AuthUtils.getSheet(request);

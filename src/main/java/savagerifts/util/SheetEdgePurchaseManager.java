@@ -12,27 +12,29 @@ import savagerifts.model.sheet.Sheet;
 import savagerifts.model.skill.SkillDefinition;
 import savagerifts.model.skill.SkillRoll;
 
-import java.util.List;
 import java.util.Map;
 
 public class SheetEdgePurchaseManager {
 
     private Sheet sheet;
-    private Edge edge;
+    // private Edge edge;
     private Map<AttributeType, Roll> attrMap;
     private Map<SkillDefinition, SkillRoll> skillMap;
 
-    public SheetEdgePurchaseManager(Sheet sheet, Edge edge) {
+    public SheetEdgePurchaseManager(Sheet sheet) {
         this.sheet = sheet;
-        this.edge = edge;
+        // this.edge = edge;
 
         this.attrMap = SheetAttributeUtils.populateAttributeMap(sheet);
         this.skillMap = SheetUtils.populateSkillMap(sheet);
     }
 
-    public boolean sheetQualifiesForEdge() {
+    public boolean sheetQualifiesForEdge(Edge edge, boolean isCharacterCreation) {
         // check required level, if not character creation
-
+		if (!isCharacterCreation && sheet.getRank().isBefore(edge.getRequiredLevel())) {
+			return false;
+		}
+		
         // check edge's framework prereq
         for (Framework framework : edge.getRequiredFrameworks()) {
             if (!framework.equals(sheet.getFramework())) {
@@ -41,24 +43,28 @@ public class SheetEdgePurchaseManager {
         }
 
         // check edge's attr prereqs
-        if (!meetsAllEdgeAttributeRequirements()) {
+        if (!meetsAllEdgeAttributeRequirements(edge)) {
             return false;
         }
 
         // check edge's skill prereqs
-        if (!meetsAllSkillRequirements()) {
+        if (!meetsAllSkillRequirements(edge)) {
             return false;
         }
 
         // check edge's edge prereqs
-        if (!meetsAllEdgeRequirements()) {
+        if (!meetsAllEdgeRequirements(edge)) {
             return false;
         }
 
         return true;
     }
 
-    private boolean meetsAllEdgeAttributeRequirements() {
+    private boolean meetsAllEdgeAttributeRequirements(Edge edge) {
+		if (edge.getAttributePrereqs().isEmpty()) {
+			return true;
+		}
+		
         boolean attrsMet = edge.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND;
         for (EdgeAttributePrerequisite prereq : edge.getAttributePrereqs() ) {
             if (edge.getAttributePrerequisiteLogicType() == PrerequisiteLogicType.AND) {
@@ -78,7 +84,11 @@ public class SheetEdgePurchaseManager {
         return prereq.getDieType().isLessThanOrEqualTo(attrRoll.getDieType());
     }
 
-    private boolean meetsAllSkillRequirements() {
+    private boolean meetsAllSkillRequirements(Edge edge) {
+		if (edge.getSkillPrereqs().isEmpty()) {
+			return true;
+		}
+		
         boolean skillsMet = edge.getSkillPrerequisiteLogicType() == PrerequisiteLogicType.AND;
         for (EdgeSkillPrerequisite prereq : edge.getSkillPrereqs() ) {
             if (edge.getSkillPrerequisiteLogicType() == PrerequisiteLogicType.AND) {
@@ -101,11 +111,25 @@ public class SheetEdgePurchaseManager {
         return prereq.getDieType().isLessThanOrEqualTo(skillRoll.getRoll().getDieType());
     }
 
-    private boolean meetsAllEdgeRequirements() {
-//        PrerequisiteLogicType edgePrerequisiteLogicType;
-//        List<Edge> prerequisiteEdges;
-        for (Edge prereqEdge : edge.getPrerequisiteEdges()) {
-
+    private boolean meetsAllEdgeRequirements(Edge edge) {
+		if (edge.getPrerequisiteEdges().isEmpty()) {
+			return true;
+		}
+		
+		boolean edgesMet = edge.getEdgePrerequisiteLogicType() == PrerequisiteLogicType.AND;
+        for (Edge prereqEdge : edge.getPrerequisiteEdges() ) {
+            if (edge.getEdgePrerequisiteLogicType() == PrerequisiteLogicType.AND) {
+                edgesMet &= meetsEdgeRequirement(prereqEdge);
+            }
+            else {
+                edgesMet |= meetsEdgeRequirement(prereqEdge);
+            }
         }
+        return edgesMet;
     }
+	
+	private boolean meetsEdgeRequirement(Edge prereq) {
+        return sheet.getChosenEdges().contains(prereq);
+    }
+	
 }

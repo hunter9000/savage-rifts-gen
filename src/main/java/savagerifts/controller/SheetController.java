@@ -102,11 +102,12 @@ public class SheetController {
     }
 
 	/** Select the race for this sheet */
-	@SheetOwner
+	@SheetOwner(requiredSteps = {SheetCreationStep.RACE})
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)
 	public Sheet selectRace(@PathVariable long raceId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-		
+
+		// sheet can only have it's race set once
 		if (sheet.getRace() != null) {
 			throw new BadRequestException();
 		}
@@ -126,7 +127,7 @@ public class SheetController {
 	}
 
 	/** Get the current attributes with info about inc/dec and cost. */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.ATTRIBUTES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
 	public AttributeBuyResponse getAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -137,7 +138,7 @@ public class SheetController {
 	}
 
 	/** Increase or decrease the given attributes */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.ATTRIBUTES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.PUT)
 	public AttributeBuyResponse increaseDecreaseAttributeBuy(@RequestBody AttributeBuyRequest pointBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -156,7 +157,7 @@ public class SheetController {
 	}
 
 	/** Finish attribute point buy. remaining points must be 0 */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.ATTRIBUTES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.POST)
 	public ResponseEntity<?> finishAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -169,7 +170,7 @@ public class SheetController {
 	}
 
 	/** Get the current skills with info about inc/dec and cost. */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.GET)
 	public SkillBuyResponse getSkillBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -180,7 +181,7 @@ public class SheetController {
 	}
 
 	/** Increase or decrease the given skill die roll */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.PUT)
 	public SkillBuyResponse increaseDecreseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -199,7 +200,7 @@ public class SheetController {
 	}
 
 	/** Finish purchasing skills. */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.POST)
 	public ResponseEntity<?> finishSkillPurchases() {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -213,7 +214,7 @@ public class SheetController {
 	}
 	
 	/** Get the current hindrances with info about inc/dec and cost. */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.HINDRANCES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.GET)
 	public HindranceBuyResponse getHindranceBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -224,7 +225,7 @@ public class SheetController {
 	}
 
 	/** Get the current hindrances with info about inc/dec and cost. */
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.HINDRANCES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.PUT)
 	public HindranceBuyResponse increaseDecreaseHindranceBuy(@RequestBody HindranceBuyRequest hindranceBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
@@ -244,7 +245,7 @@ public class SheetController {
 		return hindrances;
 	}
 
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.HINDRANCES)
 	@RequestMapping(value = "/api/sheet/{sheetId}/hindrances/", method = RequestMethod.POST)
 	public ResponseEntity<?> finishHindracePurchases() {
 		Sheet sheet = AuthUtils.getSheet(request);

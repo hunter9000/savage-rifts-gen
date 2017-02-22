@@ -7,6 +7,7 @@ import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.PerkRange;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Sheet;
+import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.repository.BenefitTableRepository;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
@@ -30,7 +31,7 @@ public class BenefitTableController {
     }
 	
 	// get the sheet's options for the given table (the table perks, with the already selected ones marked)
-	@SheetOwner
+	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLLS)
 	@RequestMapping(value = "/api/benefittable/{tableId}/{sheetId}/", method = RequestMethod.GET)
 	public BenefitTable getSheetTableOptions(@PathVariable Long tableId, @PathVariable Long sheetId) {
 		Sheet sheet = AuthUtils.getSheet(request);

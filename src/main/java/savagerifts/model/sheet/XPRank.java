@@ -6,4 +6,8 @@ public enum XPRank {
     Veteran,
     Heroic,
     Legendary;
+
+    public boolean isBefore(XPRank rank) {
+        return this.ordinal() < rank.ordinal();
+    }
 }

@@ -1,5 +1,6 @@
 package savagerifts.interceptor;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -48,8 +49,12 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
             throw new ForbiddenAccessException();
         }
 
-        request.setAttribute(AuthUtils.SHEET, sheet);
+        // check if the sheet is in the required steps, if any
+        if (sheetOwnerAnnotation.requiredSteps().length > 0 && !ArrayUtils.contains(sheetOwnerAnnotation.requiredSteps(), sheet.getCreationStep())) {
+            throw new BadRequestException("Sheet is not in the required creation step to make this call. Required: " + sheetOwnerAnnotation.requiredSteps() + ", currently: " + sheet.getCreationStep());
+        }
 
+        request.setAttribute(AuthUtils.SHEET, sheet);
         return true;
     }
 
