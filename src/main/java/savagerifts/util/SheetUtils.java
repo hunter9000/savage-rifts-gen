@@ -1,22 +1,19 @@
 package savagerifts.util;
 
+import org.apache.commons.collections4.IterableUtils;
 import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
-import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.hindrance.HindranceSelection;
 import savagerifts.model.hindrance.SeverityType;
 import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
-import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.model.skill.SkillDefinition;
 import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillRoll;
 import savagerifts.model.skill.SkillType;
-import savagerifts.model.user.User;
 import savagerifts.request.HindranceBuyRequest;
-import savagerifts.request.NewSheetRequest;
 import savagerifts.request.SkillBuyRequest;
 import savagerifts.response.HindranceBuyResponse;
 import savagerifts.response.SkillBuyResponse;
@@ -41,47 +38,18 @@ public class SheetUtils {
 	public static final int MONEY_RAISE_COST = 1;
 
 
-	public static Sheet createSheet(User owner, NewSheetRequest sheetRequest, Framework framework) {
-		Sheet sheet = new Sheet();
-		sheet.setOwner(owner);
-		sheet.setName(sheetRequest.characterName);
-		sheet.setFramework(framework);
 
-		List<SkillRoll> skillList = new ArrayList<>();
-		for (SkillType skillType : SkillType.values()) {
-			// TODO don't create a plain knowledge skill here
-			SkillRoll skill = new SkillRoll();
-			skill.setSheet(sheet);
-			skill.setSkillType(skillType);
-			skill.setRoll(new Roll());
-			skillList.add(skill);
-		}
-		sheet.setSkills(skillList);
-		
-		SheetAttributeUtils.recalculateAttributes(sheet);
-		
-		return sheet;
-	}
-	
+
 	public static PerkSelection getChosenPerkFromSheet(Sheet sheet, Long perkId) {
-		for (PerkSelection selection : sheet.getChosenPerks()) {
-			if (selection.getPerk().getId().equals(perkId)) {
-				return selection;
-			}
-		}
-		return null;
+		return IterableUtils.find(sheet.getChosenPerks(), object -> object.getPerk().getId().equals(perkId));
+
+//		for (PerkSelection selection : sheet.getChosenPerks()) {
+//			if (selection.getPerk().getId().equals(perkId)) {
+//				return selection;
+//			}
+//		}
+//		return null;
 	}
-	
-
-
-	/** Moves the character to the next step, which will be null if done with all steps. */
-	public static void moveToNextCreationStep(Sheet sheet) {
-		SheetCreationStep step = sheet.getCreationStep();
-
-		sheet.setCreationStep(step.getNextStep());
-	}
-
-
 
 	public static SkillBuyResponse calculateSkillPurchases(Sheet sheet) {
 		SkillBuyResponse skillBuyResponse = new SkillBuyResponse();

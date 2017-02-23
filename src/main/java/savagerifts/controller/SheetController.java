@@ -22,6 +22,7 @@ import savagerifts.response.SkillBuyResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.SheetAttributeUtils;
+import savagerifts.util.SheetCreationManager;
 import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,7 +70,7 @@ public class SheetController {
             throw new BadRequestException();
         }
 
-		Sheet sheet = SheetUtils.createSheet(owner, sheetRequest, framework);
+		Sheet sheet = SheetCreationManager.createSheet(owner, sheetRequest, framework);
 		
         sheetRepository.save(sheet);
 
@@ -118,8 +119,9 @@ public class SheetController {
 		}
 		
 		sheet.setRace(race);
-		SheetAttributeUtils.recalculateAttributes(sheet);
-		SheetUtils.moveToNextCreationStep(sheet);
+		new SheetCreationManager(sheet).moveToNextCreationStep();
+//		SheetAttributeUtils.recalculateAttributes(sheet);
+//		SheetUtils.moveToNextCreationStep(sheet);
 
 		sheetRepository.save(sheet);
 		
@@ -162,7 +164,8 @@ public class SheetController {
 	public ResponseEntity<?> finishAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		SheetUtils.moveToNextCreationStep(sheet);
+		new SheetCreationManager(sheet).moveToNextCreationStep();
+//		SheetUtils.moveToNextCreationStep(sheet);
 
 		sheetRepository.save(sheet);
 
@@ -206,7 +209,8 @@ public class SheetController {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		if (sheet.getCreationStep() == SheetCreationStep.SKILLS) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);
 
@@ -255,10 +259,12 @@ public class SheetController {
 		}
 		
 		if (sheet.getCreationStep() == SheetCreationStep.HINDRANCES) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+			//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		if (sheet.getCreationStep() == SheetCreationStep.EDGES && sheet.getRemainingHindrancePoints() == 0) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);
 

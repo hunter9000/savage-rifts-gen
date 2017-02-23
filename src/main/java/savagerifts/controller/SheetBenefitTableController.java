@@ -21,6 +21,7 @@ import savagerifts.response.PerkSelectionResponse;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
 import savagerifts.util.RandomUtils;
+import savagerifts.util.SheetCreationManager;
 import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -138,7 +139,8 @@ public class SheetBenefitTableController {
 
 		// if all rolls have been made, flag the sheet as completed table rolls
 		if (sheet.getChosenPerks().size() == sheet.getFramework().getTableRolls().size()) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 
 		sheetRepository.save(sheet);
@@ -184,7 +186,8 @@ public class SheetBenefitTableController {
 			}
 		}
 		if (numUnswapped <= 1) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 
 		sheetRepository.save(sheet);
@@ -198,7 +201,8 @@ public class SheetBenefitTableController {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		if (sheet.getCreationStep() == SheetCreationStep.TABLE_ROLL_SWAP) {
-			SheetUtils.moveToNextCreationStep(sheet);
+			new SheetCreationManager(sheet).moveToNextCreationStep();
+//			SheetUtils.moveToNextCreationStep(sheet);
 		}
 		sheetRepository.save(sheet);
 

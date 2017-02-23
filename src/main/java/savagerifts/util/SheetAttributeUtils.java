@@ -14,29 +14,7 @@ import java.util.Map;
 
 public class SheetAttributeUtils {
 
-    /** look at the framework, perks, and race to set the minimum attributes.
-     * this works by taking the default starting stat (D4) and setting any framework startings/maxs if framework is set, then doing the same for race, etc.
-     * this can be called at any point and will recalculate from scratch based on the chosen framework/race/etc */
-    public static void recalculateAttributes(Sheet sheet) {
-        // check that the creation stage is before attribute buy. if we have gotten to attribute buy then all the defaults should have already been set.
-        // resetting them at this point will wipe out the player's point buy choices
-        if (!sheet.getCreationStep().isBefore(SheetCreationStep.ATTRIBUTES)) {
-            return;
-        }
 
-        sheet.setRemainingAttrPoints(getMaxAttributePoints(sheet));
-
-        // set the minimum starting attribute from the framework/race/etc to the current stat.
-        // if not specified, it will be ignored and the default will be used
-        for (AttributeType type : AttributeType.values()) {
-            sheet.getAttribute(type).copy(getMinAttribute(sheet, type));
-        }
-        // sheet.getStrength().copy(getMinStrength(sheet));
-        // sheet.getAgility().copy(getMinAgility(sheet));
-        // sheet.getSmarts().copy(getMinSmarts(sheet));
-        // sheet.getSpirit().copy(getMinSpirit(sheet));
-        // sheet.getVigor().copy(getMinVigor(sheet));
-    }
 
     public static Integer getMaxAttributePoints(Sheet sheet) {
         Framework framework = sheet.getFramework();
@@ -46,7 +24,7 @@ public class SheetAttributeUtils {
         return Sheet.DEFAULT_ATTRIBUTE_POINTS;
     }
 
-    private static Roll getMinAttribute(Sheet sheet, AttributeType type) {
+    public static Roll getMinAttribute(Sheet sheet, AttributeType type) {
         if (sheet.getFramework() != null && sheet.getFramework().getStartingAttribute(type) != null) {
             return sheet.getFramework().getStartingAttribute(type);
         }
