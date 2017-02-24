@@ -1,0 +1,15 @@
+Attractive: The forced-evolution process administered to the Warrior Women includes genetically engineering them for beauty. Altara have the Attractive Edge. 
+
+Bad Reputation: The Altara Warrior Women are infamous as servants of Splugorth Slavers worldwide. The average person hates and fears Altara; they suffer a -4 Charisma penalty with most folks who discover who and what they are. 
+
+Blind: Although created blind, this is only a minor drawback for the Altara, as they have a natural radar ability extending 1,200 feet (200”) which compensates for the penalties. They cannot read, see colors, or otherwise detect purely visual information. 
+
+Genetic Engineering: Crafted through bio-wizardry to be perfect warriors, Altara begin with a starting Agility, Strength, and Vigor of d6. This increases their natural maximums in these attributes to d12+1. 
+
+Instilled Ignorance: Altara are taught only what they need to serve their masters, and extreme brainwashing is used to dampen their intellectual acumen. This leaves them woefully under-educated and naive about the world at large. They suffer a -2 to all Smarts rolls. 
+
+Storm-Fouled Senses: In strong inclement weather, or conditions where the environment is greatly disturbed (sand storms, fires with lots of smoke), the Altara suffer a -2 penalty to Notice, Fighting, Shooting, and Throwing. 
+
+Superior Senses: Altara Warrior Women begin with the Alertness Edge, as all of their other senses are exceptional. 
+
+Wanted (Minor): Any Minion of Splugorth, including most other Altara Warrior Women, attack to capture or kill a rogue Altara in an instant. 

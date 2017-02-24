@@ -13,5 +13,7 @@
 13: create framework_feature, insert framework features for combat cyborg and crazy
 14: add columns to edge. create attribute_raise_selection, edge_selection, money_raise_selection, skill_raise_selection, edge_attribute_prerequisite, edge_skill_prerequisite
 15: add more frameworks with framework features
-16:
+16: Adding the benefit table definitions for the remaining tables, and added their rolls. added missing table rolls for combat cyborg and crazy frameworks
 17: add skill knowledge table, and add it to the skill_roll table
+18: add skill knowledge to edge skill prerequisites
+19: adding race abilities

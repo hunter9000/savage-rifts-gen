@@ -1,0 +1,15 @@
+Animal Empathy: A Simvan has a psionic connection to animals, granting the Beast Master Edge and Riding d6. 
+
+Apex Predator: Simvan consider themselves pinnacle predators; the ultimate victory is to defeat and consume an enemy. Simvan have the Bloodthirsty Hindrance and most know their deadly habits. 
+
+Distinctive D-Bee: Simvan are clearly inhuman. They suffer -4 Charisma with CS citizens. 
+
+Instincts Over Intellect: Simvan act on their instincts. Intellectual pursuits are not common for them. They suffer a -1 penalty to all Smarts rolls. 
+
+Low Light Vision: Simvan ignore penalties for Dim and Dark conditions. 
+
+Monstrous Beast Affinity: Simvan have a natural affinity for large creatures. When using the beast friend power, they pay half the cost for a creature’s Size (effectively 1 ISP per +1 Size). Additionally, they may take a larger than normal creature with their Beast Master Edge as a mount (see the list above of common riding animals). 
+
+Natural Psionics: Simvan start with the Arcane Background (Psionics) Edge. Beast friend must be one of their first chosen powers. They start with 15 ISP instead of 10. If a Simvan chooses an Iconic Framework providing Arcane Background (Psionics), he follows all the normal rules for the Framework except he gains beast friend as a bonus power and gains +5 ISP in addition to what the Framework normally provides. 
+
+Racial Enemy: Many Psi-Stalker and Simvan tribes have been at war for years. Meetings between them start argumentative and get worse. Simvan suffer -4 Charisma with wild Psi-Stalkers (Coalition Psi-Stalkers don’t like them just because they are D-Bees). 

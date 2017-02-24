@@ -1,0 +1,147 @@
+Cyber-Armor: As Toughness. purely a -2 to hit a deflection power. 
+
+First Into Battle: becomes a d12. 
+
+Inner Light:
+
+Minor Psionic:
+
+following powers: 
+
+boost Trait*, confusion, darksight, deflection*, 
+environmental protection, havoc, healing*, 
+pummel, quickness, smite*, speak language, 
+speed*, succor, warrior’s gift. Powers 
+marked with an asterisk (*) are usable 
+only on the Cyber-Knight but activate 
+
+as a free action, inflicting no 
+
+19 
+
+penalty (a Cyber-Knight with Master 
+Psionic can use mass healing but not as 
+a free action). All other aspects of AB 
+(Psionics) remain the same. 
+
+..Psi-Sword: As a free action, Cyber-
+Knights can summon forth a blade 
+of spirit and will. It may have any 
+appearance but it does not change the 
+
+effects. The Psi-Sword does Strength 
+
++ Spirit × 2 damage with AP 6 (and no 
+Strength minimum). For example, a 
+
+Cyber-Knight with Strength d8 and 
+Spirit d10 does 1d8+2d10 melee damage, 
+AP 6, with his Psi-Sword. Alternately, 
+the Cyber-Knight may split his Psi-
+Sword into two blades, one for each 
+hand, doing the same damage, but each 
+
+blade only gaining AP 2. For 2 ISP, the 
+
+Cyber-Knight can make the blade inflict 
+
+Mega Damage for as long as the blade 
+is manifested. 
+..Revered Protectors: All Cyber-Knights 
+
+enjoy +2 Charisma when dealing with 
+
+those who know and love them as 
+
+guardians of life and freedom. 
+
+CYBER-KNIGHT 
+COMPLICATIONS 
+
+Life as a guardian and protector in such a 
+
+hostile world is never easy. 
+
+TO SURVIVE AND THRIVE— 
+
+
+THE CYBER-KNIGHT 
+
+.• 
+Starting out, focus on the 
+powers your character can 
+use as a free action; these are 
+lifesavers and give her a serious 
+advantage in combat. 
+
+.• 
+Big guns can’t be used at melee 
+Range, and melee is where the 
+Cyber-Knight shines brightest. 
+
+.• 
+The inherent reverence many 
+have for Cyber-Knights means 
+your character may want to also 
+focus on being a good “face” for 
+the group, leading investigations 
+and social interactions. 
+
+..Code of Honor: A Cyber-Knight must 
+adhere to the codes and philosophies 
+of the Order, or he loses some or all 
+of his powers, depending on the 
+degree of transgression. Whether this 
+is a function of the special nanotech 
+treatment he undergoes or a loss of 
+confidence damaging his psyche in 
+
+some way is a matter of some debate 
+
+among scholars. Regardless, the Game 
+Master must determine the extent of 
+a Cyber-Knight’s transgressions and 
+assess a penalty accordingly. 
+
+Minor Transgression: -1 to all 
+
+Psionics rolls until he performs a 
+noble or heroic deed to atone. 
+
+Major Transgression: -2 to all 
+
+Psionics rolls, and all abilities under 
+
+Cyberkinetic Combat and Inner Light 
+
+cease to function until he undertakes 
+some kind of personal (or perhaps 
+spiritually guided) quest to atone. 
+His Psi-Sword is also reduced to 
+doing only his Str+Spirit in damage, 
+and all AP values are reduced by 2. 
+
+Mortal Transgression: The Cyber-
+Knight commits an action completely 
+opposed to the code. All Cyber-
+Knight abilities are lost. The character 
+
+may regain his abilities by fulfilling 
+
+a significant quest (determined 
+by the Game Master). Should the 
+character commit another Mortal 
+Transgression before regaining his 
+Cyber-Knight status, his spirit is 
+corrupted. The character regains use 
+
+of his abilities but becomes a Fallen 
+
+Cyber-Knight (see Savage Foes of North 
+America) under the Game Master’s 
+control. 
+
+..Cybernetics: Cybernetics are not 
+an option for Cyber-Knights, as 
+such devices interfere with their 
+nanotechnology. 

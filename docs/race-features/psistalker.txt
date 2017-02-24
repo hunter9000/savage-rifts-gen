@@ -1,0 +1,15 @@
+Ambidexterity: Psi-Stalkers have the Ambidextrous Edge. 
+
+Animal Empathy: Psi-Stalkers have an inherent empathy with animals. They start with Riding d6 and animals treat them as one of their own. This effect can be problematic if the animal in question is a territorial loner. 
+
+Fast: Psi-Stalkers have Pace +2 and increase their Running die by one die type (usually Pace 8 and d8 run die). 
+
+Outsider: Psi-Stalkers are creepy and off-putting, and make those with magic or psionic abilities especially nervous (for obvious reasons). They are barely more than a slave class in the Coalition and despised in the Federation of Magic. They suffer -2 Charisma with everyone except others of their kind. 
+
+Psychic Sense: Psi-Stalkers have the inherent ability to detect arcana, usable at will. They use the Notice skill to detect the presence and location of any psychic or magic energies, beings, or items. They can also use the Tracking skill to track a specific magical or psionic entity. This sense works to detect anything psychic, magic, or supernatural, including invisible and astral beings. Psychic Sense doesn’t work inside sealed armor or vehicles. Cybernetic implants also cause problems; every point of Strain imposes a -1 penalty when the Psi-Stalker uses his Psychic Sense (the Cyber-Psychic Alignment Edge can negate this penalty). See sidebar on the next page. 
+
+Psychic Vampire: Psi-Stalkers require a diet of PPE or ISP drained from living beings. They gain this using the Draining PPE/ ISP rules (page 121), which only works by touch. The Psi-Stalker must cut and draw blood from her intended victim or donor (which must be supernaturally, magically, or psionically active to provide sustenance). Psi-Stalkers must consume at least 5 Power Points (PPE or ISP) a day or suffer Fatigue. They starve to death after a week of being Incapacitated by lack of “food.” Each 5 PPE/ISP drained restores one level of Fatigue. Consumed Power Points cannot be used to fuel spells or psionic powers. 
+
+Racial Enemy: Many Psi-Stalker and Simvan tribes have been at war for years. Meetings between the species start argumentative and get worse. Psi-Stalkers suffer -4 Charisma with Simvan. 
+
+Restricted Paths: Working arcane magic is impossible for Psi-Stalkers. They cannot take any Arcane Background using PPE, nor any Iconic Framework that includes it. 

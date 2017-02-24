@@ -1,0 +1,19 @@
+Cyber Resistant: Grackles cannot take any Iconic Framework that includes cybernetics as an inherent ability (including the bio-comp system needed to be a Juicer), nor may they roll on the Cybernetics benefits table. 
+
+Distinctive D-Bee: With their monstrous appearance and powerful frames, Grackles face prejudice. They suffer -4 Charisma with CS citizens. 
+
+Issues With Cold: Grackles don’t enjoy the cold. They suffer -4 to resist cold environment effects and take +4 damage from cold-based attacks. 
+
+“Just How I Was Raised”: Grackles have the Heroic or Overconfident Hindrance for no additional points (the other may be chosen as normal). 
+
+Natural Weapons: Grackles do Str+d6 damage with their bite, claws, or tail slap. 
+
+Powerful: Grackles start with Strength d8 (Trait maximum d12+2) and Vigor d6 (Trait maximum d12+1). 
+
+Prehensile Tail: A Grackle’s tail can hold most melee weapons and pistols, granting an extra non-movement action per round at no multi-action penalty. 
+
+Restricted Paths: A Grackle Tooth has no capacity for magic or psionics. They cannot take any Arcane Background using PPE or ISP, nor any Iconic Framework that includes it. 
+
+“Stuff Ain’t Built for Me”: A Grackle Tooth’s unique physiology and proportions make it difficult for him to find armor he can use. Purchases and repairs are at least tripled in cost, and there’s no way he can manage a Glitter Boy suit or any other power armor built for a normal-sized humanoid frame. He also suffers a -2 to any checks made to operate a vehicle or its weapons not refitted for his race. Any gear gained from an Iconic Framework is assumed to be custom-built for the character. 
+
+Size +2: Grackles run eight to 10 feet tall and weigh from 600 – 800 lbs. Their size grants them +2 Toughness. 

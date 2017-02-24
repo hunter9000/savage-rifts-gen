@@ -1,0 +1,11 @@
+Distinctive D-Bee: Unless they hide their non-human (and devilish) appearance, D'Norr face a certain amount of prejudice from the Coalition. They suffer a -4 Charisma when dealing with such people. 
+
+Intelligent and Spiritual: D'Norr are highly intelligent and spiritual, beginning with a d6 Smarts and Spirit. This makes their natural maximums for those Traits d12+1. 
+
+Natural Arcane Affinity: The D'Norr have +5 PPE naturally, whether they pursue a magical path or not. 
+
+Personable: The D'Norr are highly charming and easy to get along with. They have +1 Charisma. 
+
+Restricted Path: The D'Norr have no capacity for psionics and cannot access ISP. 
+
+Sensitive: Due to their inherently sensitive and compassionate nature, D'Norr are particularly susceptible to Fear, suffering a -2 whenever making checks against such situations. 

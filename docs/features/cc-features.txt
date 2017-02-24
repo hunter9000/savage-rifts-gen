@@ -1,0 +1,41 @@
+Bionic Augmentation: Combat Cyborgs begin with Strength d12+2, Agility d10, and Vigor d12. These traits
+do not have an attribute maximum.
+
+Cybernetic Enhancements: ‘Borgs
+have these cybernetic systems
+(already factored into starting stats):
+Armor Plating (1), Audio Package,
+Bionic Strength Augmentation,
+Core Electronics Package, Cyber-
+Wired Reflexes, Optics Package,
+Reinforced Frame (1), Synthetic
+Organ Replacement (see page 100).
+
+High-performance Legs: Fullconversion
+‘borgs begin with the
+Fleet-Footed Edge.
+
+M.D.C. Armor: Cyborg
+construction provides +8
+M.D.C. Armor and +3
+Toughness, which can be
+improved with additional cybernetics
+but does not stack with worn armor,
+use the higher value.
+
+More Machine: ‘Borgs add +2 to
+recover from Shaken, ignore one level
+of wound modifiers, possess a selfcontained
+breathing apparatus, and are
+immune to poison and disease.
+
+Size +1: Combat Cyborgs are big and
+heavy, gaining +1 Toughness from
+their size.
+
+Upgradable: ’Borgs start with the
+Upgradable Edge.
+
+Unarmed Combat: Combat Cyborgs
+deal Str+d6 (Mega Damage) in unarmed
+combat and are considered armed.

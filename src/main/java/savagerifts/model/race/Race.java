@@ -19,12 +19,45 @@ public class Race {
 	@OneToMany(mappedBy = "race")
 	private List<RaceAbility> abilities;
 
-	@Column(name = "hasMagic", nullable = false)
-	private boolean hasMagic;
+	// @Column(name = "hasMagic", nullable = false)
+	// private boolean hasMagic;
 	
-	@Column(name = "hasPsionics", nullable = false)
-	private boolean hasPsionics;
+	// @Column(name = "hasPsionics", nullable = false)
+	// private boolean hasPsionics;
 	
+	// @OneToOne
+	// @JoinColumn(name = "startingStrength", updatable = false)
+	// private Roll startingStrength;
+	// @OneToOne
+	// @JoinColumn(name = "startingAgility", updatable = false)
+	// private Roll startingAgility;
+	// @OneToOne
+	// @JoinColumn(name = "startingSmarts", updatable = false)
+	// private Roll startingSmarts;
+	// @OneToOne
+	// @JoinColumn(name = "startingSpirit", updatable = false)
+	// private Roll startingSpirit;
+	// @OneToOne
+	// @JoinColumn(name = "startingVigor", updatable = false)
+	// private Roll startingVigor;
+
+
+	// /** These are the maximums when buying attributes during that phase, not necessarily the limit when purchasing edges, etc. */
+	// @OneToOne
+	// @JoinColumn(name = "maxStrength", updatable = false)
+	// private Roll maxStrength;
+	// @OneToOne
+	// @JoinColumn(name = "maxAgility", updatable = false)
+	// private Roll maxAgility;
+	// @OneToOne
+	// @JoinColumn(name = "maxSmarts", updatable = false)
+	// private Roll maxSmarts;
+	// @OneToOne
+	// @JoinColumn(name = "maxSpirit", updatable = false)
+	// private Roll maxSpirit;
+	// @OneToOne
+	// @JoinColumn(name = "maxVigor", updatable = false)
+	// private Roll maxVigor;
 
 
 	public Long getId() {
@@ -63,17 +96,17 @@ public class Race {
 		this.abilities = abilities;
 	}
 
-	public boolean isHasMagic() {
-		return hasMagic;
-	}
-	public void setHasMagic(boolean hasMagic) {
-		this.hasMagic = hasMagic;
-	}
-
-	public boolean isHasPsionics() {
-		return hasPsionics;
-	}
-	public void setHasPsionics(boolean hasPsionics) {
-		this.hasPsionics = hasPsionics;
-	}
+//	public boolean isHasMagic() {
+//		return hasMagic;
+//	}
+//	public void setHasMagic(boolean hasMagic) {
+//		this.hasMagic = hasMagic;
+//	}
+//
+//	public boolean isHasPsionics() {
+//		return hasPsionics;
+//	}
+//	public void setHasPsionics(boolean hasPsionics) {
+//		this.hasPsionics = hasPsionics;
+//	}
 }

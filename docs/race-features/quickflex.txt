@@ -1,0 +1,15 @@
+Agile: Quick-Flex start with a d8 Agility (and a Trait maximum of d12+2).
+
+Ambidexterity: All Quick-Flex possess the Ambidextrous Edge.
+
+Distinctive D-Bee: Unless they hide their non-human appearance, a Quick-Flex faces prejudice from the Coalition. They suffer -4 Charisma with such folks.
+
+Elusive: Quick-Flex are difficult to pin down in close quarters, giving them a natural +1 to their Parry rating. 
+
+Fast: Quick-Flex have +2 to Pace and increase their Running die by one die type (usually a Pace of 8 and d8 Running die).
+
+Restricted Path: Their natural hyperactivity and lack of focus makes the pursuit of any magical Arcane Backgrounds impossible for them. Quick-Flex cannot access PPE. The race cannot take any Arcane Background which uses PPE or any Iconic Framework which includes such an Arcane Background. 
+
+Short Attention Span: Quick-Flex have a difficult time sitting still and focusing on intellectual pursuits. They suffer a -1 to all Smarts rolls.
+
+Supreme Confidence: All Quick-Flex are inherently Overconfident in addition to any Hindrances chosen by the player.

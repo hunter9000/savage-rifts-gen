@@ -1,0 +1,21 @@
+Cyber Resistant: Lyn-Srial can’t take cybernetics of any kind. 
+
+Distinctive D-Bee: Lyn-Srial suffer -4 Charisma with CS citizens. 
+
+Flight: Lyn-Srial fly at Pace +6 (12). 
+
+Four Arms: Extra arms grant an additional non-movement action each round at no multi-action penalty. 
+
+Hunted by the Coalition: Lyn-Srial have the Wanted (Major) Hindrance with the CS for saving refugees of the Tolkeen war. 
+
+Inherent Nature: All Lyn-Srial have the Heroic Hindrance and count as supernaturally good. 
+
+Low Light Vision: Lyn-Srial ignore penalties for Dim and Dark lighting. 
+
+Non-Standard Physiology: Armor purchase/repair is double cost. Can’t use a Glitter Boy suit or other standard humanoid power armor. Suffer a -2 to operate a vehicle or its weapons not refitted for the race. Iconic Framework gear is custom-built. 
+
+Poor Ground Speed: Lyn-Srial have -2 Pace (ground only) and a d4 running die. 
+
+Regeneration: Lyn-Srial make natural healing rolls once a day and may regenerate lost limbs. If a Lyn-Srial gains a permanent injury, she makes a Vigor roll after recovering from Incapacitation. On success, the injury heals after 1d6 days. 
+
+Strong: Lyn-Srial start with d6 Strength. 

@@ -1,0 +1,9 @@
+Distinctive D-Bee: Though humanoid, Trimadore are clearly inhuman. They face prejudice from the Coalition. They suffer -4 Charisma with such folks. 
+
+Long Arms: The Trimadore have a Reach of 1. 
+
+Mechanical Savant: Trimadore are born with an innate capacity for working with and repairing machines. They begin with the Mr. Fix It Edge, ignoring any requirements. 
+
+Non-Standard Physiology: The unique physiology of a Trimadore makes it difficult for him to find armor he can use. Purchases and repairs are at least doubled in cost, and there’s no way he can manage a Glitter Boy suit or other power armor built for a typical humanoid frame. He also suffers -2 to checks made to operate a vehicle or its weapons not refitted for his race. Any gear gained from an Iconic Framework is assumed to be custom-built for the character. 
+
+Technically Savvy: Trimadore love science and technology, studying all they can about such things from birth. Trimadore start with Repair d6 and their choice of one of the following at d6: Knowledge (Computers), Knowledge (Cybernetics), Knowledge (Electronics), or Knowledge (Engineering). 

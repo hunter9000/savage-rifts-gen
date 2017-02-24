@@ -1,0 +1,9 @@
+Distinctive D-Bee: With their nonhuman appearance and inherent psionic ability, Fennodi face prejudice from the Coalition. They suffer -4 Charisma when dealing with CS citizens. 
+
+Infravision: Fennodi see in the infrared spectrum. They halve lighting penalties when fighting anything radiating heat. 
+
+Issues With Cold: The Fennodi prefer the prairies and deserts of the New West for a reason. They suffer -4 to resist cold environment effects, and cold-based attacks do +4 damage to them. 
+
+Natural Psionics: Fennodi begin with the Arcane Background (Psionics) Edge, and start with the following three powers: armor, intangibility, and telepathy. If a Fennodi chooses an Iconic Framework providing Arcane Background (Psionics), he follows all the normal rules for the Framework except three of his starting powers are the ones listed above (even if not normally allowed to that Framework). The Fennodi gains one additional power to his starting total (e.g., a Fennodi Burster starts with four powers, a Mind Melter with six). 
+
+Visual Acuity: The Fennodi’s wider range of vision provides +2 to sight-based Notice checks. 

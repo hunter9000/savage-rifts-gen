@@ -1,0 +1,15 @@
+Breed Advantage: A Dog Boy begins with the Breed Advantage Edge (see sidebar). The player decides what breed (or breeds) the character is influenced by. After creation, the Dog Boy may take the Edge again at Novice Rank. 
+
+Keen Sense of Smell: Dog Boys have a sense of smell similar to their canine counterparts. They gain a +2 bonus on Notice checks based on smell, as well as +2 on all Tracking rolls. 
+
+Natural Weapons: Dog Boys bite for Str+d6 damage. 
+
+Outsider: Dog Boys are awkward around human populations, and people outside the CS may be frightened of them because they are so closely identified with that regime. They have the Outsider Hindrance and a -2 Charisma with everyone except other Dog Boys. 
+
+Psychic Sense: Dog Boys have the inherent ability to detect arcana, interpreting it as a scent. They use the Notice skill (with their Keen Sense of Smell bonus) to detect the presence and location of psychic or magic energies, beings, or items. They can also use the Tracking skill (also with the Keen Sense of Smell bonus) to follow a specific magical or psionic entity. This sense works to detect anything psychic, magic, or supernatural, including invisible and astral beings. Psychic Sense doesn’t work inside sealed armor or vehicles. Cybernetic implants also cause problems; every point of Strain imposes a -1 penalty when the Dog Boy uses his Psychic Sense (the Cyber-Psychic Alignment Edge can negate this penalty). See sidebar on page 60. 
+
+Restricted Paths: Inherent psionic limitations make arcane magic impossible. Dog Boys cannot take any Arcane Background using PPE, nor any Iconic Framework that includes it. 
+
+Wanted Hindrance (Minor): Dog Boys operating outside of CS control are wanted by the Coalition, and there’s always a fair bounty for bringing one in. 
+
+Weakness (Ley Line Hypersensitivity): Dog Boys lose their Psychic Sense on or close (within 2” or 4 yards) to a ley line. Ley Line storms cause a level of Fatigue from severe headaches and distress as for a psychic (which does not stack if they have the Arcane Background), but their Fatigue requires an hour to recover after the storm ends. 
