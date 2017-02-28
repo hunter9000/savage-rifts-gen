@@ -4,7 +4,7 @@ package savagerifts.util;
 import savagerifts.model.AttributeType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.race.Race;
-import savagerifts.model.race.RaceAbility;
+import savagerifts.model.race.ability.RaceAbility;
 import savagerifts.model.sheet.Roll;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;

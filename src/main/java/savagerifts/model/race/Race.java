@@ -1,5 +1,7 @@
 package savagerifts.model.race;
 
+import savagerifts.model.race.ability.RaceAbility;
+
 import javax.persistence.*;
 import java.util.List;
 
