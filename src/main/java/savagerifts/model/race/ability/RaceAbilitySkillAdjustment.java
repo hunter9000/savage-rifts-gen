@@ -13,6 +13,7 @@ public class RaceAbilitySkillAdjustment {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+    @OneToOne
     @JoinColumn(name = "race_ability", nullable = false, updatable = false)
     private RaceAbility raceAbility;
 

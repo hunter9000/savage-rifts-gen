@@ -92,6 +92,9 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
         getSheet: function(sheetId, successCallback) {
             this.get('/api/sheet/'+sheetId+'/', successCallback);
         },
+        getSheetCreationStep: function(sheetId, successCallback) {
+            this.get('/api/sheet/'+sheetId+'/creationStep/', successCallback);
+        },
         updateSheet: function(sheetId, data, successCallback) {
             this.patch('/api/sheet/'+sheetId+'/', data, successCallback);
         },

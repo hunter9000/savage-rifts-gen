@@ -21,5 +21,4 @@ UPDATE `edge_skill_prerequisite` SET skill_knowledge = @ARCANA_ID WHERE edge = (
 UPDATE `edge_skill_prerequisite` SET skill_knowledge = @ARCANA_ID WHERE edge = (SELECT id FROM `edge` WHERE edge_type = 'MASTER_OF_MAGIC');
 
 
-
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('18.sql', NOW());

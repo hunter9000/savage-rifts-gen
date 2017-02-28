@@ -102,6 +102,13 @@ public class SheetController {
         return AuthUtils.getSheet(request);     // the sheet is retrieved by the SheetOwnerInterceptor
     }
 
+	/** Get a specific sheet's creation step */
+	@SheetOwner
+	@RequestMapping(value="/api/sheet/{sheetId}/creationStep/", method=RequestMethod.GET)
+	public ResponseEntity<SheetCreationStep> getSheetCreationStep(@PathVariable long sheetId) {
+		return new ResponseEntity<>(AuthUtils.getSheet(request).getCreationStep(), HttpStatus.OK);     // the sheet is retrieved by the SheetOwnerInterceptor
+	}
+
 	/** Select the race for this sheet */
 	@SheetOwner(requiredSteps = {SheetCreationStep.RACE})
 	@RequestMapping(value = "/api/sheet/{sheetId}/race/{raceId}/", method = RequestMethod.POST)

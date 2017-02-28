@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('skillBuyController', function($scope, $routeParams, $location, $log, APIService) {
+savageRiftsApp.controller('skillBuyController', function(APIService, SheetService, $scope, $routeParams, $location, $log) {
 	$scope.skillResponse = {};
 
     APIService.getSheetSkills($routeParams.sheetId, function(response) {
@@ -29,7 +29,8 @@ savageRiftsApp.controller('skillBuyController', function($scope, $routeParams, $
 
 	$scope.finalize = function() {
 	    APIService.finalizeSkillBuy($routeParams.sheetId, function successCallback(response) {
-            $location.path("/editsheet/" + $routeParams.sheetId);
+//            $location.path("/editsheet/" + $routeParams.sheetId);
+            SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
         });
 	}
 

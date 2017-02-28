@@ -1,6 +1,6 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function(APIService, $scope, $location, $uibModal, $log) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, SheetService, $scope, $location, $uibModal, $log) {
 		$scope.message = '';
 
 		$scope.sheets = [];
@@ -17,7 +17,8 @@
         }
 
         $scope.selectSheet = function(sheetId) {
-            $location.path("/editsheet/" + sheetId);
+//            $location.path("/editsheet/" + sheetId);
+            SheetService.redirectToCreationStepsFromId(sheetId);
         }
 
         // opens a modal dialog to confirm deleting the character

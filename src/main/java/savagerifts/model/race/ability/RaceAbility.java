@@ -10,7 +10,7 @@ import java.util.List;
 public class RaceAbility {
 	
 
-	// one to many edges (adds w/e edge)
+
 	// one to many attribute starting/max values  (str starts d6, max d12+1)
 
 
@@ -76,12 +76,17 @@ public class RaceAbility {
 	private Integer strainAdjustment;
 
 	// bonuses to attributes
-	@OneToMany(mappedBy = "race_ability")
+	@OneToMany(mappedBy = "raceAbility")
 	private List<RaceAbilityAttrAdjustment> attributeAdjustments;
 
 	// bonuses to skills
-	@OneToMany(mappedBy = "race_ability")
+	@OneToMany(mappedBy = "raceAbility")
 	private List<RaceAbilitySkillAdjustment> skillAdjustments;
+
+	// one to many edges (adds w/e edge)
+	@OneToMany(mappedBy = "raceAbility")
+	private List<RaceAbilityEdge> edges;
+
 
 
 	public Long getId() {

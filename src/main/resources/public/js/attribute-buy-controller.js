@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('attributeBuyController', function(APIService, $scope, $routeParams, $location, $log) {
+savageRiftsApp.controller('attributeBuyController', function(APIService, SheetService, $scope, $routeParams, $location, $log) {
 	$scope.attributes = [];
 
 	APIService.getSheetAttributes($routeParams.sheetId, function(response) {
@@ -29,7 +29,8 @@ savageRiftsApp.controller('attributeBuyController', function(APIService, $scope,
 
 	$scope.finalize = function() {
 	    APIService.finalizeAttributeBuy($routeParams.sheetId, function(response) {
-            $location.path("/editsheet/" + $routeParams.sheetId);
+//            $location.path("/editsheet/" + $routeParams.sheetId);
+            SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
 	    });
 	}
 	

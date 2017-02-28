@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope, $routeParams, $location, $log) {
+savageRiftsApp.controller('tableRollSwapController', function(APIService, SheetService, $scope, $routeParams, $location, $log) {
 
     $scope.sheet = null;
     $scope.benefitTables = null;            // all the tables
@@ -84,7 +84,8 @@ savageRiftsApp.controller('tableRollSwapController', function(APIService, $scope
 		$log.debug($scope.selectedTableId);
 
         APIService.finalizeTableRollSwaps($routeParams.sheetId, function(response) {
-            $location.path('/editsheet/' + $routeParams.sheetId);
+//            $location.path('/editsheet/' + $routeParams.sheetId);
+            SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
         });
 	}
 
