@@ -10,11 +10,6 @@ import java.util.List;
 public class RaceAbility {
 	
 
-
-	// one to many attribute starting/max values  (str starts d6, max d12+1)
-
-
-	// 1-* add a hindrance (dog boy gets outsider) (multiples always or'd together? )
 	// 1-* powers granted, and extra powers from framework list (fennodi start with these 3, and get one more if they have a list to choose from)
 
 	// 1-1 reach? (trimadore)
@@ -83,12 +78,19 @@ public class RaceAbility {
 	@OneToMany(mappedBy = "raceAbility")
 	private List<RaceAbilitySkillAdjustment> skillAdjustments;
 
-	// one to many edges (adds w/e edge)
+	// edges that this ability provides
 	@OneToMany(mappedBy = "raceAbility")
 	private List<RaceAbilityEdge> edges;
 
+	// default starting and max values for attrs
+	@OneToMany(mappedBy = "raceAbility")
+	private List<RaceAbilityAttrDefault> defaultAttributes;
 
+	// hindrances granted by this ability (dog boy gets outsider) (multiples always or'd together? )
+	@OneToMany(mappedBy = "raceAbility")
+	private List<RaceAbilityHindrance> hindrances;
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -206,5 +208,26 @@ public class RaceAbility {
 	}
 	public void setSkillAdjustments(List<RaceAbilitySkillAdjustment> skillAdjustments) {
 		this.skillAdjustments = skillAdjustments;
+	}
+
+	public List<RaceAbilityEdge> getEdges() {
+		return edges;
+	}
+	public void setEdges(List<RaceAbilityEdge> edges) {
+		this.edges = edges;
+	}
+
+	public List<RaceAbilityAttrDefault> getDefaultAttributes() {
+		return defaultAttributes;
+	}
+	public void setDefaultAttributes(List<RaceAbilityAttrDefault> defaultAttributes) {
+		this.defaultAttributes = defaultAttributes;
+	}
+
+	public List<RaceAbilityHindrance> getHindrances() {
+		return hindrances;
+	}
+	public void setHindrances(List<RaceAbilityHindrance> hindrances) {
+		this.hindrances = hindrances;
 	}
 }

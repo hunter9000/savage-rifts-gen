@@ -16,4 +16,5 @@
 16: Adding the benefit table definitions for the remaining tables, and added their rolls. added missing table rolls for combat cyborg and crazy frameworks
 17: add skill knowledge table, and add it to the skill_roll table
 18: add skill knowledge to edge skill prerequisites
-19: adding race abilities
+19: define race abilities tables and columns
+20: 
