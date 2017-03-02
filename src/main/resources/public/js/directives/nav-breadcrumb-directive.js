@@ -26,7 +26,7 @@ savageRiftsApp.directive('navBreadcrumb', function() {
 		},
         controller: function ($scope) {
             $scope.isActive = function(currentStep) {
-                console.log('currentStep ' + currentStep);
+//                console.log('currentStep ' + currentStep);
                 return $scope.step == currentStep ? 'active' : '';
             }
         }

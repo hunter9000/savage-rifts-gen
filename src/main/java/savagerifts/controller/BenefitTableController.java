@@ -31,7 +31,7 @@ public class BenefitTableController {
     }
 	
 	// get the sheet's options for the given table (the table perks, with the already selected ones marked)
-	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLLS)
+	@SheetOwner(requiredSteps = {SheetCreationStep.TABLE_ROLLS, SheetCreationStep.TABLE_ROLL_SWAP})
 	@RequestMapping(value = "/api/benefittable/{tableId}/{sheetId}/", method = RequestMethod.GET)
 	public BenefitTable getSheetTableOptions(@PathVariable Long tableId, @PathVariable Long sheetId) {
 		Sheet sheet = AuthUtils.getSheet(request);

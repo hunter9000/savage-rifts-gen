@@ -37,11 +37,11 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
 
         Long sheetId = Long.valueOf(pathVariables.get("sheetId"));
         if (sheetId == null) {
-            throw new BadRequestException();
+            throw new BadRequestException("No sheetId parameter provided");
         }
         Sheet sheet = sheetRepository.findOne(sheetId);
         if (sheet == null) {
-            throw new BadRequestException();
+            throw new BadRequestException("sheetId parameter invalid");
         }
 
         User user = AuthUtils.getLoggedInUser(request);

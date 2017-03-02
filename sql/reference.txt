@@ -17,4 +17,4 @@
 17: add skill knowledge table, and add it to the skill_roll table
 18: add skill knowledge to edge skill prerequisites
 19: define race abilities tables and columns
-20: 
+20: add tables for race abilities
