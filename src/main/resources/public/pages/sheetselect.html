@@ -9,9 +9,6 @@
             <div class="" ng-hide="sheets.length == 0">
                 <!-- header -->
                 <div class="row text-bold margin-bottom-small" style="margin-bottom:5px;">
-                    <!--<div class="sheet-select-id-col">-->
-                        <!--<span>Id</span>-->
-                    <!--</div>-->
 
                     <div class="sheet-select-name-col">
                         <span>Name</span>
@@ -34,11 +31,7 @@
                     </div>
                 </div>
 
-                <div class="row margin-bottom-small" ng-repeat="sheet in sheets">
-                    <!--<div class="sheet-select-id-col">-->
-                        <!--<span>{{sheet.id}}</span>-->
-                    <!--</div>-->
-
+                <div class="row margin-bottom-small" ng-repeat="sheet in sheets" ng-click="selectSheet(sheet.id)">
                     <div class="sheet-select-name-col">
                         <span>{{sheet.name}} </span>
                     </div>
@@ -58,7 +51,7 @@
                     </div>
 
                     <div class="sheet-select-delete-col">
-                        <a ng-click="confirmDelete(sheet)">
+                        <a ng-click="confirmDelete(sheet, $event)">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </a>
                     </div>

@@ -3,6 +3,7 @@ package savagerifts.model.skill;
 import savagerifts.model.AttributeType;
 
 public enum SkillType {
+	ARCANA("Arcana", AttributeType.SMARTS),
 	BOATING("Boating", AttributeType.AGILITY),
 	CLIMBING("Climbing", AttributeType.STRENGTH),
 	DRIVING("Driving", AttributeType.AGILITY),

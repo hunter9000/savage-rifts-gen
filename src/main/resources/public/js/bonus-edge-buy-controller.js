@@ -7,33 +7,16 @@ savageRiftsApp.controller('bonusEdgeBuyController', function(APIService, $scope,
         $scope.sheet = response.data;
     });
 
-	// if ($routeParams.purchaseType == 'edge') {
-	    APIService.getEdgeOptions(function(response) {
-            $scope.edgeOptions = response.data;
-        });
-	// }
-	// else if ($routeParams.purchaseType == 'attr') {
-	    // APIService.getSheetAttributes($routeParams.sheetId, function(response) {
-            // $scope.attrs = response.data;
-        // });
-	// }
-	// else if ($routeParams.purchaseType == 'skill') {
-        // APIService.getSheetSkills($routeParams.sheetId, function(response) {
-            // $scope.skills = response.data;
-        // });
-	// }
+    APIService.getEdgeOptions($routeParams.sheetId, function(response) {
+        $scope.edgeOptions = response.data;
+    });
 
 	$scope.purchaseEdge = function(edge) {
-		APIService.purchaseEdge(edge);
+		APIService.purchaseEdge($routeParams.sheetId, edge.id, function() {
+		    $scope.back();
+		});
 	}
-	// $scope.purchaseSkill = function(skill) {
-		
-	// }
-	// $scope.purchaseAttr = function(attr) {
-		
-	// }
-	
-	
+
 	$scope.back = function() {
 	    $location.path('/bonusbuy/' + $routeParams.sheetId);
 	}

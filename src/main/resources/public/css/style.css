@@ -33,6 +33,9 @@
     max-width: 100%;
 }*/
 
+.width-extra-large {
+    width: 1200px;
+}
 .width-large {
     width: 900px;
 }

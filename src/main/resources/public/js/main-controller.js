@@ -35,6 +35,15 @@ savageRiftsApp.controller('mainController', function($scope, $location, $window,
         }
     };
     init();
+
+    $scope.goToProfile = function() {
+        $location.path('/profile');
+    }
+
+    $scope.goToHome = function() {
+        $location.path('/sheetselect');
+    }
+
 });
 
 

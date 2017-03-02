@@ -129,7 +129,8 @@ public class SheetEdgePurchaseManager {
     }
 	
 	private boolean meetsEdgeRequirement(Edge prereq) {
-        return sheet.getChosenEdges().contains(prereq);
+        return sheet.getChosenEdgeSelections().stream().anyMatch((e) -> e.getEdge() == prereq);
+//        return sheet.getChosenEdgeSelections().contains(edge);
     }
 	
 }

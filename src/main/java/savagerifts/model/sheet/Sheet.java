@@ -108,7 +108,7 @@ public class Sheet {
 
 	// things bought with hindrance points
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<EdgeSelection> chosenEdges;
+	private List<EdgeSelection> chosenEdgeSelections;
 	
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<AttributeRaiseSelection> chosenAttributeRaises;
@@ -311,11 +311,11 @@ public class Sheet {
 		this.chosenHindrances = chosenHindrances;
 	}
 
-	public List<EdgeSelection> getChosenEdges() {
-		return chosenEdges;
+	public List<EdgeSelection> getChosenEdgeSelections() {
+		return chosenEdgeSelections;
 	}
-	public void setChosenEdges(List<EdgeSelection> chosenEdges) {
-		this.chosenEdges = chosenEdges;
+	public void setChosenEdgeSelections(List<EdgeSelection> chosenEdgeSelections) {
+		this.chosenEdgeSelections = chosenEdgeSelections;
 	}
 
 	public List<AttributeRaiseSelection> getChosenAttributeRaises() {

@@ -177,8 +177,8 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 		finalizeBonusPurchases: function() {
 //			POST"/api/sheet/{sheetId}/bonuses/"
 		},
-		purchaseEdge: function() {
-//			"/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT
+		purchaseEdge: function(sheetId, edgeId, successCallback) {
+			this.put("/api/sheet/"+sheetId+"/bonuses/edges/"+edgeId+"/", {}, successCallback);
 		},
 		removeEdge: function() {
 //			"/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)

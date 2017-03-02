@@ -1,11 +1,15 @@
 package savagerifts.controller;
 
+import org.apache.commons.collections4.IteratorUtils;
+import org.apache.commons.collections4.ListValuedMap;
+import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
 import savagerifts.model.edge.Edge;
+import savagerifts.model.edge.EdgeCategoryType;
 import savagerifts.model.sheet.*;
 import savagerifts.repository.EdgeRepository;
 import savagerifts.repository.SheetRepository;
@@ -18,7 +22,9 @@ import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class SheetBonusesController {
@@ -42,19 +48,12 @@ public class SheetBonusesController {
 	// gets all the edge options that aren't already bought, and are qualified for by the sheet
 	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/", method = RequestMethod.GET)
-	public Iterable<Edge> getEdgeBonusChoices() {
+	public Map<EdgeCategoryType, Collection<Edge>> getEdgeBonusChoices() {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		// validate sheet is in edge buy step
-//		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-//			throw new BadRequestException();
-//		}
-
-        List<Edge> edges = new ArrayList<>();
-        for (Edge edge : edgeRepository.findAll()) {
-            if (!sheet.getChosenEdges().contains(edge)) {
-                edges.add(edge);
-            }
+        List<Edge> edges = IteratorUtils.toList(edgeRepository.findAll().iterator());
+        for (EdgeSelection edgeSelection : sheet.getChosenEdgeSelections()) {
+			edges.remove(edgeSelection.getEdge());
         }
 
 		// loop through each edge, determine if sheet qualifies for it
@@ -66,7 +65,12 @@ public class SheetBonusesController {
 			}
 		}
 
-		return qualifiedEdges;
+		ListValuedMap<EdgeCategoryType, Edge> multiMap = new ArrayListValuedHashMap<>();
+		for (Edge e : qualifiedEdges) {
+			multiMap.put(e.getEdgeCategoryType(), e);
+		}
+
+		return multiMap.asMap();
 	}
 	
 	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
@@ -74,18 +78,13 @@ public class SheetBonusesController {
 	public ResponseEntity<?> purchaseEdge(@PathVariable Long edgeId) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		// validate sheet is in edge buy step
-//		if (sheet.getCreationStep() != SheetCreationStep.EDGES) {
-//			throw new BadRequestException();
-//		}
-
 		// validate the given edge exists
 		Edge edge = edgeRepository.findOne(edgeId);
 		if (edge == null) {
 			throw new BadRequestException("The given edge doesn't exist.");
 		}
 		// validate sheet doesn't already own this edge, and can afford
-		for (EdgeSelection edgeSelection : sheet.getChosenEdges()) {
+		for (EdgeSelection edgeSelection : sheet.getChosenEdgeSelections()) {
 			if (edgeSelection.getEdge().equals(edge)) {
 				throw new BadRequestException("This sheet already has the given edge.");
 			}
@@ -98,7 +97,7 @@ public class SheetBonusesController {
 		EdgeSelection edgeSelection = new EdgeSelection();
 		edgeSelection.setEdge(edge);
 		edgeSelection.setSheet(sheet);
-		sheet.getChosenEdges().add(edgeSelection);
+		sheet.getChosenEdgeSelections().add(edgeSelection);
 		
 		sheetRepository.save(sheet);
 		
@@ -111,7 +110,7 @@ public class SheetBonusesController {
 		Sheet sheet = AuthUtils.getSheet(request);
 		
 		EdgeSelection edgeSelection = null;
-		for (EdgeSelection edge : sheet.getChosenEdges()) {
+		for (EdgeSelection edge : sheet.getChosenEdgeSelections()) {
 			if (edge.getId().equals(edgeRaiseId)) {
 				edgeSelection = edge;
 				break;
@@ -121,7 +120,7 @@ public class SheetBonusesController {
 			throw new BadRequestException();
 		}
 		
-		sheet.getChosenEdges().remove(edgeSelection);
+		sheet.getChosenEdgeSelections().remove(edgeSelection);
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);

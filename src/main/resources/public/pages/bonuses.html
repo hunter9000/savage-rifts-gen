@@ -15,10 +15,10 @@
 							<!-- <div class="panel panel-default"> -->
 								<!-- <div class="panel-heading">Chosen</div> -->
 								<!-- <div class="panel-body"> -->
-					<div ng-repeat="edge in sheet.chosenEdges"> </div>
-					<div ng-repeat="attr in sheet.chosenAttributeRaises"> </div>
-					<div ng-repeat="skill in sheet.chosenSkillRaises"> </div>
-					<div ng-repeat="money in sheet.chosenMoneyRaises"> </div>
+					<div ng-repeat="edgeSelection in sheet.chosenEdgeSelections"> {{edgeSelection.edge.edgeType.displayName}} </div>
+					<div ng-repeat="attr in sheet.chosenAttributeRaises"> {{attr}} </div>
+					<div ng-repeat="skill in sheet.chosenSkillRaises"> {{skill}} </div>
+					<div ng-repeat="money in sheet.chosenMoneyRaises"> {{money}} </div>
 								<!-- </div> -->
 							<!-- </div> -->
 						<!-- </div> -->
