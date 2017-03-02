@@ -1,11 +1,13 @@
 package savagerifts.model.race.ability;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.edge.Edge;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "race_ability_edge")
+@JsonIgnoreProperties(value = {"raceAbility"})
 public class RaceAbilityEdge {
 
     @Id

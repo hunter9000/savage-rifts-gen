@@ -1,5 +1,6 @@
 package savagerifts.model.edge;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.AttributeType;
 import savagerifts.model.DieType;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "edge_attribute_prerequisite")
+@JsonIgnoreProperties(value = {"edge"})
 public class EdgeAttributePrerequisite {
 	
 	@Id

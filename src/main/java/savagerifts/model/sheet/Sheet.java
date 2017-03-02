@@ -32,7 +32,7 @@ public class Sheet {
 
 	@Column(name = "rank", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private XPRank rank = XPRank.Novice;
+	private XPRank rank = XPRank.NOVICE;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "strength", nullable = false)

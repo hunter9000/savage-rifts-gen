@@ -1,5 +1,6 @@
 package savagerifts.model.race.ability;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.AttributeType;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 /** Adds +1 to the default attribute die, and +1 to the max value for that attribute during attribute point buy */
 @Entity
 @Table(name = "race_ability_attr_default")
+@JsonIgnoreProperties(value = {"raceAbility"})
 public class RaceAbilityAttrDefault {
 
     @Id

@@ -1,15 +1,15 @@
 package savagerifts.model.race.ability;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import savagerifts.model.hindrance.Hindrance;
-import savagerifts.model.hindrance.SeverityType;
+import savagerifts.model.DieType;
+import savagerifts.model.skill.SkillType;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "race_ability_hindrance")
+@Table(name = "race_ability_skill_default")
 @JsonIgnoreProperties(value = {"raceAbility"})
-public class RaceAbilityHindrance {
+public class RaceAbilitySkillDefault {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +20,14 @@ public class RaceAbilityHindrance {
     @JoinColumn(name = "race_ability", nullable = false, updatable = false)
     private RaceAbility raceAbility;
 
-	@OneToOne
-	@JoinColumn(name = "hindrance", nullable = false, updatable = false)
-	private Hindrance hindrance;
-
-	@Column(name = "severity_type", updatable = false, nullable = false)
+    @Column(name = "skill_type", nullable = false, updatable = false)
     @Enumerated(EnumType.STRING)
-	private SeverityType severityType;
-	
+    private SkillType skillType;
+
+    @Column(name = "starting_die_type", nullable = false, updatable = false)
+    @Enumerated(EnumType.STRING)
+    private DieType startingDieType;
+
     public Long getId() {
         return id;
     }
@@ -42,17 +42,17 @@ public class RaceAbilityHindrance {
         this.raceAbility = raceAbility;
     }
 
-    public Hindrance getHindrance() {
-        return hindrance;
+    public SkillType getSkillType() {
+        return skillType;
     }
-    public void setHindrance(Hindrance hindrance) {
-        this.hindrance = hindrance;
+    public void setSkillType(SkillType skillType) {
+        this.skillType = skillType;
     }
 
-    public SeverityType getSeverityType() {
-        return severityType;
+    public DieType getStartingDieType() {
+        return startingDieType;
     }
-    public void setSeverityType(SeverityType severityType) {
-        this.severityType = severityType;
+    public void setStartingDieType(DieType startingDieType) {
+        this.startingDieType = startingDieType;
     }
 }

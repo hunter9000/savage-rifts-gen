@@ -1,27 +1,50 @@
 USE savage_rifts;
 
+-- change case of xprank in sheet
+UPDATE `sheet` set rank = UPPER(rank);
+
 CREATE TABLE `race_ability_attr_default` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-	 BIGINT(20) NOT NULL,
-	`attr_type` VARCHAR(255) NOT NULL,
+	`race_ability` BIGINT(20) NOT NULL,
+	`attribute` VARCHAR(255) NOT NULL,
 
 	PRIMARY KEY (`id`),
-	INDEX `FK_race_ability_attr_adjustment__race_ability` (),
-	CONSTRAINT `FK_race_ability_attr_adjustment__race_ability` FOREIGN KEY () REFERENCES  (`id`)
+	INDEX `FK_race_ability_attr_default__race_ability` (`race_ability`),
+	CONSTRAINT `FK_race_ability_attr_default__race_ability` FOREIGN KEY (`race_ability`) REFERENCES `race_ability` (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
 CREATE TABLE `race_ability_hindrance` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-	 BIGINT(20) NOT NULL,
+	`race_ability` BIGINT(20) NOT NULL,
 	`hindrance` BIGINT(20) NOT NULL,
-
+	`severity_type` VARCHAR(255) NOT NULL,
+	
 	PRIMARY KEY (`id`),
-	INDEX `FK_race_ability_attr_adjustment__race_ability` (),
-	INDEX `FK_race_ability_attr_adjustment__hindrance` (`hindrance`),
-	CONSTRAINT `FK_race_ability_attr_adjustment__race_ability` FOREIGN KEY () REFERENCES  (`id`),
-	CONSTRAINT `FK_race_ability_attr_adjustment__hindrance` FOREIGN KEY (`hindrance`) REFERENCES `hindrance` (`id`)
+	INDEX `FK_race_ability_hindrance__race_ability` (`race_ability`),
+	INDEX `FK_race_ability_hindrance__hindrance` (`hindrance`),
+	CONSTRAINT `FK_race_ability_hindrance__race_ability` FOREIGN KEY (`race_ability`) REFERENCES `race_ability` (`id`),
+	CONSTRAINT `FK_race_ability_hindrance__hindrance` FOREIGN KEY (`hindrance`) REFERENCES `hindrance` (`id`)
 ) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
+CREATE TABLE `race_ability_skill_default` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`race_ability` BIGINT(20) NOT NULL,
+	`skill_type` VARCHAR(255) NOT NULL,
+	`starting_die_type` VARCHAR(255) NOT NULL,
+
+	PRIMARY KEY (`id`),
+	INDEX `FK_race_ability_skill_default__race_ability` (`race_ability`),
+	CONSTRAINT `FK_race_ability_skill_default__race_ability` FOREIGN KEY (`race_ability`) REFERENCES `race_ability` (`id`)
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
+
+
+DELETE FROM race_ability_edge;
+DELETE FROM race_ability_attr_adjustment;
+DELETE FROM race_ability_hindrance;
+DELETE FROM race_ability_attr_default;
+DELETE FROM race_ability_skill_adjustment;
+DELETE FROM race_ability_skill_default;
+DELETE FROM race_ability;
 
 
 SELECT @ALTARA_ID:=id FROM race WHERE type = 'ALTARA';
@@ -193,14 +216,67 @@ SET @SIMVAN_RACIAL_ENEMY_ID = LAST_INSERT_ID();
 
 
 -- EDGES
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@ALTARA_ATTRACTIVE_ID, (SELECT id FROM edge WHERE type = 'ATTRACTIVE'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@ALTARA_SUPERIOR_SENSES_ID, (SELECT id FROM edge WHERE type = 'ALERTNESS'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@FENNODI_NATURAL_PSIONICS_ID, (SELECT id FROM edge WHERE type = 'ARCANE_BACKGROUND_PSIONICS'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@QUICKFLEX_AMBIDEXTERITY_ID, (SELECT id FROM edge WHERE type = 'AMBIDEXTROUS'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@PSISTALKER_AMBIDEXTERITY_ID, (SELECT id FROM edge WHERE type = 'AMBIDEXTROUS'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@TRIMADORE_MECHANICAL_SAVANT_ID, (SELECT id FROM edge WHERE type = 'MR_FIX_IT'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@SIMVAN_ANIMAL_EMPATHY_ID, (SELECT id FROM edge WHERE type = 'BEAST_MASTER'));
-INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@SIMVAN_NATURAL_PSIONICS_ID, (SELECT id FROM edge WHERE type = 'ARCANE_BACKGROUND_PSIONICS'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@ALTARA_ATTRACTIVE_ID, (SELECT id FROM edge WHERE edge_type = 'ATTRACTIVE'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@ALTARA_SUPERIOR_SENSES_ID, (SELECT id FROM edge WHERE edge_type = 'ALERTNESS'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@FENNODI_NATURAL_PSIONICS_ID, (SELECT id FROM edge WHERE edge_type = 'ARCANE_BACKGROUND_PSIONICS'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@QUICKFLEX_AMBIDEXTERITY_ID, (SELECT id FROM edge WHERE edge_type = 'AMBIDEXTROUS'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@PSISTALKER_AMBIDEXTERITY_ID, (SELECT id FROM edge WHERE edge_type = 'AMBIDEXTROUS'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@TRIMADORE_MECHANICAL_SAVANT_ID, (SELECT id FROM edge WHERE edge_type = 'MR_FIX_IT'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@SIMVAN_ANIMAL_EMPATHY_ID, (SELECT id FROM edge WHERE edge_type = 'BEAST_MASTER'));
+INSERT INTO `race_ability_edge` (race_ability, edge) VALUES (@SIMVAN_NATURAL_PSIONICS_ID, (SELECT id FROM edge WHERE edge_type = 'ARCANE_BACKGROUND_PSIONICS'));
+
+-- race_ability columns updates
+UPDATE `race_ability` SET ppe_adjustment = 5 WHERE race_ability_type = 'DNORR_NATURAL_ARCANE_AFFINITY' ;
+UPDATE `race_ability` SET charisma_adjustment = 1 WHERE race_ability_type = 'DNORR_PERSONABLE' ;
+UPDATE `race_ability` SET restricts_psionics_use = true WHERE race_ability_type = 'DNORR_RESTRICTED_PATH' ;
+UPDATE `race_ability` SET restricts_psionics_use = true WHERE race_ability_type = 'DOGBOY_RESTRICTED_PATHS' ;
+UPDATE `race_ability` SET parry_adjustment = 1 WHERE race_ability_type = 'QUICKFLEX_ELUSIVE' ;
+UPDATE `race_ability` SET pace_adjustment = 2 WHERE race_ability_type = 'QUICKFLEX_FAST' ;
+UPDATE `race_ability` SET restricts_magic_use = true WHERE race_ability_type = 'QUICKFLEX_RESTRICTED_PATH' ;
+UPDATE `race_ability` SET pace_adjustment = 2 WHERE race_ability_type = 'PSISTALKER_FAST' ;
+UPDATE `race_ability` SET restricts_magic_use = true WHERE race_ability_type = 'PSISTALKER_RESTRICTED_PATHS' ;
+UPDATE `race_ability` SET restricts_cybernetics_use = true WHERE race_ability_type = 'GRACKLETOOTH_CYBER_RESISTANT' ;
+UPDATE `race_ability` SET restricts_magic_use = true WHERE race_ability_type = 'GRACKLETOOTH_RESTRICTED_PATHS' ;
+UPDATE `race_ability` SET restricts_cybernetics_use = true WHERE race_ability_type = 'GRACKLETOOTH_RESTRICTED_PATHS' ;
+UPDATE `race_ability` SET toughness_adjustment = 2 WHERE race_ability_type = 'GRACKLETOOTH_SIZE_2' ;
+UPDATE `race_ability` SET restricts_cybernetics_use = true WHERE race_ability_type = 'LYNSRIAL_CYBER_RESISTANT' ;
+UPDATE `race_ability` SET pace_adjustment = -2 WHERE race_ability_type = 'LYNSRIAL_POOR_GROUND_SPEED' ;
+UPDATE `race_ability` SET isp_adjustment = 5 WHERE race_ability_type = 'SIMVAN_NATURAL_PSIONICS' ;
+
+-- ATTR ADJUSTMENTS
+INSERT INTO `race_ability_attr_adjustment` (race_ability, attr_type, bonus) VALUES (@ALTARA_INSTILLED_IGNORANCE_ID, 'SMARTS', -2);
+INSERT INTO `race_ability_attr_adjustment` (race_ability, attr_type, bonus) VALUES (@QUICKFLEX_SHORT_ATTENTION_SPAN_ID, 'SMARTS', -1);
+INSERT INTO `race_ability_attr_adjustment` (race_ability, attr_type, bonus) VALUES (@SIMVAN_INSTINCTS_OVER_INTELLECT_ID, 'SMARTS', -1);
+
+
+-- hindrances
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@QUICKFLEX_SUPREME_CONFIDENCE_ID, (SELECT id FROM `hindrance` WHERE type = 'OVERCONFIDENT'), 'MAJOR');
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@GRACKLETOOTH_JUST_HOW_I_WAS_RAISED_ID, (SELECT id FROM `hindrance` WHERE type = 'HEROIC'), 'MAJOR');
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@GRACKLETOOTH_JUST_HOW_I_WAS_RAISED_ID, (SELECT id FROM `hindrance` WHERE type = 'OVERCONFIDENT'), 'MAJOR');
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@LYNSRIAL_HUNTED_BY_THE_COALITION_ID, (SELECT id FROM `hindrance` WHERE type = 'WANTED'), 'MAJOR');
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@LYNSRIAL_INHERENT_NATURE_ID, (SELECT id FROM `hindrance` WHERE type = 'HEROIC'), 'MAJOR');
+INSERT INTO `race_ability_hindrance` (race_ability, hindrance, severity_type) VALUES (@SIMVAN_APEX_PREDATOR_ID, (SELECT id FROM `hindrance` WHERE type = 'BLOODTHIRSTY'), 'MAJOR');
+
+-- DEFAULT ATTRS
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@ALTARA_GENETIC_ENGINEERING_ID, 'AGILITY');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@ALTARA_GENETIC_ENGINEERING_ID, 'STRENGTH');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@ALTARA_GENETIC_ENGINEERING_ID, 'VIGOR');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@DNORR_INTELLIGENT_AND_SPIRITUAL_ID, 'SMARTS');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@DNORR_INTELLIGENT_AND_SPIRITUAL_ID, 'SPIRIT');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@QUICKFLEX_AGILE_ID, 'AGILITY');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@QUICKFLEX_AGILE_ID, 'AGILITY');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@GRACKLETOOTH_POWERFUL_ID, 'STRENGTH');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@GRACKLETOOTH_POWERFUL_ID, 'STRENGTH');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@GRACKLETOOTH_POWERFUL_ID, 'VIGOR');
+INSERT INTO `race_ability_attr_default` (race_ability, attribute) VALUES (@LYNSRIAL_STRONG_ID, 'STRENGTH');
+
+-- skill adjustment
+INSERT INTO `race_ability_skill_adjustment` (race_ability, skill_type, bonus) VALUES (@PSISTALKER_ANIMAL_EMPATHY_ID, 'TRACKING', 2);
+
+-- skill defaults
+INSERT INTO `race_ability_skill_default` (race_ability, skill_type, starting_die_type) VALUES (@PSISTALKER_ANIMAL_EMPATHY_ID, 'RIDING', 'D6');
+INSERT INTO `race_ability_skill_default` (race_ability, skill_type, starting_die_type) VALUES (@TRIMADORE_TECHNICALLY_SAVVY_ID, 'REPAIR', 'D6');
+INSERT INTO `race_ability_skill_default` (race_ability, skill_type, starting_die_type) VALUES (@SIMVAN_ANIMAL_EMPATHY_ID, 'RIDING', 'D6');
 
 
 INSERT INTO `sql_files` (`sql_file_name`, `run_date`) VALUES ('20.sql', NOW());

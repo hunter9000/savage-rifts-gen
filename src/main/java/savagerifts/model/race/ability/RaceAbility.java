@@ -1,5 +1,6 @@
 package savagerifts.model.race.ability;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.race.Race;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "race_ability")
+@JsonIgnoreProperties(value = {"race"})
 public class RaceAbility {
 	
 
@@ -77,6 +79,9 @@ public class RaceAbility {
 	// bonuses to skills
 	@OneToMany(mappedBy = "raceAbility")
 	private List<RaceAbilitySkillAdjustment> skillAdjustments;
+
+	@OneToMany(mappedBy = "raceAbility")
+	private List<RaceAbilitySkillDefault> skillDefaults;
 
 	// edges that this ability provides
 	@OneToMany(mappedBy = "raceAbility")
@@ -208,6 +213,13 @@ public class RaceAbility {
 	}
 	public void setSkillAdjustments(List<RaceAbilitySkillAdjustment> skillAdjustments) {
 		this.skillAdjustments = skillAdjustments;
+	}
+
+	public List<RaceAbilitySkillDefault> getSkillDefaults() {
+		return skillDefaults;
+	}
+	public void setSkillDefaults(List<RaceAbilitySkillDefault> skillDefaults) {
+		this.skillDefaults = skillDefaults;
 	}
 
 	public List<RaceAbilityEdge> getEdges() {

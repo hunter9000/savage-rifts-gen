@@ -1,5 +1,6 @@
 package savagerifts.model.edge;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.DieType;
 import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillType;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "edge_skill_prerequisite")
+@JsonIgnoreProperties(value = {"edge"})
 public class EdgeSkillPrerequisite {
 	
 	@Id

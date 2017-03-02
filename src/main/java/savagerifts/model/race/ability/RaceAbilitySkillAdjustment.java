@@ -1,11 +1,13 @@
 package savagerifts.model.race.ability;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.skill.SkillType;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "race_ability_skill_adjustment")
+@JsonIgnoreProperties(value = {"raceAbility"})
 public class RaceAbilitySkillAdjustment {
 
     @Id
@@ -20,10 +22,6 @@ public class RaceAbilitySkillAdjustment {
     @Column(name = "skill_type", nullable = false, updatable = false)
     @Enumerated(EnumType.STRING)
     private SkillType skillType;
-
-    // needed??
-//    @JoinColumn()
-//    private SkillKnowledge skillKnowledge;
 
     @Column(name = "bonus", nullable = false, updatable = false)
     private Integer bonus;
@@ -48,13 +46,6 @@ public class RaceAbilitySkillAdjustment {
     public void setSkillType(SkillType skillType) {
         this.skillType = skillType;
     }
-
-//    public SkillKnowledge getSkillKnowledge() {
-//        return skillKnowledge;
-//    }
-//    public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
-//        this.skillKnowledge = skillKnowledge;
-//    }
 
     public Integer getBonus() {
         return bonus;
