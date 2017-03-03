@@ -31,13 +31,13 @@ savageRiftsApp.factory('SheetService', function(APIService, $window, $location) 
     };
 
     return {
-        redirectToCreationSteps: function(sheet) {
-            if (!sheet) {
-                $location.path('/error');
-            }
-
-            redirect(sheet.creationStep, sheet.id);
-        },
+//        redirectToCreationSteps: function(sheet) {
+//            if (!sheet) {
+//                $location.path('/error');
+//            }
+//
+//            redirect(sheet.creationStep, sheet.id);
+//        },
 
         redirectToCreationStepsFromId: function(sheetId) {
             APIService.getSheetCreationStep(sheetId, function(response) {

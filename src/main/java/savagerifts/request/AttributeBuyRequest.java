@@ -1,6 +1,7 @@
 package savagerifts.request;
 
 import savagerifts.model.AttributeType;
+import savagerifts.security.BadRequestException;
 
 public class AttributeBuyRequest {
     private AttributeType attribute;
@@ -22,5 +23,22 @@ public class AttributeBuyRequest {
     }
     public void setOperation(OperationType operation) {
         this.operation = operation;
+    }
+
+    public boolean validate() throws BadRequestException {
+        String errorString = "";
+        boolean error = false;
+        if (attribute == null) {
+            errorString += " attribute is invalid ";
+            error = true;
+        }
+        if (operation == null) {
+            errorString += " operation is invalid ";
+            error = true;
+        }
+        if (error) {
+            throw new BadRequestException("request is invalid for these reasons: " + errorString);
+        }
+        return true;
     }
 }

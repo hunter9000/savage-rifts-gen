@@ -2,9 +2,9 @@ package savagerifts.response;
 
 import savagerifts.model.AttributeType;
 import savagerifts.model.sheet.Roll;
-import savagerifts.model.sheet.Sheet;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class AttributeBuyResponse {
@@ -12,8 +12,14 @@ public class AttributeBuyResponse {
 	public Map<AttributeType, Roll> attributes = new HashMap<>();
 	public Map<AttributeType, Boolean> canIncrease = new HashMap<>();
 	public Map<AttributeType, Boolean> canDecrease = new HashMap<>();
+	public Map<AttributeType, AttributeType> attributeTypes = new LinkedHashMap<>();
 	public int remainingAttrPoints;
 
+	public AttributeBuyResponse() {
+		for (AttributeType type : AttributeType.values()) {
+			attributeTypes.put(type, type);
+		}
+	}
 
 	public int getRemainingAttrPoints() {
 		return remainingAttrPoints;
@@ -36,4 +42,17 @@ public class AttributeBuyResponse {
 		this.canDecrease = canDecrease;
 	}
 
+	public Map<AttributeType, Roll> getAttributes() {
+		return attributes;
+	}
+	public void setAttributes(Map<AttributeType, Roll> attributes) {
+		this.attributes = attributes;
+	}
+
+	public Map<AttributeType, AttributeType> getAttributeTypes() {
+		return attributeTypes;
+	}
+	public void setAttributeTypes(Map<AttributeType, AttributeType> attributeTypes) {
+		this.attributeTypes = attributeTypes;
+	}
 }

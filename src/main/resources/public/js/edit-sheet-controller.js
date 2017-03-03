@@ -6,11 +6,11 @@ savageRiftsApp.controller('editSheetController', function(APIService, SheetServi
     $scope.sheet = null;
 
     // lookup the character
-    APIService.getSheet($routeParams.sheetId, function(response) {
-        $scope.sheet = response.data;
+//    APIService.getSheet($routeParams.sheetId, function(response) {
+//        $scope.sheet = response.data;
 
-        SheetService.redirectToCreationSteps($scope.sheet);
-    });
+    SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
+//    });
 
     $scope.save = function() {
         APIService.updateSheet($routeParams.sheetId, $scope.sheet, function(response) {

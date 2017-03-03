@@ -78,6 +78,11 @@ public class SheetBonusesController {
 	public ResponseEntity<?> purchaseEdge(@PathVariable Long edgeId) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
+		// validate that the sheet can afford to purchase an edge
+		if (sheet.getRemainingHindrancePoints() < SheetUtils.EDGE_RAISE_COST) {
+			throw new BadRequestException("Sheet only has " + sheet.getRemainingHindrancePoints() + " hindrance points, needs " + SheetUtils.EDGE_RAISE_COST + " to purchase edge");
+		}
+
 		// validate the given edge exists
 		Edge edge = edgeRepository.findOne(edgeId);
 		if (edge == null) {
@@ -98,7 +103,9 @@ public class SheetBonusesController {
 		edgeSelection.setEdge(edge);
 		edgeSelection.setSheet(sheet);
 		sheet.getChosenEdgeSelections().add(edgeSelection);
-		
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - SheetUtils.EDGE_RAISE_COST);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -121,6 +128,9 @@ public class SheetBonusesController {
 		}
 		
 		sheet.getChosenEdgeSelections().remove(edgeSelection);
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() + SheetUtils.EDGE_RAISE_COST);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -131,13 +141,22 @@ public class SheetBonusesController {
 	public ResponseEntity<?> purchaseAttributeRaise(@RequestBody AttributeBuyRequest attributeBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		// validate the given request
+		// validate the given request, throws exception if invalid
+		attributeBuyRequest.validate();
+
 		// validate sheet can afford
+		if (sheet.getRemainingHindrancePoints() < SheetUtils.ATTR_RAISE_COST) {
+			throw new BadRequestException("Sheet only has " + sheet.getRemainingHindrancePoints() + " hindrance points, needs " + SheetUtils.ATTR_RAISE_COST + " to purchase attribute");
+		}
 		
 		AttributeRaiseSelection attributeRaiseSelection = new AttributeRaiseSelection();
+		attributeRaiseSelection.setSheet(sheet);
+		attributeRaiseSelection.setAttributeType(attributeBuyRequest.getAttribute());
 		sheet.getChosenAttributeRaises().add(attributeRaiseSelection);
-		
-		sheetRepository.save(sheet);
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - SheetUtils.ATTR_RAISE_COST);
+
+		sheet = sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -159,6 +178,9 @@ public class SheetBonusesController {
 		}
 		
 		sheet.getChosenAttributeRaises().remove(attrSelection);
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() + SheetUtils.ATTR_RAISE_COST);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);

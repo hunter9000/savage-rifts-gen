@@ -9,29 +9,9 @@
         <div class="panel-body">
 
             <ul class="list-group">
-                <li class="list-group-item">
-                    <attribute-buy attribute="STRENGTH" value="attributes.attributes.STRENGTH" canincrease="attributes.canIncrease.STRENGTH" candecrease="attributes.canDecrease.STRENGTH" dec="decAttribute" inc="incAttribute" >
-                        Strength
-                    </attribute-buy>
-                </li>
-                <li class="list-group-item">
-                    <attribute-buy attribute="AGILITY" value="attributes.attributes.AGILITY" canincrease="attributes.canIncrease.AGILITY" candecrease="attributes.canDecrease.AGILITY" dec="decAttribute" inc="incAttribute" >
-                        Agility
-                    </attribute-buy>
-                </li>
-                <li class="list-group-item">
-                    <attribute-buy attribute="SMARTS" value="attributes.attributes.SMARTS" canincrease="attributes.canIncrease.SMARTS" candecrease="attributes.canDecrease.SMARTS" dec="decAttribute" inc="incAttribute" >
-                        Smarts
-                    </attribute-buy>
-                </li>
-                <li class="list-group-item">
-                    <attribute-buy attribute="SPIRIT" value="attributes.attributes.SPIRIT" canincrease="attributes.canIncrease.SPIRIT" candecrease="attributes.canDecrease.SPIRIT" dec="decAttribute" inc="incAttribute" >
-                        Spirit
-                    </attribute-buy>
-                </li>
-                <li class="list-group-item">
-                    <attribute-buy attribute="VIGOR" value="attributes.attributes.VIGOR" canincrease="attributes.canIncrease.VIGOR" candecrease="attributes.canDecrease.VIGOR" dec="decAttribute" inc="incAttribute" >
-                        Vigor
+                <li class="list-group-item" ng-repeat="(attrType, attr) in attributes.attributeTypes">
+                    <attribute-buy attribute="{{attrType}}" value="attributes" show-increase="true" show-decrease="true" dec="decAttribute" inc="incAttribute" >
+
                     </attribute-buy>
                 </li>
             </ul>

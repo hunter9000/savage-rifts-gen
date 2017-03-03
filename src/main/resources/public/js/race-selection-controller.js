@@ -15,9 +15,9 @@ savageRiftsApp.controller('raceSelectionController', function(APIService, SheetS
 
 	$scope.selectRace = function() {
 	    APIService.createSheetRace($routeParams.sheetId, $scope.selectedRace.id, function successCallback(response) {
-            APIService.getSheet($routeParams.sheetId, function(response) {
-                SheetService.redirectToCreationSteps(response.data);
-            });
+//            APIService.getSheet($routeParams.sheetId, function(response) {
+            SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
+//            });
         });
 	}
 	

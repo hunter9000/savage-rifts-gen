@@ -1,40 +1,17 @@
 
+<link rel="stylesheet" href="css/attribute-point-buy.css" />
+
 <div class="container width-large">
 	<div class="panel panel-default">
-		<div class="panel-heading">Edges etc...</div>
+		<div class="panel-heading">Attributes</div>
 		<div class="panel-body">
 
-			<!-- <div ng-show="edges"> -->
-                <!-- <div ng-repeat="edge in edges"> -->
-                    <!-- {{edge}} -->
-					<!-- <button ng-click="purchaseEdge(edge)">Purchase</button> -->
-                <!-- </div> -->
-			<!-- </div> -->
-
-            <div ng-show="attrs">
-                <div ng-repeat="attr in attrs">
-                    {{attr}}
-					
-					<button ng-click="purchaseAttr(attr)">Purchase</button>
-                </div>
-            </div>
-
 			<ul class="list-group">
-                <li class="list-group-item">
-                    <attribute-buy attribute="STRENGTH" value="attrs.attributes.STRENGTH" canincrease="true" inc="purchase" >
-                        Strength
-                    </attribute-buy>
+                <li class="list-group-item" ng-repeat="(attrType, attr) in attrs.attributeTypes">
+                    <attribute-buy attribute="{{attrType}}" value="attrs" show-increase="true" show-decrease="false" inc="purchase" />
                 </li>
 			</ul>
 			
-            <!-- <div ng-show="skills"> -->
-                <!-- <div ng-repeat="skill in skills"> -->
-                    <!-- {{skill}} -->
-					<!-- <button ng-click="purchaseSkill(skill)">Purchase</button> -->
-                <!-- </div> -->
-            <!-- </div> -->
-
-
             <a class="btn btn-default" ng-click="back()" >Back</a>
 
 		</div>

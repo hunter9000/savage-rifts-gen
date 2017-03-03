@@ -1,5 +1,8 @@
 package savagerifts.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum AttributeType {
 	STRENGTH("Strength"),
 	AGILITY("Agility"),

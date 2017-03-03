@@ -6,7 +6,7 @@ savageRiftsApp.directive('panel', function() {
         restrict: 'E',
 		transclude: true,
         scope: {
-            header: '=',
+            header: '@',
         },
     }
   });

@@ -180,14 +180,14 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 		purchaseEdge: function(sheetId, edgeId, successCallback) {
 			this.put("/api/sheet/"+sheetId+"/bonuses/edges/"+edgeId+"/", {}, successCallback);
 		},
-		removeEdge: function() {
-//			"/api/sheet/{sheetId}/bonuses/edges/{edgeRaiseId}/", method = RequestMethod.DELETE)
+		removeEdge: function(sheetId, edgeRaiseId, successCallback) {
+			this.delete('/api/sheet/'+sheetId+'/bonuses/edges/'+edgeRaiseId+'/', successCallback);
 		},
-		purchaseAttributeRaise: function() {
-//			"/api/sheet/{sheetId}/bonuses/attributes/", method = RequestMethod.PUT
+		purchaseAttributeRaise: function(sheetId, attributeRaiseData, successCallback) {
+			this.put('/api/sheet/'+sheetId+'/bonuses/attributes/', attributeRaiseData, successCallback);
 		},
-		removeAttributeRaise: function() {
-//			"/api/sheet/{sheetId}/bonuses/attributes/{attributeRaiseId}/", method = RequestMethod.DELETE
+		removeAttributeRaise: function(sheetId, attributeRaiseId, successCallback) {
+			this.delete('/api/sheet/'+sheetId+'/bonuses/attributes/'+attributeRaiseId+'/', successCallback);
 		},
 		purchaseSkillRaise: function() {
 //			"/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT

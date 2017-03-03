@@ -136,7 +136,7 @@ public class SheetController {
 	}
 
 	/** Get the current attributes with info about inc/dec and cost. */
-	@SheetOwner(requiredSteps = SheetCreationStep.ATTRIBUTES)
+	@SheetOwner(requiredSteps = {SheetCreationStep.ATTRIBUTES, SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/attributes/", method = RequestMethod.GET)
 	public AttributeBuyResponse getAttributeBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);

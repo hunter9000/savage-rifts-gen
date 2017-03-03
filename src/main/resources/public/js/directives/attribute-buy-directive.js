@@ -5,14 +5,28 @@ savageRiftsApp.directive('attributeBuy', function() {
     scope: {
         // name of the attribute
 		attribute: '@',      // one way string binding
+        // the values to display
+        value: '=',
+
 		// functions to call when clicking inc or dec
 		dec: '&',       // Object & Object Literal Expression Binding
 		inc: '&',
-		// the values to display
-		value: '=',     // two way object binding
-		canincrease: '=',
-		candecrease: '=',
+
+        // if the buttons will be shown, defaults to false.
+		showIncrease: '=',  // two way object binding
+		showDecrease: '=',
 	},
-	transclude: true,
+    controller:function($scope, $window, $http, $location) {
+        $scope.canIncrease = function() {
+            if ($scope.value && $scope.value.canIncrease) {
+                return $scope.value.canIncrease[$scope.attribute];
+            }
+        }
+        $scope.canDecrease = function() {
+            if ($scope.value && $scope.value.canDecrease) {
+                return $scope.value.canDecrease[$scope.attribute];
+            }
+        }
+    },
   };
 });
