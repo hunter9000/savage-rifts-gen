@@ -51,7 +51,7 @@ public class SheetOwnerInterceptor implements HandlerInterceptor {
 
         // check if the sheet is in the required steps, if any
         if (sheetOwnerAnnotation.requiredSteps().length > 0 && !ArrayUtils.contains(sheetOwnerAnnotation.requiredSteps(), sheet.getCreationStep())) {
-            throw new BadRequestException("Sheet is not in the required creation step to make this call. Required: " + sheetOwnerAnnotation.requiredSteps() + ", currently: " + sheet.getCreationStep());
+            throw new BadRequestException("Sheet is not in the required creation step to make this call. Required: " + ArrayUtils.toString(sheetOwnerAnnotation.requiredSteps()) + ", currently: " + sheet.getCreationStep());
         }
 
         request.setAttribute(AuthUtils.SHEET, sheet);

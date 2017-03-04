@@ -23,8 +23,8 @@ savageRiftsApp.controller('tableRollController', function(APIService, SheetServi
 	}
 	
     $scope.goBack = function() {
-//        SheetService.redirectToCreationStepsFromId($scope.sheet.id);
-        $location.path('/tablerolls/' + $routeParams.sheetId);
+        SheetService.redirectToCreationStepsFromId($scope.sheet.id);
+//        $location.path('/tablerolls/' + $routeParams.sheetId);
     }
 
 });

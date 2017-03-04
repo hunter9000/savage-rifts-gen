@@ -58,7 +58,7 @@ public class SheetUtils {
 		List<SkillRoll> skillRolls = sheet.getSkills();
 		List<SkillRollInfo> skillRollInfos = new ArrayList<>();
 
-		skillBuyResponse.remainingSkillPoints = sheet.getRemainingSkillPoints();
+		skillBuyResponse.setRemainingSkillPoints(sheet.getRemainingSkillPoints());
 		
 		Map<AttributeType, Roll> attrMap = SheetAttributeUtils.populateAttributeMap(sheet);
 		
@@ -74,7 +74,7 @@ public class SheetUtils {
 			skillRollInfos.add(info);
 		}
 
-		skillBuyResponse.skillRollInfos = skillRollInfos;
+		skillBuyResponse.setSkillRollInfos(skillRollInfos);
 
 		return skillBuyResponse;
 	}

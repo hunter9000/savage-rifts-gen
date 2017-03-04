@@ -180,7 +180,7 @@ public class SheetController {
 	}
 
 	/** Get the current skills with info about inc/dec and cost. */
-	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
+	@SheetOwner(requiredSteps = {SheetCreationStep.SKILLS, SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.GET)
 	public SkillBuyResponse getSkillBuy() {
 		Sheet sheet = AuthUtils.getSheet(request);

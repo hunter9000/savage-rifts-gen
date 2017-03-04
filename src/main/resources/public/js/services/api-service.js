@@ -189,8 +189,8 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 		removeAttributeRaise: function(sheetId, attributeRaiseId, successCallback) {
 			this.delete('/api/sheet/'+sheetId+'/bonuses/attributes/'+attributeRaiseId+'/', successCallback);
 		},
-		purchaseSkillRaise: function() {
-//			"/api/sheet/{sheetId}/bonuses/skills/", method = RequestMethod.PUT
+		purchaseSkillRaise: function(sheetId, skillRaiseData, successCallback) {
+			this.put('/api/sheet/'+sheetId+'/bonuses/skills/', skillRaiseData, successCallback);
 		},
 		removeSkillRaise: function() {
 //			"/api//sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE

@@ -2,9 +2,7 @@
 <link rel="stylesheet" href="css/attribute-point-buy.css" />
 
 <div class="container width-large">
-	<div class="panel panel-default">
-		<div class="panel-heading">Attributes</div>
-		<div class="panel-body">
+	<panel header="Attributes">
 
 			<ul class="list-group">
                 <li class="list-group-item" ng-repeat="(attrType, attr) in attrs.attributeTypes">
@@ -14,6 +12,5 @@
 			
             <a class="btn btn-default" ng-click="back()" >Back</a>
 
-		</div>
-	</div>
+	</panel>
 </div>

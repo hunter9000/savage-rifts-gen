@@ -1,6 +1,25 @@
 
 <nav-breadcrumb step="EDGES"/>
 
+<style>
+	/*.dl-small > dt {
+		width: 130px;
+	}
+	.dl-small > dd {
+		margin-left: 160px;
+	}
+	.dl-small {
+
+	}*/
+
+	/*.dl-medium > dt {
+		width: 180px;
+	}
+	.dl-medium > dd {
+		margin-left: 210px;
+	}*/
+</style>
+
 <div class="container width-extra-large">
 	<div class="row">
 		<!-- already selected -->
@@ -9,26 +28,61 @@
 			<panel header="Selected Bonuses">
 
 				<!-- Edges -->
-				<div ng-show="sheet.chosenEdgeSelections.length > 0">Edges</div>
-				<div ng-repeat="edgeSelection in sheet.chosenEdgeSelections">
-					{{edgeSelection.edge.edgeType.displayName}}
-					<a ng-click="removeEdge(edgeSelection)"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
+				<dl class="dl-horizontal" ng-show="sheet.chosenEdgeSelections.length > 0">
+					<dt>Edges</dt>
+					<dd class="text-left" ng-repeat="edgeSelection in sheet.chosenEdgeSelections">
+						{{edgeSelection.edge.edgeType.displayName}}
+						<a ng-click="removeEdge(edgeSelection)"><span class="glyphicon glyphicon-remove"></span></a>
+					</dd>
+				</dl>
+
+
+				<!--<div ng-show="sheet.chosenEdgeSelections.length > 0">Edges</div>-->
+				<!--<div ng-repeat="edgeSelection in sheet.chosenEdgeSelections">-->
+					<!--{{edgeSelection.edge.edgeType.displayName}}-->
+					<!--<a ng-click="removeEdge(edgeSelection)"><span class="glyphicon glyphicon-remove"></span></a>-->
+				<!--</div>-->
+
+
 
 				<!-- Attributes -->
-				<div ng-show="sheet.chosenAttributeRaises.length > 0">Attributes</div>
-				<div ng-repeat="attr in sheet.chosenAttributeRaises">
-					{{attr.attributeType.displayName}}
-					<a ng-click="removeAttribute(attr)"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
+				<dl class="dl-horizontal" ng-show="sheet.chosenAttributeRaises.length > 0">
+					<dt>Attributes</dt>
+					<dd class="text-left" ng-repeat="attr in sheet.chosenAttributeRaises">
+						{{attr.attributeType.displayName}}
+						<a ng-click="removeAttribute(attr)"><span class="glyphicon glyphicon-remove"></span></a>
+					</dd>
+				</dl>
+
+
+				<!--<div ng-show="sheet.chosenAttributeRaises.length > 0">Attributes</div>-->
+				<!--<div ng-repeat="attr in sheet.chosenAttributeRaises">-->
+					<!--{{attr.attributeType.displayName}}-->
+					<!--<a ng-click="removeAttribute(attr)"><span class="glyphicon glyphicon-remove"></span></a>-->
+				<!--</div>-->
 
 				<!-- Skills -->
-				<div ng-show="sheet.chosenSkillRaises.length > 0">Skills</div>
-				<div ng-repeat="skill in sheet.chosenSkillRaises"> {{skill}} </div>
+				<dl class="dl-horizontal" ng-show="sheet.chosenSkillRaises.length > 0">
+					<dt>Skills</dt>
+					<dd class="text-left" ng-repeat="skill in sheet.chosenSkillRaises">
+						{{skill}}
+					</dd>
+				</dl>
+
+
+				<!--<div ng-show="sheet.chosenSkillRaises.length > 0">Skills</div>-->
+				<!--<div ng-repeat="skill in sheet.chosenSkillRaises"> {{skill}} </div>-->
 
 				<!-- Money -->
-				<div ng-show="sheet.chosenMoneyRaises.length > 0">Money</div>
-				<div ng-repeat="money in sheet.chosenMoneyRaises"> {{money}} </div>
+				<dl class="dl-horizontal" ng-show="sheet.chosenMoneyRaises.length > 0">
+					<dt>Money</dt>
+					<dd class="text-left" ng-repeat="money in sheet.chosenMoneyRaises">
+						{{money}}
+					</dd>
+				</dl>
+
+				<!--<div ng-show="sheet.chosenMoneyRaises.length > 0">Money</div>-->
+				<!--<div ng-repeat="money in sheet.chosenMoneyRaises"> {{money}} </div>-->
 
 
 				<div>Remaining Points: {{sheet.remainingHindrancePoints}}</div>

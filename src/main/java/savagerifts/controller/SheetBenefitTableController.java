@@ -66,7 +66,7 @@ public class SheetBenefitTableController {
 	 */
 	@SheetOwner(requiredSteps = SheetCreationStep.TABLE_ROLLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/tableroll/{tableId}/{rollNumber}/", method = RequestMethod.POST)
-	public PerkSelectionResponse makeRollOnTable(@PathVariable Long sheetId, @PathVariable Long tableId, @PathVariable Integer rollNumber) {
+	public PerkSelectionResponse makeRollOnTable(@PathVariable Long tableId, @PathVariable Integer rollNumber) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		BenefitTable table = benefitTableRepository.findOne(tableId);
@@ -88,7 +88,7 @@ public class SheetBenefitTableController {
 		// make sure this isn't a tableroll that the player has already made
 		for (PerkSelection selection : sheet.getChosenPerks()) {
 			if (selection.getRoll().equals(tableRoll)) {
-				throw new BadRequestException();
+				throw new BadRequestException("The roll for this benefit table has already been made");
 			}
 		}
 

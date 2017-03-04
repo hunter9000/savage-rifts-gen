@@ -1,5 +1,9 @@
 package savagerifts.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum DieType {
 	D0(0, ""),
 	D4(4, "d4"),
@@ -19,12 +23,14 @@ public enum DieType {
 		return displayName;
 	}
 
+	@JsonIgnore
 	public DieType getIncreasedType() {
 		if (this != D20) {
 			return DieType.values()[this.ordinal()+1];
 		}
 		return this;
 	}
+	@JsonIgnore
 	public DieType getDecreasedType() {
 		if (this != D0) {
 			return DieType.values()[this.ordinal()-1];
@@ -32,6 +38,7 @@ public enum DieType {
 		return this;
 	}
 
+	@JsonIgnore
 	public boolean isLessThanOrEqualTo(DieType other) {
 		return this.ordinal() <= other.ordinal();
 	}

@@ -1,65 +1,67 @@
 
 <div class="container width-extra-large">
-	<div class="panel panel-default">
-		<div class="panel-heading">Edges</div>
-		<div class="panel-body">
+	<!--<div class="panel panel-default">-->
+		<!--<div class="panel-heading">Edges</div>-->
+		<!--<div class="panel-body">-->
+	<panel header="Edges">
 
-			<div ng-repeat="(category, edges) in edgeOptions">
-				<h4>{{category}}</h4>
+		<div ng-repeat="(category, edges) in edgeOptions">
+			<h4>{{category}}</h4>
 
-				<div ng-repeat="edge in edges">
-					<dl class="dl-horizontal">
-						<dt style="width:180px;">
-							{{edge.edgeType.displayName}}
-							<br/>
-							<button style="margin-top: 12px;" class="btn btn-secondary" ng-click="purchaseEdge(edge)">Purchase</button>
-						</dt>
+			<div ng-repeat="edge in edges">
+				<dl class="dl-horizontal">
+					<dt style="width:180px;">
+						{{edge.edgeType.displayName}}
+						<br/>
+						<button style="margin-top: 12px;" class="btn btn-secondary" ng-click="purchaseEdge(edge)">Purchase</button>
+					</dt>
 
-						<dd class="text-left" style="margin-left: 200px;">
-							<div style="margin-bottom: 12px;">
-								{{edge.description}}
-							</div>
-							<div>
-								<!-- Rank -->
-								<span>
-									<strong>Rank:</strong>
-									{{edge.requiredLevel.displayName}}
+					<dd class="text-left" style="margin-left: 200px;">
+						<div style="margin-bottom: 12px;">
+							{{edge.description}}
+						</div>
+						<div>
+							<!-- Rank -->
+							<span>
+								<strong>Rank:</strong>
+								{{edge.requiredLevel.displayName}}
+							</span>
+							<!-- Attributes -->
+							<span ng-hide="edge.attributePrereqs.length == 0">
+								<strong>Attributes:</strong>
+								<span ng-repeat="attr in edge.attributePrereqs">
+									{{attr.attributeType.displayName}} {{attr.dieType.displayName}}
+									<span class="text-lowercase">{{$last ? '' : edge.attributePrerequisiteLogicType}}</span>
 								</span>
-								<!-- Attributes -->
-								<span ng-hide="edge.attributePrereqs.length == 0">
-									<strong>Attributes:</strong>
-									<span ng-repeat="attr in edge.attributePrereqs">
-										{{attr.attributeType}} {{attr.dieType}}
-										<span class="text-lowercase">{{$last ? '' : edge.attributePrerequisiteLogicType}}</span>
-									</span>
+							</span>
+							<!-- Edges -->
+							<span ng-hide="edge.prerequisiteEdges.length == 0">
+								<strong>Edges:</strong>
+								<span ng-repeat="edgePrereq in edge.prerequisiteEdges">
+									{{edgePrereq.edgeType.displayName}}
+									<span class="text-lowercase">{{$last ? '' : edge.edgePrerequisiteLogicType}}</span>
 								</span>
-								<!-- Edges -->
-								<span ng-hide="edge.prerequisiteEdges.length == 0">
-									<strong>Edges:</strong>
-									<span ng-repeat="edgePrereq in edge.prerequisiteEdges">
-										{{edgePrereq.edgeType.displayName}}
-										<span class="text-lowercase">{{$last ? '' : edge.edgePrerequisiteLogicType}}</span>
-									</span>
+							</span>
+							<!-- Skills -->
+							<span ng-hide="edge.skillPrereqs.length == 0">
+								<strong>Skills:</strong>
+								<span ng-repeat="skill in edge.skillPrereqs">
+									{{skill.skillType.displayName}} {{skill.skillKnowledge}} {{skill.dieType.displayName}}
+									<span class="text-lowercase">{{$last ? '' : edge.skillPrerequisiteLogicType}}</span>
 								</span>
-								<!-- Skills -->
-								<span ng-hide="edge.skillPrereqs.length == 0">
-									<strong>Skills:</strong>
-									<span ng-repeat="skill in edge.skillPrereqs">
-										{{skill.skillType}} {{skill.skillKnowledge}} {{skill.dieType}}
-										<span class="text-lowercase">{{$last ? '' : edge.skillPrerequisiteLogicType}}</span>
-									</span>
-								</span>
-							</div>
-							<hr/>
-						</dd>
-					</dl>
-
-				</div>
+							</span>
+						</div>
+						<hr/>
+					</dd>
+				</dl>
 
 			</div>
 
-            <a class="btn btn-default" ng-click="back()" >Back</a>
-
 		</div>
-	</div>
+
+		<a class="btn btn-default" ng-click="back()" >Back</a>
+
+		<!--</div>-->
+	<!--</div>-->
+	</panel>
 </div>

@@ -1,33 +1,22 @@
 
+<link rel="stylesheet" href="css/skill-point-buy.css" />
+
 <div class="container width-large">
-	<div class="panel panel-default">
-		<div class="panel-heading">Edges etc...</div>
-		<div class="panel-body">
+	<panel header="Skills">
 
-			<!-- <div ng-show="edges"> -->
-                <!-- <div ng-repeat="edge in edges"> -->
-                    <!-- {{edge}} -->
-					<!-- <button ng-click="purchaseEdge(edge)">Purchase</button> -->
-                <!-- </div> -->
-			<!-- </div> -->
+		<div ng-show="skills">
 
-            <div ng-show="attrs">
-                <div ng-repeat="attr in attrs">
-                    {{attr}}
-					<button ng-click="purchaseAttr(attr)">Purchase</button>
-                </div>
-            </div>
+			<!-- skill is a SkillRollInfo object -->
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="(skillType, skillInfoArray) in skills.skillMap">
+					<div ng-repeat="skillInfo in skillInfoArray">
+						<skillbuy skill="skillType" value="skillInfo" show-increase="true" show-decrease="false" inc="incSkill" />
+					</div>
+				</li>
+			</ul>
+		 </div>
 
-            <!-- <div ng-show="skills"> -->
-                <!-- <div ng-repeat="skill in skills"> -->
-                    <!-- {{skill}} -->
-					<!-- <button ng-click="purchaseSkill(skill)">Purchase</button> -->
-                <!-- </div> -->
-            <!-- </div> -->
+		<a class="btn btn-default" ng-click="back()" >Back</a>
 
-
-            <a class="btn btn-default" ng-click="back()" >Back</a>
-
-		</div>
-	</div>
+	</panel>
 </div>

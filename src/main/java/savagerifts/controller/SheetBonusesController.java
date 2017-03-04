@@ -156,7 +156,7 @@ public class SheetBonusesController {
 
 		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - SheetUtils.ATTR_RAISE_COST);
 
-		sheet = sheetRepository.save(sheet);
+		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -192,11 +192,21 @@ public class SheetBonusesController {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// validate the given request
+		skillBuyRequest.validate();
+
 		// validate sheet can afford
-		
+		if (sheet.getRemainingHindrancePoints() < SheetUtils.SKILL_RAISE_COST) {
+			throw new BadRequestException("Sheet only has " + sheet.getRemainingHindrancePoints() + " hindrance points, needs " + SheetUtils.SKILL_RAISE_COST + " to purchase skill");
+		}
+
 		SkillRaiseSelection skillRaiseSelection = new SkillRaiseSelection();
+		skillRaiseSelection.setSheet(sheet);
+		skillRaiseSelection.setSkillType(skillBuyRequest.getSkill());
+		skillRaiseSelection.setSkillKnowledge(skillBuyRequest.getSkillKnowledge());
 		sheet.getChosenSkillRaises().add(skillRaiseSelection);
-		
+
+		sheet.setRemainingHindrancePoints(sheet.getRemainingHindrancePoints() - SheetUtils.ATTR_RAISE_COST);
+
 		sheetRepository.save(sheet);
 		
 		return new ResponseEntity<>(HttpStatus.OK);

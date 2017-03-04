@@ -1,6 +1,7 @@
 package savagerifts.model.sheet;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillType;
 
 import javax.persistence.*;
@@ -20,8 +21,12 @@ public class SkillRaiseSelection {
     private Sheet sheet;
 
     @Column(name = "skill", nullable = false, updatable = false)
+    @Enumerated(EnumType.STRING)
     private SkillType skillType;
 
+    @OneToOne
+    @JoinColumn(name = "skill_knowledge", nullable = false, updatable = false)
+    private SkillKnowledge skillKnowledge;
 
     public Long getId() {
         return id;
@@ -42,5 +47,12 @@ public class SkillRaiseSelection {
     }
     public void setSkillType(SkillType skillType) {
         this.skillType = skillType;
+    }
+
+    public SkillKnowledge getSkillKnowledge() {
+        return skillKnowledge;
+    }
+    public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
+        this.skillKnowledge = skillKnowledge;
     }
 }

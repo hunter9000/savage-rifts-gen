@@ -1,13 +1,7 @@
 
 savageRiftsApp.controller('bonusAttrBuyController', function(APIService, $scope, $routeParams, $location) {
-	/*$scope.sheet = null;*/
 	$scope.attrs = null;
 	
-    /*APIService.getSheet($routeParams.sheetId, function(response) {
-        $scope.sheet = response.data;
-    });
-	*/
-
 	APIService.getSheetAttributes($routeParams.sheetId, function(response) {
 		$scope.attrs = response.data;
 	});

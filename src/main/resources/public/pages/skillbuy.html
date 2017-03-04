@@ -6,14 +6,14 @@
 <div class="container width-small">
     <div class="panel panel-default">
         <div class="panel-heading">Choose Skills</div>
-        <div class="panel-body">
+        <li class="panel-body">
 
             <ul class="list-group">
                 <!-- skill is a SkillRollInfo object -->
-                <li class="list-group-item" ng-repeat="skillRollInfo in skillResponse.skillRollInfos">
-                    <skillbuy skill="{{skillRollInfo.skillRoll.skillType}}" value="skillRollInfo.skillRoll" canincrease="skillRollInfo.canIncrease" candecrease="skillRollInfo.canDecrease" dec="decSkill" inc="incSkill" >
-                        {{skillRollInfo.skillRoll.displayName}}
-                    </skillbuy>
+                <li class="list-group-item" ng-repeat="(skillType, skillInfoArray) in skillResponse.skillMap">
+                    <div ng-repeat="skillInfo in skillInfoArray">
+                        <skillbuy skill="{{skillType}}" value="skillInfo" show-increase="true" show-decrease="true" inc="incSkill" dec="decSkill"/>
+                    </div>
                 </li>
             </ul>
 

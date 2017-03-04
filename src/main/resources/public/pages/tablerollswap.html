@@ -33,14 +33,23 @@
                 </dd>
             </dl>
 
+            <hr>
+
             <h4>Choose the table to select the new perk from</h4>
 
-            <select name="table-selection " class="form-control margin-bottom-small width-extra-small center" id="table-selection" ng-model="selectedTableId">
-                <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
-            </select>
+            <form class="form-inline">
+                <div class="form-group">
+                    <select name="table-selection" class="form-control width-extra-small" id="table-selection" ng-model="selectedTableId">
+                        <option ng-repeat="table in benefitTables" value="{{table.id}}">{{table.displayName}}</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary " ng-click="swap()" ng-disabled="!canSwap()">Swap</button>
+            </form>
 
-            <button class="btn btn-primary" ng-click="swap()" ng-disabled="!canSwap()">Swap</button>
-            <div>Or</div>
+            <hr>
+
+            <h4>Or continue with these rolls</h4>
+
             <button class="btn btn-primary" ng-click="finishSwapping()">Skip Perk Swapping</button>
 
         </div>

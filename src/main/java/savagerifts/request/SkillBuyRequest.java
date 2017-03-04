@@ -2,6 +2,7 @@ package savagerifts.request;
 
 import savagerifts.model.skill.SkillKnowledge;
 import savagerifts.model.skill.SkillType;
+import savagerifts.security.BadRequestException;
 
 public class SkillBuyRequest {
     private SkillType skill;
@@ -32,4 +33,26 @@ public class SkillBuyRequest {
     public void setSkillKnowledge(SkillKnowledge skillKnowledge) {
         this.skillKnowledge = skillKnowledge;
     }
+
+    public boolean validate() throws BadRequestException {
+        String errorString = "";
+        boolean error = false;
+        if (skill == null) {
+            errorString += " skill is invalid ";
+            error = true;
+        }
+        if (skillKnowledge == null) {
+            errorString += " skillKnowledge is invalid ";
+            error = true;
+        }
+        if (operation == null) {
+            errorString += " operation is invalid ";
+            error = true;
+        }
+        if (error) {
+            throw new BadRequestException("request is invalid for these reasons: " + errorString);
+        }
+        return true;
+    }
+
 }

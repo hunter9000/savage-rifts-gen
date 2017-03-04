@@ -46,13 +46,6 @@ public class Roll implements Comparable {
 		this.modifier = modifier;
 	}
 
-	public String getDisplayName() {
-		return this.toString();
-	}
-	public void setDisplayName(String displayName) {
-		// nothing, readonly property
-	}
-
 	public void copy(Roll other) {
 		if (other != null) {
 			this.dieType = other.dieType;

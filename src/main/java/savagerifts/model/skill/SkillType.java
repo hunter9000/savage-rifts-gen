@@ -1,7 +1,9 @@
 package savagerifts.model.skill;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import savagerifts.model.AttributeType;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SkillType {
 	ARCANA("Arcana", AttributeType.SMARTS),
 	BOATING("Boating", AttributeType.AGILITY),
@@ -45,7 +47,5 @@ public enum SkillType {
 		this.skillName = skillName;
 		this.linkedAttribute = linkedAttribute;
 	}
-
-
 
 }

@@ -4,7 +4,7 @@
 <nav-breadcrumb step="TABLE_ROLLS"/>
 
 <!-- Table rolls -->
-<div class="container width-medium">
+<div class="container width-extra-large">
     <div class="panel panel-default">
         <div class="panel-heading">Table Rolls</div>
         <div class="panel-body">
@@ -12,7 +12,7 @@
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="roll in choosableTables">
                     <div class="table-wrapper" ng-repeat="table in roll.allowedTables">
-                        <a ng-click="goToTable(roll.rollNumber, table.id)" >{{table.displayName}}</a>
+                        <a class="btn btn-link" ng-click="goToTable(roll.rollNumber, table.id)" >{{table.displayName}}</a>
                     </div>
                 </li>
             </ul>
@@ -21,8 +21,10 @@
     </div>
 </div>
 
+<br/>
+
 <!-- Chosen perks -->
-<div class="container width-medium">
+<div class="container width-extra-large">
     <div class="panel panel-default">
         <div class="panel-heading">Chosen Perks</div>
         <div class="panel-body">
