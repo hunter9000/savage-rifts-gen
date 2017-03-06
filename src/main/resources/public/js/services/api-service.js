@@ -174,8 +174,8 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 		getEdgeOptions: function(sheetId, successCallback) {
 			this.get('/api/sheet/'+sheetId+'/bonuses/edges/', successCallback);
 		},
-		finalizeBonusPurchases: function() {
-//			POST"/api/sheet/{sheetId}/bonuses/"
+		finalizeBonusPurchases: function(sheetId, successCallback) {
+			this.post('/api/sheet/'+sheetId+'/bonuses/', {}, successCallback);
 		},
 		purchaseEdge: function(sheetId, edgeId, successCallback) {
 			this.put("/api/sheet/"+sheetId+"/bonuses/edges/"+edgeId+"/", {}, successCallback);
@@ -192,14 +192,14 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
 		purchaseSkillRaise: function(sheetId, skillRaiseData, successCallback) {
 			this.put('/api/sheet/'+sheetId+'/bonuses/skills/', skillRaiseData, successCallback);
 		},
-		removeSkillRaise: function() {
-//			"/api//sheet/{sheetId}/bonuses/skills/{skillRaiseId}/", method = RequestMethod.DELETE
+		removeSkillRaise: function(sheetId, skillRaiseId, successCallback) {
+			this.delete('/api//sheet/'+sheetId'+/bonuses/skills/'+skillRaiseId+'/', successCallback);
 		},
-		purchaseMoneyRaise: function() {
-//			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.PUT
+		purchaseMoneyRaise: function(sheetId, successCallback) {
+			this.put('/api/sheet/'+sheetId'/bonuses/money/', {}, successCallback);
 		},
-		removeMoneyRaise: function() {
-//			"/api/sheet/{sheetId}/bonuses/money/", method = RequestMethod.DELETE
+		removeMoneyRaise: function(sheetId, successCallback) {
+			this.delete('/api/sheet/'+sheetId'/bonuses/money/', successCallback);
 		},
 		
 		

@@ -1,5 +1,8 @@
 package savagerifts.model.benefittable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum BenefitTableType {
 	BODY_ARMOR("Body Armor"),
 	CLOSE_COMBAT_WEAPONS("Close Combat Weapons"),
@@ -14,7 +17,7 @@ public enum BenefitTableType {
 	UNDERWORLD_BLACK_OPS("Underworld & Black Ops");
 	
 	private String displayName;
-	private BenefitTableType(String displayName) {
+	BenefitTableType(String displayName) {
 		this.displayName = displayName;
 	}
 	public String getDisplayName() {

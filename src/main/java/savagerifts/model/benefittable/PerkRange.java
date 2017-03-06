@@ -34,6 +34,8 @@ public class PerkRange {
 	@Transient
 	private boolean perkHasBeenChosen = false;
 
+
+	
 	public boolean matches(int roll) {
 		return (roll >= min && roll <= max);
 	}

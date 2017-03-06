@@ -1,7 +1,9 @@
 package savagerifts.model.perk;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import savagerifts.model.benefittable.BenefitTableType;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum PerkType {
 
     BODY_ARMOR_1(BenefitTableType.BODY_ARMOR),

@@ -22,8 +22,7 @@ savageRiftsApp.controller('bonusesController', function(APIService, $scope, $htt
 	}
 	
 	$scope.chooseMoney = function() {
-		$http.put('/api/sheet/' + $routeParams.sheetId + '/money/')
-		.then();
+		APIService.purchaseMoneyRaise($routeParams.sheetId, $scope.fetchSheet);
 	}
 
 	$scope.removeEdge = function(edgeSelection) {
@@ -45,8 +44,15 @@ savageRiftsApp.controller('bonusesController', function(APIService, $scope, $htt
     };
 
     $scope.removeMoney = function() {
-//        APIService.removeSkillRaise($routeParams.sheetId, skillRaise.id, function() {
-//            $scope.fetchSheet();
-//        });
+		APIService.removeMoneyRaise($routeParams.sheetId, function() {
+			$scope.fetchSheet();
+		});
     };
+	
+	$scope.finishPurchases = function() {
+		APIService.finalizeBonusPurchases($routeParams.sheetId, function() {
+			SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
+		});
+	}
+	
 });

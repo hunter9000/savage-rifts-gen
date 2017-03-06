@@ -42,7 +42,6 @@ public class SheetCreationManager {
         sheet.setSkills(skillList);
 
         new SheetCreationManager(sheet).handleInitialAttributes();
-//        SheetAttributeUtils.recalculateAttributes(sheet);
 
         return sheet;
     }

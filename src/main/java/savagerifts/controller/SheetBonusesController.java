@@ -17,11 +17,11 @@ import savagerifts.request.AttributeBuyRequest;
 import savagerifts.request.SkillBuyRequest;
 import savagerifts.security.BadRequestException;
 import savagerifts.util.AuthUtils;
+import savagerifts.util.SheetCreationManager;
 import savagerifts.util.SheetEdgePurchaseManager;
 import savagerifts.util.SheetUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +42,15 @@ public class SheetBonusesController {
 	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/", method = RequestMethod.POST)
 	public ResponseEntity<?> finalizeBonusesPurchases() {
-		return null;
+		Sheet sheet = AuthUtils.getSheet(request);
+		
+		if (sheet.getRemainingHindrancePoints() != 0) {
+			throw new BadRequestException("The remaining " + sheet.getRemainingHindrancePoints() + " points from hindrances must be spent first");
+		}
+		
+		new SheetCreationManager(sheet).moveToNextCreationStep();
+		
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	// gets all the edge options that aren't already bought, and are qualified for by the sheet
@@ -57,37 +65,33 @@ public class SheetBonusesController {
         }
 
 		// loop through each edge, determine if sheet qualifies for it
-		List<Edge> qualifiedEdges = new ArrayList<>();
+		ListValuedMap<EdgeCategoryType, Edge> qualifiedEdgesMultiMap = new ArrayListValuedHashMap<>();
         SheetEdgePurchaseManager edgeManager = new SheetEdgePurchaseManager(sheet);
 		for (Edge edge : edges) {
 			if (edgeManager.sheetQualifiesForEdge(edge, true)) {
-				qualifiedEdges.add(edge);
+				qualifiedEdgesMultiMap.put(edge.getEdgeCategoryType(), edge);
 			}
 		}
 
-		ListValuedMap<EdgeCategoryType, Edge> multiMap = new ArrayListValuedHashMap<>();
-		for (Edge e : qualifiedEdges) {
-			multiMap.put(e.getEdgeCategoryType(), e);
-		}
-
-		return multiMap.asMap();
+		return qualifiedEdgesMultiMap.asMap();
 	}
 	
 	@SheetOwner(requiredSteps = {SheetCreationStep.EDGES})
 	@RequestMapping(value = "/api/sheet/{sheetId}/bonuses/edges/{edgeId}/", method = RequestMethod.PUT)
 	public ResponseEntity<?> purchaseEdge(@PathVariable Long edgeId) {
 		Sheet sheet = AuthUtils.getSheet(request);
-
+		Edge edge = edgeRepository.findOne(edgeId);
+		
 		// validate that the sheet can afford to purchase an edge
 		if (sheet.getRemainingHindrancePoints() < SheetUtils.EDGE_RAISE_COST) {
 			throw new BadRequestException("Sheet only has " + sheet.getRemainingHindrancePoints() + " hindrance points, needs " + SheetUtils.EDGE_RAISE_COST + " to purchase edge");
 		}
 
 		// validate the given edge exists
-		Edge edge = edgeRepository.findOne(edgeId);
 		if (edge == null) {
 			throw new BadRequestException("The given edge doesn't exist.");
 		}
+		
 		// validate sheet doesn't already own this edge, and can afford
 		for (EdgeSelection edgeSelection : sheet.getChosenEdgeSelections()) {
 			if (edgeSelection.getEdge().equals(edge)) {
