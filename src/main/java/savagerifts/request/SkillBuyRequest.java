@@ -13,6 +13,13 @@ public class SkillBuyRequest {
         INC, DEC
     }
 
+    public boolean isIncrease() {
+        return operation == OperationType.INC;
+    }
+    public boolean isDecrease() {
+        return operation == OperationType.DEC;
+    }
+
     public SkillType getSkill() {
         return skill;
     }

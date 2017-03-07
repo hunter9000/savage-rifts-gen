@@ -32,6 +32,17 @@ public class SkillRoll {
 	@JoinColumn(name = "roll", nullable = false)
 	private Roll roll;
 
+
+	public SkillRoll() {
+
+	}
+	/** Copy constructor */
+	public SkillRoll(SkillType skillType, Roll roll) {
+		this.skillType = skillType;
+		this.roll = new Roll(roll.getDieType(), roll.getModifier());
+	}
+
+
 	@Transient
 	public String getDisplayName() {
 		return skillType.getDisplayName();

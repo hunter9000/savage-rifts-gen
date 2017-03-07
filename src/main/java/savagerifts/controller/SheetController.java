@@ -58,7 +58,7 @@ public class SheetController {
 
     /** Create new sheet with given name and framework */
     @RequestMapping(value="/api/sheet/", method= RequestMethod.POST)
-    public ResponseEntity<?> createSheet(@RequestBody NewSheetRequest sheetRequest) {
+    public ResponseEntity<Sheet> createSheet(@RequestBody NewSheetRequest sheetRequest) {
         User owner = AuthUtils.getLoggedInUser(request);
 
         if (!sheetRequest.validate()) {
@@ -74,7 +74,7 @@ public class SheetController {
 		
         sheetRepository.save(sheet);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(sheet, HttpStatus.OK);
     }
 
 	/** Delete a sheet */

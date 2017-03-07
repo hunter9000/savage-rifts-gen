@@ -1,12 +1,11 @@
 package savagerifts.model.sheet;
 
-import savagerifts.model.AttributeType;
 import savagerifts.model.framework.Framework;
 import savagerifts.model.hindrance.HindranceSelection;
-import savagerifts.model.perk.PerkSelection;
 import savagerifts.model.race.Race;
 import savagerifts.model.skill.SkillRoll;
 import savagerifts.model.user.User;
+import savagerifts.util.SheetUtils;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,9 +13,6 @@ import java.util.List;
 @Entity
 @Table(name = "sheet")
 public class Sheet {
-
-	public static final int DEFAULT_ATTRIBUTE_POINTS = 5;
-	public static final int DEFAULT_SKILL_POINTS = 15;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,10 +47,10 @@ public class Sheet {
 	private Roll vigor = new Roll();
 	
 	@Column(name = "remainingAttributePoints")
-	private Integer remainingAttrPoints = DEFAULT_ATTRIBUTE_POINTS;
+	private Integer remainingAttrPoints = SheetUtils.DEFAULT_ATTRIBUTE_POINTS;
 
 	@Column(name = "remainingSkillPoints")
-	private Integer remainingSkillPoints = DEFAULT_SKILL_POINTS;
+	private Integer remainingSkillPoints = SheetUtils.DEFAULT_SKILL_POINTS;
 	
 	@Column(name = "remainingHindrancePoints")
 	private Integer remainingHindrancePoints = 0;		// points left from buying hindrances that can be spent on edges, etc
@@ -99,6 +95,10 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
 	private List<SkillRoll> skills;			// skills and their rolls
 
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SkillPurchase> skillPurchases;
+
+
 //	private List<Language> languages;		// known languages
 //
 //	private List<Power> powers;		// known powers
@@ -124,16 +124,16 @@ public class Sheet {
 //	boolean hasMagic? hasPsionics?
 		
 
-	public Roll getAttribute(AttributeType type) {
-		switch(type) {
-			case STRENGTH: return getStrength();
-			case AGILITY: return getAgility();
-			case SMARTS: return getSmarts();
-			case SPIRIT: return getSpirit();
-			case VIGOR: return getVigor();
-			default: throw new RuntimeException("AttributeType " + type + " not implemented");
-		}
-	}
+//	public Roll getAttribute(AttributeType type) {
+//		switch(type) {
+//			case STRENGTH: return getStrength();
+//			case AGILITY: return getAgility();
+//			case SMARTS: return getSmarts();
+//			case SPIRIT: return getSpirit();
+//			case VIGOR: return getVigor();
+//			default: throw new RuntimeException("AttributeType " + type + " not implemented");
+//		}
+//	}
 
 
 	public Long getId() {
@@ -302,6 +302,13 @@ public class Sheet {
 	}
 	public void setSkills(List<SkillRoll> skills) {
 		this.skills = skills;
+	}
+
+	public List<SkillPurchase> getSkillPurchases() {
+		return skillPurchases;
+	}
+	public void setSkillPurchases(List<SkillPurchase> skillPurchases) {
+		this.skillPurchases = skillPurchases;
 	}
 
 	public List<HindranceSelection> getChosenHindrances() {

@@ -102,7 +102,7 @@ public class SheetEdgePurchaseManager {
     }
 
     private boolean meetsSkillRequirement(EdgeSkillPrerequisite prereq) {
-        SkillRoll skillRoll = skillMap.get(new SkillDefinition(prereq.getSkillType(), prereq.getSkillKnowledge()));
+        SkillRoll skillRoll = skillMap.get(new SkillDefinition(prereq));
         // if this sheet doesn't have this skill, doesn't meet req
         if (skillRoll == null) {
             return false;

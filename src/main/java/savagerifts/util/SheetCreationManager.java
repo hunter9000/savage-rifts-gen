@@ -92,7 +92,7 @@ public class SheetCreationManager {
         // set the minimum starting attribute from the framework to the current stat.
         // if not specified, it will be ignored and the default will be used
         for (AttributeType type : AttributeType.values()) {
-            sheet.getAttribute(type).copy(SheetAttributeUtils.getMinAttribute(sheet, type));
+            SheetAttributeUtils.populateAttributeMap(sheet).get(type).copy(SheetAttributeUtils.getMinAttribute(sheet, type));
         }
     }
 

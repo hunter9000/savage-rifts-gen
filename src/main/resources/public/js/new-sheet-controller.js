@@ -1,5 +1,5 @@
 
-savageRiftsApp.controller('newSheetController', function(APIService, $scope, $location) {
+savageRiftsApp.controller('newSheetController', function(APIService, SheetService, $scope, $location) {
     $scope.message = '';
 
     $scope.formData = {
@@ -15,7 +15,7 @@ savageRiftsApp.controller('newSheetController', function(APIService, $scope, $lo
 
     $scope.save = function() {
         APIService.createSheet($scope.formData, function(response) {
-            $location.path("/sheetselect");
+            SheetService.redirectToCreationStepsFromId(response.data.id);
         });
     };
 });

@@ -21,7 +21,7 @@ public class SheetAttributeUtils {
         if (framework != null && framework.getStartingAttributePoints() != null) {
             return framework.getStartingAttributePoints();
         }
-        return Sheet.DEFAULT_ATTRIBUTE_POINTS;
+        return SheetUtils.DEFAULT_ATTRIBUTE_POINTS;
     }
 
     public static Roll getMinAttribute(Sheet sheet, AttributeType type) {
@@ -85,7 +85,7 @@ public class SheetAttributeUtils {
         // get the attribute that we want to change
         //Map<AttributeType, Roll> attrMap = populateAttributeMap(sheet);
         //Roll attrRoll = attrMap.get(pointBuyRequest.getAttribute());
-        Roll attrRoll = sheet.getAttribute(pointBuyRequest.getAttribute());
+        Roll attrRoll = populateAttributeMap(sheet).get(pointBuyRequest.getAttribute());
 
         // check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
         if (pointBuyRequest.getOperation() == AttributeBuyRequest.OperationType.INC) {

@@ -1,9 +1,9 @@
-package savagerifts.model.perk;
+package savagerifts.model.sheet;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import savagerifts.model.benefittable.BenefitTableRoll;
-import savagerifts.model.sheet.Sheet;
+import savagerifts.model.perk.Perk;
 
 import javax.persistence.*;
 

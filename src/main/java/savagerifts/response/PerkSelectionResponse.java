@@ -1,6 +1,6 @@
 package savagerifts.response;
 
-import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.sheet.PerkSelection;
 import savagerifts.model.sheet.Sheet;
 
 public class PerkSelectionResponse {

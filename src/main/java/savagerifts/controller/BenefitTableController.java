@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import savagerifts.interceptor.SheetOwner;
 import savagerifts.model.benefittable.BenefitTable;
 import savagerifts.model.benefittable.PerkRange;
-import savagerifts.model.perk.PerkSelection;
+import savagerifts.model.sheet.PerkSelection;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
 import savagerifts.repository.BenefitTableRepository;

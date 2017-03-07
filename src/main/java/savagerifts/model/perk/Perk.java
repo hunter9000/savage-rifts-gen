@@ -22,13 +22,14 @@ public class Perk {
 
 	// granted edges vs. edge choices (from category)
 	// gains this edge, plus a backup edge incase they have the first one already. need to apply these after edge selection step? or does this just mean if your framwork gives it to you, since that's the only thing you've done before this step?
-	@Transient
+	@OneToMany(mappedBy = "perk")
 	private List<PerkProvidedEdge> perkProvidedEdges;
-	@Transient
+	@OneToMany(mappedBy = "perk")
 	private List<PerkEdgeChoice> perkEdgeChoices;
 
 	// +1 die type in this skill, specific starting dietype, and/or +x bonus to skill??
 	// seems like the starting die types set the default before you make skill buy, and the bonus is added after that. how is the +1 die type used??
+//	@OneToMany(mappedBy = "perk")
 	@Transient
 	private List<PerkSkill> perkSkills;
 
@@ -37,16 +38,22 @@ public class Perk {
 	private List<PerkProvidedGear> providedGears;
 
 	// +x to stats (parry, isp, ppe, etc)
-	@Transient
-	private Integer parry, isp, ppe;		// nullable, default null
+	@Column(name = "parry_bonus", nullable = true, updatable = false)
+	private Integer parryBonus;
+
+	@Column(name = "isp_bonus", nullable = true, updatable = false)
+	private Integer isp;
+
+	@Column(name = "ppe_bonus", nullable = true, updatable = false)
+	private Integer ppe;
 
 	// extra languages
-	@Transient
+	@Column(name = "num_languages_bonus", nullable = true, updatable = false)
 	private Integer numExtraLanguages;
 
 	// number of times a perk may be rolled, default to 1. when rolling, if already taken N times, reroll
-	@Transient
-	private Integer numTimesMayBeRolled;		// default 1, nullable for infinite?
+	@Column(name = "max_times_chosen", nullable = true, updatable = false)
+	private Integer maxTimesChosen;		// default 1, nullable for infinite?
 	
 	// QUESTIONABLE:
 	// underworld blackops 6, TRAINING_1: etra skill points to spend on certain skills?!
@@ -89,6 +96,69 @@ public class Perk {
 	}
 	public void setType(PerkType type) {
 		this.type = type;
+	}
+
+	public List<PerkProvidedEdge> getPerkProvidedEdges() {
+		return perkProvidedEdges;
+	}
+	public void setPerkProvidedEdges(List<PerkProvidedEdge> perkProvidedEdges) {
+		this.perkProvidedEdges = perkProvidedEdges;
+	}
+
+	public List<PerkEdgeChoice> getPerkEdgeChoices() {
+		return perkEdgeChoices;
+	}
+	public void setPerkEdgeChoices(List<PerkEdgeChoice> perkEdgeChoices) {
+		this.perkEdgeChoices = perkEdgeChoices;
+	}
+
+	public List<PerkSkill> getPerkSkills() {
+		return perkSkills;
+	}
+	public void setPerkSkills(List<PerkSkill> perkSkills) {
+		this.perkSkills = perkSkills;
+	}
+
+	public List<PerkProvidedGear> getProvidedGears() {
+		return providedGears;
+	}
+	public void setProvidedGears(List<PerkProvidedGear> providedGears) {
+		this.providedGears = providedGears;
+	}
+
+	public Integer getParryBonus() {
+		return parryBonus;
+	}
+	public void setParryBonus(Integer parryBonus) {
+		this.parryBonus = parryBonus;
+	}
+
+	public Integer getIsp() {
+		return isp;
+	}
+	public void setIsp(Integer isp) {
+		this.isp = isp;
+	}
+
+	public Integer getPpe() {
+		return ppe;
+	}
+	public void setPpe(Integer ppe) {
+		this.ppe = ppe;
+	}
+
+	public Integer getNumExtraLanguages() {
+		return numExtraLanguages;
+	}
+	public void setNumExtraLanguages(Integer numExtraLanguages) {
+		this.numExtraLanguages = numExtraLanguages;
+	}
+
+	public Integer getMaxTimesChosen() {
+		return maxTimesChosen;
+	}
+	public void setMaxTimesChosen(Integer maxTimesChosen) {
+		this.maxTimesChosen = maxTimesChosen;
 	}
 
 	@Override

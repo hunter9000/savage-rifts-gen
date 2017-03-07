@@ -42,8 +42,7 @@
             });
         };
 
-        $scope.deleteSheet = function(sheetId, $event) {
-            $event.stopPropagation();
+        $scope.deleteSheet = function(sheetId) {
             APIService.deleteSheet(sheetId, function(response) {
                 $scope.loadSheets();
             });

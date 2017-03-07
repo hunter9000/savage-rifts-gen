@@ -2,9 +2,6 @@ package savagerifts.response;
 
 import org.apache.commons.collections4.ListValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
-import org.springframework.util.MultiValueMap;
-import savagerifts.model.edge.Edge;
-import savagerifts.model.edge.EdgeCategoryType;
 import savagerifts.model.skill.SkillType;
 
 import java.util.Collection;
@@ -46,7 +43,6 @@ public class SkillBuyResponse {
     public Map<SkillType, Collection<SkillRollInfo>> getSkillMap() {
         return skillMap;
     }
-
     public void setSkillMap(Map<SkillType, Collection<SkillRollInfo>> skillMap) {
         this.skillMap = skillMap;
     }
