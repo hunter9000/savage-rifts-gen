@@ -15,9 +15,9 @@ public class SkillPurchase {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "sheet", nullable = false, updatable = false)
+    @JsonIgnore
     private Sheet sheet;
 
     @Column(name = "skill_type", nullable = false)

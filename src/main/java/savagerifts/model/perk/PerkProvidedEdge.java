@@ -1,12 +1,14 @@
 package savagerifts.model.perk;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import savagerifts.model.edge.Edge;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "perk_provided_edge")
+@JsonIgnoreProperties(value = {"perk"})
 public class PerkProvidedEdge {
 
     @Id

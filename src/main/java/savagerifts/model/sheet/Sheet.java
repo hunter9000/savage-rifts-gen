@@ -95,7 +95,7 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL)
 	private List<SkillRoll> skills;			// skills and their rolls
 
-	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
 	private List<SkillPurchase> skillPurchases;
 
 

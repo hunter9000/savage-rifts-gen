@@ -21,10 +21,7 @@ import savagerifts.response.SkillBuyResponse;
 import savagerifts.response.SkillRollInfo;
 import savagerifts.security.BadRequestException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SheetUtils {
 	
@@ -83,17 +80,13 @@ public class SheetUtils {
 
 		return skillBuyResponse;
 	}
-	
+
+	// cost to increase is 1 if the skill is less than it's attr, 2 otherwise
+	// cost to decrease is 1 if the skill is leas than or equal to it's attr, 2 otherwise
 	private static int getSkillPointCost(SkillRoll skillRoll, Map<AttributeType, Roll> attrMap, boolean increasing) {
-		// cost to increase is 1 if the skill is less than it's attr, 2 otherwise
-		// cost to decrease is 1 if the skill is leas than or equal to it's attr, 2 otherwise
 		int compare = skillRoll.getRoll().compareTo(attrMap.get(skillRoll.getLinkedAttribute()));
-		if (increasing) {
-			return compare < 0 ? 1 : 2;
-		}
-		else {
-			return compare <= 0 ? 1 : 2;
-		}
+		boolean comparison = increasing ? (compare < 0) : (compare <= 0);
+		return comparison ? 1 : 2;
 	}
 
 	/** Adds all the sheet's skillrolls to a map for serialization.
@@ -114,37 +107,44 @@ public class SheetUtils {
 		return skillPurchaseMap;
 	}
 
-	public static boolean validateAndMakeSkillChange(Sheet sheet, SkillBuyRequest skillBuyRequest) {
+	/** Checks if the skill can be increased, then adds the skillpurchase row and decreases skill points. Does not save the sheet. */
+	public static boolean validateAndPurchaseSkill(Sheet sheet, SkillBuyRequest skillBuyRequest) {
 		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
 
 		// find the skillrollinfo that matches the request
 		SkillRollInfo skillRollInfo = IterableUtils.find(skills.getSkillRollInfos(),
 														 object -> new SkillDefinition((SkillRollInfo)object).equals(new SkillDefinition(skillBuyRequest)));
 
-		MultiValuedMap<SkillDefinition, SkillPurchase> purchaseMap = getSkillPurchaseMap(sheet);
-
-		// check that the stat can actually be inc'd/dec'd, then make the change to the attr and the attr points
-		if (skillBuyRequest.isIncrease() && skillRollInfo.canIncrease) {
-			int pointCost = getSkillPointCost(skillRollInfo.getSkillRoll(), SheetAttributeUtils.populateAttributeMap(sheet), true);
-			SkillPurchase purchase = new SkillPurchase();
-			purchase.setSheet(sheet);
-			purchase.setSkillType(skillRollInfo.getSkillRoll().getSkillType());
-			purchase.setSkillKnowledge(skillRollInfo.getSkillRoll().getSkillKnowledge());
-			sheet.getSkillPurchases().add(purchase);
-			sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() - pointCost);
-			return true;
-		}
-		if (skillBuyRequest.isDecrease() && skillRollInfo.canDecrease) {
-			int pointCost = getSkillPointCost(skillRollInfo.getSkillRoll(), SheetAttributeUtils.populateAttributeMap(sheet), false);
-			// find the matching skillpurchase in the sheet's list, remove it
-			SkillPurchase skillPurchase = IterableUtils.find(sheet.getSkillPurchases(),
-															 object -> new SkillDefinition((SkillPurchase) object).equals(new SkillDefinition(skillBuyRequest)));
-			sheet.getSkillPurchases().remove(skillPurchase);
-			sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() + pointCost);
-			return true;
+		// check that the stat can actually be increased, then make the change to the attr and the attr points
+		if (!skillRollInfo.canIncrease) {
+			return false;
 		}
 
-		return false;
+		int pointCost = getSkillPointCost(skillRollInfo.getSkillRoll(), SheetAttributeUtils.populateAttributeMap(sheet), true);
+		SkillPurchase purchase = new SkillPurchase();
+		purchase.setSheet(sheet);
+		purchase.setSkillType(skillRollInfo.getSkillRoll().getSkillType());
+		purchase.setSkillKnowledge(skillRollInfo.getSkillRoll().getSkillKnowledge());
+		sheet.getSkillPurchases().add(purchase);
+		sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() - pointCost);
+		return true;
+	}
+
+	public static boolean deleteSkillPurchase(Sheet sheet, Long skillPurchaseId) {
+		SkillPurchase purchase = IterableUtils.find(sheet.getSkillPurchases(), skillPurchase -> skillPurchase.getId().equals(skillPurchaseId) );
+
+		if (purchase == null) {
+			return false;
+		}
+
+		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+		SkillRollInfo info = skills.getSkillDefinitionMap().get(new SkillDefinition(purchase));
+
+		int pointCost = getSkillPointCost(info.getSkillRoll(), SheetAttributeUtils.populateAttributeMap(sheet), false);
+
+		sheet.getSkillPurchases().remove(purchase);
+		sheet.setRemainingSkillPoints(sheet.getRemainingSkillPoints() + pointCost);
+		return true;
 	}
 
 	public static HindranceBuyResponse calculateHindrancePurchases(Sheet sheet) {

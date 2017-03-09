@@ -9,18 +9,15 @@ savageRiftsApp.controller('skillBuyController', function(APIService, SheetServic
 	$scope.decSkill = function(skill) {
 	    $log.debug('dec ' + skill);
 
-        APIService.changeSkill($routeParams.sheetId,
-            {'skill': skill, 'operation': 'DEC'},
-            function(response) {
-                $scope.skillResponse = response.data;
-            }
-        );
+        APIService.decreaseSkill($routeParams.sheetId, skill.id, function(response) {
+            $scope.skillResponse = response.data;
+        });
 	}
 	$scope.incSkill = function(skill) {
         $log.debug('inc ' + skill);
 
-        APIService.changeSkill($routeParams.sheetId,
-            {'skill': skill, 'operation': 'INC'},
+        APIService.increaseSkill($routeParams.sheetId,
+            {'skill': skill},
             function(response) {
                 $scope.skillResponse = response.data;
             }

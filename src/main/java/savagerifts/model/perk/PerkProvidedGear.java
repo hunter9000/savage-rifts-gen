@@ -4,6 +4,7 @@ import savagerifts.model.Gear;
 
 //@Entity
 //@Table(name = "perk_provided_gear")
+//@JsonIgnoreProperties(value = {"perk"})
 public class PerkProvidedGear {
 
 //    @Id

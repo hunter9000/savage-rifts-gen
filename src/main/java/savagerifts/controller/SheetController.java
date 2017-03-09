@@ -190,14 +190,14 @@ public class SheetController {
 		return skills;
 	}
 
-	/** Increase or decrease the given skill die roll */
+	/** Increase the given skill die roll */
 	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
 	@RequestMapping(value = "/api/sheet/{sheetId}/skills/", method = RequestMethod.PUT)
-	public SkillBuyResponse increaseDecreseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
+	public SkillBuyResponse purchaseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
 		// make the change, returns false if the change isn't valid
-		if (!SheetUtils.validateAndMakeSkillChange(sheet, skillBuyRequest)) {
+		if (!SheetUtils.validateAndPurchaseSkill(sheet, skillBuyRequest)) {
 			throw new BadRequestException();
 		}
 
@@ -207,6 +207,20 @@ public class SheetController {
 		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
 
 		return skills;
+	}
+
+	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
+	@RequestMapping(value = "/api/sheet/{sheetId}/skills/{skillPurchaseId}/", method = RequestMethod.DELETE)
+	public ResponseEntity<SkillBuyResponse> deleteSkillBuy(@PathVariable Long skillPurchaseId) {
+		Sheet sheet = AuthUtils.getSheet(request);
+
+		if (!SheetUtils.deleteSkillPurchase(sheet, skillPurchaseId)) {
+			throw new BadRequestException("Provided skillPurchaseId doesn't exist: " + skillPurchaseId);
+		}
+
+		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+
+		return new ResponseEntity<>(skills, HttpStatus.OK);
 	}
 
 	/** Finish purchasing skills. */

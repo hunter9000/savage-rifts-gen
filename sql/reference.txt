@@ -18,3 +18,8 @@
 18: add skill knowledge to edge skill prerequisites
 19: define race abilities tables and columns
 20: add tables for race abilities
+21: fix the xpleveltype of an edge
+22: redefine skill point buy to add skill_purchase rows, define tables for what perks add
+23: fix descriptions of some benefit table perks
+24: define provided edges, edge choices, bonuses for perks
+25: drop edge column on framework_feature, create one to many table for edges, insert edges for framework features

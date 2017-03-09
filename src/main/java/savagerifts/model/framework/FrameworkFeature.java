@@ -1,9 +1,9 @@
 package savagerifts.model.framework;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import savagerifts.model.edge.Edge;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "framework_feature")
@@ -29,10 +29,9 @@ public class FrameworkFeature {
 	@Column(name = "description", length = 1000, nullable = false, updatable = false)
 	private String description;
 
-	@OneToOne
-	@JoinColumn(name = "providedEdge", updatable = false)
-	private Edge providedEdge;
-	
+	@OneToMany(mappedBy = "frameworkFeature")
+	private List<FrameworkEdge> frameworkEdges;
+
 //	@OneToOne
 //	@JoinColumn(name = "providedGear", updatable = false)
 //	private Gear providedGear;
@@ -80,10 +79,10 @@ public class FrameworkFeature {
 		this.description = description;
 	}
 
-	public Edge getProvidedEdge() {
-		return providedEdge;
+	public List<FrameworkEdge> getFrameworkEdges() {
+		return frameworkEdges;
 	}
-	public void setProvidedEdge(Edge providedEdge) {
-		this.providedEdge = providedEdge;
+	public void setFrameworkEdges(List<FrameworkEdge> frameworkEdges) {
+		this.frameworkEdges = frameworkEdges;
 	}
 }

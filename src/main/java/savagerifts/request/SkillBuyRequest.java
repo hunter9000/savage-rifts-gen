@@ -7,18 +7,18 @@ import savagerifts.security.BadRequestException;
 public class SkillBuyRequest {
     private SkillType skill;
     private SkillKnowledge skillKnowledge;
-    private OperationType operation;		// inc or dec
+//    private OperationType operation;		// inc or dec
 
-    public enum OperationType {
-        INC, DEC
-    }
+//    public enum OperationType {
+//        INC, DEC
+//    }
 
-    public boolean isIncrease() {
-        return operation == OperationType.INC;
-    }
-    public boolean isDecrease() {
-        return operation == OperationType.DEC;
-    }
+//    public boolean isIncrease() {
+//        return operation == OperationType.INC;
+//    }
+//    public boolean isDecrease() {
+//        return operation == OperationType.DEC;
+//    }
 
     public SkillType getSkill() {
         return skill;
@@ -27,12 +27,12 @@ public class SkillBuyRequest {
         this.skill = skill;
     }
 
-    public OperationType getOperation() {
-        return operation;
-    }
-    public void setOperation(OperationType operation) {
-        this.operation = operation;
-    }
+//    public OperationType getOperation() {
+//        return operation;
+//    }
+//    public void setOperation(OperationType operation) {
+//        this.operation = operation;
+//    }
 
     public SkillKnowledge getSkillKnowledge() {
         return skillKnowledge;
@@ -52,10 +52,10 @@ public class SkillBuyRequest {
             errorString += " skillKnowledge is invalid ";
             error = true;
         }
-        if (operation == null) {
-            errorString += " operation is invalid ";
-            error = true;
-        }
+//        if (operation == null) {
+//            errorString += " operation is invalid ";
+//            error = true;
+//        }
         if (error) {
             throw new BadRequestException("request is invalid for these reasons: " + errorString);
         }

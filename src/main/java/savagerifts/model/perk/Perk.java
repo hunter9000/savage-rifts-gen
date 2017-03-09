@@ -24,6 +24,7 @@ public class Perk {
 	// gains this edge, plus a backup edge incase they have the first one already. need to apply these after edge selection step? or does this just mean if your framwork gives it to you, since that's the only thing you've done before this step?
 	@OneToMany(mappedBy = "perk")
 	private List<PerkProvidedEdge> perkProvidedEdges;
+
 	@OneToMany(mappedBy = "perk")
 	private List<PerkEdgeChoice> perkEdgeChoices;
 

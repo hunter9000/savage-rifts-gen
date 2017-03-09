@@ -2,6 +2,7 @@ package savagerifts.model.perk;
 
 //@Entity
 //@Table(name = "perk_skill")
+//@JsonIgnoreProperties(value = {"perk"})
 public class PerkSkill {
 
 //    @Id
