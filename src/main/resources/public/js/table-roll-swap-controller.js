@@ -68,13 +68,14 @@ savageRiftsApp.controller('tableRollSwapController', function(APIService, SheetS
 		}
 
         var postData = {
-            'perkSelection1' : $scope.perkItems[0].perk,
-            'perkSelection2' : $scope.perkItems[1].perk,
-            'swapPerk' : $scope.newPerkSelection
+            'perkId1' : $scope.perkItems[0].perk.id,
+            'perkId2' : $scope.perkItems[1].perk.id,
+            'swapPerkId' : $scope.newPerkSelection.id
         }
 
         APIService.makeTableRollSwap($routeParams.sheetId, postData, function(response) {
-            $location.path('/editsheet/' + $routeParams.sheetId);
+            SheetService.redirectToCreationStepsFromId($routeParams.sheetId);
+//            $location.path('/editsheet/' + $routeParams.sheetId);
         });
     }
 

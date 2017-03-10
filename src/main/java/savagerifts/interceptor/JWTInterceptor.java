@@ -1,6 +1,7 @@
 package savagerifts.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerMapping;
 import savagerifts.model.user.User;
 import savagerifts.repository.UserRepository;
@@ -32,13 +33,17 @@ public class JWTInterceptor implements HandlerInterceptor {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private Logger logger = Logger.getLogger(JWTInterceptor.class);
+
     /** Validates that the jwt token passed in matches  */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String jwtToken = request.getHeader("x-access-token");
 
-        System.out.println(jwtToken);
-        System.out.println("pre handle Request URL::" + request.getRequestURL().toString() + " | token: " + jwtToken);
+        logger.info(jwtToken);
+//        System.out.println(jwtToken);
+        logger.info("pre handle Request URL::" + request.getRequestURL().toString() + " | token: " + jwtToken);
+//        System.out.println("pre handle Request URL::" + request.getRequestURL().toString() + " | token: " + jwtToken);
 
         // validate the token here
         if (jwtToken == null || jwtToken.isEmpty()) {
@@ -51,7 +56,8 @@ public class JWTInterceptor implements HandlerInterceptor {
         catch (MalformedJwtException mje) {
             throw new ForbiddenAccessException();
         }
-        System.out.println("subject: " + jwsSubject);
+        logger.info("subject: " + jwsSubject);
+//        System.out.println("subject: " + jwsSubject);
 
         ObjectMapper objectMapper = new ObjectMapper();
         JwtSubject subject = objectMapper.readValue(jwsSubject, JwtSubject.class);

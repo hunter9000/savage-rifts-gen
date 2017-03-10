@@ -161,10 +161,10 @@ public class SheetBenefitTableController {
 			throw new BadRequestException();
 		}
 
-		PerkSelection chosenPerk1 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkSelection1().getId());
-		PerkSelection chosenPerk2 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkSelection2().getId());
+		PerkSelection chosenPerk1 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkId1());
+		PerkSelection chosenPerk2 = SheetUtils.getChosenPerkFromSheet(sheet, perkSwapRequest.getPerkId2());
 
-		Perk swapPerk = perkRepository.findOne(perkSwapRequest.getSwapPerk().getId());
+		Perk swapPerk = perkRepository.findOne(perkSwapRequest.getSwapPerkId());
 
 		PerkSelection newPerkSelection = new PerkSelection();
 		newPerkSelection.setSheet(sheet);

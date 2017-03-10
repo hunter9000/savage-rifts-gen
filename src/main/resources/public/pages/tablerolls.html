@@ -31,7 +31,7 @@
 
             <div class="" ng-hide="sheet.chosenPerks.length == 0">
                 <dl class="dl-horizontal" ng-repeat="chosenPerk in sheet.chosenPerks">
-                    <dt>{{chosenPerk.perk.benefitTableDisplayName}}</dt>
+                    <dt>{{chosenPerk.perk.type.tableType.displayName}}</dt>
                     <dd class="text-left">{{chosenPerk.perk.description}}</dd>
                 </dl>
             </div>
