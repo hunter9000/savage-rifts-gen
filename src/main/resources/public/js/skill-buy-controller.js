@@ -6,22 +6,38 @@ savageRiftsApp.controller('skillBuyController', function(APIService, SheetServic
         $scope.skillResponse = response.data;
     });
 
-	$scope.decSkill = function(skill) {
-	    $log.debug('dec ' + skill);
+	$scope.decSkill = function(skillType) {
+	    $log.debug('dec ' + skillType);
 
-        APIService.decreaseSkill($routeParams.sheetId, skill.id, function(response) {
+        $scope.sendSkillRequest($routeParams.sheetId, skillType, 'DEC');
+
+//        APIService.decreaseSkill($routeParams.sheetId, skill.id, function(response) {
+//            $scope.skillResponse = response.data;
+//        });
+	}
+	$scope.incSkill = function(skillType) {
+        $log.debug('inc ' + skillType);
+
+        $scope.sendSkillRequest($routeParams.sheetId, skillType, 'INC');
+
+//        APIService.increaseSkill($routeParams.sheetId,
+//            {},
+//            function(response) {
+//                $scope.skillResponse = response.data;
+//            }
+//        );
+	}
+
+	$scope.sendSkillRequest = function(sheetId, skillType, operation) {
+	    var data = {
+	        'skill': skillType,
+	        'skillKnowledge': null,
+	        'operation': operation
+	    }
+
+        APIService.changeSkillPurchase(sheetId, data, function(response) {
             $scope.skillResponse = response.data;
         });
-	}
-	$scope.incSkill = function(skill) {
-        $log.debug('inc ' + skill);
-
-        APIService.increaseSkill($routeParams.sheetId,
-            {'skill': skill},
-            function(response) {
-                $scope.skillResponse = response.data;
-            }
-        );
 	}
 
 	$scope.finalize = function() {

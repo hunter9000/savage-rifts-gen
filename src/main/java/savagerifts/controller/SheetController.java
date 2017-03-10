@@ -10,6 +10,7 @@ import savagerifts.model.hindrance.Hindrance;
 import savagerifts.model.race.Race;
 import savagerifts.model.sheet.Sheet;
 import savagerifts.model.sheet.SheetCreationStep;
+import savagerifts.model.skill.SkillDefinition;
 import savagerifts.model.user.User;
 import savagerifts.repository.*;
 import savagerifts.request.AttributeBuyRequest;
@@ -31,8 +32,8 @@ import java.util.List;
 @RestController
 public class SheetController {
 
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
 
     @Autowired
     private SheetRepository sheetRepository;
@@ -40,11 +41,11 @@ public class SheetController {
     @Autowired
     private FrameworkRepository frameworkRepository;
 	
-    @Autowired
-    private PerkRepository perkRepository;
+//    @Autowired
+//    private PerkRepository perkRepository;
 
-    @Autowired
-    private PerkSelectionRepository perkSelectionRepository;
+//    @Autowired
+//    private PerkSelectionRepository perkSelectionRepository;
 
 	@Autowired
 	private RaceRepository raceRepository;
@@ -196,9 +197,18 @@ public class SheetController {
 	public SkillBuyResponse purchaseSkillBuy(@RequestBody SkillBuyRequest skillBuyRequest) {
 		Sheet sheet = AuthUtils.getSheet(request);
 
-		// make the change, returns false if the change isn't valid
-		if (!SheetUtils.validateAndPurchaseSkill(sheet, skillBuyRequest)) {
-			throw new BadRequestException();
+		skillBuyRequest.validate();		// throws exception if not valid
+
+		if (skillBuyRequest.isIncrease()) {
+			// make the change, returns false if the change isn't valid
+			if (!SheetUtils.validateAndPurchaseSkill(sheet, skillBuyRequest)) {
+				throw new BadRequestException();
+			}
+		}
+		else {
+			if (!SheetUtils.deleteSkillPurchase(sheet, new SkillDefinition(skillBuyRequest))) {
+				throw new BadRequestException("Provided skill can't be decreased: " + skillBuyRequest);
+			}
 		}
 
 		sheetRepository.save(sheet);
@@ -209,19 +219,19 @@ public class SheetController {
 		return skills;
 	}
 
-	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
-	@RequestMapping(value = "/api/sheet/{sheetId}/skills/{skillPurchaseId}/", method = RequestMethod.DELETE)
-	public ResponseEntity<SkillBuyResponse> deleteSkillBuy(@PathVariable Long skillPurchaseId) {
-		Sheet sheet = AuthUtils.getSheet(request);
-
-		if (!SheetUtils.deleteSkillPurchase(sheet, skillPurchaseId)) {
-			throw new BadRequestException("Provided skillPurchaseId doesn't exist: " + skillPurchaseId);
-		}
-
-		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
-
-		return new ResponseEntity<>(skills, HttpStatus.OK);
-	}
+//	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)
+//	@RequestMapping(value = "/api/sheet/{sheetId}/skills/{skillPurchaseId}/", method = RequestMethod.DELETE)
+//	public ResponseEntity<SkillBuyResponse> deleteSkillBuy(@PathVariable Long skillPurchaseId) {
+//		Sheet sheet = AuthUtils.getSheet(request);
+//
+//		if (!SheetUtils.deleteSkillPurchase(sheet, skillPurchaseId)) {
+//			throw new BadRequestException("Provided skillPurchaseId doesn't exist: " + skillPurchaseId);
+//		}
+//
+//		SkillBuyResponse skills = SheetUtils.calculateSkillPurchases(sheet);
+//
+//		return new ResponseEntity<>(skills, HttpStatus.OK);
+//	}
 
 	/** Finish purchasing skills. */
 	@SheetOwner(requiredSteps = SheetCreationStep.SKILLS)

@@ -130,8 +130,8 @@ public class SheetUtils {
 		return true;
 	}
 
-	public static boolean deleteSkillPurchase(Sheet sheet, Long skillPurchaseId) {
-		SkillPurchase purchase = IterableUtils.find(sheet.getSkillPurchases(), skillPurchase -> skillPurchase.getId().equals(skillPurchaseId) );
+	public static boolean deleteSkillPurchase(Sheet sheet, SkillDefinition skillDefinition) {
+		SkillPurchase purchase = IterableUtils.find(sheet.getSkillPurchases(), skillPurchase -> new SkillDefinition(skillPurchase).equals(skillDefinition) );
 
 		if (purchase == null) {
 			return false;

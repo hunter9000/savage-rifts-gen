@@ -140,12 +140,12 @@ savageRiftsApp.factory('APIService', function($window, $location, $http, $log) {
         getSheetSkills: function(sheetId, successCallback) {
             this.get('/api/sheet/'+sheetId+'/skills/', successCallback);
         },
-        increaseSkill: function(sheetId, data, successCallback) {
+        changeSkillPurchase: function(sheetId, data, successCallback) {
             this.put('/api/sheet/'+sheetId+'/skills/', data, successCallback);
         },
-        decreaseSkill: function(sheetId, skillPurchaseId, successCallback) {
-            this.delete('/api/sheet/'+sheetId+'/skills/'+skillPurchaseId+'/', successCallback);
-        },
+//        decreaseSkill: function(sheetId, skillPurchaseId, successCallback) {
+//            this.delete('/api/sheet/'+sheetId+'/skills/'+skillPurchaseId+'/', successCallback);
+//        },
         finalizeSkillBuy: function(sheetId, successCallback) {
             this.post('/api/sheet/'+sheetId+'/skills/', {}, successCallback);
         },

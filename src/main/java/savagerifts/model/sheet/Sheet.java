@@ -9,6 +9,7 @@ import savagerifts.util.SheetUtils;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sheet")
@@ -96,7 +97,7 @@ public class Sheet {
 	private List<SkillRoll> skills;			// skills and their rolls
 
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
-	private List<SkillPurchase> skillPurchases;
+	private Set<SkillPurchase> skillPurchases;
 
 
 //	private List<Language> languages;		// known languages
@@ -304,10 +305,10 @@ public class Sheet {
 		this.skills = skills;
 	}
 
-	public List<SkillPurchase> getSkillPurchases() {
+	public Set<SkillPurchase> getSkillPurchases() {
 		return skillPurchases;
 	}
-	public void setSkillPurchases(List<SkillPurchase> skillPurchases) {
+	public void setSkillPurchases(Set<SkillPurchase> skillPurchases) {
 		this.skillPurchases = skillPurchases;
 	}
 
