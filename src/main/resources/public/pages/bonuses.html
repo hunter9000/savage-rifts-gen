@@ -43,7 +43,14 @@
 				</dl>
 
 
-				<div>Remaining Points: {{sheet.remainingHindrancePoints}}</div>
+				<div ng-show="sheet.remainingHindrancePoints > 0">
+					<strong>Remaining Points: {{sheet.remainingHindrancePoints}}</strong>
+				</div>
+				<div ng-show="sheet.remainingHindrancePoints == 0">
+					<button class="btn btn-primary" ng-disabled="sheet.remainingHindrancePoints != 0" ng-click="finishPurchases()" >
+						Finish
+					</button>
+				</div>
 
 			</panel>
 		</div>
@@ -51,34 +58,29 @@
 		<!-- options -->
 		<div class="col-md-6">
 			
-				<!-- selections to make -->
-				<panel header="Choose">
-						<div>
-							<dl class="dl-horizontal">
-								<dt style="width:120px;">For 2 points:</dt>
-								<dd style="margin-left:140px;" class="text-left">
-									<span><button class="btn btn-primary" ng-click="chooseEdge()" ng-disabled="sheet.remainingHindrancePoints < 2">Gain an Edge</button></span>
-									<span><button class="btn btn-primary" ng-click="chooseAttr()" ng-disabled="sheet.remainingHindrancePoints < 2">Increase an Attribute</button></span>
-								</dd>
-							</dl>
-						</div>
+			<!-- selections to make -->
+			<panel header="Choose">
+				<div>
+					<dl class="dl-horizontal">
+						<dt style="width:120px;">For 2 points:</dt>
+						<dd style="margin-left:140px;" class="text-left">
+							<span><button class="btn btn-primary" ng-click="chooseEdge()" ng-disabled="sheet.remainingHindrancePoints < 2">Gain an Edge</button></span>
+							<span><button class="btn btn-primary" ng-click="chooseAttr()" ng-disabled="sheet.remainingHindrancePoints < 2">Increase an Attribute</button></span>
+						</dd>
+					</dl>
+				</div>
 
-						<div>
-							<dl class="dl-horizontal">
-								<dt style="width:120px;">For 1 point:</dt>
-								<dd style="margin-left:140px;" class="text-left">
-									<span><a class="btn btn-primary" ng-click="chooseSkill()" ng-disabled="sheet.remainingHindrancePoints < 1">Increase a Skill</a></span>
-									<span><a class="btn btn-primary" ng-click="chooseMoney()" ng-disabled="sheet.remainingHindrancePoints < 1">Start with an extra {{sheet.framework.startingMoney}} Money</a></span>
-								</dd>
-							</dl>
-						</div>
+				<div>
+					<dl class="dl-horizontal">
+						<dt style="width:120px;">For 1 point:</dt>
+						<dd style="margin-left:140px;" class="text-left">
+							<span><a class="btn btn-primary" ng-click="chooseSkill()" ng-disabled="sheet.remainingHindrancePoints < 1">Increase a Skill</a></span>
+							<span><a class="btn btn-primary" ng-click="chooseMoney()" ng-disabled="sheet.remainingHindrancePoints < 1">Start with an extra {{sheet.framework.startingMoney}} Money</a></span>
+						</dd>
+					</dl>
+				</div>
 
-				</panel>
+			</panel>
 		</div>
-	</div>
-	<div class="row">
-		<button class="btn btn-primary" ng-disabled="sheet.remainingHindrancePoints != 0" ng-click="finishPurchases()" >
-			Finish
-		</button>
 	</div>
 </div>

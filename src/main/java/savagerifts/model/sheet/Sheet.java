@@ -111,8 +111,8 @@ public class Sheet {
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EdgeSelection> chosenEdgeSelections;
 	
-	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<AttributeRaiseSelection> chosenAttributeRaises;
+	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private Set<AttributeRaiseSelection> chosenAttributeRaises;
 	
 	@OneToMany(mappedBy = "sheet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SkillRaiseSelection> chosenSkillRaises;
@@ -326,10 +326,11 @@ public class Sheet {
 		this.chosenEdgeSelections = chosenEdgeSelections;
 	}
 
-	public List<AttributeRaiseSelection> getChosenAttributeRaises() {
+	public Set<AttributeRaiseSelection> getChosenAttributeRaises() {
 		return chosenAttributeRaises;
 	}
-	public void setChosenAttributeRaises(List<AttributeRaiseSelection> chosenAttributeRaises) {
+
+	public void setChosenAttributeRaises(Set<AttributeRaiseSelection> chosenAttributeRaises) {
 		this.chosenAttributeRaises = chosenAttributeRaises;
 	}
 
