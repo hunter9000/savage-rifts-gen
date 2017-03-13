@@ -52,8 +52,12 @@ public class SheetCreationManager {
         // i.e. step == RACE, make adjustments from the race
         this.recalculateAttributes();
 
-        SheetCreationStep currentStep = sheet.getCreationStep();
-        sheet.setCreationStep(currentStep.getNextStep());
+        sheet.setCreationStep(sheet.getCreationStep());
+
+        // move past race step if framework doesn't allow race to be chosen
+        if (sheet.getCreationStep() == SheetCreationStep.RACE && !sheet.getFramework().isCanSelectRace()) {
+            sheet.setCreationStep(sheet.getCreationStep());
+        }
     }
 
     /** Called before setting the creation step, to include any changes introduced from the current step. */
@@ -104,6 +108,9 @@ public class SheetCreationManager {
     // we've just set the race, add race bonuses
     private void handleRaceAttributeAdjustments() {
         Race race = sheet.getRace();
+        if (race == null) {
+            return;
+        }
         for (RaceAbility ability : race.getAbilities()) {
             // if this changes an attr, change it here
         }

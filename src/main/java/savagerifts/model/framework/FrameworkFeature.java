@@ -32,9 +32,7 @@ public class FrameworkFeature {
 	@OneToMany(mappedBy = "frameworkFeature")
 	private List<FrameworkEdge> frameworkEdges;
 
-//	@OneToOne
-//	@JoinColumn(name = "providedGear", updatable = false)
-//	private Gear providedGear;
+
 	
 	@Transient
 	public String getDisplayName() {

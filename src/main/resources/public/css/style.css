@@ -114,6 +114,20 @@ div#main {
     font-size: 8px;
 }
 
+dl.medium-width > dd {
+    margin-left: 200px;
+}
+dl.medium-width > dt {
+    width:180px;
+}
+
+dl.large-width > dd {
+    margin-left: 300px;
+}
+dl.large-width > dt {
+    width:280px;
+}
+
 /** Nav breadcrumbs */
 .nav > li:not(.active) > a:hover,
 .nav > li:not(.active) > a:focus {

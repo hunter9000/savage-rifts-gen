@@ -1,26 +1,96 @@
 
-<div class="container width-small">
-	<div class="panel panel-default">
-		<div class="panel-heading">New Character</div>
-		<div class="panel-body">
-			<form ng-submit="save()">
+<div class="container width-extra-large">
+	<panel header="New Character">
+		<form class="form-inline">
 
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" class="form-control" id="name" ng-model="formData.characterName">
-				</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" ng-model="formData.characterName">
+			</div>
 
-				<div class="form-group">
-					<label for="framework">Framework</label>
-					<select name="repeatSelect" class="form-control" id="framework" ng-model="formData.frameworkId">
-						<option ng-repeat="option in frameworks" value="{{option.id}}">{{option.displayName}}</option>
-					</select>
-				</div>
+			<div class="form-group">
+				<label for="framework">Framework</label>
+				<select ng-options="option as option.type.displayName for option in frameworks"
+						ng-model="selectedFramework"
+						class="form-control"
+						name="framework"
+						id="framework">
+				</select>
+			</div>
 
-				<button type="submit" class="btn btn-primary">Save</button>
+			<div class="form-group">
+				<button type="submit" ng-click="save()" class="btn btn-primary">Save</button>
 				<a href="#/charselect" class="btn btn-default">Back</a>
-			</form>
-		</div>
-	</div>
-</div>
+			</div>
+		</form>
 
+
+		<div class="container" ng-show="selectedFramework">
+			<div class="row">
+
+				<div class="col-md-6">
+					<!-- Attributes -->
+					<panel header="Attributes">
+
+						<dl class="dl-horizontal large-width">
+							<dt>Strength:</dt>
+							<dd class="text-left">
+								{{selectedFramework.startingStrength ? selectedFramework.startingStrength.dieType.displayName : 'd4'}}
+								{{selectedFramework.maxStrength ? '  max ('+selectedFramework.maxStrength.dieType.displayName+')' : ''}}
+							</dd>
+						</dl>
+						<dl class="dl-horizontal large-width">
+							<dt>Smarts:</dt>
+							<dd class="text-left">{{selectedFramework.startingSmarts ? selectedFramework.startingSmarts.dieType.displayName : 'd4'}}</dd>
+						</dl>
+						<dl class="dl-horizontal large-width">
+							<dt>Agility:</dt>
+							<dd class="text-left">{{selectedFramework.startingAgility ? selectedFramework.startingAgility.dieType.displayName : 'd4'}}</dd>
+						</dl>
+						<dl class="dl-horizontal large-width">
+							<dt>Spirit:</dt>
+							<dd class="text-left">{{selectedFramework.startingSpirit ? selectedFramework.startingSpirit.dieType.displayName : 'd4'}}</dd>
+						</dl>
+						<dl class="dl-horizontal large-width">
+							<dt>Vigor:</dt>
+							<dd class="text-left">{{selectedFramework.startingVigor ? selectedFramework.startingVigor.dieType.displayName : 'd4'}}</dd>
+						</dl>
+
+						<br/>
+						<div>
+							<strong>Attribute Points:</strong> {{selectedFramework.startingAttributePoints ? selectedFramework.startingAttributePoints : '5'}}
+						</div>
+					</panel>
+
+					<panel header="Table Rolls">
+						<div ng-repeat="tableRoll in selectedFramework.tableRolls">
+							<span ng-repeat="table in tableRoll.allowedTables">
+								<span>{{table.type.displayName}}</span>
+								<span>{{$last ? '' : ', '}}</span>
+							</span>
+							<hr>
+						</div>
+					</panel>
+				</div>
+
+				<div class="col-md-6">
+					<panel header="Features">
+						<h4>Bonus</h4>
+						<dl class="dl-horizontal" ng-repeat="feature in selectedFramework.frameworkFeatures | filter: {frameworkAbilityType: 'BONUS'}">
+							<dt>{{feature.frameworkFeatureType.displayName}}</dt>
+							<dd class="text-left">{{feature.description}}</dd>
+						</dl>
+
+						<h4>Complications</h4>
+						<dl class="dl-horizontal" ng-repeat="feature in selectedFramework.frameworkFeatures | filter: {frameworkAbilityType: 'COMPLICATION'}" >
+							<dt>{{feature.frameworkFeatureType.displayName}}</dt>
+							<dd class="text-left">{{feature.description}}</dd>
+						</dl>
+					</panel>
+				</div>
+
+			</div>
+		</div>
+
+	</panel>
+</div>

@@ -1,7 +1,6 @@
 package savagerifts.model.framework;
 
 import savagerifts.model.AttributeType;
-import savagerifts.model.DieType;
 import savagerifts.model.benefittable.BenefitTableRoll;
 import savagerifts.model.sheet.Roll;
 
@@ -86,13 +85,13 @@ public class Framework {
 	private boolean hasVigorLimit;
 	
 	
-	@Transient
-	public String getDisplayName() {
-		return type.getDisplayName();
-	}
-	public void setDisplayName() {
-		// nothing, read only property
-	}
+//	@Transient
+//	public String getDisplayName() {
+//		return type.getDisplayName();
+//	}
+//	public void setDisplayName() {
+//		// nothing, read only property
+//	}
 
 	public Roll getStartingAttribute(AttributeType type) {
 		switch(type) {

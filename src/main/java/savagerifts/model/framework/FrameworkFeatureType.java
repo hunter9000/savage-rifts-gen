@@ -1,5 +1,8 @@
 package savagerifts.model.framework;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum FrameworkFeatureType {
 	// combat cyborg
 	BIONIC_AUGMENTATION("Bionic Augmentation"),

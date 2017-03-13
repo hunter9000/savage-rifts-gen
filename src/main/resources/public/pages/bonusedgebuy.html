@@ -2,23 +2,20 @@
 <nav-breadcrumb step="EDGES"/>
 
 <div class="container width-extra-large">
-	<!--<div class="panel panel-default">-->
-		<!--<div class="panel-heading">Edges</div>-->
-		<!--<div class="panel-body">-->
 	<panel header="Edges">
 
 		<div ng-repeat="(category, edges) in edgeOptions">
 			<h4>{{category}}</h4>
 
 			<div ng-repeat="edge in edges">
-				<dl class="dl-horizontal">
-					<dt style="width:180px;">
+				<dl class="dl-horizontal medium-width">
+					<dt>
 						{{edge.edgeType.displayName}}
 						<br/>
 						<button style="margin-top: 12px;" class="btn btn-secondary" ng-click="purchaseEdge(edge)">Purchase</button>
 					</dt>
 
-					<dd class="text-left" style="margin-left: 200px;">
+					<dd class="text-left">
 						<div style="margin-bottom: 12px;">
 							{{edge.description}}
 						</div>
@@ -63,7 +60,5 @@
 
 		<a class="btn btn-default" ng-click="back()" >Back</a>
 
-		<!--</div>-->
-	<!--</div>-->
 	</panel>
 </div>

@@ -1,5 +1,8 @@
 package savagerifts.model.framework;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum FrameworkType {
 	COMBAT_CYBORG("Combat Cyborg"),
 	CRAZY("Crazy"),
@@ -14,12 +17,12 @@ public enum FrameworkType {
 	TECHNO_WIZARD("Techno-Wizard"),
 	DRAGON("Flame Wind Dragon Hatchling");
 
-	String frameworkName;
+	String displayName;
 
 	public String getDisplayName() {
-		return frameworkName;
+		return displayName;
 	}
-	FrameworkType(String frameworkName) {
-		this.frameworkName = frameworkName;
+	FrameworkType(String displayName) {
+		this.displayName = displayName;
 	}
 }

@@ -23,3 +23,4 @@
 23: fix descriptions of some benefit table perks
 24: define provided edges, edge choices, bonuses for perks
 25: drop edge column on framework_feature, create one to many table for edges, insert edges for framework features
+26: fix framework definitions
