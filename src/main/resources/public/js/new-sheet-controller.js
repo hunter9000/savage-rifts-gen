@@ -15,11 +15,11 @@ savageRiftsApp.controller('newSheetController', function(APIService, SheetServic
     });
 
     $scope.save = function() {
-        if (!$scope.selectedFramework) {
+        if (this.selectedFramework == null) {
             $log.error('framework was not selected before saving');
             return;
         }
-        $scope.formData.frameworkId = $scope.selectedFramework.id;
+        $scope.formData.frameworkId = this.selectedFramework.id;
         APIService.createSheet($scope.formData, function(response) {
             SheetService.redirectToCreationStepsFromId(response.data.id);
         });
