@@ -1,13 +1,16 @@
 
 
-	savageRiftsApp.controller('sheetSelectController', function(APIService, SheetService, $scope, $location, $uibModal, $log) {
+	savageRiftsApp.controller('sheetSelectController', function(APIService, SheetService, usSpinnerService, $scope, $location, $uibModal, $log) {
 		$scope.message = '';
 
 		$scope.sheets = [];
 
         $scope.loadSheets = function() {
+//            usSpinnerService.spin('spinner-1');
+
             APIService.getSheets(function(response) {
                 $scope.sheets = response.data;
+                usSpinnerService.
             });
         };
         $scope.loadSheets();
@@ -17,7 +20,6 @@
         }
 
         $scope.selectSheet = function(sheetId) {
-//            $location.path("/editsheet/" + sheetId);
             SheetService.redirectToCreationStepsFromId(sheetId);
         }
 
